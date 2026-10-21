@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merci, votre demande de ménage est transmise | Limpid</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Public+Sans:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Public+Sans:wght@400;600;700&display=swap"></noscript>
+<style>
+:root{--bleu:#1A56DB;--encre:#0B2545;--cyan:#4CC9F0;--glace:#EEF6FB;--gris:#5A7184}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Public Sans',system-ui,sans-serif;color:var(--encre);background:var(--glace);line-height:1.62;font-size:17px;min-height:100vh;display:flex;flex-direction:column}
+h1{font-family:'Nunito',sans-serif;font-weight:800;line-height:1.2;font-size:clamp(1.5rem,4.6vw,2.15rem);margin-bottom:14px}
+h2{font-family:'Nunito',sans-serif;font-weight:800;font-size:1.05rem;margin-bottom:8px}
+p{margin-bottom:.9em}
+a{color:var(--bleu)}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:660px;margin:0 auto;padding:0 20px;width:100%}
+header.lp{background:#fff;border-bottom:1px solid #E3EEF5}
+header.lp .in{display:flex;align-items:center;max-width:660px;margin:0 auto;padding:11px 20px}
+header.lp img{height:44px;width:auto}
+main{flex:1;display:flex;align-items:center;padding:44px 0}
+.carte{background:#fff;border:1px solid #DCEAF2;border-radius:20px;padding:34px 28px;box-shadow:0 6px 28px rgba(11,37,69,.08);text-align:center}
+.coche{width:64px;height:64px;margin:0 auto 18px;border-radius:50%;background:#EAF7EF;display:flex;align-items:center;justify-content:center}
+.coche svg{width:32px;height:32px;stroke:#128C4A;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.suite{text-align:left;background:var(--glace);border-radius:14px;padding:18px 20px;margin-top:22px;font-size:.95rem}
+.suite ol{margin:0;padding-left:20px}
+.suite li{margin-bottom:7px}
+.suite li:last-child{margin-bottom:0}
+.btn{display:inline-block;background:var(--cyan);color:var(--encre);text-decoration:none;font-family:'Nunito';font-weight:800;padding:14px 26px;border-radius:99px;font-size:1rem;margin-top:22px}
+.btn:hover{background:#7BDCF6}
+footer.lp{background:var(--encre);color:#BFD6E4;padding:24px 0;font-size:.86rem;text-align:center}
+footer.lp a{color:#fff}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+</style>
+<script src="/assets/mesure.js" defer></script>
+<script src="/assets/campagne.js" defer></script>
+</head>
+<body data-tunnel="menage">
+
+<header class="lp"><div class="in">
+ <img src="/assets/logo-limpid.webp" alt="Limpid, entreprise de nettoyage dans les Vosges" width="160" height="44">
+</div></header>
+
+<main><div class="wrap">
+ <div class="carte">
+  <div class="coche"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12.5 5.2 5.2L20 7"/></svg></div>
+  <h1>Merci, votre demande a bien été transmise</h1>
+  <p>Nous vous rappelons sous 48 h pour préciser votre besoin et convenir du rythme qui vous convient.</p>
+  <div class="suite">
+   <h2>La suite</h2>
+   <ol><li>Nous vous rappelons sous 48 h, au numéro que vous avez indiqué.</li><li>Nous validons ensemble le rythme et la durée de chaque passage.</li><li>Vous recevez une proposition sans engagement, au tarif convenu.</li></ol>
+  </div>
+  <a class="btn" href="tel:+33626556569">📞 Nous appeler au 06 26 55 65 69</a>
+ </div>
+</div></main>
+
+<footer class="lp"><div class="wrap">
+ <p style="margin:0">LIMPID · 5 rue des Sapins, 88390 Darnieulles · <a href="/mentions-legales/">Mentions légales</a> · <a href="/politique-confidentialite/">Confidentialité</a> · <a href="#" onclick="if(window.limpidCookies){limpidCookies();}return false;">Cookies</a></p>
+</div></footer>
+
+<script>
+/* La conversion n'est comptée que si le visiteur vient réellement
+   d'envoyer le formulaire, et une seule fois : le marqueur posé à
+   l'envoi est consommé ici. Un partage de lien ou un rechargement
+   ne crée donc pas de fausse conversion. */
+(function(){
+  function tirer(){
+    if(typeof window.limpidConversion==="function") window.limpidConversion("menage_lead");
+  }
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",function(){setTimeout(tirer,60);});
+  else setTimeout(tirer,60);
+})();
+</script>
+
+</body>
+</html>

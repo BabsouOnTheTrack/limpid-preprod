@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://limpid-nettoyage.fr/sitemap.xml

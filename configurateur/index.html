@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Configurer mon devis de nettoyage | Limpid, Épinal et Vosges</title>
+<meta name="description" content="Décrivez votre logement ou vos locaux en quelques étapes : ménage régulier ou ponctuel, grand nettoyage, vitres et véranda, canapés et textiles, bureaux. Limpid vous envoie votre devis par e-mail sous 48 h.">
+<link rel="canonical" href="https://limpid-nettoyage.fr/configurateur/">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<meta property="og:title" content="Configurer mon devis de nettoyage | Limpid">
+<meta property="og:description" content="Ménage, grand nettoyage, vitres, textiles ou bureaux : décrivez votre besoin, recevez votre devis par e-mail sous 48 h.">
+<meta property="og:image" content="https://limpid-nettoyage.fr/assets/hero-baies-vitrees-propres.webp">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Public+Sans:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Public+Sans:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Public+Sans:wght@400;600;700&display=swap"></noscript>
+<style>
+
+:root{--bleu:#1A56DB;--encre:#0B2545;--cyan:#4CC9F0;--glace:#EEF6FB;--gris:#5A7184;--blanc:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Public Sans',system-ui,sans-serif;color:var(--encre);background:var(--blanc);line-height:1.65;font-size:17px}
+h1,h2,h3{font-family:'Nunito',sans-serif;font-weight:800;line-height:1.2;color:var(--encre)}
+h1{font-size:clamp(1.7rem,4.5vw,2.6rem)}
+h2{font-size:clamp(1.35rem,3vw,1.8rem);margin-bottom:.7em}
+h3{font-size:1.12rem}
+p{margin-bottom:1em}
+a{color:var(--bleu)}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+.wrap.large{max-width:1260px}
+/* Header */
+header.site{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid #E3EEF5}
+.nav{display:flex;align-items:center;gap:18px;padding:10px 20px;max-width:1120px;margin:0 auto}
+.nav .logo img{height:56px;width:auto}
+.nav ul{display:flex;gap:4px;list-style:none;margin-left:auto;align-items:center;flex-wrap:wrap}
+.nav a{color:var(--encre);text-decoration:none;font-weight:600;font-size:.92rem;padding:8px 10px;border-radius:8px}
+.nav a:hover{background:var(--glace);color:var(--bleu)}
+.nav .cta{background:var(--bleu);color:#fff!important;border-radius:99px;padding:10px 18px;font-family:'Nunito',sans-serif;font-weight:800}
+.nav .cta:hover{background:#1443AE}
+details.menu{position:relative}
+details.menu summary{list-style:none;cursor:pointer;font-weight:600;font-size:.92rem;padding:8px 10px;border-radius:8px;color:var(--encre)}
+details.menu summary::-webkit-details-marker{display:none}
+details.menu summary:hover{background:var(--glace);color:var(--bleu)}
+details.menu[open] summary{background:var(--glace)}
+details.menu ul{position:absolute;top:110%;left:0;background:#fff;border:1px solid #E3EEF5;border-radius:12px;box-shadow:0 10px 30px rgba(11,37,69,.12);padding:8px;min-width:290px;display:block}
+details.menu ul a{display:block;padding:9px 12px;font-size:.9rem}
+.burger{display:none;cursor:pointer;padding:10px;margin-left:auto;border-radius:8px;background:none;border:none}
+.burger span{display:block;width:24px;height:3px;background:var(--encre);border-radius:2px;margin:5px 0;transition:transform .25s,opacity .25s}
+/* Etoile signature */
+.star{display:inline-block;width:1em;height:1em;vertical-align:-0.12em}
+ul.etoiles{list-style:none;margin:0 0 1em}
+ul.etoiles li{padding-left:1.7em;position:relative;margin-bottom:.55em}
+ul.etoiles li::before{content:"";position:absolute;left:0;top:.28em;width:1.05em;height:1.05em;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%234CC9F0" d="M12 0c1.2 6.8 4 9.6 12 12-8 2.4-10.8 5.2-12 12-1.2-6.8-4-9.6-12-12 8-2.4 10.8-5.2 12-12z"/></svg>') no-repeat center/contain}
+/* Hero */
+.hero{position:relative;background:linear-gradient(rgba(11,37,69,.55),rgba(11,37,69,.35)),url('/assets/hero-baies-vitrees-propres.webp') center/cover;color:#fff;text-align:center;padding:88px 20px}
+@media(max-width:820px){.hero{background-image:linear-gradient(rgba(11,37,69,.55),rgba(11,37,69,.35)),url('/assets/hero-baies-mobile.webp')}}
+.hero h1{color:#fff;max-width:760px;margin:0 auto 14px}
+.hero p{max-width:640px;margin:0 auto 26px;font-size:1.12rem}
+.hero .actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--bleu);color:#fff;text-decoration:none;font-family:'Nunito',sans-serif;font-weight:800;padding:14px 26px;border-radius:99px;font-size:1rem;border:none;cursor:pointer}
+.btn:hover{background:#1443AE}
+.btn.blanc{background:#fff;color:var(--bleu)}
+.btn.tel{background:var(--cyan);color:var(--encre)}
+.btn.tel:hover{background:#7BDCF6}
+.btn.blanc:hover{background:var(--glace)}
+/* Sections */
+section{padding:56px 0}
+section.glace{background:var(--glace)}
+.eyebrow{font-family:'Nunito',sans-serif;font-weight:800;letter-spacing:.1em;text-transform:uppercase;font-size:.78rem;color:var(--bleu);margin-bottom:8px}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;align-items:center}
+.carte{background:#fff;border:1px solid #E3EEF5;border-radius:16px;padding:26px;box-shadow:0 2px 10px rgba(11,37,69,.05)}
+.carte h3{margin-bottom:8px}
+.carte a.lien{font-weight:700;text-decoration:none}
+/* Garantie */
+.garantie{background:var(--encre);color:#EAF4FA;border-radius:20px;padding:34px 30px}
+.garantie h2{color:#fff}
+.garantie .g3{margin-top:18px;grid-template-columns:repeat(4,1fr)}
+.garantie .item strong{display:block;color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:1.08rem;margin-bottom:6px}
+.garantie .item{font-size:.95rem;color:#D9E9F3}
+/* Preuve / avis */
+.avis{background:#fff;border-left:4px solid var(--cyan);border-radius:0 14px 14px 0;padding:18px 22px;box-shadow:0 2px 10px rgba(11,37,69,.05);margin-bottom:16px}
+.avis .qui{font-weight:700;font-size:.88rem;color:var(--gris);margin-top:6px;margin-bottom:0}
+.note{font-family:'Nunito',sans-serif;font-weight:800;color:var(--encre)}
+figure.photo{border-radius:16px;overflow:hidden;box-shadow:0 6px 24px rgba(11,37,69,.12)}
+figure.photo figcaption{font-size:.82rem;color:var(--gris);padding:8px 4px 0}
+.badge{display:inline-block;background:var(--cyan);color:var(--encre);font-family:'Nunito',sans-serif;font-weight:800;font-size:.78rem;padding:4px 12px;border-radius:99px;margin-bottom:10px}
+/* Prix */
+.prix{background:var(--glace);border-radius:16px;padding:22px 26px;margin:1.2em 0}
+.prix .montant{font-family:'Nunito',sans-serif;font-weight:800;font-size:1.6rem;color:var(--bleu)}
+/* FAQ */
+details.faq{background:#fff;border:1px solid #E3EEF5;border-radius:12px;padding:16px 20px;margin-bottom:10px}
+details.faq summary{font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif}
+details.faq p{margin:10px 0 0}
+/* CTA final */
+.cta-final{text-align:center;background:linear-gradient(150deg,var(--bleu),#1443AE);color:#fff;border-radius:20px;padding:44px 26px}
+.cta-final h2{color:#fff}
+.cta-final p{max-width:560px;margin:0 auto 22px}
+.cta-final p:last-child{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:0}
+.cta-final p:last-child .btn{margin:0}
+/* Formulaire */
+form.devis{display:grid;gap:14px;max-width:520px}
+form.devis label{font-weight:700;font-size:.92rem}
+form.devis input,form.devis select,form.devis textarea{width:100%;padding:12px 14px;border:1px solid #C9DCE8;border-radius:10px;font-family:inherit;font-size:1rem;margin-top:5px}
+form.devis input:focus,form.devis select:focus,form.devis textarea:focus{outline:2px solid var(--cyan);border-color:var(--bleu)}
+/* Footer */
+footer.site{background:var(--encre);color:#BFD6E4;padding:44px 0 90px;font-size:.92rem}
+footer.site a{color:#fff;text-decoration:none}
+footer.site a:hover{text-decoration:underline}
+footer .g3{gap:30px}
+footer .fico{width:15px;height:15px;vertical-align:-2px;margin-right:7px;stroke:var(--cyan);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+footer .copy{text-align:center;margin-top:26px;padding-top:16px;border-top:1px solid rgba(191,214,228,.25);font-size:.82rem;color:#8AA9BC}
+footer h3{color:#fff;font-size:1rem;margin-bottom:10px}
+/* Barre d'appel mobile */
+.appel-mobile{display:none}
+@media(max-width:820px){
+ header.site{backdrop-filter:none;background:#fff}
+ .garantie .g3{grid-template-columns:1fr}
+ .burger{display:block}
+ .nav > ul{position:fixed;top:0;right:0;bottom:0;height:100vh;height:100dvh;width:min(82vw,330px);background:#fff;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:2px;margin:0;padding:84px 18px 24px;box-shadow:-12px 0 30px rgba(11,37,69,.18);transform:translateX(105%);visibility:hidden;transition:transform .28s ease,visibility .28s;overflow-y:auto;z-index:55}
+ .nav.ouvert ul{transform:none;visibility:visible}
+ .nav.ouvert .burger{position:relative;z-index:56}
+ .nav.ouvert .burger span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+ .nav.ouvert .burger span:nth-child(2){opacity:0}
+ .nav.ouvert .burger span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+ .nav ul a,details.menu summary{display:block;font-size:1rem;padding:12px 10px}
+ .nav .cta{text-align:center;margin-top:10px}
+ details.menu ul{position:static;box-shadow:none;border:none;padding:0 0 0 14px;min-width:0;transform:none;visibility:visible;height:auto}
+ details.menu ul a{font-size:.95rem;padding:10px 8px}
+ .appel-mobile{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--bleu);gap:1px}
+ .appel-mobile a{flex:1;text-align:center;color:#0B2545;text-decoration:none;font-family:'Nunito',sans-serif;font-weight:800;font-size:.94rem;padding:15px 6px;background:var(--cyan);white-space:nowrap}
+ .appel-mobile a.second{background:#1443AE;color:#fff}
+ .pv-fleche{display:block}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+
+.photos-voie{position:relative;background:linear-gradient(155deg,#fff,#F4F9FC);border:1px solid #DCEAF2;border-radius:18px;padding:20px 22px;margin:0 0 6px;box-shadow:0 3px 16px rgba(11,37,69,.06)}
+.photos-voie .pv-titre{display:flex;align-items:flex-start;gap:11px;margin-bottom:6px}
+.photos-voie .pv-ico{flex:none;font-size:22px;line-height:1.2}
+.photos-voie strong{font-family:'Nunito',sans-serif;color:var(--encre);font-size:1.04rem;line-height:1.3}
+.photos-voie p{font-size:.9rem;color:var(--gris);margin:0 0 14px}
+.photos-liens{display:flex;flex-direction:column;gap:10px}
+.photos-liens a{flex:none;width:100%;text-decoration:none;font-family:'Nunito',sans-serif;font-weight:800;font-size:.95rem;padding:12px 14px;border-radius:13px;transition:transform .16s cubic-bezier(.34,1.4,.6,1),box-shadow .22s ease,filter .2s ease;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;line-height:1.3;text-align:center;word-break:normal;hyphens:none}
+.photos-liens a:hover{transform:translateY(-2px);filter:brightness(1.03)}
+.photos-liens a:active{transform:translateY(0)}
+.photos-liens .wa{background:linear-gradient(160deg,#1EBE5D,#149B4A);color:#fff;box-shadow:0 4px 12px rgba(20,155,74,.32),inset 0 1px 0 rgba(255,255,255,.25)}
+.photos-liens .wa:hover{box-shadow:0 7px 18px rgba(20,155,74,.4),inset 0 1px 0 rgba(255,255,255,.3)}
+.photos-liens .mail{background:#fff;color:var(--bleu);border:1.5px solid #C3D8EC;box-shadow:0 2px 8px rgba(11,37,69,.06)}
+.photos-liens .mail:hover{border-color:var(--bleu);box-shadow:0 6px 16px rgba(26,86,219,.16)}
+.photos-liens a .ss{font-family:'Public Sans',sans-serif;font-weight:600;font-size:.72rem;opacity:.9;line-height:1.25}
+.btn-form{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;line-height:1.3;text-align:center;font-size:.95rem;padding:12px 14px;word-break:normal;hyphens:none}
+.btn-form .ss{font-family:'Public Sans',sans-serif;font-weight:600;font-size:.73rem;opacity:.92}
+.photos-voie .ou{display:flex;align-items:center;justify-content:center;gap:9px;text-align:center;font-size:.86rem;color:var(--gris);margin:16px 0 2px;font-weight:600}
+.photos-voie .ou::before,.photos-voie .ou::after{content:"";height:1px;flex:1;max-width:60px;background:linear-gradient(90deg,transparent,#C9DCE8)}
+.photos-voie .ou::after{background:linear-gradient(90deg,#C9DCE8,transparent)}
+.pv-fleche{display:none;text-align:center;margin:3px 0 0;color:var(--bleu);font-size:20px;line-height:1;animation:pvbounce 1.8s ease-in-out infinite}
+@keyframes pvbounce{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+@media(prefers-reduced-motion:reduce){.pv-fleche{animation:none}}
+
+.devis-hero{max-width:660px;margin:0 auto 26px;text-align:center}
+.devis-hero h1{margin-bottom:10px}
+.devis-hero p{color:var(--gris);font-size:1rem;margin:0}
+.devis-grid{align-items:start!important}
+.devis-apres{display:grid;grid-template-columns:1fr 1fr;gap:30px;
+  margin-top:34px;padding-top:26px;border-top:1px solid #DCEAF2}
+.devis-apres h2{font-size:1.05rem;margin-bottom:6px}
+.devis-zone{margin-top:24px;padding-top:22px;border-top:1px solid #DCEAF2}
+.devis-zone h2{font-size:1.05rem;margin-bottom:6px}
+.devis-zone p{font-size:.92rem;color:var(--gris);margin:0}
+.devis-apres p{font-size:.92rem;color:var(--gris);margin:0}
+@media(max-width:400px){
+  .photos-liens a,.btn-form{font-size:.88rem;padding:11px 10px}
+  .photos-liens a .ss,.btn-form .ss{font-size:.69rem}
+}
+@media(max-width:820px){
+  .devis-hero{text-align:left;margin-bottom:18px}
+  .devis-apres{grid-template-columns:1fr;gap:20px;margin-top:26px}
+}
+
+/* ================= Configurateur ================= */
+.cf{max-width:760px;margin:0 auto;padding:22px 16px 40px}
+.cf-tete h1{font-size:clamp(1.55rem,4.6vw,2.2rem);margin:6px 0 8px}
+.cf-tete p{color:var(--gris);margin-bottom:14px}
+.cf-prog{display:flex;align-items:center;gap:10px;margin:6px 0 14px}
+.cf-barre{flex:1;height:8px;background:#E3EEF5;border-radius:99px;overflow:hidden}
+.cf-barre i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--bleu),var(--cyan));border-radius:99px;transition:width .3s}
+.cf-prog span{font-size:.82rem;font-weight:700;color:var(--gris);white-space:nowrap}
+.cf-etape{display:none;background:#fff;border:1px solid #E3EEF5;border-radius:16px;padding:20px 18px;box-shadow:0 2px 12px rgba(11,37,69,.06)}
+.cf-etape.on{display:block}
+.cf-etape h2{font-size:1.3rem;margin-bottom:4px}
+.cf-etape .cf-sous{color:var(--gris);font-size:.93rem;margin-bottom:14px}
+.cf-champ{display:block;margin:0 0 14px;font-weight:700;font-size:.94rem}
+.cf-champ small{display:block;font-weight:400;color:var(--gris);font-size:.82rem;margin-top:2px}
+.cf-champ input[type=text],.cf-champ input[type=email],.cf-champ input[type=tel],.cf-champ input[type=number],.cf-champ select,.cf-champ textarea{display:block;width:100%;margin-top:6px;padding:13px 14px;border:1px solid #C9DCE8;border-radius:11px;font:inherit;font-size:16px;font-weight:400;color:var(--encre);background:#fff}
+.cf-champ input:focus,.cf-champ select:focus,.cf-champ textarea:focus{outline:2px solid var(--cyan);border-color:var(--bleu)}
+.cf-duo{display:grid;grid-template-columns:1fr;gap:0 12px}
+@media(min-width:560px){.cf-duo{grid-template-columns:1fr 1fr}}
+.cf-choix{display:grid;grid-template-columns:1fr;gap:9px;margin-bottom:14px}
+@media(min-width:560px){.cf-choix.deux{grid-template-columns:1fr 1fr}}
+.cf-carte{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;border:2px solid #E3EEF5;background:#fff;border-radius:13px;padding:13px 14px;cursor:pointer;font:inherit;color:var(--encre)}
+.cf-carte:hover{border-color:#9EC5F7}
+.cf-carte.on{border-color:var(--bleu);background:#F3F8FF}
+.cf-carte .ic{font-size:1.4rem;line-height:1}
+.cf-carte b{display:block;font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem}
+.cf-carte span.d{display:block;font-size:.84rem;color:var(--gris);margin-top:2px}
+.cf-seg{display:flex;gap:6px;margin-bottom:14px}
+.cf-seg button{flex:1;border:2px solid #E3EEF5;background:#fff;border-radius:11px;padding:11px 8px;font:inherit;font-weight:700;cursor:pointer;color:var(--encre)}
+.cf-seg button.on{border-color:var(--bleu);background:#F3F8FF;color:var(--bleu)}
+.cf-compteurs{display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:14px}
+@media(min-width:560px){.cf-compteurs{grid-template-columns:1fr 1fr}}
+.cf-cpt{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid #E3EEF5;border-radius:11px;padding:8px 10px}
+.cf-cpt span{font-size:.92rem;font-weight:600}
+.cf-cpt small{display:block;font-weight:400;color:var(--gris);font-size:.76rem}
+.cf-pas{display:flex;align-items:center;gap:6px}
+.cf-pas button{width:40px;height:40px;border-radius:10px;border:1px solid #C9DCE8;background:var(--glace);font-size:1.2rem;font-weight:800;color:var(--bleu);cursor:pointer}
+.cf-pas input{width:58px;text-align:center;padding:9px 4px;border:1px solid #C9DCE8;border-radius:9px;font:inherit;font-size:16px}
+.cf-coche{display:flex;gap:10px;align-items:flex-start;padding:9px 2px;font-size:.93rem;cursor:pointer}
+.cf-coche input{width:20px;height:20px;margin-top:1px;flex:none;accent-color:var(--bleu)}
+.cf-coche small{display:block;color:var(--gris);font-size:.8rem}
+.cf-coche.off span.l{color:var(--gris);text-decoration:line-through}
+.cf-piece{border:1px solid #E3EEF5;border-radius:13px;padding:10px 13px;margin-bottom:10px}
+.cf-piece h3{font-size:.98rem;margin:2px 0 4px}
+.cf-piece .note{font-size:.8rem;color:var(--gris);margin-top:4px}
+.cf-verrou{font-size:.76rem;color:#1E6B49;font-weight:700}
+.cf-excl{background:var(--glace);border-radius:12px;padding:12px 14px;margin:10px 0 4px;font-size:.88rem}
+.cf-excl b{display:block;margin-bottom:5px;font-family:'Nunito',sans-serif}
+.cf-excl ul{margin:0 0 0 18px}
+.cf-excl li{margin-bottom:3px}
+.cf-duree{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;background:#F3F8FF;border:1px solid #CFE0F7;border-radius:12px;padding:11px 14px;margin:6px 0 12px}
+.cf-duree b{font-family:'Nunito',sans-serif;font-size:1.35rem;color:var(--bleu)}
+.cf-duree span{font-size:.86rem;color:var(--gris)}
+.cf-comp{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:8px 0 10px}
+.cf-comp div{background:var(--glace);border-radius:10px;padding:8px;text-align:center;font-size:.78rem;color:var(--gris)}
+.cf-comp b{display:block;font-family:'Nunito',sans-serif;font-size:1.05rem;color:var(--encre)}
+.cf-alerte{border-radius:11px;padding:11px 13px;font-size:.89rem;margin:8px 0 12px;line-height:1.5}
+.cf-alerte.ambre{background:#FDF3E2;color:#6B4A0E}
+.cf-alerte.rouge{background:#FBE3E3;color:#7A1A1A}
+.cf-alerte.bleu{background:#EEF6FB;color:var(--encre)}
+.cf-alerte.vert{background:#E7F6EF;color:#14532D}
+.cf-recap{font-size:.92rem}
+.cf-recap dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0 0 12px}
+.cf-recap dt{color:var(--gris);font-weight:600}
+.cf-recap dd{margin:0;font-weight:700}
+.cf-recap h3{font-size:1rem;margin:14px 0 6px}
+.cf-recap ul{margin:0 0 8px 18px}
+.cf-recap li{margin-bottom:3px}
+.cf-nav{display:flex;gap:10px;justify-content:space-between;margin-top:16px}
+.cf-nav .btn{flex:1;text-align:center;padding:14px 16px}
+.cf-nav .btn.sec{background:#fff;color:var(--bleu);border:2px solid #CFE0F7;flex:0 0 auto}
+.cf-nav .btn[disabled]{opacity:.5;cursor:not-allowed}
+.cf-envoyer{width:100%;font-size:1.05rem;padding:16px}
+.cf-rgpd{font-size:.8rem;color:var(--gris);margin:8px 0 0}
+.cf-fin{text-align:center;padding:10px 4px}
+.cf-fin .ok{font-size:2.4rem}
+.cf-mention{font-size:.82rem;color:var(--gris);margin-top:8px}
+.cf-erreurs{color:#B4361E;font-size:.86rem;font-weight:700;margin:4px 0 0}
+.cf-chip{display:inline-block;background:var(--glace);color:var(--encre);border-radius:99px;padding:3px 10px;font-size:.8rem;font-weight:700;margin:0 4px 4px 0}
+</style>
+<noscript><style>@media(max-width:820px){.nav ul{position:static;height:auto;transform:none;visibility:visible;box-shadow:none;padding:8px 0;width:100%}.burger{display:none}}</style></noscript>
+<script src="/assets/mesure.js" defer></script>
+<script src="/assets/campagne.js" defer></script>
+</head>
+<body data-tunnel="configurateur">
+<header class="site">
+ <nav class="nav" aria-label="Navigation principale">
+  <a class="logo" href="/" aria-label="Limpid, accueil"><img src="/assets/logo-limpid.webp" alt="Limpid, entreprise de nettoyage dans les Vosges" style="height:56px;width:auto"></a>
+  <button type="button" class="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-liste"><span></span><span></span><span></span></button>
+  <ul id="nav-liste">
+   <li><details class="menu"><summary>Professionnels ▾</summary><ul><li><a href="/nettoyage-bureaux-epinal/">Bureaux & cabinets</a></li><li><a href="/nettoyage-cabinet-medical-epinal/">Cabinets médicaux & santé</a></li><li><a href="/lavage-vitrines-commerces-epinal/">Vitrines de commerces</a></li><li><a href="/nettoyage-copropriete-vosges/">Copropriétés & syndics</a></li><li><a href="/nettoyage-canapes-tapis-textiles-vosges/">Canapés, tapis & textiles</a></li></ul></details></li>
+   <li><details class="menu"><summary>Particuliers ▾</summary><ul><li><a href="/credit-impot-menage-vosges/">Ménage &amp; crédit d'impôt</a></li><li><a href="/grand-menage-fin-de-bail-epinal/">Grand ménage &amp; fin de bail</a></li></ul></details></li>
+   <li><a href="/references/">Références</a></li>
+   <li><a class="cta" href="/devis/">Devis sous 48h</a></li>
+  </ul>
+ </nav>
+</header>
+
+<main class="cf" id="cf">
+ <div class="cf-tete">
+  <span class="badge">Devis gratuit · par e-mail sous 48 h</span>
+  <h1>Configurer mon devis</h1>
+  <p id="cf-intro"></p>
+ </div>
+ <div class="cf-prog" aria-live="polite"><div class="cf-barre"><i id="cf-barre"></i></div><span id="cf-prog-txt">Étape 1 sur 7</span></div>
+
+ <!-- 1. Localisation -->
+ <section class="cf-etape on" data-etape="1" aria-labelledby="cf-t1">
+  <h2 id="cf-t1">Où intervient-on ?</h2>
+  <p class="cf-sous">Le déplacement est compris dans le prix : la commune sert à l'estimer, jamais à vous facturer un supplément.</p>
+  <div class="cf-duo">
+   <label class="cf-champ">Code postal
+    <input type="text" id="f-cp" inputmode="numeric" maxlength="5" autocomplete="postal-code" placeholder="88000"></label>
+   <label class="cf-champ">Commune
+    <select id="f-commune-sel" style="display:none"></select>
+    <input type="text" id="f-commune-txt" autocomplete="address-level2" placeholder="Votre commune"></label>
+  </div>
+  <div id="f-zone"></div>
+  <div class="cf-erreurs" id="err-1"></div>
+ </section>
+
+ <!-- 2. Type de prestation -->
+ <section class="cf-etape" data-etape="2" aria-labelledby="cf-t2">
+  <h2 id="cf-t2">Quelle prestation ?</h2>
+  <p class="cf-sous">Vous êtes :</p>
+  <div class="cf-seg" id="f-profil">
+   <button type="button" data-v="particulier" class="on">Un particulier</button>
+   <button type="button" data-v="pro">Un professionnel</button>
+  </div>
+  <div class="cf-choix" id="f-prestations"></div>
+  <div class="cf-erreurs" id="err-2"></div>
+ </section>
+
+ <!-- 3. Description -->
+ <section class="cf-etape" data-etape="3" aria-labelledby="cf-t3">
+  <h2 id="cf-t3">Décrivez ce qu'il y a à nettoyer</h2>
+  <p class="cf-sous" id="cf-s3">Une estimation, pas un état des lieux : des valeurs approximatives suffisent.</p>
+  <div id="f-description"></div>
+  <div class="cf-duree" id="d3"></div>
+  <div class="cf-erreurs" id="err-3"></div>
+ </section>
+
+ <!-- 4. Tâches -->
+ <section class="cf-etape" data-etape="4" aria-labelledby="cf-t4">
+  <h2 id="cf-t4">Ce qui est compris</h2>
+  <p class="cf-sous" id="cf-s4">Les tâches habituelles sont cochées. Décochez ce que vous ne souhaitez pas, ajoutez une option si besoin.</p>
+  <div id="f-taches"></div>
+  <div class="cf-duree" id="d4"></div>
+ </section>
+
+ <!-- 5. Fréquence et durée -->
+ <section class="cf-etape" data-etape="5" aria-labelledby="cf-t5">
+  <h2 id="cf-t5">Fréquence et durée</h2>
+  <div id="f-frequence"></div>
+  <p class="cf-sous" style="margin-top:6px">Comment voulez-vous calculer la durée ?</p>
+  <div class="cf-choix deux" id="f-mode">
+   <button type="button" class="cf-carte on" data-v="auto"><span class="ic">⏱️</span><span><b>Durée estimée par Limpid</b><span class="d">À partir de vos pièces et de vos tâches.</span></span></button>
+   <button type="button" class="cf-carte" data-v="manuel"><span class="ic">✍️</span><span><b>Je choisis ma durée</b><span class="d">Vous savez déjà combien de temps réserver.</span></span></button>
+  </div>
+  <div id="f-manuel" style="display:none">
+   <label class="cf-champ">Heures par intervention
+    <input type="number" id="f-heures" min="1" max="12" step="0.5" inputmode="decimal" placeholder="2,5"></label>
+  </div>
+  <div id="f-comparaison"></div>
+  <div id="f-priorites"></div>
+  <div class="cf-erreurs" id="err-5"></div>
+ </section>
+
+ <!-- 6. Récapitulatif -->
+ <section class="cf-etape" data-etape="6" aria-labelledby="cf-t6">
+  <h2 id="cf-t6">Votre récapitulatif</h2>
+  <div class="cf-recap" id="f-recap"></div>
+ </section>
+
+ <!-- 7. Coordonnées -->
+ <section class="cf-etape" data-etape="7" aria-labelledby="cf-t7">
+  <h2 id="cf-t7">Où vous envoyer le devis ?</h2>
+  <p class="cf-sous" id="cf-s7"></p>
+  <form id="f-form" data-campagne="1" novalidate>
+   <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+   <label class="cf-champ">Nom et prénom
+    <input type="text" name="nom" id="f-nom" autocomplete="name" required></label>
+   <label class="cf-champ" id="l-entreprise" style="display:none">Entreprise
+    <input type="text" name="entreprise" id="f-entreprise" autocomplete="organization"></label>
+   <label class="cf-champ">E-mail <small>Votre devis vous est envoyé à cette adresse.</small>
+    <input type="email" name="email" id="f-email" autocomplete="email" inputmode="email" required></label>
+   <label class="cf-champ">Téléphone <small>Facultatif, utile si un point reste à préciser.</small>
+    <input type="tel" name="telephone" id="f-tel" autocomplete="tel" inputmode="tel"></label>
+   <label class="cf-champ">Précisions <small>Facultatif : accès, contraintes d'horaires, ce qui compte le plus pour vous.</small>
+    <textarea name="precisions" id="f-precisions" rows="3"></textarea></label>
+   <div class="cf-erreurs" id="err-7"></div>
+   <button type="submit" class="btn cf-envoyer" id="f-envoyer">Recevoir mon devis</button>
+   <p class="cf-rgpd">Vos informations servent uniquement à établir et suivre votre devis. Elles ne sont ni revendues ni utilisées à des fins publicitaires. <a href="/politique-confidentialite/">Politique de confidentialité</a></p>
+  </form>
+  <div id="f-etat-envoi"></div>
+ </section>
+
+ <!-- Confirmation -->
+ <section class="cf-etape" data-etape="8" aria-live="polite">
+  <div class="cf-fin">
+   <div class="ok">✅</div>
+   <h2>Demande bien reçue</h2>
+   <p id="cf-confirmation"></p>
+   <p><a class="btn" href="/">Retour à l'accueil</a></p>
+  </div>
+ </section>
+
+ <div class="cf-nav" id="cf-nav">
+  <button type="button" class="btn sec" id="b-retour">Retour</button>
+  <button type="button" class="btn" id="b-suite">Continuer</button>
+ </div>
+</main>
+
+<footer class="site">
+ <div class="wrap g3">
+  <div>
+   <h3>Limpid</h3>
+   <p>Entreprise de nettoyage professionnel<br>
+   <svg class="fico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-5.6-7-11a7 7 0 1 1 14 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>5 rue des Sapins, 88390 Darnieulles<br>
+   <svg class="fico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><a href="tel:+33626556569">06 26 55 65 69</a><br>
+   <svg class="fico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a href="mailto:bonjour@limpid-nettoyage.fr">bonjour@limpid-nettoyage.fr</a></p>
+   <p>Note Google : 5,0 ★</p>
+  </div>
+  <div>
+   <h3>Professionnels</h3>
+   <p><a href="/nettoyage-bureaux-epinal/">Bureaux & cabinets</a><br><a href="/nettoyage-cabinet-medical-epinal/">Cabinets médicaux & santé</a><br><a href="/lavage-vitrines-commerces-epinal/">Vitrines de commerces</a><br><a href="/nettoyage-copropriete-vosges/">Copropriétés & syndics</a><br><a href="/nettoyage-canapes-tapis-textiles-vosges/">Canapés, tapis & textiles</a></p>
+  </div>
+  <div>
+   <h3>Zone d'intervention</h3>
+   <p>Darnieulles · Épinal · Golbey · Chantraine · Les Forges · Sanchey · Chaumousey · Girancourt · Uxegney · Fomerey · Domèvre-sur-Avière · Chavelot · Thaon-les-Vosges · Igney · Nomexy · Dogneville · Jeuxey · Deyvillers · Dinozé</p>
+   <p>Votre commune n'y figure pas ? Dans un rayon de 15 km autour de Darnieulles, nous intervenons sans frais de déplacement : appelez-nous.</p>
+   <p><a href="/credit-impot-menage-vosges/">Particuliers &amp; crédit d'impôt</a><br><a href="/grand-menage-fin-de-bail-epinal/">Grand ménage &amp; fin de bail</a><br><a href="/references/">Ils nous font confiance</a><br><a href="/devis/">Demander un devis</a><br><a href="/mentions-legales/">Mentions légales</a> · <a href="/politique-confidentialite/">Confidentialité</a></p>
+  </div>
+  <p class="copy">© 2026 · Limpid · Tous droits réservés. · Site&nbsp;réalisé&nbsp;par&nbsp;<a href="https://vizibili.fr/" target="_blank" rel="noopener">ViZiBiLi</a></p>
+ </div>
+</footer>
+
+<div class="appel-mobile">
+ <a href="tel:+33626556569">📞 06 26 55 65 69</a>
+ <a class="second" href="/devis/">Autre demande</a>
+</div>
+<script>(function(){var n=document.querySelector('.nav'),b=document.querySelector('.burger');function fermer(){n.classList.remove('ouvert');b.setAttribute('aria-expanded','false');b.setAttribute('aria-label','Ouvrir le menu');}if(b){b.addEventListener('click',function(){var o=n.classList.toggle('ouvert');b.setAttribute('aria-expanded',o?'true':'false');b.setAttribute('aria-label',o?'Fermer le menu':'Ouvrir le menu');});}document.addEventListener('click',function(e){if(e.target.closest('#nav-liste a'))fermer();});})();</script>
+<script>
+/* @@MOTEUR-DEBUT@@ */
+/* ================= LIMPID · MOTEUR COMMUN DES DURÉES =================
+   Ce bloc est identique dans le configurateur public et dans l'outil gérant :
+   une même demande donne donc la même durée des deux côtés.
+   Il ne contient AUCUN prix ni aucun paramètre financier : ceux-ci restent
+   dans l'outil gérant. Les réglages publics se modifient dans l'outil gérant,
+   onglet Réglages, puis s'exportent en configurateur.json pour le site.
+
+   Modèle de durée, sans double comptage :
+   - les tâches communes à toutes les pièces (poussière, sols, poubelles)
+     se comptent au mètre carré entretenu ;
+   - chaque pièce n'ajoute que ses tâches propres (évier, douche, cuvette...) ;
+   - les options ajoutent leur propre durée ;
+   - les facteurs (encrassement, accès, encombrement, fréquence) s'appliquent
+     ensuite à l'ensemble.
+   Toutes les tâches cochées par défaut redonnent exactement les durées
+   utilisées par l'outil jusqu'au 21/10/2026. */
+var LIMPID_CONFIG_DEFAUT = {
+  version: "2026-10-21",
+  base: { nom: "Darnieulles", cp: "88390" },
+  zone: { rayonKm: 15, tableKm: 25 },
+  premierPassage: 50,
+  facteurs: {
+    niveau: { "1": 1, "2": 1.2, "3": 1.4, "4": 1.6, "5": 1.8 },
+    acces: { plainpied: 1, ascenseur: 1.05, sansascenseur: 1.15, etages: 1.1 },
+    encombrement: { faible: 0.9, normal: 1, charge: 1.15 },
+    frequenceMenage: { "8.66": 0.9, "4.33": 1, "2.17": 1.1, "0": 1 },
+    animaux: 1.15, fumeur: 1.15, travaux: 1.6
+  },
+  prestations: {
+    menage: {
+      nom: "Ménage à domicile",
+      communes: { lib: "Toutes les pièces et circulations", parM2: true, taches: [
+        { id: "c_poussiere", lib: "Dépoussiérage des surfaces et meubles accessibles et dégagés", min: 0.30 },
+        { id: "c_traces", lib: "Nettoyage léger des traces sur les interrupteurs et poignées accessibles, lorsque le support le permet", min: 0.05 },
+        { id: "c_aspi", lib: "Aspiration des sols accessibles et des tapis compatibles", min: 0.30 },
+        { id: "c_lavage", lib: "Lavage des sols durs compatibles avec un nettoyage humide", min: 0.30 },
+        { id: "c_poubelles", lib: "Vidage des petites poubelles, lorsque les sacs de remplacement sont prévus", min: 0.05 }
+      ] },
+      pieces: [
+        { id: "sejour", lib: "Salon et séjour", taches: [
+          { id: "s_meubles", lib: "Dépoussiérage des meubles, tables, étagères et surfaces accessibles", min: 0, commun: true },
+          { id: "s_sols", lib: "Aspiration et lavage des sols et tapis compatibles", min: 0, commun: true } ] },
+        { id: "chambre", lib: "Chambre", taches: [
+          { id: "ch_surfaces", lib: "Dépoussiérage des surfaces accessibles de la chambre", min: 12 },
+          { id: "ch_sols", lib: "Aspiration et lavage des sols compatibles", min: 0, commun: true } ],
+          note: "Le déplacement ou le rangement des effets personnels n'est pas compris." },
+        { id: "bureau", lib: "Bureau", taches: [
+          { id: "bu_surfaces", lib: "Dépoussiérage des surfaces accessibles", min: 8 },
+          { id: "bu_degagees", lib: "Nettoyage des surfaces dégagées", min: 4 },
+          { id: "bu_sols", lib: "Aspiration et lavage des sols selon leur nature", min: 0, commun: true } ],
+          note: "Dossiers, papiers, documents, équipements informatiques et appareils ne sont ni déplacés ni débranchés." },
+        { id: "cuisine", lib: "Cuisine", taches: [
+          { id: "cu_plans", lib: "Nettoyage des plans de travail dégagés", min: 7 },
+          { id: "cu_evier", lib: "Nettoyage de l'évier et de la robinetterie", min: 5 },
+          { id: "cu_table", lib: "Nettoyage de la table et des surfaces accessibles", min: 4 },
+          { id: "cu_facades", lib: "Nettoyage extérieur des façades de meubles et des appareils accessibles", min: 8 },
+          { id: "cu_plaque", lib: "Nettoyage de la plaque de cuisson, lorsqu'elle est froide", min: 6 },
+          { id: "cu_sol", lib: "Aspiration et lavage du sol", min: 0, commun: true } ],
+          note: "L'intérieur du réfrigérateur, du four et des placards n'est pas compris par défaut." },
+        { id: "sdb", lib: "Salle de bains", taches: [
+          { id: "sb_lavabo", lib: "Nettoyage du lavabo et de la robinetterie", min: 6 },
+          { id: "sb_douche", lib: "Nettoyage de la douche ou de la baignoire", min: 12 },
+          { id: "sb_miroirs", lib: "Nettoyage des miroirs et surfaces accessibles", min: 5 },
+          { id: "sb_calcaire", lib: "Retrait des traces légères de savon et de calcaire, en entretien courant", min: 7 },
+          { id: "sb_sol", lib: "Aspiration et lavage du sol", min: 0, commun: true } ],
+          note: "Le détartrage intensif, le traitement des moisissures et la remise en état ne sont pas compris." },
+        { id: "wc", lib: "WC", verrou: true, taches: [
+          { id: "wc_cuvette", lib: "Nettoyage de la cuvette, intérieur et extérieur", min: 5 },
+          { id: "wc_abattant", lib: "Nettoyage de l'abattant et des surfaces de contact", min: 2 },
+          { id: "wc_reservoir", lib: "Nettoyage extérieur du réservoir et des surfaces accessibles", min: 2 },
+          { id: "wc_lavemains", lib: "Nettoyage du lave-mains, lorsqu'il existe", min: 1 },
+          { id: "wc_sol", lib: "Aspiration et lavage du sol", min: 0, commun: true } ],
+          note: "L'entretien courant des WC est toujours compris lorsque la pièce est retenue." },
+        { id: "entree", lib: "Entrée et couloir", taches: [
+          { id: "en_meubles", lib: "Dépoussiérage des meubles et surfaces accessibles", min: 0, commun: true },
+          { id: "en_sols", lib: "Aspiration et lavage du sol selon sa nature", min: 0, commun: true } ] }
+      ],
+      options: [
+        { id: "opt_lit", lib: "Réfection simple du lit", desc: "Lorsque le linge est déjà en place, par chambre.", min: 5, parPiece: "chambre", actif: true },
+        { id: "opt_frigo", lib: "Intérieur du réfrigérateur", desc: "Réfrigérateur vidé au préalable par vos soins.", min: 20, actif: true },
+        { id: "opt_four", lib: "Intérieur du four", desc: "Four froid, nettoyage de l'enceinte et de la vitre.", min: 30, actif: true },
+        { id: "opt_placards", lib: "Intérieur des placards de cuisine", desc: "Placards vidés au préalable.", min: 20, actif: true },
+        { id: "opt_fenetres", lib: "Fenêtres", desc: "Lavage des vitres, en complément du ménage, par fenêtre.", min: 4, quantite: true, actif: true },
+        { id: "opt_baies", lib: "Baies vitrées", desc: "Lavage, en complément du ménage, par baie.", min: 8, quantite: true, actif: true },
+        { id: "opt_veranda", lib: "Véranda", desc: "En complément du ménage.", min: 120, actif: true }
+      ],
+      exclusions: [
+        "Lavage des vitres, fenêtres, baies vitrées, encadrements, rails et volets, sauf option choisie",
+        "Surfaces en hauteur nécessitant un équipement spécifique",
+        "Intérieur du four, du réfrigérateur et des placards, sauf option choisie",
+        "Vaisselle, lessive, repassage et changement complet du linge de lit",
+        "Déplacement de meubles lourds",
+        "Rangement important ou désencombrement",
+        "Détachage spécialisé des textiles",
+        "Désinfection approfondie",
+        "Détartrage intensif, traitement des moisissures ou remise en état",
+        "Ménage après travaux, fin de déménagement ou grand nettoyage, qui relèvent d'une prestation dédiée",
+        "Surfaces encombrées ou non accessibles"
+      ],
+      creditImpot: true
+    },
+    grand: {
+      nom: "Grand nettoyage ou remise à niveau",
+      communes: { lib: "Les détails qui font la différence", parM2: true, taches: [
+        { id: "g_sols", lib: "Sols aspirés puis lavés, y compris sous les éléments déplaçables", min: 0.6 },
+        { id: "g_plinthes", lib: "Plinthes, portes, chambranles et poignées", min: 0.3 },
+        { id: "g_inter", lib: "Interrupteurs et prises", min: 0.1 },
+        { id: "g_radiateurs", lib: "Radiateurs, dessus et interstices", min: 0.2 },
+        { id: "g_escaliers", lib: "Escaliers, rampes, paliers", min: 0.1 },
+        { id: "g_adhesifs", lib: "Traces de scotch, d'adhésif et marques de meubles", min: 0.1 },
+        { id: "g_toiles", lib: "Toiles d'araignée, angles de plafond, luminaires accessibles", min: 0.2 }
+      ] },
+      pieces: [
+        { id: "sejour", lib: "Pièces de vie", taches: [
+          { id: "gs_sols", lib: "Sols, plinthes et détails, comptés au mètre carré", min: 0, commun: true } ] },
+        { id: "chambre", lib: "Chambre", taches: [
+          { id: "gc_placards", lib: "Placards et penderies nettoyés à l'intérieur", min: 12 },
+          { id: "gc_volets", lib: "Volets roulants et appuis de fenêtre", min: 8 } ] },
+        { id: "bureau", lib: "Bureau", taches: [
+          { id: "gb_placards", lib: "Placards et rangements nettoyés à l'intérieur", min: 12 },
+          { id: "gb_volets", lib: "Volets roulants et appuis de fenêtre", min: 8 } ],
+          note: "Dossiers, documents et équipements ne sont ni déplacés ni débranchés." },
+        { id: "cuisine", lib: "Cuisine", taches: [
+          { id: "gk_four", lib: "Four, grilles et vitre intérieure, hotte et filtres", min: 15 },
+          { id: "gk_plaques", lib: "Plaques de cuisson, crédence, plan de travail", min: 8 },
+          { id: "gk_frigo", lib: "Réfrigérateur et congélateur vidés, dégivrés et désinfectés", min: 10 },
+          { id: "gk_placards", lib: "Intérieur et extérieur des placards, tiroirs, poignées", min: 12 },
+          { id: "gk_evier", lib: "Évier, robinetterie, calcaire, siphon visible", min: 5 } ] },
+        { id: "sdb", lib: "Salle de bains", taches: [
+          { id: "gd_detartrage", lib: "Détartrage de la douche, de la baignoire et des robinetteries", min: 18 },
+          { id: "gd_joints", lib: "Joints, parois, miroirs, faïence", min: 19 },
+          { id: "gd_meubles", lib: "Meubles vasques, intérieur des rangements", min: 10 },
+          { id: "gd_ventil", lib: "Grilles de ventilation dépoussiérées", min: 3 } ] },
+        { id: "wc", lib: "WC", verrou: true, taches: [
+          { id: "gw_complet", lib: "Cuvette, abattant, réservoir, sol et arrière des WC", min: 18 } ] }
+      ],
+      elements: [
+        { id: "fenetres", lib: "Fenêtres : vitres intérieures, rebords et rails", min: 6, quantite: true },
+        { id: "baies", lib: "Baies vitrées : vitres intérieures, rebords et rails", min: 12, quantite: true },
+        { id: "veranda", lib: "Véranda", min: 150 }
+      ],
+      options: [],
+      exclusions: [
+        "Faces extérieures des vitres : prestation Vitres, chiffrée à part",
+        "Vaisselle, lessive et repassage",
+        "Déplacement de meubles lourds",
+        "Rangement important ou désencombrement",
+        "Détachage spécialisé des textiles : prestation Textiles, chiffrée à part",
+        "Surfaces en hauteur nécessitant un équipement spécifique",
+        "Ménage après travaux : devis spécifique, établi après visite"
+      ],
+      creditImpot: true
+    },
+    vitres: {
+      nom: "Vitres et véranda",
+      inclus: [
+        "Vitrages, encadrements et appuis, à l'intérieur comme à l'extérieur",
+        "Baies vitrées et portes-fenêtres",
+        "Véranda : parois et toiture, lorsque l'accès permet de travailler en sécurité"
+      ],
+      elements: [
+        { id: "faces", lib: "Faces vitrées standard (une fenêtre = 2 faces)", min: 4, quantite: true },
+        { id: "baies", lib: "Grandes baies ou vitrines", min: 8, quantite: true },
+        { id: "verandaM2", lib: "Véranda, en m² au sol (repère : 10 m² en 2 h)", min: 12, quantite: true, surface: true },
+        { id: "glissieres", lib: "Glissières et rails, par fenêtre", min: 5, quantite: true },
+        { id: "volets", lib: "Volets", min: 10, quantite: true }
+      ],
+      facteurs: { hauteur: 1.4, travaux: 1.5 },
+      options: [],
+      exclusions: [
+        "Vitrages qui ne peuvent pas être lavés en sécurité : étudiés au cas par cas, et refusés si besoin",
+        "Surfaces en hauteur nécessitant un équipement spécifique"
+      ],
+      creditImpot: true
+    },
+    textile: {
+      nom: "Canapés, tapis et textiles",
+      inclus: [
+        "Détachage ciblé",
+        "Injection-extraction en profondeur",
+        "Désodorisation"
+      ],
+      info: "Textile utilisable après quelques heures de séchage, selon la matière et l'aération de la pièce.",
+      elements: [
+        { id: "places", lib: "Places de canapé (assises, méridienne ou angle compris)", min: 20, quantite: true },
+        { id: "fauteuil", lib: "Fauteuils", min: 20, quantite: true },
+        { id: "chaise", lib: "Chaises et sièges tissu", min: 10, quantite: true },
+        { id: "coussin", lib: "Coussins, à l'unité", min: 0, quantite: true },
+        { id: "matelas1", lib: "Matelas 1 place", min: 20, quantite: true },
+        { id: "matelas2", lib: "Matelas 2 places", min: 20, quantite: true },
+        { id: "moquette", lib: "Tapis ou moquette, en m²", min: 6, quantite: true, surface: true }
+      ],
+      options: [],
+      exclusions: [],
+      creditImpot: true
+    },
+    bureaux: {
+      nom: "Entretien de bureaux",
+      inclus: [
+        "Sols aspirés et lavés",
+        "Sanitaires désinfectés",
+        "Surfaces dépoussiérées",
+        "Corbeilles vidées",
+        "Points de contact traités"
+      ],
+      elements: [
+        { id: "surface", lib: "Surface des locaux, en m²", min: 0.8, quantite: true, surface: true },
+        { id: "postes", lib: "Postes de travail", min: 5, quantite: true },
+        { id: "sanit", lib: "Sanitaires", min: 15, quantite: true },
+        { id: "reunion", lib: "Salles de réunion", min: 10, quantite: true },
+        { id: "cuisine", lib: "Coins cuisine", min: 15, quantite: true },
+        { id: "vitres", lib: "Vitres intérieures", min: 20 }
+      ],
+      frequence: { ponctuel: 1.15, frequent: 0.9, espace: 1.15 },
+      options: [],
+      exclusions: [
+        "Déplacement des dossiers, papiers, documents, équipements informatiques ou appareils, et débranchement des équipements",
+        "Faces extérieures des vitres, sauf demande chiffrée à part"
+      ],
+      creditImpot: false
+    }
+  },
+  textes: {
+    intro: "Décrivez votre besoin en quelques étapes. Limpid vous envoie ensuite votre devis par e-mail, sous 48 h.",
+    estimation: "Durée indicative, à confirmer par Limpid. Elle ne constitue pas un engagement de durée.",
+    prixParEmail: "Le prix vous est communiqué avec votre devis, par e-mail : il tient compte de votre logement, de la fréquence et du déplacement, sans frais cachés.",
+    creditImpot: "Les prestations à domicile des particuliers peuvent ouvrir droit à un crédit d'impôt de 50 %, sous réserve des conditions légales. Avec l'avance immédiate, lorsqu'elle est activée et applicable, vous ne réglez que le reste à charge au moment du paiement, au lieu d'avancer la totalité. Votre devis précisera le reste à charge estimé.",
+    dureeInsuffisante: "La durée choisie semble courte pour tout le périmètre demandé. Indiquez vos priorités : Limpid confirmera avec vous ce qui peut être fait dans ce temps.",
+    validationManuelle: "Cette demande nécessite un échange avec Limpid avant chiffrage : nous vous rappelons pour la préciser.",
+    confirmation: "Votre demande est bien arrivée. Limpid vous envoie votre devis par e-mail sous 48 h, et vous appelle si un point reste à préciser.",
+    erreurEnvoi: "L'envoi n'a pas abouti. Votre configuration est conservée : réessayez, ou appelez-nous au 06 26 55 65 69."
+  },
+  communes: [{"nom": "Darnieulles", "cp": "88390", "vol": 0.0, "kmAR": 4, "minAR": 10, "verifie": false}, {"nom": "Fomerey", "cp": "88390", "vol": 2.3, "kmAR": 6, "minAR": 10, "verifie": false}, {"nom": "Chaumousey", "cp": "88390", "vol": 3.0, "kmAR": 8, "minAR": 15, "verifie": false}, {"nom": "Gorhey", "cp": "88270", "vol": 3.2, "kmAR": 8, "minAR": 15, "verifie": false}, {"nom": "Bocquegney", "cp": "88270", "vol": 3.3, "kmAR": 9, "minAR": 15, "verifie": false}, {"nom": "Gigney", "cp": "88390", "vol": 3.6, "kmAR": 9, "minAR": 15, "verifie": false}, {"nom": "Uxegney", "cp": "88390", "vol": 3.6, "kmAR": 9, "minAR": 15, "verifie": false}, {"nom": "Hennecourt", "cp": "88270", "vol": 4.0, "kmAR": 10, "minAR": 15, "verifie": false}, {"nom": "Sanchey", "cp": "88390", "vol": 4.3, "kmAR": 11, "minAR": 20, "verifie": false}, {"nom": "Domèvre-sur-Avière", "cp": "88390", "vol": 5.0, "kmAR": 13, "minAR": 20, "verifie": false}, {"nom": "Les Forges", "cp": "88390", "vol": 5.1, "kmAR": 13, "minAR": 20, "verifie": false}, {"nom": "Damas-et-Bettegney", "cp": "88270", "vol": 5.5, "kmAR": 14, "minAR": 20, "verifie": false}, {"nom": "Girancourt", "cp": "88390", "vol": 5.9, "kmAR": 15, "minAR": 25, "verifie": false}, {"nom": "Mazeley", "cp": "88150", "vol": 5.9, "kmAR": 15, "minAR": 25, "verifie": false}, {"nom": "Dommartin-aux-Bois", "cp": "88390", "vol": 6.4, "kmAR": 17, "minAR": 25, "verifie": false}, {"nom": "Bouxières-aux-Bois", "cp": "88270", "vol": 6.5, "kmAR": 17, "minAR": 25, "verifie": false}, {"nom": "Golbey", "cp": "88190", "vol": 6.7, "kmAR": 17, "minAR": 25, "verifie": false}, {"nom": "Circourt", "cp": "88270", "vol": 6.9, "kmAR": 18, "minAR": 25, "verifie": false}, {"nom": "Renauvoid", "cp": "88390", "vol": 7.2, "kmAR": 19, "minAR": 25, "verifie": false}, {"nom": "Madonne-et-Lamerey", "cp": "88270", "vol": 7.3, "kmAR": 19, "minAR": 25, "verifie": false}, {"nom": "Chantraine", "cp": "88000", "vol": 7.4, "kmAR": 19, "minAR": 25, "verifie": false}, {"nom": "Chavelot", "cp": "88150", "vol": 7.7, "kmAR": 20, "minAR": 30, "verifie": false}, {"nom": "Harol", "cp": "88270", "vol": 8.6, "kmAR": 22, "minAR": 30, "verifie": false}, {"nom": "Thaon-les-Vosges", "cp": "88150", "vol": 8.7, "kmAR": 23, "minAR": 30, "verifie": false}, {"nom": "Derbamont", "cp": "88270", "vol": 8.8, "kmAR": 23, "minAR": 30, "verifie": false}, {"nom": "Saint-Vallier", "cp": "88270", "vol": 9.1, "kmAR": 24, "minAR": 30, "verifie": false}, {"nom": "Bouzemont", "cp": "88270", "vol": 9.2, "kmAR": 24, "minAR": 30, "verifie": false}, {"nom": "Ville-sur-Illon", "cp": "88270", "vol": 9.5, "kmAR": 25, "minAR": 35, "verifie": false}, {"nom": "Regney", "cp": "88450", "vol": 9.6, "kmAR": 25, "minAR": 35, "verifie": false}, {"nom": "Igney", "cp": "88150", "vol": 9.7, "kmAR": 25, "minAR": 35, "verifie": false}, {"nom": "Frizon", "cp": "88440", "vol": 9.8, "kmAR": 26, "minAR": 35, "verifie": false}, {"nom": "Dompaire", "cp": "88270", "vol": 9.9, "kmAR": 26, "minAR": 35, "verifie": false}, {"nom": "Dogneville", "cp": "88000", "vol": 10.0, "kmAR": 26, "minAR": 35, "verifie": false}, {"nom": "Madegney", "cp": "88450", "vol": 10.2, "kmAR": 27, "minAR": 35, "verifie": false}, {"nom": "Les Ableuvenettes", "cp": "88270", "vol": 10.5, "kmAR": 27, "minAR": 35, "verifie": false}, {"nom": "Uzemain", "cp": "88220", "vol": 10.5, "kmAR": 27, "minAR": 35, "verifie": false}, {"nom": "Bazegney", "cp": "88270", "vol": 10.6, "kmAR": 28, "minAR": 35, "verifie": false}, {"nom": "Gelvécourt-et-Adompt", "cp": "88270", "vol": 11.6, "kmAR": 30, "minAR": 40, "verifie": false}, {"nom": "Jeuxey", "cp": "88000", "vol": 11.6, "kmAR": 30, "minAR": 40, "verifie": false}, {"nom": "Uriménil", "cp": "88220", "vol": 11.6, "kmAR": 30, "minAR": 40, "verifie": false}, {"nom": "Épinal", "cp": "88000", "vol": 11.8, "kmAR": 31, "minAR": 40, "verifie": false}, {"nom": "Vaxoncourt", "cp": "88330", "vol": 11.9, "kmAR": 31, "minAR": 40, "verifie": false}, {"nom": "Bettegney-Saint-Brice", "cp": "88450", "vol": 12.0, "kmAR": 31, "minAR": 40, "verifie": false}, {"nom": "Gugney-aux-Aulx", "cp": "88450", "vol": 12.0, "kmAR": 31, "minAR": 40, "verifie": false}, {"nom": "Vaubexy", "cp": "88500", "vol": 12.0, "kmAR": 31, "minAR": 40, "verifie": false}, {"nom": "Racécourt", "cp": "88270", "vol": 12.1, "kmAR": 31, "minAR": 40, "verifie": false}, {"nom": "Nomexy", "cp": "88440", "vol": 12.4, "kmAR": 32, "minAR": 40, "verifie": false}, {"nom": "Pierrefitte", "cp": "88270", "vol": 12.6, "kmAR": 33, "minAR": 40, "verifie": false}, {"nom": "Begnécourt", "cp": "88270", "vol": 12.7, "kmAR": 33, "minAR": 40, "verifie": false}, {"nom": "Dinozé", "cp": "88000", "vol": 12.9, "kmAR": 34, "minAR": 45, "verifie": false}, {"nom": "Dounoux", "cp": "88220", "vol": 12.9, "kmAR": 33, "minAR": 40, "verifie": false}, {"nom": "Dignonville", "cp": "88000", "vol": 13.1, "kmAR": 34, "minAR": 45, "verifie": false}, {"nom": "Pallegney", "cp": "88330", "vol": 13.1, "kmAR": 34, "minAR": 45, "verifie": false}, {"nom": "Charmois-l'Orgueilleux", "cp": "88270", "vol": 13.2, "kmAR": 34, "minAR": 45, "verifie": false}, {"nom": "Légéville-et-Bonfays", "cp": "88270", "vol": 13.5, "kmAR": 35, "minAR": 45, "verifie": false}, {"nom": "Ahéville", "cp": "88500", "vol": 13.8, "kmAR": 36, "minAR": 45, "verifie": false}, {"nom": "Hagécourt", "cp": "88270", "vol": 13.8, "kmAR": 36, "minAR": 45, "verifie": false}, {"nom": "Maroncourt", "cp": "88270", "vol": 13.8, "kmAR": 36, "minAR": 45, "verifie": false}, {"nom": "Velotte-et-Tatignécourt", "cp": "88270", "vol": 13.8, "kmAR": 36, "minAR": 45, "verifie": false}, {"nom": "Châtel-sur-Moselle", "cp": "88330", "vol": 14.0, "kmAR": 36, "minAR": 45, "verifie": false}, {"nom": "Jorxey", "cp": "88500", "vol": 14.1, "kmAR": 37, "minAR": 45, "verifie": false}, {"nom": "Bayecourt", "cp": "88150", "vol": 14.3, "kmAR": 37, "minAR": 45, "verifie": false}, {"nom": "Deyvillers", "cp": "88000", "vol": 14.3, "kmAR": 37, "minAR": 45, "verifie": false}, {"nom": "Longchamp", "cp": "88000", "vol": 14.3, "kmAR": 37, "minAR": 45, "verifie": false}, {"nom": "Évaux-et-Ménil", "cp": "88450", "vol": 14.4, "kmAR": 37, "minAR": 45, "verifie": false}, {"nom": "Rapey", "cp": "88130", "vol": 14.6, "kmAR": 38, "minAR": 45, "verifie": false}, {"nom": "Varmonzey", "cp": "88450", "vol": 14.7, "kmAR": 38, "minAR": 50, "verifie": false}, {"nom": "Zincourt", "cp": "88330", "vol": 14.7, "kmAR": 38, "minAR": 50, "verifie": false}, {"nom": "Pont-lès-Bonfays", "cp": "88260", "vol": 14.8, "kmAR": 39, "minAR": 50, "verifie": false}, {"nom": "Vincey", "cp": "88450", "vol": 15.0, "kmAR": 39, "minAR": 50, "verifie": false}, {"nom": "Bainville-aux-Saules", "cp": "88270", "vol": 15.1, "kmAR": 39, "minAR": 50, "verifie": false}, {"nom": "Domèvre-sur-Durbion", "cp": "88330", "vol": 15.1, "kmAR": 39, "minAR": 50, "verifie": false}, {"nom": "Hadol", "cp": "88220", "vol": 15.1, "kmAR": 39, "minAR": 50, "verifie": false}, {"nom": "Escles", "cp": "88260", "vol": 15.4, "kmAR": 40, "minAR": 50, "verifie": false}, {"nom": "Valleroy-aux-Saules", "cp": "88270", "vol": 15.4, "kmAR": 40, "minAR": 50, "verifie": false}, {"nom": "Vaudéville", "cp": "88000", "vol": 15.4, "kmAR": 40, "minAR": 50, "verifie": false}, {"nom": "Villoncourt", "cp": "88150", "vol": 15.6, "kmAR": 41, "minAR": 50, "verifie": false}, {"nom": "Frénois", "cp": "88270", "vol": 15.8, "kmAR": 41, "minAR": 50, "verifie": false}, {"nom": "Lerrain", "cp": "88260", "vol": 15.9, "kmAR": 41, "minAR": 50, "verifie": false}, {"nom": "Vroville", "cp": "88500", "vol": 15.9, "kmAR": 41, "minAR": 50, "verifie": false}, {"nom": "Avillers", "cp": "88500", "vol": 16.0, "kmAR": 42, "minAR": 50, "verifie": false}, {"nom": "Arches", "cp": "88380", "vol": 16.2, "kmAR": 42, "minAR": 50, "verifie": false}, {"nom": "Ubexy", "cp": "88130", "vol": 16.2, "kmAR": 42, "minAR": 50, "verifie": false}, {"nom": "Sercœur", "cp": "88600", "vol": 16.3, "kmAR": 42, "minAR": 50, "verifie": false}, {"nom": "Portieux", "cp": "88330", "vol": 16.4, "kmAR": 43, "minAR": 55, "verifie": false}, {"nom": "Les Vallois", "cp": "88260", "vol": 16.4, "kmAR": 43, "minAR": 50, "verifie": false}, {"nom": "Hymont", "cp": "88500", "vol": 16.5, "kmAR": 43, "minAR": 55, "verifie": false}, {"nom": "Bouxurulles", "cp": "88130", "vol": 16.8, "kmAR": 44, "minAR": 55, "verifie": false}, {"nom": "La Baffe", "cp": "88460", "vol": 16.9, "kmAR": 44, "minAR": 55, "verifie": false}, {"nom": "Rancourt", "cp": "88270", "vol": 16.9, "kmAR": 44, "minAR": 55, "verifie": false}, {"nom": "Villers", "cp": "88500", "vol": 16.9, "kmAR": 44, "minAR": 55, "verifie": false}, {"nom": "Hadigny-les-Verrières", "cp": "88330", "vol": 17.1, "kmAR": 45, "minAR": 55, "verifie": false}, {"nom": "Madecourt", "cp": "88270", "vol": 17.1, "kmAR": 44, "minAR": 55, "verifie": false}, {"nom": "Brantigny", "cp": "88130", "vol": 17.3, "kmAR": 45, "minAR": 55, "verifie": false}, {"nom": "Archettes", "cp": "88380", "vol": 17.4, "kmAR": 45, "minAR": 55, "verifie": false}, {"nom": "Rugney", "cp": "88130", "vol": 17.6, "kmAR": 46, "minAR": 55, "verifie": false}, {"nom": "Vioménil", "cp": "88260", "vol": 17.6, "kmAR": 46, "minAR": 55, "verifie": false}, {"nom": "Aydoilles", "cp": "88600", "vol": 17.7, "kmAR": 46, "minAR": 55, "verifie": false}, {"nom": "Sans-Vallois", "cp": "88260", "vol": 17.9, "kmAR": 47, "minAR": 55, "verifie": false}, {"nom": "Dompierre", "cp": "88600", "vol": 18.0, "kmAR": 47, "minAR": 55, "verifie": false}, {"nom": "Moriville", "cp": "88330", "vol": 18.0, "kmAR": 47, "minAR": 55, "verifie": false}, {"nom": "Langley", "cp": "88130", "vol": 18.1, "kmAR": 47, "minAR": 55, "verifie": false}, {"nom": "Mattaincourt", "cp": "88500", "vol": 18.2, "kmAR": 47, "minAR": 60, "verifie": false}, {"nom": "Bazoilles-et-Ménil", "cp": "88500", "vol": 18.3, "kmAR": 48, "minAR": 60, "verifie": false}, {"nom": "La Haye", "cp": "88240", "vol": 18.3, "kmAR": 48, "minAR": 60, "verifie": false}, {"nom": "Jésonville", "cp": "88260", "vol": 18.3, "kmAR": 48, "minAR": 60, "verifie": false}, {"nom": "Valfroicourt", "cp": "88270", "vol": 18.5, "kmAR": 48, "minAR": 60, "verifie": false}, {"nom": "Xertigny", "cp": "88220", "vol": 18.6, "kmAR": 48, "minAR": 60, "verifie": false}, {"nom": "La Chapelle-aux-Bois", "cp": "88240", "vol": 18.7, "kmAR": 49, "minAR": 60, "verifie": false}, {"nom": "Fontenay", "cp": "88600", "vol": 18.8, "kmAR": 49, "minAR": 60, "verifie": false}, {"nom": "Les Voivres", "cp": "88240", "vol": 18.8, "kmAR": 49, "minAR": 60, "verifie": false}, {"nom": "Grandrupt-de-Bains", "cp": "88240", "vol": 18.9, "kmAR": 49, "minAR": 60, "verifie": false}, {"nom": "Gircourt-lès-Viéville", "cp": "88500", "vol": 19.0, "kmAR": 49, "minAR": 60, "verifie": false}, {"nom": "Mazirot", "cp": "88500", "vol": 19.0, "kmAR": 49, "minAR": 60, "verifie": false}, {"nom": "Badménil-aux-Bois", "cp": "88330", "vol": 19.1, "kmAR": 50, "minAR": 60, "verifie": false}, {"nom": "Charmois-devant-Bruyères", "cp": "88460", "vol": 19.1, "kmAR": 50, "minAR": 60, "verifie": false}, {"nom": "Dommartin-lès-Vallois", "cp": "88260", "vol": 19.1, "kmAR": 50, "minAR": 60, "verifie": false}, {"nom": "Rozerotte", "cp": "88500", "vol": 19.1, "kmAR": 50, "minAR": 60, "verifie": false}, {"nom": "Mirecourt", "cp": "88500", "vol": 19.3, "kmAR": 50, "minAR": 60, "verifie": false}, {"nom": "Savigny", "cp": "88130", "vol": 19.4, "kmAR": 50, "minAR": 60, "verifie": false}, {"nom": "Raon-aux-Bois", "cp": "88220", "vol": 19.9, "kmAR": 52, "minAR": 65, "verifie": false}, {"nom": "Padoux", "cp": "88700", "vol": 20.0, "kmAR": 52, "minAR": 65, "verifie": false}, {"nom": "Chauffecourt", "cp": "88500", "vol": 20.1, "kmAR": 52, "minAR": 65, "verifie": false}, {"nom": "Bettoncourt", "cp": "88500", "vol": 20.2, "kmAR": 53, "minAR": 65, "verifie": false}, {"nom": "Essegney", "cp": "88130", "vol": 20.2, "kmAR": 52, "minAR": 65, "verifie": false}, {"nom": "Florémont", "cp": "88130", "vol": 20.2, "kmAR": 53, "minAR": 65, "verifie": false}, {"nom": "Girecourt-sur-Durbion", "cp": "88600", "vol": 20.2, "kmAR": 53, "minAR": 65, "verifie": false}, {"nom": "Rehaincourt", "cp": "88330", "vol": 20.2, "kmAR": 53, "minAR": 65, "verifie": false}, {"nom": "Cheniménil", "cp": "88460", "vol": 20.5, "kmAR": 53, "minAR": 65, "verifie": false}, {"nom": "Charmes", "cp": "88130", "vol": 20.6, "kmAR": 54, "minAR": 65, "verifie": false}, {"nom": "Domèvre-sous-Montfort", "cp": "88500", "vol": 20.6, "kmAR": 54, "minAR": 65, "verifie": false}, {"nom": "Esley", "cp": "88260", "vol": 20.6, "kmAR": 53, "minAR": 65, "verifie": false}, {"nom": "Dombasle-devant-Darney", "cp": "88260", "vol": 20.8, "kmAR": 54, "minAR": 65, "verifie": false}, {"nom": "Méménil", "cp": "88600", "vol": 20.9, "kmAR": 54, "minAR": 65, "verifie": false}, {"nom": "Pouxeux", "cp": "88550", "vol": 20.9, "kmAR": 54, "minAR": 65, "verifie": false}, {"nom": "Remoncourt", "cp": "88800", "vol": 20.9, "kmAR": 54, "minAR": 65, "verifie": false}, {"nom": "Le Roulier", "cp": "88460", "vol": 20.9, "kmAR": 54, "minAR": 65, "verifie": false}, {"nom": "Saint-Genest", "cp": "88700", "vol": 20.9, "kmAR": 54, "minAR": 65, "verifie": false}, {"nom": "Jarménil", "cp": "88550", "vol": 21.2, "kmAR": 55, "minAR": 65, "verifie": false}, {"nom": "Poussay", "cp": "88500", "vol": 21.2, "kmAR": 55, "minAR": 65, "verifie": false}, {"nom": "Damas-aux-Bois", "cp": "88330", "vol": 21.3, "kmAR": 55, "minAR": 65, "verifie": false}, {"nom": "Ramecourt", "cp": "88500", "vol": 21.4, "kmAR": 56, "minAR": 65, "verifie": false}, {"nom": "Gruey-lès-Surance", "cp": "88240", "vol": 21.6, "kmAR": 56, "minAR": 65, "verifie": false}, {"nom": "Senonges", "cp": "88260", "vol": 21.7, "kmAR": 56, "minAR": 70, "verifie": false}, {"nom": "Belrupt", "cp": "88260", "vol": 21.8, "kmAR": 57, "minAR": 70, "verifie": false}, {"nom": "Estrennes", "cp": "88500", "vol": 21.8, "kmAR": 57, "minAR": 70, "verifie": false}, {"nom": "Avrainville", "cp": "88130", "vol": 21.9, "kmAR": 57, "minAR": 70, "verifie": false}, {"nom": "Thiraucourt", "cp": "88500", "vol": 22.0, "kmAR": 57, "minAR": 70, "verifie": false}, {"nom": "Vomécourt-sur-Madon", "cp": "88500", "vol": 22.0, "kmAR": 57, "minAR": 70, "verifie": false}, {"nom": "Bult", "cp": "88700", "vol": 22.1, "kmAR": 58, "minAR": 70, "verifie": false}, {"nom": "Gugnécourt", "cp": "88600", "vol": 22.1, "kmAR": 57, "minAR": 70, "verifie": false}, {"nom": "Domvallier", "cp": "88500", "vol": 22.2, "kmAR": 58, "minAR": 70, "verifie": false}, {"nom": "Remicourt", "cp": "88500", "vol": 22.2, "kmAR": 58, "minAR": 70, "verifie": false}, {"nom": "Xaronval", "cp": "88130", "vol": 22.3, "kmAR": 58, "minAR": 70, "verifie": false}, {"nom": "Ambacourt", "cp": "88500", "vol": 22.4, "kmAR": 58, "minAR": 70, "verifie": false}, {"nom": "Docelles", "cp": "88460", "vol": 22.5, "kmAR": 58, "minAR": 70, "verifie": false}, {"nom": "Moyemont", "cp": "88700", "vol": 22.5, "kmAR": 58, "minAR": 70, "verifie": false}, {"nom": "Viménil", "cp": "88600", "vol": 22.5, "kmAR": 59, "minAR": 70, "verifie": false}, {"nom": "Destord", "cp": "88600", "vol": 22.7, "kmAR": 59, "minAR": 70, "verifie": false}, {"nom": "Bonvillet", "cp": "88260", "vol": 22.9, "kmAR": 59, "minAR": 70, "verifie": false}, {"nom": "Deycimont", "cp": "88600", "vol": 22.9, "kmAR": 59, "minAR": 70, "verifie": false}, {"nom": "Ortoncourt", "cp": "88700", "vol": 23.0, "kmAR": 60, "minAR": 70, "verifie": false}, {"nom": "Socourt", "cp": "88130", "vol": 23.0, "kmAR": 60, "minAR": 70, "verifie": false}, {"nom": "Puzieux", "cp": "88500", "vol": 23.1, "kmAR": 60, "minAR": 70, "verifie": false}, {"nom": "Hergugney", "cp": "88130", "vol": 23.2, "kmAR": 60, "minAR": 70, "verifie": false}, {"nom": "Nonzeville", "cp": "88600", "vol": 23.2, "kmAR": 60, "minAR": 70, "verifie": false}, {"nom": "Hennezel", "cp": "88260", "vol": 23.4, "kmAR": 61, "minAR": 70, "verifie": false}, {"nom": "Pont-sur-Madon", "cp": "88500", "vol": 23.5, "kmAR": 61, "minAR": 75, "verifie": false}, {"nom": "Chamagne", "cp": "88130", "vol": 23.9, "kmAR": 62, "minAR": 75, "verifie": false}, {"nom": "Battexey", "cp": "88130", "vol": 24.0, "kmAR": 62, "minAR": 75, "verifie": false}, {"nom": "Baudricourt", "cp": "88500", "vol": 24.0, "kmAR": 63, "minAR": 75, "verifie": false}, {"nom": "Saint-Nabord", "cp": "88200", "vol": 24.1, "kmAR": 63, "minAR": 75, "verifie": false}, {"nom": "Xamontarupt", "cp": "88460", "vol": 24.1, "kmAR": 63, "minAR": 75, "verifie": false}, {"nom": "Vomécourt", "cp": "88700", "vol": 24.3, "kmAR": 63, "minAR": 75, "verifie": false}, {"nom": "Éloyes", "cp": "88510", "vol": 24.4, "kmAR": 64, "minAR": 75, "verifie": false}, {"nom": "Fauconcourt", "cp": "88700", "vol": 24.5, "kmAR": 64, "minAR": 75, "verifie": false}, {"nom": "Darney", "cp": "88260", "vol": 24.6, "kmAR": 64, "minAR": 75, "verifie": false}, {"nom": "Romont", "cp": "88700", "vol": 24.6, "kmAR": 64, "minAR": 75, "verifie": false}, {"nom": "Fays", "cp": "88600", "vol": 24.7, "kmAR": 64, "minAR": 75, "verifie": false}, {"nom": "La Neuveville-devant-Lépanges", "cp": "88600", "vol": 24.7, "kmAR": 64, "minAR": 75, "verifie": false}, {"nom": "Lépanges-sur-Vologne", "cp": "88600", "vol": 24.8, "kmAR": 64, "minAR": 75, "verifie": false}, {"nom": "Frenelle-la-Grande", "cp": "88500", "vol": 24.9, "kmAR": 65, "minAR": 75, "verifie": false}, {"nom": "Pierrepont-sur-l'Arentèle", "cp": "88600", "vol": 25.0, "kmAR": 65, "minAR": 75, "verifie": false}]
+};
+
+var LimpidMoteur = (function () {
+  "use strict";
+  function copie(o) { return JSON.parse(JSON.stringify(o)); }
+  /* Fusion prudente : un réglage publié remplace la valeur d'origine, champ
+     par champ ; une valeur absente ne casse jamais le calcul. */
+  function fusion(base, o) {
+    if (o === null || o === undefined) return base;
+    if (Array.isArray(base)) return Array.isArray(o) ? copie(o) : base;
+    if (typeof base === "object" && base) {
+      var r = {};
+      Object.keys(base).forEach(function (k) { r[k] = fusion(base[k], o[k]); });
+      Object.keys(o || {}).forEach(function (k) { if (!(k in r)) r[k] = copie(o[k]); });
+      return r;
+    }
+    return (typeof o === typeof base) ? o : base;
+  }
+  var C = copie(LIMPID_CONFIG_DEFAUT);
+  function charger(o) { C = fusion(copie(LIMPID_CONFIG_DEFAUT), o || {}); return C; }
+  function config() { return C; }
+  function normalise(s) { return String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, " ").trim(); }
+  function commune(nom, cp) {
+    var n = normalise(nom);
+    var l = (C.communes || []).filter(function (c) { return normalise(c.nom) === n && (!cp || c.cp === cp); });
+    return l[0] || null;
+  }
+  function communesDuCP(cp) { return (C.communes || []).filter(function (c) { return c.cp === String(cp || "").trim(); }); }
+  function zoneDe(c) {
+    if (!c) return "inconnue";
+    return c.vol <= C.zone.rayonKm ? "prioritaire" : "etendue";
+  }
+  function nb(x) { x = parseFloat(x); return isFinite(x) && x > 0 ? x : 0; }
+  function off(s, id) { return (s.tachesOff || []).indexOf(id) >= 0; }
+
+  /* Durée d'un passage, en minutes, à partir d'une saisie normalisée. */
+  function estimer(s) {
+    s = s || {};
+    var P = C.prestations[s.type];
+    var F = C.facteurs;
+    var lignes = [], m = 0, parts = {}, facteur = 1;
+    var raisons = [];
+    if (!P) return { minutes: 0, lignes: [], parts: {}, validation: true, raisons: ["Prestation inconnue"] };
+
+    if (s.type === "menage" || s.type === "grand") {
+      var surf = (s.perimetre && s.perimetre !== "complet") ? nb(s.surfacePart) : nb(s.surface);
+      var parM2 = 0;
+      P.communes.taches.forEach(function (t) { if (!off(s, t.id)) parM2 += t.min; });
+      if (surf > 0) { lignes.push({ lib: P.communes.lib + " (" + surf + " m²)", min: surf * parM2 }); m += surf * parM2; }
+      P.pieces.forEach(function (p) {
+        var n = nb((s.pieces || {})[p.id]);
+        if (!n) return;
+        var u = 0;
+        p.taches.forEach(function (t) { if (p.verrou || !off(s, t.id)) u += t.min; });
+        if (u > 0) { lignes.push({ lib: p.lib + (n > 1 ? " × " + n : ""), min: u * n }); m += u * n; }
+      });
+      (P.elements || []).forEach(function (e) {
+        var q = e.quantite ? nb((s.elements || {})[e.id]) : ((s.elements || {})[e.id] ? 1 : 0);
+        if (!q) return;
+        lignes.push({ lib: e.lib + (e.quantite && q > 1 ? " × " + q : ""), min: e.min * q }); m += e.min * q;
+      });
+      (P.options || []).forEach(function (o) {
+        if (!o.actif) return;
+        var v = (s.options || {})[o.id];
+        if (!v) return;
+        var q = o.quantite ? nb(v) : 1;
+        if (o.parPiece) q = nb((s.pieces || {})[o.parPiece]);
+        if (!q) return;
+        lignes.push({ lib: o.lib + (q > 1 ? " × " + q : ""), min: o.min * q }); m += o.min * q;
+        if (o.id === "opt_veranda") parts.veranda = (parts.veranda || 0) + o.min * q;
+      });
+      var k = (F.niveau[String(s.niveau || 1)] || 1);
+      var acces = F.acces[s.acces || "plainpied"] || 1;
+      /* Un seul niveau entretenu : l'escalier intérieur ne pèse plus. */
+      if ((s.perimetre === "rdc" || s.perimetre === "etage") && s.acces === "etages") acces = 1;
+      k *= acces;
+      if (s.type === "menage") {
+        k *= (F.encombrement[s.encombrement || "normal"] || 1);
+        k *= (F.frequenceMenage[String(s.frequence || "0")] || 1);
+        if (s.animaux) k *= F.animaux;
+        if (s.fumeur) k *= F.fumeur;
+      }
+      if (s.travaux) { k *= F.travaux; raisons.push("Après travaux : estimation à confirmer sur visite"); }
+      m *= k; facteur = k;
+      if (parts.veranda) parts.veranda *= k;
+    }
+    else if (s.type === "vitres") {
+      P.elements.forEach(function (e) {
+        var q = nb((s.elements || {})[e.id]);
+        if (!q) return;
+        lignes.push({ lib: e.lib + " × " + q, min: e.min * q }); m += e.min * q;
+        if (e.id === "verandaM2") parts.veranda = e.min * q;
+      });
+      var kv = (F.niveau[String(s.niveau || 1)] || 1);
+      if (s.hauteur) { kv *= P.facteurs.hauteur; raisons.push("Accès en hauteur : faisabilité vérifiée avant chiffrage"); }
+      if (s.travaux) kv *= P.facteurs.travaux;
+      m *= kv; if (parts.veranda) parts.veranda *= kv;
+    }
+    else if (s.type === "textile") {
+      P.elements.forEach(function (e) {
+        var q = nb((s.elements || {})[e.id]);
+        if (!q) return;
+        lignes.push({ lib: e.lib + " × " + q, min: e.min * q }); m += e.min * q;
+      });
+      m *= (F.niveau[String(s.niveau || 1)] || 1);
+    }
+    else if (s.type === "bureaux") {
+      P.elements.forEach(function (e) {
+        var q = e.quantite ? nb((s.elements || {})[e.id]) : ((s.elements || {})[e.id] ? 1 : 0);
+        if (!q) return;
+        lignes.push({ lib: e.lib + (e.quantite ? " : " + q : ""), min: e.min * q }); m += e.min * q;
+      });
+      m *= (F.niveau[String(s.niveau || 1)] || 1);
+      var f = parseFloat(s.frequence || 0);
+      if (f === 0) m *= P.frequence.ponctuel; else if (f >= 3) m *= P.frequence.frequent; else if (f <= 0.5) m *= P.frequence.espace;
+    }
+    return { minutes: m, lignes: lignes, parts: parts, facteur: facteur, validation: raisons.length > 0 && !!s.travaux, raisons: raisons };
+  }
+
+  /* Ce qui est compris et ce qui ne l'est pas, pour le récapitulatif et le devis. */
+  function perimetre(s) {
+    var P = C.prestations[s.type]; if (!P) return { inclus: [], exclus: [], options: [], retires: [] };
+    var inclus = [], retires = [], opts = [];
+    if (P.communes) {
+      var lc = P.communes.taches.filter(function (t) { return !off(s, t.id); }).map(function (t) { return t.lib; });
+      if (lc.length) inclus.push({ piece: P.communes.lib, taches: lc });
+      P.communes.taches.filter(function (t) { return off(s, t.id); }).forEach(function (t) { retires.push(t.lib); });
+    }
+    (P.pieces || []).forEach(function (p) {
+      var n = nb((s.pieces || {})[p.id]); if (!n) return;
+      var l = p.taches.filter(function (t) { return !t.commun && (p.verrou || !off(s, t.id)); }).map(function (t) { return t.lib; });
+      if (l.length) inclus.push({ piece: p.lib + (n > 1 ? " (" + n + ")" : ""), taches: l, note: p.note || "" });
+      if (!p.verrou) p.taches.filter(function (t) { return !t.commun && off(s, t.id); }).forEach(function (t) { retires.push(p.lib + " : " + t.lib.charAt(0).toLowerCase() + t.lib.slice(1)); });
+    });
+    (P.inclus || []).forEach(function (t) { inclus.push({ piece: "", taches: [t] }); });
+    (P.elements || []).forEach(function (e) {
+      var v = (s.elements || {})[e.id]; var q = e.quantite ? nb(v) : (v ? 1 : 0);
+      if (q) opts.push(e.lib + (e.quantite ? " : " + q : ""));
+    });
+    (P.options || []).forEach(function (o) {
+      if (!o.actif) return; var v = (s.options || {})[o.id]; if (!v) return;
+      var q = o.quantite ? nb(v) : 1; if (o.parPiece) q = nb((s.pieces || {})[o.parPiece]); if (!q) return;
+      opts.push(o.lib + (q > 1 ? " × " + q : ""));
+    });
+    return { inclus: inclus, exclus: (P.exclusions || []).slice(), options: opts, retires: retires, info: P.info || "" };
+  }
+
+  /* Code d'import : la demande du site, transportée telle quelle vers l'outil gérant. */
+  function coder(o) {
+    var t = JSON.stringify(o);
+    var b = unescape(encodeURIComponent(t));
+    return "LIMPID1." + btoa(b);
+  }
+  function decoder(code) {
+    var c = String(code || "").trim().replace(/\s+/g, "");
+    var i = c.indexOf("LIMPID1.");
+    if (i < 0) throw new Error("Code d'import non reconnu");
+    var t = decodeURIComponent(escape(atob(c.slice(i + 8))));
+    return JSON.parse(t);
+  }
+  return { charger: charger, config: config, fusion: fusion, commune: commune, communesDuCP: communesDuCP,
+           zoneDe: zoneDe, estimer: estimer, perimetre: perimetre, coder: coder, decoder: decoder, normalise: normalise };
+})();
+
+/* @@MOTEUR-FIN@@ */
+</script>
+<script>
+/* ================= Limpid · configurateur public =================
+   Aucun prix n'est calculé ici : le prix est établi par Limpid et envoyé
+   par e-mail avec le devis. La page décrit le besoin, estime une durée
+   indicative avec le moteur commun, et transmet la demande avec un code
+   d'import que l'outil gérant relit tel quel. */
+(function () {
+  "use strict";
+  var CLE_WEB3 = "95f59fbe-88c4-476f-8a2b-e737beed43c8";
+  var CLE_ETAT = "limpid_cf_v1";
+  var NB_ETAPES = 7;
+
+  var OFFRES = [
+    { id: "regulier", type: "menage", ic: "🏠", lib: "Entretien régulier", d: "Ménage à domicile chaque semaine ou tous les 15 jours.", profils: ["particulier"] },
+    { id: "ponctuel", type: "menage", ic: "🧹", lib: "Ménage ponctuel", d: "Un passage, sans engagement.", profils: ["particulier"] },
+    { id: "grand", type: "grand", ic: "✨", lib: "Grand nettoyage ou remise à niveau", d: "Fin de bail, emménagement, remise à neuf du logement.", profils: ["particulier"] },
+    { id: "vitres", type: "vitres", ic: "🪟", lib: "Vitres et véranda", d: "Fenêtres, baies vitrées, véranda, vitrine.", profils: ["particulier", "pro"] },
+    { id: "textile", type: "textile", ic: "🛋️", lib: "Canapés, tapis et textiles", d: "Injection-extraction, à domicile ou sur site.", profils: ["particulier", "pro"] },
+    { id: "bureaux", type: "bureaux", ic: "🏢", lib: "Entretien de bureaux et locaux", d: "Bureaux, cabinets et commerces de moins de 200 m².", profils: ["pro"] },
+    { id: "travaux", type: null, ic: "🧱", lib: "Après travaux ou remise en état importante", d: "Devis spécifique, établi après échange ou visite.", profils: ["particulier", "pro"], specifique: true }
+  ];
+  var FREQUENCES = {
+    regulier: [["2.17", "Tous les 15 jours"], ["4.33", "Chaque semaine"], ["8.66", "Deux fois par semaine"]],
+    vitres: [["0", "Une seule fois"], ["2", "Deux fois par an"], ["4", "Chaque trimestre"], ["12", "Chaque mois"], ["1", "Une fois par an"]],
+    bureaux: [["1", "Une fois par semaine"], ["2", "Deux fois par semaine"], ["3", "Trois fois par semaine"], ["5", "Tous les jours ouvrés"], ["0.5", "Toutes les deux semaines"], ["0", "Une seule fois"]]
+  };
+  var NIVEAUX = [["1", "Bien entretenu"], ["2", "Entretien un peu ancien"], ["3", "Encrassé"], ["4", "Très encrassé"], ["5", "Remise en état lourde"]];
+  var ACCES = [["plainpied", "Plain-pied ou rez-de-chaussée"], ["ascenseur", "Appartement avec ascenseur"], ["sansascenseur", "Appartement sans ascenseur"], ["etages", "Maison à étages"]];
+
+  /* ---------- État, conservé pendant la visite ---------- */
+  function etatVide() {
+    return { etape: 1, cp: "", commune: "", profil: "particulier", offre: "",
+      s: { type: "", frequence: "", perimetre: "complet", surface: "", surfacePart: "", pieces: {}, elements: {}, options: {}, tachesOff: [],
+           niveau: 1, acces: "plainpied", encombrement: "normal" },
+      mode: "auto", heures: "", priorites: [], descTravaux: "", debut: false, envoye: false };
+  }
+  var E = etatVide();
+  try { var lu = JSON.parse(sessionStorage.getItem(CLE_ETAT) || "null"); if (lu && lu.s) E = Object.assign(etatVide(), lu); } catch (e) {}
+  function sauver() { try { sessionStorage.setItem(CLE_ETAT, JSON.stringify(E)); } catch (e) {} }
+
+  /* ---------- Outils ---------- */
+  function $(id) { return document.getElementById(id); }
+  function esc(t) { return String(t == null ? "" : t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function n(x) { x = parseFloat(String(x == null ? "" : x).replace(",", ".")); return isFinite(x) && x > 0 ? x : 0; }
+  function cfg() { return LimpidMoteur.config(); }
+  function offre() { for (var i = 0; i < OFFRES.length; i++) if (OFFRES[i].id === E.offre) return OFFRES[i]; return null; }
+  function P() { var o = offre(); return o && o.type ? cfg().prestations[o.type] : null; }
+  function duree(min) {
+    var t = Math.round((min || 0) / 5) * 5; var h = Math.floor(t / 60), m = t % 60;
+    return h ? h + " h" + (m ? " " + String(m).padStart(2, "0") : "") : m + " min";
+  }
+  function ev(nom, p) { try { if (window.limpidEvenement) window.limpidEvenement(nom, p || {}); } catch (e) {} }
+  function debuter() { if (!E.debut) { E.debut = true; sauver(); ev("configurateur_debut"); } }
+
+  /* La saisie normalisée, telle que la lit le moteur commun et l'outil gérant */
+  function saisie() {
+    var o = offre(); if (!o || !o.type) return { type: "" };
+    var s = JSON.parse(JSON.stringify(E.s));
+    s.type = o.type;
+    if (o.id === "ponctuel") s.frequence = "0";
+    else if (o.id === "grand" || o.id === "textile") s.frequence = "0";
+    else if (!s.frequence) s.frequence = (FREQUENCES[o.id] || [["0"]])[0][0];
+    s.niveau = parseInt(s.niveau, 10) || 1;
+    return s;
+  }
+  function estimation() { var s = saisie(); return s.type ? LimpidMoteur.estimer(s) : { minutes: 0, raisons: [] }; }
+  function minutesRetenues() { var est = estimation().minutes; return E.mode === "manuel" && n(E.heures) ? n(E.heures) * 60 : est; }
+
+  /* ---------- Étape 1 : localisation ---------- */
+  function communeChoisie() {
+    var c = LimpidMoteur.commune(E.commune, E.cp);
+    return c;
+  }
+  function rendreLocalisation() {
+    $("f-cp").value = E.cp;
+    var liste = /^\d{5}$/.test(E.cp) ? LimpidMoteur.communesDuCP(E.cp) : [];
+    var sel = $("f-commune-sel"), txt = $("f-commune-txt");
+    if (liste.length) {
+      sel.style.display = "block"; txt.style.display = "none";
+      sel.innerHTML = (liste.length > 1 ? '<option value="">Choisir</option>' : "") +
+        liste.map(function (c) { return '<option' + (c.nom === E.commune ? " selected" : "") + '>' + esc(c.nom) + '</option>'; }).join("") +
+        '<option value="__autre"' + (E.commune && !LimpidMoteur.commune(E.commune, E.cp) ? " selected" : "") + '>Autre commune</option>';
+      if (liste.length === 1 && !E.commune) { E.commune = liste[0].nom; sauver(); }
+      if (sel.value === "__autre") { txt.style.display = "block"; txt.value = E.commune; }
+    } else {
+      sel.style.display = "none"; txt.style.display = "block"; txt.value = E.commune;
+    }
+    var z = $("f-zone"), c = communeChoisie();
+    if (!E.cp && !E.commune) { z.innerHTML = ""; return; }
+    if (c) {
+      var pri = LimpidMoteur.zoneDe(c) === "prioritaire";
+      z.innerHTML = '<div class="cf-alerte ' + (pri ? "vert" : "ambre") + '">' + (pri
+        ? "<b>" + esc(c.nom) + "</b> est dans notre zone d'intervention habituelle."
+        : "<b>" + esc(c.nom) + "</b> est un peu au-delà de notre zone habituelle : votre demande est bien possible, Limpid confirme le déplacement avec le devis.") + "</div>";
+    } else if (E.commune && /^\d{5}$/.test(E.cp)) {
+      z.innerHTML = '<div class="cf-alerte ambre">Nous ne connaissons pas encore la distance jusqu\'à <b>' + esc(E.commune) + "</b> : votre demande reste possible, Limpid vérifie le déplacement avant de vous répondre.</div>";
+    } else z.innerHTML = "";
+  }
+
+  /* ---------- Étape 2 : prestation ---------- */
+  function rendrePrestations() {
+    document.querySelectorAll("#f-profil button").forEach(function (b) { b.classList.toggle("on", b.dataset.v === E.profil); });
+    var l = OFFRES.filter(function (o) { return o.profils.indexOf(E.profil) >= 0; });
+    if (E.offre && !l.some(function (o) { return o.id === E.offre; })) E.offre = "";
+    $("f-prestations").innerHTML = l.map(function (o) {
+      return '<button type="button" class="cf-carte' + (o.id === E.offre ? " on" : "") + '" data-v="' + o.id + '"><span class="ic">' + o.ic + '</span><span><b>' + esc(o.lib) + '</b><span class="d">' + esc(o.d) + '</span></span></button>';
+    }).join("");
+  }
+
+  /* ---------- Étape 3 : description ---------- */
+  function compteur(chemin, lib, aide, pas) {
+    var v = lirePath(E.s, chemin) || 0;
+    return '<div class="cf-cpt"><span>' + esc(lib) + (aide ? '<small>' + esc(aide) + '</small>' : '') + '</span><span class="cf-pas">' +
+      '<button type="button" aria-label="moins" data-pas="' + chemin + '" data-d="-' + (pas || 1) + '">−</button>' +
+      '<input type="number" min="0" step="' + (pas || 1) + '" inputmode="numeric" value="' + (v || 0) + '" data-path="' + chemin + '" aria-label="' + esc(lib) + '">' +
+      '<button type="button" aria-label="plus" data-pas="' + chemin + '" data-d="' + (pas || 1) + '">+</button></span></div>';
+  }
+  function coche(chemin, lib, aide) {
+    var v = !!lirePath(E.s, chemin);
+    return '<label class="cf-coche"><input type="checkbox" data-path="' + chemin + '"' + (v ? " checked" : "") + '><span class="l">' + esc(lib) + (aide ? '<small>' + esc(aide) + '</small>' : '') + '</span></label>';
+  }
+  function choix(chemin, lib, options, aide) {
+    var v = String(lirePath(E.s, chemin) == null ? "" : lirePath(E.s, chemin));
+    return '<label class="cf-champ">' + esc(lib) + (aide ? '<small>' + esc(aide) + '</small>' : '') + '<select data-path="' + chemin + '">' +
+      options.map(function (o) { return '<option value="' + o[0] + '"' + (String(o[0]) === v ? " selected" : "") + '>' + esc(o[1]) + '</option>'; }).join("") + '</select></label>';
+  }
+  function nombre(chemin, lib, aide, ph) {
+    var v = lirePath(E.s, chemin);
+    return '<label class="cf-champ">' + esc(lib) + (aide ? '<small>' + esc(aide) + '</small>' : '') + '<input type="number" min="0" inputmode="numeric" data-path="' + chemin + '" value="' + (v || "") + '" placeholder="' + (ph || "") + '"></label>';
+  }
+  function lirePath(o, p) { return p.split(".").reduce(function (x, k) { return x == null ? x : x[k]; }, o); }
+  function poserPath(o, p, v) { var k = p.split("."), x = o; for (var i = 0; i < k.length - 1; i++) { if (x[k[i]] == null) x[k[i]] = {}; x = x[k[i]]; } x[k[k.length - 1]] = v; }
+
+  function rendreDescription() {
+    var o = offre(), z = $("f-description"); if (!o) { z.innerHTML = ""; return; }
+    var h = "";
+    if (o.specifique) {
+      $("cf-s3").textContent = "Ce type de chantier se chiffre après échange ou visite. Décrivez-le en quelques mots.";
+      h += '<label class="cf-champ">Votre besoin<textarea data-txt="descTravaux" rows="5" placeholder="Ex. : maison de 110 m² après rénovation de la cuisine et peinture des chambres">' + esc(E.descTravaux) + '</textarea></label>';
+      h += nombre("surface", "Surface approximative (m²)", "Facultatif", "");
+      z.innerHTML = h; return;
+    }
+    $("cf-s3").textContent = "Une estimation, pas un état des lieux : des valeurs approximatives suffisent.";
+    var t = o.type, PP = cfg().prestations[t];
+    if (t === "menage" || t === "grand") {
+      h += nombre("surface", "Surface du logement (m²)", "", "80");
+      if (t === "menage") {
+        h += choix("perimetre", "Ce qui est à entretenir", [["complet", "Tout le logement"], ["rdc", "Le rez-de-chaussée seulement"], ["etage", "L'étage seulement"], ["pieces", "Certaines pièces seulement"]]);
+        if (E.s.perimetre && E.s.perimetre !== "complet") h += nombre("surfacePart", "Surface de la partie à entretenir (m²)", "Indiquez seulement la partie concernée, et ne comptez ci-dessous que ses pièces.", "40");
+      }
+      h += '<p class="cf-sous" style="margin:6px 0 8px">Pièces à entretenir</p><div class="cf-compteurs">';
+      PP.pieces.forEach(function (p) {
+        var aide = p.id === "wc" ? "WC séparés" : (p.id === "sdb" ? "Salle de bains ou salle d'eau" : "");
+        h += compteur("pieces." + p.id, p.lib, aide, 1);
+      });
+      (PP.elements || []).forEach(function (e) { if (e.quantite) h += compteur("elements." + e.id, e.lib, "", 1); });
+      h += '</div>';
+      (PP.elements || []).forEach(function (e) { if (!e.quantite) h += coche("elements." + e.id, e.lib); });
+      h += choix("acces", "Accès au logement", ACCES);
+      h += choix("niveau", "État actuel", NIVEAUX, "Le temps passé dépend surtout de l'état de départ.");
+      if (t === "menage") {
+        h += choix("encombrement", "Encombrement des pièces", [["faible", "Pièces dégagées"], ["normal", "Normal"], ["charge", "Beaucoup d'objets"]]);
+        h += coche("animaux", "Présence d'animaux") + coche("fumeur", "Logement fumeur");
+      }
+      h += coche("travaux", "Ménage après travaux", "Il fera l'objet d'un devis spécifique, après échange avec Limpid.");
+    } else if (t === "vitres") {
+      h += '<div class="cf-compteurs">';
+      PP.elements.forEach(function (e) { h += compteur("elements." + e.id, e.lib, "", e.surface ? 5 : 1); });
+      h += '</div>' + choix("niveau", "État des vitres", NIVEAUX.slice(0, 4));
+      h += coche("hauteur", "Vitrages en hauteur", "Accessibles seulement à l'échelle ou à la perche : nous vérifions la sécurité avant de chiffrer.");
+      h += coche("travaux", "Après travaux", "Traces de peinture, de ciment ou de plâtre.");
+    } else if (t === "textile") {
+      h += '<div class="cf-compteurs">';
+      PP.elements.forEach(function (e) { h += compteur("elements." + e.id, e.lib, "", e.surface ? 1 : 1); });
+      h += '</div>' + choix("niveau", "État des textiles", NIVEAUX.slice(0, 4));
+      h += coche("taches", "Taches tenaces", "Un détachage renforcé sera prévu.");
+    } else if (t === "bureaux") {
+      h += '<div class="cf-compteurs">';
+      PP.elements.forEach(function (e) { if (e.quantite) h += compteur("elements." + e.id, e.lib, "", e.surface ? 10 : 1); });
+      h += '</div>';
+      PP.elements.forEach(function (e) { if (!e.quantite) h += coche("elements." + e.id, e.lib); });
+      h += choix("niveau", "État actuel des locaux", NIVEAUX.slice(0, 4));
+    }
+    z.innerHTML = h;
+  }
+
+  /* ---------- Étape 4 : tâches ---------- */
+  function rendreTaches() {
+    var o = offre(), z = $("f-taches"), PP = P(); if (!o || !PP) { z.innerHTML = ""; return; }
+    var s = saisie(), h = "";
+    if (o.type === "menage" || o.type === "grand") {
+      $("cf-s4").textContent = "Les tâches habituelles sont cochées. Décochez ce que vous ne souhaitez pas" + (o.type === "menage" ? ", ajoutez une option si besoin." : ".");
+      h += '<div class="cf-piece"><h3>' + esc(PP.communes.lib) + '</h3>' + PP.communes.taches.map(function (t) { return tache(t, false); }).join("") + '</div>';
+      PP.pieces.forEach(function (p) {
+        if (!n((s.pieces || {})[p.id])) return;
+        var tt = p.taches.filter(function (t) { return !t.commun; });
+        h += '<div class="cf-piece"><h3>' + esc(p.lib) + (n(s.pieces[p.id]) > 1 ? " × " + n(s.pieces[p.id]) : "") + (p.verrou ? ' <span class="cf-verrou">toujours compris</span>' : '') + '</h3>' +
+          (tt.length ? tt.map(function (t) { return tache(t, !!p.verrou); }).join("") : '<div class="note">Sols et poussière, déjà compris dans l\'entretien de toutes les pièces.</div>') +
+          (p.note ? '<div class="note">' + esc(p.note) + '</div>' : '') + '</div>';
+      });
+      var opts = (PP.options || []).filter(function (x) { return x.actif; });
+      if (opts.length) {
+        h += '<div class="cf-piece"><h3>Options, facultatives</h3>';
+        opts.forEach(function (x) {
+          if (x.quantite) h += '<div class="cf-cpt" style="margin-bottom:6px"><span>' + esc(x.lib) + '<small>' + esc(x.desc || "") + '</small></span><span class="cf-pas">' +
+            '<button type="button" data-pas="options.' + x.id + '" data-d="-1">−</button><input type="number" min="0" value="' + (n(E.s.options[x.id]) || 0) + '" data-path="options.' + x.id + '"><button type="button" data-pas="options.' + x.id + '" data-d="1">+</button></span></div>';
+          else h += '<label class="cf-coche"><input type="checkbox" data-opt="' + x.id + '"' + (E.s.options[x.id] ? " checked" : "") + '><span class="l">' + esc(x.lib) + '<small>' + esc(x.desc || "") + (x.parPiece === "chambre" ? " Pour chaque chambre." : "") + '</small></span></label>';
+        });
+        h += '</div>';
+      }
+    } else {
+      $("cf-s4").textContent = "Voici ce que comprend la prestation.";
+      h += '<div class="cf-piece"><h3>Compris</h3><ul style="margin:4px 0 0 18px">' + (PP.inclus || []).map(function (t) { return '<li>' + esc(t) + '</li>'; }).join("") + '</ul>' +
+        (PP.info ? '<div class="note">' + esc(PP.info) + '</div>' : '') + '</div>';
+    }
+    if ((PP.exclusions || []).length) h += '<div class="cf-excl"><b>Non compris par défaut</b><ul>' + PP.exclusions.map(function (e) { return '<li>' + esc(e) + '</li>'; }).join("") + '</ul></div>';
+    z.innerHTML = h;
+  }
+  function tache(t, verrou) {
+    var on = verrou || (E.s.tachesOff || []).indexOf(t.id) < 0;
+    return '<label class="cf-coche' + (on ? "" : " off") + '"><input type="checkbox" data-tache="' + t.id + '"' + (on ? " checked" : "") + (verrou ? " disabled" : "") + '><span class="l">' + esc(t.lib) + '</span></label>';
+  }
+
+  /* ---------- Étape 5 : fréquence, durée, priorités ---------- */
+  function rendreDuree() {
+    var o = offre(); if (!o) return;
+    var f = FREQUENCES[o.id], z = $("f-frequence");
+    if (f) {
+      if (!E.s.frequence || !f.some(function (x) { return x[0] === E.s.frequence; })) { E.s.frequence = f[0][0]; sauver(); }
+      z.innerHTML = choix("frequence", o.id === "regulier" ? "À quel rythme ?" : "À quelle fréquence ?", f);
+    } else z.innerHTML = '<p class="cf-sous">Intervention ponctuelle.</p>';
+    document.querySelectorAll("#f-mode .cf-carte").forEach(function (b) { b.classList.toggle("on", b.dataset.v === E.mode); });
+    $("f-manuel").style.display = E.mode === "manuel" ? "block" : "none";
+    $("f-heures").value = E.heures;
+    majComparaison();
+  }
+  function groupesPriorites() {
+    var s = saisie(), PP = P(), l = [];
+    if (!PP) return l;
+    if (s.type === "menage" || s.type === "grand") {
+      l.push("Sols de tout le logement", "Poussière");
+      PP.pieces.forEach(function (p) { if (n((s.pieces || {})[p.id]) && p.taches.some(function (t) { return !t.commun; })) l.push(p.lib); });
+    } else (PP.elements || []).forEach(function (e) { if ((s.elements || {})[e.id]) l.push(e.lib.replace(/\s*\(.*\)$/, "").replace(/, en m².*$/, "")); });
+    return l;
+  }
+  function majComparaison() {
+    var est = estimation(), zc = $("f-comparaison"), zp = $("f-priorites"), T = cfg().textes;
+    var o = offre(), h = "";
+    if (E.mode === "manuel" && n(E.heures)) {
+      var ch = n(E.heures) * 60, ec = ch - est.minutes;
+      h += '<div class="cf-comp"><div>Estimée par Limpid<b>' + (est.minutes ? duree(est.minutes) : "—") + '</b></div><div>Votre choix<b>' + duree(ch) + '</b></div><div>Écart<b>' +
+        (est.minutes ? (ec < 0 ? "−" : "+") + duree(Math.abs(ec)) : "—") + '</b></div></div>';
+      if (est.minutes && ch < est.minutes - 1) h += '<div class="cf-alerte ambre">' + esc(T.dureeInsuffisante) + '</div>';
+      else if (est.minutes && ch > est.minutes * 1.5) h += '<div class="cf-alerte bleu">Votre durée dépasse largement notre estimation : précisez ce que vous souhaitez faire de ce temps dans le champ « Précisions », à la dernière étape.</div>';
+    } else if (E.mode === "auto") {
+      h += '<div class="cf-duree"><b>' + (est.minutes ? duree(est.minutes) : "—") + '</b><span>' + (o && o.id !== "ponctuel" && o.id !== "grand" && o.id !== "textile" ? "par passage, " : "") + esc(T.estimation) + '</span></div>';
+    }
+    if (o && o.id === "regulier" && est.minutes) h += '<div class="cf-alerte bleu">Le premier passage, plus long, remet le logement à niveau : environ ' + duree(est.minutes * (1 + (cfg().premierPassage || 0) / 100)) + ' pour l\'ensemble du périmètre. Votre devis le précisera.</div>';
+    zc.innerHTML = h;
+    if (E.mode === "manuel") {
+      var g = groupesPriorites();
+      zp.innerHTML = g.length ? '<div class="cf-piece"><h3>Vos priorités</h3><div class="note" style="margin:0 0 4px">Cochez ce qui compte le plus : si le temps manque, Limpid commence par là. Les priorités seront confirmées avec vous.</div>' +
+        g.map(function (x) { return '<label class="cf-coche"><input type="checkbox" data-prio="' + esc(x) + '"' + (E.priorites.indexOf(x) >= 0 ? " checked" : "") + '><span class="l">' + esc(x) + '</span></label>'; }).join("") + '</div>' : "";
+    } else zp.innerHTML = "";
+  }
+  function majDureesEtapes() {
+    var est = estimation(), T = cfg().textes, o = offre();
+    var txt = est.minutes && o && !o.specifique ? '<b>' + duree(est.minutes) + '</b><span>estimées ' + (o.id === "regulier" || o.id === "bureaux" || (o.id === "vitres") ? "par passage" : "") + '. ' + esc(T.estimation) + '</span>' : "";
+    ["d3", "d4"].forEach(function (id) { var e = $(id); if (e) { e.innerHTML = txt; e.style.display = txt ? "flex" : "none"; } });
+  }
+
+  /* ---------- Étape 6 : récapitulatif ---------- */
+  function raisonsValidation() {
+    var r = [], o = offre(), s = saisie(), c = communeChoisie();
+    if (!c) r.push("distance à vérifier jusqu'à " + (E.commune || "la commune indiquée"));
+    else if (LimpidMoteur.zoneDe(c) !== "prioritaire") r.push("commune au-delà de la zone habituelle");
+    if (o && o.specifique) r.push("chantier à chiffrer sur échange ou visite");
+    if (s.travaux) r.push("ménage ou lavage après travaux");
+    if (s.hauteur) r.push("vitrages en hauteur, sécurité à vérifier");
+    if (s.niveau >= 5) r.push("remise en état lourde");
+    return r;
+  }
+  function libFrequence() {
+    var o = offre(); var f = FREQUENCES[o && o.id];
+    if (!f) return "Intervention ponctuelle";
+    var x = f.filter(function (y) { return y[0] === saisie().frequence; })[0];
+    return x ? x[1] : "";
+  }
+  function texteRecap() {
+    var o = offre(), s = saisie(), est = estimation(), L = [];
+    L.push("Prestation : " + (o ? o.lib : "") + " (" + (E.profil === "pro" ? "professionnel" : "particulier") + ")");
+    L.push("Commune : " + [E.cp, E.commune].filter(Boolean).join(" "));
+    if (o && o.specifique) { L.push("Description : " + (E.descTravaux || "")); if (n(E.s.surface)) L.push("Surface : " + n(E.s.surface) + " m²"); return L.join("\n"); }
+    L.push("Fréquence : " + libFrequence());
+    L.push("Durée estimée par Limpid : " + (est.minutes ? duree(est.minutes) : "non estimée"));
+    if (E.mode === "manuel" && n(E.heures)) L.push("Durée choisie par le client : " + duree(n(E.heures) * 60) + (est.minutes && n(E.heures) * 60 < est.minutes - 1 ? " (inférieure à l'estimation)" : ""));
+    if (E.priorites.length) L.push("Priorités : " + E.priorites.join(", "));
+    var p = LimpidMoteur.perimetre(s);
+    if (s.surface) L.push("Surface : " + s.surface + " m²" + (s.perimetre && s.perimetre !== "complet" ? ", dont " + (s.surfacePart || "?") + " m² à entretenir (" + ({ rdc: "rez-de-chaussée", etage: "étage", pieces: "certaines pièces" }[s.perimetre]) + ")" : ""));
+    var pc = Object.keys(s.pieces || {}).filter(function (k) { return n(s.pieces[k]); });
+    if (pc.length) L.push("Pièces : " + pc.map(function (k) { var pp = (P().pieces || []).filter(function (x) { return x.id === k; })[0]; return (pp ? pp.lib : k) + " × " + n(s.pieces[k]); }).join(", "));
+    if (p.options.length) L.push("Éléments et options : " + p.options.join(", "));
+    if (p.retires.length) L.push("Tâches retirées : " + p.retires.join(" ; "));
+    var etat = NIVEAUX.filter(function (x) { return x[0] === String(s.niveau); })[0];
+    if (etat) L.push("État : " + etat[1]);
+    var r = raisonsValidation(); if (r.length) L.push("À valider : " + r.join(" ; "));
+    return L.join("\n");
+  }
+  function rendreRecap() {
+    var o = offre(), s = saisie(), est = estimation(), T = cfg().textes, PP = P();
+    var c = communeChoisie(), h = "<dl>";
+    h += "<dt>Prestation</dt><dd>" + esc(o ? o.lib : "") + "</dd>";
+    h += "<dt>Commune</dt><dd>" + esc([E.cp, E.commune].filter(Boolean).join(" ")) + "</dd>";
+    if (o && !o.specifique) {
+      h += "<dt>Fréquence</dt><dd>" + esc(libFrequence()) + "</dd>";
+      h += "<dt>Durée</dt><dd>" + (E.mode === "manuel" && n(E.heures) ? duree(n(E.heures) * 60) + " (votre choix)" : (est.minutes ? duree(est.minutes) + " (estimée)" : "—")) + "</dd>";
+    }
+    h += "</dl>";
+    if (o && o.specifique) {
+      h += '<div class="cf-alerte bleu">' + esc(T.validationManuelle) + '</div>';
+      if (E.descTravaux) h += "<h3>Votre besoin</h3><p>" + esc(E.descTravaux) + "</p>";
+    } else if (PP) {
+      var p = LimpidMoteur.perimetre(s);
+      h += "<h3>Compris</h3><ul>" + p.inclus.map(function (x) { return "<li>" + (x.piece ? "<b>" + esc(x.piece) + "</b> : " : "") + esc(x.taches.join(", ")) + "</li>"; }).join("") + "</ul>";
+      if (p.options.length) h += "<h3>Éléments et options</h3><ul>" + p.options.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>";
+      if (p.retires.length) h += "<h3>Retiré à votre demande</h3><ul>" + p.retires.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>";
+      if (p.exclus.length) h += '<div class="cf-excl"><b>Non compris</b><ul>' + p.exclus.slice(0, 6).map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + (p.exclus.length > 6 ? "<li>et " + (p.exclus.length - 6) + " autres points, détaillés sur le devis</li>" : "") + "</ul></div>";
+      if (E.mode === "manuel" && n(E.heures) && est.minutes && n(E.heures) * 60 < est.minutes - 1)
+        h += '<div class="cf-alerte ambre">' + esc(T.dureeInsuffisante) + (E.priorites.length ? " Vos priorités : " + esc(E.priorites.join(", ")) + "." : "") + '</div>';
+      var r = raisonsValidation();
+      if (r.length) h += '<div class="cf-alerte bleu">' + esc(T.validationManuelle) + ' <small>(' + esc(r.join(" ; ")) + ')</small></div>';
+      if (E.profil === "particulier" && PP.creditImpot) h += '<div class="cf-alerte vert">' + esc(T.creditImpot) + '</div>';
+    }
+    h += '<div class="cf-alerte bleu"><b>Et le prix ?</b> ' + esc(T.prixParEmail) + '</div>';
+    h += '<p class="cf-mention">' + esc(T.estimation) + '</p>';
+    $("f-recap").innerHTML = h;
+  }
+
+  /* ---------- Navigation ---------- */
+  function etapesActives() {
+    var o = offre();
+    if (o && o.specifique) return [1, 2, 3, 6, 7];
+    return [1, 2, 3, 4, 5, 6, 7];
+  }
+  function valider(et) {
+    var err = "";
+    if (et === 1) {
+      if (!/^\d{5}$/.test(E.cp)) err = "Indiquez votre code postal, en cinq chiffres.";
+      else if (!E.commune) err = "Indiquez votre commune.";
+    } else if (et === 2) {
+      if (!E.offre) err = "Choisissez une prestation.";
+    } else if (et === 3) {
+      var o = offre();
+      if (o && o.specifique) { if (String(E.descTravaux || "").trim().length < 5) err = "Décrivez votre besoin en quelques mots."; }
+      else if (!estimation().minutes) err = (o && (o.type === "menage" || o.type === "grand")) ? "Indiquez la surface et au moins une pièce." : "Indiquez au moins un élément à nettoyer.";
+      else if (E.s.perimetre && E.s.perimetre !== "complet" && o.type === "menage" && !n(E.s.surfacePart)) err = "Indiquez la surface de la partie à entretenir.";
+    } else if (et === 5) {
+      if (E.mode === "manuel" && !(n(E.heures) >= 1)) err = "Indiquez la durée souhaitée, en heures (1 h minimum).";
+    }
+    var z = $("err-" + et); if (z) z.textContent = err;
+    return !err;
+  }
+  function aller(et) {
+    E.etape = et; sauver();
+    document.querySelectorAll(".cf-etape").forEach(function (s) { s.classList.toggle("on", String(s.dataset.etape) === String(et)); });
+    var act = etapesActives(), i = act.indexOf(et);
+    var rang = et === 8 ? act.length : i + 1;
+    $("cf-barre").style.width = Math.round(rang / act.length * 100) + "%";
+    $("cf-prog-txt").textContent = et === 8 ? "Demande envoyée" : "Étape " + rang + " sur " + act.length;
+    $("b-retour").style.display = (i > 0 && et !== 8) ? "" : "none";
+    $("b-suite").style.display = (et === 7 || et === 8) ? "none" : "";
+    $("b-suite").textContent = et === 6 ? "C'est bien ça, continuer" : "Continuer";
+    $("cf-nav").style.display = et === 8 ? "none" : "flex";
+    rendreEtape(et);
+    if (et === 6) ev("configurateur_recapitulatif", { prestation: E.offre });
+    var main = $("cf"); if (main && main.scrollIntoView && window.scrollY > main.offsetTop) main.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  function rendreEtape(et) {
+    if (et === 1) rendreLocalisation();
+    if (et === 2) rendrePrestations();
+    if (et === 3) { rendreDescription(); majDureesEtapes(); }
+    if (et === 4) { rendreTaches(); majDureesEtapes(); }
+    if (et === 5) rendreDuree();
+    if (et === 6) rendreRecap();
+    if (et === 7) {
+      $("l-entreprise").style.display = E.profil === "pro" ? "block" : "none";
+      $("cf-s7").textContent = cfg().textes.prixParEmail;
+    }
+    if (et === 8) $("cf-confirmation").textContent = cfg().textes.confirmation;
+  }
+  function suivant() {
+    var act = etapesActives(), i = act.indexOf(E.etape);
+    if (!valider(E.etape)) return;
+    if (i < act.length - 1) { ev("configurateur_etape", { etape: E.etape, prestation: E.offre || "" }); aller(act[i + 1]); }
+  }
+  function precedent() { var act = etapesActives(), i = act.indexOf(E.etape); if (i > 0) aller(act[i - 1]); }
+
+  /* ---------- Saisie : un seul gestionnaire pour tous les champs ---------- */
+  function majChamp(el) {
+    debuter();
+    if (el.dataset.path) {
+      var v;
+      if (el.type === "checkbox") v = el.checked;
+      else if (el.type === "number") v = Math.max(0, parseFloat(String(el.value).replace(",", ".")) || 0);
+      else v = el.value;
+      poserPath(E.s, el.dataset.path, v);
+      if (el.dataset.path === "perimetre") { sauver(); rendreDescription(); majDureesEtapes(); return; }
+    } else if (el.dataset.tache) {
+      var l = E.s.tachesOff, id = el.dataset.tache, i = l.indexOf(id);
+      if (el.checked && i >= 0) l.splice(i, 1); if (!el.checked && i < 0) l.push(id);
+      el.closest(".cf-coche").classList.toggle("off", !el.checked);
+    } else if (el.dataset.opt) {
+      if (el.checked) E.s.options[el.dataset.opt] = true; else delete E.s.options[el.dataset.opt];
+    } else if (el.dataset.prio) {
+      var p = E.priorites, k = p.indexOf(el.dataset.prio);
+      if (el.checked && k < 0) p.push(el.dataset.prio); if (!el.checked && k >= 0) p.splice(k, 1);
+    } else if (el.dataset.txt) {
+      E[el.dataset.txt] = el.value;
+    }
+    sauver();
+    majDureesEtapes();
+    if (E.etape === 5) majComparaison();
+  }
+  function brancher() {
+    var root = $("cf");
+    root.addEventListener("input", function (e) {
+      var t = e.target;
+      if (t.id === "f-cp") { E.cp = t.value.replace(/\D/g, "").slice(0, 5); t.value = E.cp; E.commune = ""; debuter(); sauver(); rendreLocalisation(); return; }
+      if (t.id === "f-commune-txt") { E.commune = t.value.trim(); sauver(); rendreLocalisation(); $("f-commune-txt").focus(); return; }
+      if (t.id === "f-heures") { E.heures = t.value; sauver(); majComparaison(); return; }
+      if (t.closest("#f-form")) return;
+      if (t.dataset.path || t.dataset.txt) majChamp(t);
+    });
+    root.addEventListener("change", function (e) {
+      var t = e.target;
+      if (t.id === "f-commune-sel") { E.commune = t.value === "__autre" ? "" : t.value; sauver(); rendreLocalisation(); if (t.value === "__autre") $("f-commune-txt").focus(); return; }
+      if (t.closest("#f-form")) return;
+      if (t.tagName === "SELECT" || t.type === "checkbox") majChamp(t);
+    });
+    root.addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return;
+      if (b.dataset.pas) {
+        var inp = b.parentNode.querySelector("input"), d = parseFloat(b.dataset.d);
+        inp.value = Math.max(0, (parseFloat(inp.value) || 0) + d); majChamp(inp); return;
+      }
+      if (b.closest("#f-profil")) { E.profil = b.dataset.v; debuter(); sauver(); rendrePrestations(); return; }
+      if (b.closest("#f-prestations")) {
+        if (E.offre !== b.dataset.v) { E.offre = b.dataset.v; E.s.frequence = ""; }
+        debuter(); sauver(); rendrePrestations(); $("err-2").textContent = ""; return;
+      }
+      if (b.closest("#f-mode")) {
+        E.mode = b.dataset.v;
+        if (E.mode === "manuel" && !n(E.heures)) { var est = estimation().minutes; if (est) E.heures = String(Math.ceil(est / 30) / 2); }
+        sauver(); rendreDuree(); return;
+      }
+    });
+    $("b-suite").addEventListener("click", suivant);
+    $("b-retour").addEventListener("click", precedent);
+    $("f-form").addEventListener("submit", envoyer);
+    ["f-nom", "f-entreprise", "f-email", "f-tel", "f-precisions"].forEach(function (id) {
+      var e = $(id); if (!e) return;
+      e.addEventListener("input", function () { E.contact = E.contact || {}; E.contact[id] = e.value; sauver(); });
+      if (E.contact && E.contact[id]) e.value = E.contact[id];
+    });
+    window.addEventListener("pagehide", function () {
+      if (E.debut && !E.envoye && !window.__abandonSignale) { window.__abandonSignale = true; ev("configurateur_abandon", { etape: E.etape, prestation: E.offre || "" }); }
+    });
+  }
+
+  /* ---------- Envoi : la confirmation ne s'affiche qu'après un envoi réussi ---------- */
+  var enCours = false;
+  function envoyer(e) {
+    e.preventDefault();
+    if (enCours) return;
+    var nom = $("f-nom").value.trim(), mail = $("f-email").value.trim(), err = "";
+    if (!nom) err = "Indiquez votre nom.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail)) err = "Indiquez une adresse e-mail valide : votre devis y sera envoyé.";
+    else if (E.profil === "pro" && !$("f-entreprise").value.trim()) err = "Indiquez le nom de votre entreprise.";
+    $("err-7").textContent = err; if (err) return;
+    var o = offre(), est = estimation(), c = communeChoisie(), s = saisie();
+    var demande = {
+      v: 1, date: new Date().toISOString(),
+      client: { profil: E.profil, nom: nom, entreprise: $("f-entreprise").value.trim(), email: mail, tel: $("f-tel").value.trim(), cp: E.cp, commune: E.commune, message: $("f-precisions").value.trim() },
+      offre: E.offre, saisie: o && o.type ? s : { type: "" },
+      duree: { mode: E.mode, heures: E.mode === "manuel" ? n(E.heures) : 0, priorites: E.priorites.join(", "), perimetre: "", exclues: "" },
+      estimation: { minutes: Math.round(est.minutes || 0) },
+      description: E.descTravaux || "", configVersion: cfg().version
+    };
+    if (E.mode === "manuel") demande.duree.exclues = (LimpidMoteur.perimetre(s).retires || []).join(" ; ");
+    var fd = new FormData($("f-form"));
+    fd.append("access_key", CLE_WEB3);
+    fd.append("subject", "[CONFIGURATEUR] " + (o ? o.lib : "Demande") + " · " + (E.commune || E.cp));
+    fd.append("from_name", "Configurateur limpid-nettoyage.fr");
+    fd.append("replyto", mail);
+    fd.append("profil", E.profil === "pro" ? "Professionnel" : "Particulier");
+    fd.append("prestation", o ? o.lib : "");
+    fd.append("code_postal", E.cp);
+    fd.append("commune", E.commune);
+    fd.append("zone", c ? (LimpidMoteur.zoneDe(c) === "prioritaire" ? "zone prioritaire" : "au-delà de la zone prioritaire") + " · " + c.kmAR + " km A/R estimés" : "commune hors table, distance à vérifier");
+    fd.append("recapitulatif", texteRecap());
+    fd.append("validation_manuelle", raisonsValidation().join(" ; ") || "non");
+    fd.append("code_import", LimpidMoteur.coder(demande));
+    enCours = true;
+    var bouton = $("f-envoyer"); bouton.disabled = true; bouton.textContent = "Envoi en cours…";
+    $("f-etat-envoi").innerHTML = "";
+    ev("configurateur_envoi", { prestation: E.offre });
+    fetch("https://api.web3forms.com/submit", { method: "POST", body: fd, headers: { Accept: "application/json" } })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }, function () { return { ok: false, j: null }; }); })
+      .then(function (x) {
+        if (x.ok && x.j && x.j.success) {
+          E.envoye = true;
+          ev("configurateur_demande", { prestation: E.offre, profil: E.profil, mode: E.mode });
+          try { sessionStorage.removeItem(CLE_ETAT); } catch (e2) {}
+          aller(8);
+        } else echec((x.j && x.j.message) || "réponse refusée");
+      })
+      .catch(function (e3) { echec(String(e3 && e3.message || e3)); })
+      .then(function () { enCours = false; bouton.disabled = false; bouton.textContent = "Recevoir mon devis"; });
+  }
+  function echec(raison) {
+    ev("configurateur_erreur", { prestation: E.offre, raison: String(raison).slice(0, 80) });
+    $("f-etat-envoi").innerHTML = '<div class="cf-alerte rouge" role="alert">' + esc(cfg().textes.erreurEnvoi).replace("06 26 55 65 69", '<a href="tel:+33626556569">06 26 55 65 69</a>') + '</div>';
+  }
+
+  /* ---------- Démarrage ---------- */
+  function demarrer() {
+    $("cf-intro").textContent = cfg().textes.intro;
+    brancher();
+    var act = etapesActives();
+    aller(act.indexOf(E.etape) >= 0 ? E.etape : 1);
+    /* Réglages publiés depuis l'outil gérant : ils remplacent ceux d'origine. */
+    try {
+      fetch("/assets/configurateur.json", { cache: "no-cache" })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (o) { if (o && o.prestations) { LimpidMoteur.charger(o); $("cf-intro").textContent = cfg().textes.intro; rendreEtape(E.etape); } })
+        .catch(function () {});
+    } catch (e) {}
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", demarrer); else demarrer();
+})();
+
+</script>
+</body>
+</html>
