@@ -175,7 +175,7 @@ footer.lp a{color:#fff}
 .cf-recap li{margin-bottom:3px}
 .cf-nav{position:fixed;left:0;right:0;bottom:0;z-index:70;background:#fff;border-top:1px solid #E3EEF5;box-shadow:0 -4px 18px rgba(11,37,69,.08);padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
 .cf-nav-in{display:flex;gap:10px;max-width:760px;margin:0 auto}
-.cf-nav .btn{flex:1;text-align:center;padding:14px 16px}
+.cf-nav .btn{flex:1;display:flex;align-items:center;justify-content:center;text-align:center;height:56px;padding:0 14px;line-height:1.15;font-size:.98rem}
 .cf-nav .btn.sec{background:#fff;color:var(--bleu);border:2px solid #CFE0F7;flex:0 0 auto;min-width:104px}
 /* Configurateur /devis/ : la barre de navigation fixe remplace la barre d'appel mobile, et laisse la place au contenu */
 body[data-tunnel="configurateur"] .appel-mobile{display:none}
@@ -259,7 +259,8 @@ body[data-tunnel="configurateur"] footer{padding-bottom:90px}
 .pc-rappel-lien button{background:none;border:none;color:var(--bleu);font:inherit;font-weight:700;text-decoration:underline;cursor:pointer}
 .pc-nav-fixe{position:fixed;left:0;right:0;bottom:0;z-index:70;background:#fff;border-top:1px solid #E3EEF5;box-shadow:0 -4px 18px rgba(11,37,69,.08);padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
 .pc-nav-in{display:flex;gap:10px;max-width:640px;margin:0 auto}
-.pc-nav-in .btn{flex:1;text-align:center;padding:14px 16px}
+/* Hauteur fixe : un libellé long (« Envoyer ma demande de devis ») ne déplace pas les boutons */
+.pc-nav-in .btn{flex:1;display:flex;align-items:center;justify-content:center;text-align:center;height:56px;padding:0 14px;line-height:1.15;font-size:.98rem}
 .pc-nav-in .btn.sec{flex:0 0 auto;min-width:104px}
 body.pc-en-cours main{padding-bottom:96px}
 body.pc-en-cours footer.lp{padding-bottom:96px}
@@ -776,6 +777,100 @@ var LimpidMoteur = (function () {
 /* @@MOTEUR-FIN@@ */
 </script>
 <script>
+/* ================= Parcours : briques communes (écrans et composants partagés) =================
+   Utilisées par les parcours Ménage et Locaux professionnels. */
+window.LPC = (function () {
+  "use strict";
+  function esc(t) { return String(t == null ? "" : t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function n(x) { x = parseFloat(String(x == null ? "" : x).replace(",", ".")); return isFinite(x) && x > 0 ? x : 0; }
+  function a(R, k) { return (R[k] || []); }
+  function has(R, k, v) { return a(R, k).indexOf(v) >= 0; }
+  function lib(l, v) { for (var i = 0; i < l.length; i++) if (l[i][0] === v) return l[i][1]; return ""; }
+  function libs(l, vs) { return (vs || []).map(function (v) { return lib(l, v); }).filter(Boolean); }
+  function titre(t) { return '<p class="cf-sous" style="margin:12px 0 6px">' + esc(t) + '</p>'; }
+  function opts(k, liste, R) {
+    return '<div class="pc-choix">' + liste.map(function (o) {
+      return '<button type="button" class="pc-opt' + (R[k] === o[0] ? " on" : "") + '" data-choix="' + k + "|" + o[0] + '" aria-pressed="' + (R[k] === o[0]) + '">' + esc(o[1]) + '</button>'; }).join("") + '</div>';
+  }
+  function multi(k, liste, R) {
+    return '<div class="pc-choix">' + liste.map(function (o) {
+      var on = has(R, k, o[0]);
+      return '<button type="button" class="pc-opt pc-coche' + (on ? " on" : "") + '" data-multi="' + k + "|" + o[0] + '" aria-pressed="' + on + '">' + esc(o[1]) + '</button>'; }).join("") + '</div>';
+  }
+  function cartes(k, liste, R) {
+    return '<div class="cf-choix">' + liste.map(function (t) {
+      var on = R[k] === t[0];
+      return '<button type="button" class="cf-carte' + (on ? " on" : "") + '" data-choix="' + k + "|" + t[0] + '" aria-pressed="' + on + '"><span class="ic">' + t[1] + '</span><span><b>' + esc(t[2]) + '</b>' + (t[3] ? '<span class="d">' + esc(t[3]) + '</span>' : '') + '</span></button>'; }).join("") + '</div>';
+  }
+  function cpt(k, libelle, aide, R) {
+    return '<div class="cf-cpt"><span class="cf-lib">' + esc(libelle) + '</span><span class="cf-pas">' +
+      '<button type="button" aria-label="moins" data-pas="' + k + '" data-d="-1">−</button>' +
+      '<input type="number" min="0" inputmode="numeric" data-k="' + k + '" value="' + (n(R[k]) || 0) + '" aria-label="' + esc(libelle) + '">' +
+      '<button type="button" aria-label="plus" data-pas="' + k + '" data-d="1">+</button></span>' + (aide ? '<small class="cf-aide">' + esc(aide) + '</small>' : '') + '</div>';
+  }
+  function txt(k, libelle, aide, R, ph, zone) {
+    return '<label class="cf-champ">' + esc(libelle) + (aide ? '<small>' + esc(aide) + '</small>' : '') +
+      (zone ? '<textarea data-k="' + k + '" rows="3" placeholder="' + esc(ph || "") + '">' + esc(R[k] || "") + '</textarea>'
+            : '<input type="text" data-k="' + k + '" value="' + esc(R[k] || "") + '" placeholder="' + esc(ph || "") + '">') + '</label>';
+  }
+  function nombre(k, libelle, aide, R, ph) {
+    return '<label class="cf-champ">' + esc(libelle) + (aide ? '<small>' + esc(aide) + '</small>' : '') + '<input type="number" min="1" inputmode="numeric" data-k="' + k + '" value="' + (R[k] || "") + '" placeholder="' + esc(ph || "") + '"></label>';
+  }
+  function coche(k, libelle, aide, R) {
+    return '<label class="cf-coche"><input type="checkbox" data-k="' + k + '"' + (R[k] ? " checked" : "") + '><span class="l">' + esc(libelle) + (aide ? '<small>' + esc(aide) + '</small>' : '') + '</span></label>';
+  }
+
+  /* ---------- Démarrage souhaité ---------- */
+  var QUAND = [["asap", "Dès que possible"], ["mois", "Dans le mois"], ["date", "À une date précise"], ["flexible", "Je ne suis pas pressé"]];
+  function blocQuand(R, intitule) {
+    var h = titre(intitule || "Démarrage souhaité") + opts("quand", QUAND, R);
+    if (R.quand === "date") h += '<label class="cf-champ">Date souhaitée<input type="date" data-k="dateSouhaitee" min="' + new Date().toISOString().slice(0, 10) + '" value="' + esc(R.dateSouhaitee || "") + '"></label>';
+    return h;
+  }
+  function validerQuand(R) {
+    if (!R.quand) return "Indiquez quand vous souhaitez démarrer.";
+    if (R.quand === "date" && !R.dateSouhaitee) return "Indiquez la date souhaitée.";
+    return "";
+  }
+  function quandTxt(R) { return R.quand === "date" ? "Le " + (R.dateSouhaitee ? new Date(R.dateSouhaitee + "T12:00:00").toLocaleDateString("fr-FR") : "?") : lib(QUAND, R.quand); }
+
+  /* ---------- Adresse (suggestion gérée par le moteur, sur l'identifiant pc-adresse) ---------- */
+  function blocAdresse(R) {
+    return '<div class="cf-ac"><label class="cf-champ" for="pc-adresse">Adresse <small>Commencez à la taper puis choisissez-la dans la liste : le code postal et la commune se remplissent seuls.</small></label>' +
+      '<input type="text" id="pc-adresse" class="cf-ac-champ" data-k="adresse" autocomplete="off" placeholder="Ex. : 5 rue des Sapins, Darnieulles" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="pc-adresse-sug" value="' + esc(R.adresse || "") + '">' +
+      '<ul class="cf-sug" id="pc-adresse-sug" role="listbox" hidden></ul></div>' +
+      '<div class="cf-duo"><label class="cf-champ">Code postal<input type="text" data-k="cp" inputmode="numeric" maxlength="5" autocomplete="postal-code" value="' + esc(R.cp || "") + '"></label>' +
+      '<label class="cf-champ">Commune<input type="text" data-k="commune" autocomplete="address-level2" value="' + esc(R.commune || "") + '"></label></div>';
+  }
+  function validerAdresse(R) {
+    if (String(R.adresse || "").trim().length < 4) return "Indiquez l'adresse : numéro et rue.";
+    if (!/^\d{5}$/.test(String(R.cp || ""))) return "Indiquez le code postal, en cinq chiffres.";
+    if (String(R.commune || "").trim().length < 2) return "Indiquez la commune.";
+    return "";
+  }
+  /* ---------- Coordonnées ---------- */
+  function champContact(k, libelle, type, auto, R) {
+    return '<label class="cf-champ">' + esc(libelle) + '<input type="' + type + '" data-k="' + k + '" autocomplete="' + auto + '"' + (type === "tel" ? ' inputmode="tel"' : type === "email" ? ' inputmode="email"' : '') + ' value="' + esc(R[k] || "") + '"></label>';
+  }
+  function validerContact(R, pro) {
+    if (pro && String(R.entreprise || "").trim().length < 2) return "Indiquez le nom de l'entreprise.";
+    if (String(R.nom || "").trim().length < 2) return pro ? "Indiquez le nom de l'interlocuteur." : "Indiquez votre nom.";
+    if (String(R.tel || "").replace(/\D/g, "").length < 10) return "Indiquez un numéro de téléphone complet.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(R.email || "").trim())) return "Indiquez une adresse e-mail valide : le devis y sera envoyé.";
+    return "";
+  }
+  function fiche(recap, ac, extra) {
+    var L = ["Statut : " + (ac.length ? "À COMPLÉTER AVANT DEVIS" : "complète"), ""];
+    recap.forEach(function (s) { L.push("■ " + s.titre.toUpperCase()); s.lignes.forEach(function (x) { if (x) L.push(x); }); L.push(""); });
+    if (ac.length) { L.push("■ À COMPLÉTER AVANT DEVIS"); ac.forEach(function (x) { L.push("- " + x.interne); }); }
+    if (extra) L.push("", extra);
+    return L.join("\n");
+  }
+  return { esc: esc, n: n, a: a, has: has, lib: lib, libs: libs, titre: titre, opts: opts, multi: multi, cartes: cartes, cpt: cpt, txt: txt, nombre: nombre, coche: coche,
+    blocQuand: blocQuand, validerQuand: validerQuand, quandTxt: quandTxt, blocAdresse: blocAdresse, validerAdresse: validerAdresse,
+    champContact: champContact, validerContact: validerContact, fiche: fiche };
+})();
+
 /* ================= Parcours Vitres (B2C) =================
    Déclaration des écrans, du récapitulatif et de la fiche transmise.
    Le visiteur compte ses fenêtres (plus simple qu'un relevé de faces) ;
@@ -1245,7 +1340,7 @@ window.LIMPID_PARCOURS = (function () {
     var ac2 = CFG.aCompleter(R, zoneTexte()).map(function (x) { return x.client; }).filter(Boolean);
     if (ac2.length) h += '<div class="cf-alerte bleu">Certains points seront précisés avec vous avant l\'établissement du devis : ' + esc(ac2.join(", ")) + '.</div>';
     h += '<div class="cf-erreurs" id="pc-err" role="alert"></div><div id="pc-etat-envoi"></div>';
-    h += '<p class="pc-rassure">Votre demande sera étudiée par Limpid. Nous vous contacterons si une précision ou une visite est nécessaire avant de vous transmettre un devis personnalisé.</p>';
+    h += '<p class="pc-rassure">' + esc(CFG.texteRassure || "Votre demande sera étudiée par Limpid. Nous vous contacterons si une précision ou une visite est nécessaire avant de vous transmettre un devis personnalisé.") + '</p>';
     h += '<p class="cf-rgpd">Vos informations servent uniquement à établir et suivre votre devis. Elles ne sont ni revendues ni transmises à des outils de mesure d\'audience. <a href="/politique-confidentialite/">Politique de confidentialité</a></p>';
     return h;
   }
@@ -1275,7 +1370,7 @@ window.LIMPID_PARCOURS = (function () {
     var f = E.fin || {}, h = '<div class="cf-fin"><div class="ok">✅</div><h2 tabindex="-1" id="pc-titre">' + (f.type === "rappel" ? "Demande de rappel enregistrée" : "Demande enregistrée") + '</h2>';
     h += '<p class="pc-ref">Référence <b>' + esc(f.id || "") + '</b></p>';
     h += f.type === "rappel" ? '<p>Limpid vous rappelle au numéro indiqué pour faire le point sur votre besoin.</p>'
-      : '<p>Votre demande sera étudiée par Limpid. Nous vous contacterons si une précision ou une visite est nécessaire avant de vous transmettre un devis personnalisé.</p>';
+      : '<p>' + esc(CFG.texteRassure || "Votre demande sera étudiée par Limpid. Nous vous contacterons si une précision ou une visite est nécessaire avant de vous transmettre un devis personnalisé.") + '</p>';
     if (f.deja) h += '<div class="cf-alerte bleu">Cette demande avait déjà été envoyée : elle n\'a pas été transmise une seconde fois.</div>';
     if (f.photos) {
       var ref = "Photos pour ma demande " + (f.id || "") + (f.nom ? ", " + f.nom : "");
@@ -1303,15 +1398,19 @@ window.LIMPID_PARCOURS = (function () {
         ["creneau", { matin: "Le matin", midi: "Entre midi et deux", aprem: "L'après-midi", soir: "En fin de journée", indiff: "Peu importe" }[demande.rappel.creneau]], ["message", demande.client.message]);
     } else {
       var ac2 = CFG.aCompleter(R, zoneTexte());
-      demande.client = { profil: "particulier", nom: String(R.nom || "").trim(), tel: String(R.tel || "").trim(), email: String(R.email || "").trim(),
+      demande.client = { profil: CFG.profil || "particulier", nom: String(R.nom || "").trim(), entreprise: String(R.entreprise || "").trim(), tel: String(R.tel || "").trim(), email: String(R.email || "").trim(),
         adresse: String(R.adresse || "").trim(), cp: R.cp || "", commune: R.commune || "", geo: R.geo || null, message: String(R.message || "").trim(), photos: R.photos === "oui" };
+      /* Résumé lisible, affiché tel quel par l'outil gérant à l'import */
+      demande.resume = CFG.recap(R).map(function (x) { return x.titre + " : " + x.lignes.filter(Boolean).join(" · "); });
       demande.qualification = CFG.qualification(R);
       demande.aCompleter = ac2.map(function (x) { return x.interne; });
       var s = CFG.saisie(R), est = LimpidMoteur.estimer(s);
       demande.demandes = [{ offre: CFG.offre, lib: CFG.libOffre, saisie: s, duree: { mode: "auto", heures: 0, priorites: "", perimetre: "", exclues: "" }, estimation: { minutes: Math.round(est.minutes || 0) } }];
       demande.offre = CFG.offre; demande.saisie = s; demande.duree = demande.demandes[0].duree; demande.estimation = demande.demandes[0].estimation;
       sujet = "[CONFIGURATEUR " + CFG.libCourt.toUpperCase() + "] " + (ac2.length ? "À compléter avant devis · " : "") + (R.commune || R.cp || "") + " · " + E.id;
-      champs.push(["type_demande", "Demande de devis"], ["statut", ac2.length ? "À compléter avant devis" : "Complète"], ["nom", demande.client.nom], ["telephone", demande.client.tel],
+      champs.push(["type_demande", "Demande de devis"], ["statut", ac2.length ? "À compléter avant devis" : "Complète"], ["nom", demande.client.nom]);
+      if (demande.client.entreprise) champs.push(["entreprise", demande.client.entreprise]);
+      champs.push(["telephone", demande.client.tel],
         ["email", demande.client.email], ["adresse", [demande.client.adresse, demande.client.cp, demande.client.commune].filter(Boolean).join(" ")], ["zone", zoneTexte()],
         ["photos", R.photos === "oui" ? "oui, à venir par WhatsApp ou e-mail avec la référence" : "non"], ["fiche", CFG.fiche(R, ac2)], ["message", demande.client.message]);
     }
