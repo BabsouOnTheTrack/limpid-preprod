@@ -279,6 +279,16 @@ footer h3{color:#fff;font-size:1rem;margin-bottom:10px}
 .btn.sec{background:#fff;color:var(--bleu);border:2px solid #CFE0F7}
 .cf-zone{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--gris);font-size:.93rem}
 .cf-zone h2{font-size:1.15rem;color:var(--encre);margin-bottom:6px}
+.cf-ac{position:relative;margin:0 0 14px}
+.cf-ac .cf-champ{margin-bottom:0}
+.cf-ac-champ{display:block;width:100%;margin-top:6px;padding:13px 14px;border:1px solid #C9DCE8;border-radius:11px;font:inherit;font-size:16px;color:var(--encre);background:#fff}
+.cf-ac-champ:focus{outline:2px solid var(--cyan);border-color:var(--bleu)}
+.cf-sug{position:absolute;left:0;right:0;top:100%;z-index:30;margin:4px 0 0;padding:4px;list-style:none;background:#fff;border:1px solid #C9DCE8;border-radius:12px;box-shadow:0 8px 24px rgba(11,37,69,.14)}
+.cf-sug li{padding:10px 12px;border-radius:8px;cursor:pointer;font-size:.95rem;line-height:1.35}
+.cf-sug li small{display:block;color:var(--gris);font-size:.8rem}
+.cf-sug li.on,.cf-sug li:hover{background:#F3F8FF}
+.cf-sug li.cf-sug-info{cursor:default;color:var(--gris);font-size:.82rem}
+.cf-sug li.cf-sug-info:hover{background:none}
 .cf-chip{display:inline-block;background:var(--glace);color:var(--encre);border-radius:99px;padding:3px 10px;font-size:.8rem;font-weight:700;margin:0 4px 4px 0}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Limpid","image":"https://limpid-nettoyage.fr/assets/logo-limpid.webp","url":"https://limpid-nettoyage.fr/","telephone":"+33626556569","email":"bonjour@limpid-nettoyage.fr","address":{"@type":"PostalAddress","streetAddress":"5 rue des Sapins","postalCode":"88390","addressLocality":"Darnieulles","addressRegion":"Vosges","addressCountry":"FR"},"geo":{"@type":"GeoCoordinates","latitude":48.1991887,"longitude":6.3539957},"areaServed":["Darnieulles","Épinal","Golbey","Thaon-les-Vosges","Chantraine","Uxegney","Chavelot"],"priceRange":"€€","openingHours":"Mo-Fr 08:30-20:00 Sa 10:00-20:00","aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"12"}}</script>
@@ -312,8 +322,11 @@ footer h3{color:#fff;font-size:1rem;margin-bottom:10px}
  <section class="cf-etape on" data-etape="1" aria-labelledby="cf-t1">
   <h2 id="cf-t1">Où intervient-on ?</h2>
   <p class="cf-sous">Le déplacement est compris dans le prix, sans supplément.</p>
-  <label class="cf-champ">Adresse <small>Numéro et rue, elle figurera sur votre devis.</small>
-   <input type="text" id="f-adresse" autocomplete="address-line1" placeholder="Numéro et nom de la rue"></label>
+  <div class="cf-ac">
+   <label class="cf-champ" for="f-adresse">Adresse <small>Commencez à la taper puis choisissez-la dans la liste : le code postal et la commune se remplissent seuls.</small></label>
+   <input type="text" id="f-adresse" class="cf-ac-champ" autocomplete="off" placeholder="Ex. : 5 rue des Sapins, Darnieulles" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="f-adresse-sug">
+   <ul class="cf-sug" id="f-adresse-sug" role="listbox" hidden></ul>
+  </div>
   <div class="cf-duo">
    <label class="cf-champ">Code postal
     <input type="text" id="f-cp" inputmode="numeric" maxlength="5" autocomplete="postal-code" placeholder="88000"></label>
@@ -391,7 +404,7 @@ footer h3{color:#fff;font-size:1rem;margin-bottom:10px}
     <input type="email" name="email" id="f-email" autocomplete="email" inputmode="email" required></label>
    <label class="cf-champ">Téléphone <small>Facultatif, utile si un point reste à préciser.</small>
     <input type="tel" name="telephone" id="f-tel" autocomplete="tel" inputmode="tel"></label>
-   <div class="cf-champ">Joindre des photos ? <small>Facultatif, utile pour un canapé, un tapis, des vitres ou une véranda : votre prix n'en sera que plus précis.</small>
+   <div class="cf-champ">Joindre des photos ? <small>Facultatif, utile pour un canapé, un tapis, des vitres ou une véranda : votre prix n'en sera que plus précis. Si vous répondez oui, juste après l'envoi de votre demande, deux boutons vous permettront de nous les envoyer par WhatsApp ou par e-mail, sans rien avoir à saisir.</small>
     <div class="cf-seg" id="f-photos" style="margin:8px 0 0"><button type="button" data-v="oui">Oui, après ma demande</button><button type="button" data-v="non">Non</button></div></div>
    <label class="cf-champ">Précisions <small>Facultatif : accès, contraintes d'horaires, ce qui compte le plus pour vous.</small>
     <textarea name="precisions" id="f-precisions" rows="3"></textarea></label>
@@ -912,6 +925,10 @@ var LimpidMoteur = (function () {
   "use strict";
   var CLE_WEB3 = "95f59fbe-88c4-476f-8a2b-e737beed43c8";
   var CLE_ETAT = "limpid_cf_v2";
+  /* Suggestion d'adresses : service public de géocodage de l'IGN (Base Adresse Nationale), sans clé.
+     Si le service ne répond pas, le visiteur saisit simplement son adresse à la main. */
+  var GEO_URL = "https://data.geopf.fr/geocodage/search";
+  var BASE_GEO = { lat: 48.1992, lon: 6.354 };
   var TEL = "06 26 55 65 69", TEL_LIEN = "+33626556569", MAIL = "bonjour@limpid-nettoyage.fr";
 
   /* groupe : deux offres d'un même groupe ne se combinent pas */
@@ -940,7 +957,7 @@ var LimpidMoteur = (function () {
   }
   function etatVide() {
     return { etape: 1, cp: "", commune: "", adresse: "", profil: "particulier", offres: [], ss: {}, mode: "auto", heures: {}, priorites: {},
-      photos: "", contact: {}, debut: false, envoye: false };
+      photos: "", contact: {}, geo: null, debut: false, envoye: false };
   }
   var E = etatVide();
   try { var lu = JSON.parse(sessionStorage.getItem(CLE_ETAT) || "null"); if (lu && lu.ss) E = Object.assign(etatVide(), lu); } catch (e) {}
@@ -1009,6 +1026,72 @@ var LimpidMoteur = (function () {
     if (!E.commune || !/^\d{5}$/.test(E.cp)) { z.innerHTML = ""; return; }
     if (c && LimpidMoteur.zoneDe(c) === "prioritaire") z.innerHTML = '<div class="cf-alerte vert"><b>' + esc(c.nom) + "</b> est dans notre zone d'intervention.</div>";
     else z.innerHTML = '<div class="cf-alerte bleu">Votre demande est bien possible à <b>' + esc(E.commune) + "</b> : Limpid confirme l'intervention avec votre devis.</div>";
+  }
+
+  /* Distance routière approchée depuis Darnieulles, même règle que la table des communes : vol d'oiseau × 1,3, aller-retour. */
+  function kmDepuisBase(g) {
+    var R = 6371, r = Math.PI / 180, dLa = (g.lat - BASE_GEO.lat) * r, dLo = (g.lon - BASE_GEO.lon) * r;
+    var a = Math.sin(dLa / 2) * Math.sin(dLa / 2) + Math.cos(BASE_GEO.lat * r) * Math.cos(g.lat * r) * Math.sin(dLo / 2) * Math.sin(dLo / 2);
+    return Math.round(2 * R * Math.asin(Math.sqrt(a)) * 1.3 * 2);
+  }
+
+  /* ---------- Suggestion d'adresse ---------- */
+  var ac = { t: null, seq: 0, items: [], idx: -1 };
+  function sugListe() { return $("f-adresse-sug"); }
+  function fermerSug() {
+    var u = sugListe(); if (!u) return;
+    u.hidden = true; u.innerHTML = ""; ac.items = []; ac.idx = -1;
+    $("f-adresse").setAttribute("aria-expanded", "false"); $("f-adresse").removeAttribute("aria-activedescendant");
+  }
+  function rendreSug() {
+    var u = sugListe();
+    if (!ac.items.length) { fermerSug(); return; }
+    u.innerHTML = ac.items.map(function (x, i) {
+      return '<li role="option" id="f-sug-' + i + '" data-i="' + i + '"' + (i === ac.idx ? ' class="on" aria-selected="true"' : ' aria-selected="false"') + '>' + esc(x.ligne) + '<small>' + esc(x.cp + " " + x.ville) + '</small></li>';
+    }).join("");
+    u.hidden = false; $("f-adresse").setAttribute("aria-expanded", "true");
+    if (ac.idx >= 0) $("f-adresse").setAttribute("aria-activedescendant", "f-sug-" + ac.idx);
+  }
+  function suggererAdresse(q) {
+    clearTimeout(ac.t);
+    if (String(q).trim().length < 4) { fermerSug(); return; }
+    ac.t = setTimeout(function () {
+      var seq = ++ac.seq;
+      fetch(GEO_URL + "?q=" + encodeURIComponent(q) + "&limit=5&autocomplete=1&index=address&lat=" + BASE_GEO.lat + "&lon=" + BASE_GEO.lon)
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (j) {
+          if (seq !== ac.seq || !j) return;
+          ac.items = (j.features || []).map(function (f) {
+            var p = f.properties || {}, c = (f.geometry || {}).coordinates || [];
+            if (!p.postcode || !p.city) return null;
+            var voie = (p.type === "housenumber" || p.type === "street") ? (p.name || "") : "";
+            return { ligne: voie || p.city, voie: voie, cp: p.postcode, ville: p.city, lon: c[0], lat: c[1], citycode: p.citycode || "" };
+          }).filter(Boolean);
+          ac.idx = -1; rendreSug();
+        })
+        .catch(function () { fermerSug(); });
+    }, 250);
+  }
+  function choisirAdresse(i) {
+    var x = ac.items[i]; if (!x) return;
+    /* Commune seule choisie : le champ se vide pour que le visiteur tape son numéro et sa rue. */
+    E.adresse = x.voie || "";
+    E.cp = x.cp;
+    var t = LimpidMoteur.commune(x.ville, x.cp);
+    E.commune = t ? t.nom : x.ville;
+    E.geo = { lat: x.lat, lon: x.lon, citycode: x.citycode };
+    fermerSug(); sauver();
+    $("f-adresse").value = E.adresse;
+    rendreLocalisation();
+    $("err-1").textContent = "";
+    if (!x.voie) $("f-adresse").focus();
+  }
+  function clavierSug(e) {
+    var u = sugListe(); if (!u || u.hidden || !ac.items.length) return;
+    if (e.key === "ArrowDown") { e.preventDefault(); ac.idx = (ac.idx + 1) % ac.items.length; rendreSug(); }
+    else if (e.key === "ArrowUp") { e.preventDefault(); ac.idx = ac.idx <= 0 ? ac.items.length - 1 : ac.idx - 1; rendreSug(); }
+    else if (e.key === "Enter") { if (ac.idx >= 0) { e.preventDefault(); choisirAdresse(ac.idx); } }
+    else if (e.key === "Escape") { fermerSug(); }
   }
 
   /* ---------- Étape 2 : prestations, une ou plusieurs ---------- */
@@ -1392,7 +1475,7 @@ var LimpidMoteur = (function () {
       var t = e.target;
       if (t.id === "f-cp") { E.cp = t.value.replace(/\D/g, "").slice(0, 5); t.value = E.cp; E.commune = ""; debuter(); sauver(); rendreLocalisation(); return; }
       if (t.id === "f-commune-txt") { E.commune = t.value.trim(); sauver(); rendreLocalisation(); return; }
-      if (t.id === "f-adresse") { E.adresse = t.value; debuter(); sauver(); return; }
+      if (t.id === "f-adresse") { E.adresse = t.value; E.geo = null; debuter(); sauver(); suggererAdresse(t.value); return; }
       if (t.closest("#f-form")) return;
       if (t.dataset.path || t.dataset.heures) { if (t.type !== "checkbox" && t.tagName !== "SELECT") majChamp(t); }
     });
@@ -1417,6 +1500,10 @@ var LimpidMoteur = (function () {
         sauver(); rendreDuree(); return;
       }
     });
+    $("f-adresse").addEventListener("keydown", clavierSug);
+    $("f-adresse").addEventListener("blur", function () { setTimeout(fermerSug, 150); });
+    /* mousedown plutôt que click : le choix est pris avant que le champ perde le focus */
+    sugListe().addEventListener("mousedown", function (e) { var li = e.target.closest("li[data-i]"); if (li) { e.preventDefault(); choisirAdresse(parseInt(li.dataset.i, 10)); } });
     $("b-suite").addEventListener("click", suivant);
     $("b-retour").addEventListener("click", precedent);
     $("f-form").addEventListener("submit", envoyer);
@@ -1449,7 +1536,7 @@ var LimpidMoteur = (function () {
         estimation: { minutes: Math.round(estimation(id).minutes || 0) } };
     });
     var client = { profil: E.profil, nom: nom, entreprise: $("f-entreprise").value.trim(), email: mail, tel: $("f-tel").value.trim(),
-      adresse: String(E.adresse || "").trim(), cp: E.cp, commune: E.commune, message: $("f-precisions").value.trim(), photos: E.photos === "oui" };
+      adresse: String(E.adresse || "").trim(), geo: E.geo || null, cp: E.cp, commune: E.commune, message: $("f-precisions").value.trim(), photos: E.photos === "oui" };
     var d0 = demandes[0] || {};
     var demande = { v: 2, date: new Date().toISOString(), client: client, demandes: demandes,
       offre: d0.offre, saisie: d0.saisie, duree: d0.duree, estimation: d0.estimation, configVersion: cfg().version };
@@ -1464,7 +1551,8 @@ var LimpidMoteur = (function () {
     fd.append("adresse", client.adresse);
     fd.append("code_postal", E.cp);
     fd.append("commune", E.commune);
-    fd.append("zone", c ? (LimpidMoteur.zoneDe(c) === "prioritaire" ? "zone prioritaire" : "au-delà de la zone prioritaire") + " · " + c.kmAR + " km A/R estimés" : "commune hors table, distance à vérifier");
+    fd.append("zone", c ? (LimpidMoteur.zoneDe(c) === "prioritaire" ? "zone prioritaire" : "au-delà de la zone prioritaire") + " · " + c.kmAR + " km A/R estimés"
+      : "commune hors table, distance à vérifier" + (E.geo && E.geo.lat ? " (environ " + kmDepuisBase(E.geo) + " km A/R d'après l'adresse)" : ""));
     fd.append("photos", E.photos === "oui" ? "oui, à venir par WhatsApp ou e-mail" : "non");
     fd.append("recapitulatif", texteRecap());
     fd.append("validation_manuelle", raisonsValidation().join(" ; ") || "non");
