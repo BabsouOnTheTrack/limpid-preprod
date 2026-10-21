@@ -929,7 +929,7 @@ window.LIMPID_PARCOURS = (function () {
           return '<label class="cf-champ">Nom et prénom<input type="text" data-k="nom" autocomplete="name" value="' + esc(R.nom || "") + '"></label>' +
             '<label class="cf-champ">Téléphone<input type="tel" data-k="tel" autocomplete="tel" inputmode="tel" value="' + esc(R.tel || "") + '"></label>' +
             '<label class="cf-champ">E-mail<input type="email" data-k="email" autocomplete="email" inputmode="email" value="' + esc(R.email || "") + '"></label>' +
-            '<div class="cf-champ">Joindre des photos ? <small>Facultatif : elles rendent votre devis plus précis. Vous pourrez nous les envoyer juste après votre demande : deux modes d'envoi rapide vous seront proposés.</small>' +
+            '<div class="cf-champ">Joindre des photos ? <small>Facultatif : elles rendent votre devis plus précis. Vous pourrez nous les envoyer juste après votre demande : deux modes d\'envoi rapide vous seront proposés.</small>' +
             '<div class="cf-seg" style="margin:8px 0 0"><button type="button" class="' + (R.photos === "oui" ? "on" : "") + '" data-photos="oui">Oui, après ma demande</button><button type="button" class="' + (R.photos === "non" ? "on" : "") + '" data-photos="non">Non</button></div></div>' +
             txt("message", "Informations complémentaires", "Facultatif : état des vitres, contraintes d'horaires, présence d'animaux…", R, "", true);
         },
@@ -1011,7 +1011,8 @@ window.LIMPID_PARCOURS = (function () {
   "use strict";
   var CFG = window.LIMPID_PARCOURS; /* défini dans la page : service, libellés, conversion */
   var CLE_WEB3 = "95f59fbe-88c4-476f-8a2b-e737beed43c8";
-  var CLE_ETAT = "limpid_parcours_" + CFG.service + "_v1";
+  /* v2 : les états enregistrés par la version précédente du parcours (rappel, « Je ne sais pas ») sont ignorés. */
+  var CLE_ETAT = "limpid_parcours_" + CFG.service + "_v2";
   var CLE_DEMANDES = "limpid_demandes";      /* localStorage : statut de chaque identifiant envoyé */
   var CLE_ATTENTE = "limpid_attente";        /* localStorage : demande non transmise, à renvoyer */
   var CLE_TEST = "limpid_test";
@@ -1397,6 +1398,8 @@ window.LIMPID_PARCOURS = (function () {
     if (TEST) { var t = $("pc-test"); if (t) t.hidden = false; }
     brancher();
     if (E.ecran === "fin" && !E.fin) E.ecran = "accueil";
+    /* Un écran qui n'existe plus ou n'est plus visible ramène à l'accueil, réponses conservées. */
+    if (E.ecran !== "accueil" && E.ecran !== "fin" && E.ecran !== "recap" && !visibles().some(function (x) { return x.id === E.ecran; })) E.ecran = "accueil";
     try { history.replaceState({ pc: E.ecran }, "", location.pathname + location.search + (E.ecran === "accueil" ? "" : "#" + E.ecran)); } catch (e) {}
     rendre(); majBandeau();
     try {
