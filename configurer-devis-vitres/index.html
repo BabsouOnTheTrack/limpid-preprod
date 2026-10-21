@@ -118,7 +118,7 @@ footer.lp a{color:#fff}
 .cf-etape .cf-sous{color:var(--gris);font-size:.93rem;margin-bottom:14px}
 .cf-champ{display:block;margin:0 0 14px;font-weight:700;font-size:.94rem}
 .cf-champ small{display:block;font-weight:400;color:var(--gris);font-size:.82rem;margin-top:2px}
-.cf-champ input[type=text],.cf-champ input[type=email],.cf-champ input[type=tel],.cf-champ input[type=number],.cf-champ select,.cf-champ textarea{display:block;width:100%;margin-top:6px;padding:13px 14px;border:1px solid #C9DCE8;border-radius:11px;font:inherit;font-size:16px;font-weight:400;color:var(--encre);background:#fff}
+.cf-champ input[type=text],.cf-champ input[type=email],.cf-champ input[type=tel],.cf-champ input[type=number],.cf-champ input[type=date],.cf-champ select,.cf-champ textarea{display:block;width:100%;margin-top:6px;padding:13px 14px;border:1px solid #C9DCE8;border-radius:11px;font:inherit;font-size:16px;font-weight:400;color:var(--encre);background:#fff}
 .cf-champ input:focus,.cf-champ select:focus,.cf-champ textarea:focus{outline:2px solid var(--cyan);border-color:var(--bleu)}
 .cf-duo{display:grid;grid-template-columns:1fr;gap:0 12px}
 @media(min-width:560px){.cf-duo{grid-template-columns:1fr 1fr}}
@@ -218,6 +218,11 @@ body[data-tunnel="configurateur"] footer{padding-bottom:90px}
 .cf-sug li.cf-sug-info{cursor:default;color:var(--gris);font-size:.82rem}
 .cf-sug li.cf-sug-info:hover{background:none}
 .cf-chip{display:inline-block;background:var(--glace);color:var(--encre);border-radius:99px;padding:3px 10px;font-size:.8rem;font-weight:700;margin:0 4px 4px 0}
+
+/* Champ de date aligné sur les autres champs (iOS et Android affichent sinon un petit champ natif) */
+.cf-champ input[type=date]{-webkit-appearance:none;appearance:none;min-height:50px;line-height:1.3;text-align:left}
+.cf-champ input[type=date]::-webkit-date-and-time-value{text-align:left}
+.cf-champ input[type=date]::-webkit-calendar-picker-indicator{opacity:.6;cursor:pointer}
 
 /* ================= Parcours spécialisé ================= */
 .btn{display:inline-block;background:var(--bleu);color:#fff;text-decoration:none;font-family:'Nunito',sans-serif;font-weight:800;padding:14px 26px;border-radius:99px;font-size:1rem;border:none;cursor:pointer}
@@ -794,8 +799,8 @@ window.LIMPID_PARCOURS = (function () {
   var LOGEMENT = [["maison", "Maison"], ["appartement", "Appartement"], ["autre", "Autre"]];
   var ETAGES = [["rdc", "Rez-de-chaussée"], ["1", "1er étage"], ["2", "2e étage"], ["3", "3e étage ou plus"]];
   var NIVEAUX = [["plainpied", "De plain-pied"], ["etage", "Avec étage"]];
-  /* Limite d'intervention de Limpid : petits velux oui ; rien qui demande plus qu'un escabeau de 3 marches. */
-  var REGLE_ACCES = "Limpid nettoie les vitres accessibles depuis le sol, l'intérieur ou un balcon, avec au plus un petit escabeau de 3 marches. Les vitres en hauteur, les toitures et les grands velux ne sont pas pris en charge.";
+  /* Limite d'intervention de Limpid : échelle et perche possibles ; ni toiture, ni grands velux. */
+  var REGLE_ACCES = "Limpid nettoie aussi les vitres en hauteur, à l'échelle ou à la perche. Les toitures et les grands velux ne sont pas pris en charge.";
   function lib(l, v) { for (var i = 0; i < l.length; i++) if (l[i][0] === v) return l[i][1]; return ""; }
 
   /* ---------- Petits composants ---------- */
@@ -827,7 +832,7 @@ window.LIMPID_PARCOURS = (function () {
   }
   function saisie(R) {
     var fen = has(R, "types", "fenetres"), bai = has(R, "types", "baies"), ver = has(R, "types", "veranda");
-    return { type: "vitres", frequence: R.frequence || "0", niveau: 1, hauteur: false, travaux: false,
+    return { type: "vitres", frequence: R.frequence || "0", niveau: 1, hauteur: R.accessible === "oui", travaux: false,
       elements: { faces: fen ? faces(R) : 0, baiesP: bai ? n(R.baiesP) : 0, baies: bai ? n(R.baies) : 0, baiesG: bai ? n(R.baiesG) : 0,
         verandaM2: ver ? n(R.verandaM2) : 0, glissieres: 0, volets: 0 } };
   }
@@ -844,7 +849,7 @@ window.LIMPID_PARCOURS = (function () {
         },
         valider: function (R) { return a(R, "types").length ? "" : "Choisissez au moins une réponse."; } },
 
-      { id: "fenetres", titre: "Combien de fenêtres et portes-fenêtres ?", sous: "Comptez seulement les vitres accessibles sans échelle.", si: function (R) { return has(R, "types", "fenetres"); },
+      { id: "fenetres", titre: "Combien de fenêtres et portes-fenêtres ?", sous: "Comptez toutes les fenêtres à nettoyer.", si: function (R) { return has(R, "types", "fenetres"); },
         rendre: function (R) {
           return '<div class="cf-compteurs">' + cpt("f1", "À un battant", "Petites fenêtres, portes vitrées simples", R) + cpt("f2", "À deux battants", "Fenêtres classiques et portes-fenêtres", R) +
             cpt("fVelux", "Petits velux", "Fenêtres de toit de petite taille, nettoyées depuis l'intérieur", R) + '</div>' +
@@ -878,16 +883,15 @@ window.LIMPID_PARCOURS = (function () {
           if (R.logement === "appartement") h += '<p class="cf-sous" style="margin:8px 0 6px">À quel étage ?</p>' + opts("etage", ETAGES, R);
           if (R.logement === "maison") h += '<p class="cf-sous" style="margin:8px 0 6px">Votre maison est…</p>' + opts("niveaux", NIVEAUX, R);
           if (R.logement === "autre") h += txt("logementTxt", "Précisez", "", R, "Ex. : gîte, local attenant…");
-          h += '<p class="cf-sous" style="margin:10px 0 6px">Toutes les vitres indiquées sont-elles accessibles depuis le sol, l\'intérieur ou un balcon, avec au plus un escabeau de 3 marches ?</p>' +
-            opts("accessible", [["oui", "Oui, toutes"], ["non", "Non, certaines sont en hauteur"]], R);
-          if (R.accessible === "non") h += '<div class="cf-alerte ambre">Limpid ne nettoie pas les vitres qui demandent une échelle, une perche ou un travail en hauteur. Retirez-les de vos quantités : votre demande portera sur les vitres accessibles.</div>';
+          h += '<p class="cf-sous" style="margin:10px 0 6px">Certaines vitres demandent-elles une échelle ou une perche ?</p>' +
+            opts("accessible", [["non", "Non, toutes sont à portée de main"], ["oui", "Oui, certaines sont en hauteur"]], R);
           return h;
         },
         valider: function (R) {
           if (!R.logement) return "Indiquez votre type de logement.";
           if (R.logement === "appartement" && !R.etage) return "Indiquez l'étage.";
           if (R.logement === "maison" && !R.niveaux) return "Indiquez si votre maison a un étage.";
-          if (!R.accessible) return "Indiquez si toutes les vitres sont accessibles.";
+          if (!R.accessible) return "Indiquez si certaines vitres sont en hauteur.";
           return "";
         } },
 
@@ -895,7 +899,7 @@ window.LIMPID_PARCOURS = (function () {
         rendre: function (R) {
           var h = '<p class="cf-sous" style="margin:0 0 6px">Fréquence souhaitée</p>' + opts("frequence", FREQ, R);
           h += '<p class="cf-sous" style="margin:12px 0 6px">Première intervention</p>' + opts("quand", QUAND, R);
-          if (R.quand === "date") h += '<label class="cf-champ">Date souhaitée<input type="date" data-k="dateSouhaitee" value="' + esc(R.dateSouhaitee || "") + '"></label>';
+          if (R.quand === "date") h += '<label class="cf-champ">Date souhaitée<input type="date" data-k="dateSouhaitee" min="' + new Date().toISOString().slice(0, 10) + '" value="' + esc(R.dateSouhaitee || "") + '"></label>';
           return h;
         },
         valider: function (R) {
@@ -925,7 +929,7 @@ window.LIMPID_PARCOURS = (function () {
           return '<label class="cf-champ">Nom et prénom<input type="text" data-k="nom" autocomplete="name" value="' + esc(R.nom || "") + '"></label>' +
             '<label class="cf-champ">Téléphone<input type="tel" data-k="tel" autocomplete="tel" inputmode="tel" value="' + esc(R.tel || "") + '"></label>' +
             '<label class="cf-champ">E-mail<input type="email" data-k="email" autocomplete="email" inputmode="email" value="' + esc(R.email || "") + '"></label>' +
-            '<div class="cf-champ">Joindre des photos ? <small>Facultatif, utile pour une véranda, des baies ou une surface vitrée particulière : votre devis n\'en sera que plus précis. Si vous répondez oui, juste après l\'envoi de votre demande, deux boutons vous permettront de nous les envoyer par WhatsApp ou par e-mail, sans rien avoir à saisir.</small>' +
+            '<div class="cf-champ">Joindre des photos ? <small>Facultatif : elles rendent votre devis plus précis. Vous pourrez nous les envoyer juste après votre demande.</small>' +
             '<div class="cf-seg" style="margin:8px 0 0"><button type="button" class="' + (R.photos === "oui" ? "on" : "") + '" data-photos="oui">Oui, après ma demande</button><button type="button" class="' + (R.photos === "non" ? "on" : "") + '" data-photos="non">Non</button></div></div>' +
             txt("message", "Informations complémentaires", "Facultatif : état des vitres, contraintes d'horaires, présence d'animaux…", R, "", true);
         },
@@ -958,7 +962,7 @@ window.LIMPID_PARCOURS = (function () {
       { titre: "Service", ecran: "quoi", lignes: ["Nettoyage de vitres : " + a(R, "types").map(function (t) { return lib(TYPES.map(function (x) { return [x[0], x[2]]; }), t); }).join(", ")] },
       { titre: "Quantités", ecran: visiblePremier(R), lignes: lignesQuantites(R) },
       { titre: "Faces à nettoyer", ecran: "cotes", lignes: [lib(COTES, R.cotes)] },
-      { titre: "Logement et accès", ecran: "logement", lignes: [logementTxt(R), R.accessible === "non" ? "Certaines vitres sont en hauteur : non comprises dans la demande" : "Toutes les vitres sont accessibles sans échelle"] },
+      { titre: "Logement et accès", ecran: "logement", lignes: [logementTxt(R), R.accessible === "oui" ? "Certaines vitres demandent une échelle ou une perche" : "Toutes les vitres sont à portée de main"] },
       { titre: "Fréquence et date souhaitée", ecran: "quand", lignes: [lib(FREQ, R.frequence), "Première intervention : " + quandTxt(R)] },
       { titre: "Adresse", ecran: "adresse", lignes: [[R.adresse, [R.cp, R.commune].filter(Boolean).join(" ")].filter(Boolean).join(", ")] },
       { titre: "Coordonnées", ecran: "contact", lignes: [R.nom || "", [R.tel, R.email].filter(Boolean).join(" · "), "Photos : " + (R.photos === "oui" ? "oui, après la demande" : "non")].concat(R.message ? ["« " + R.message + " »"] : []) }
@@ -970,7 +974,6 @@ window.LIMPID_PARCOURS = (function () {
   function aCompleter(R, zone) {
     var l = [];
     if (has(R, "types", "autre")) l.push({ client: "la surface vitrée que vous avez décrite", interne: "autre surface vitrée à étudier" });
-    if (R.accessible === "non") l.push({ client: "", interne: "le client signale des vitres en hauteur : vérifier qu'elles sont bien exclues" });
     if (R.logement === "autre") l.push({ client: "", interne: "logement « autre » : " + (R.logementTxt || "") });
     if (/hors table|au-delà/.test(zone || "")) l.push({ client: "", interne: zone });
     return l;

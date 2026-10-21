@@ -195,7 +195,7 @@ footer h3{color:#fff;font-size:1rem;margin-bottom:10px}
 .cf-etape .cf-sous{color:var(--gris);font-size:.93rem;margin-bottom:14px}
 .cf-champ{display:block;margin:0 0 14px;font-weight:700;font-size:.94rem}
 .cf-champ small{display:block;font-weight:400;color:var(--gris);font-size:.82rem;margin-top:2px}
-.cf-champ input[type=text],.cf-champ input[type=email],.cf-champ input[type=tel],.cf-champ input[type=number],.cf-champ select,.cf-champ textarea{display:block;width:100%;margin-top:6px;padding:13px 14px;border:1px solid #C9DCE8;border-radius:11px;font:inherit;font-size:16px;font-weight:400;color:var(--encre);background:#fff}
+.cf-champ input[type=text],.cf-champ input[type=email],.cf-champ input[type=tel],.cf-champ input[type=number],.cf-champ input[type=date],.cf-champ select,.cf-champ textarea{display:block;width:100%;margin-top:6px;padding:13px 14px;border:1px solid #C9DCE8;border-radius:11px;font:inherit;font-size:16px;font-weight:400;color:var(--encre);background:#fff}
 .cf-champ input:focus,.cf-champ select:focus,.cf-champ textarea:focus{outline:2px solid var(--cyan);border-color:var(--bleu)}
 .cf-duo{display:grid;grid-template-columns:1fr;gap:0 12px}
 @media(min-width:560px){.cf-duo{grid-template-columns:1fr 1fr}}
@@ -295,6 +295,11 @@ body[data-tunnel="configurateur"] footer{padding-bottom:90px}
 .cf-sug li.cf-sug-info{cursor:default;color:var(--gris);font-size:.82rem}
 .cf-sug li.cf-sug-info:hover{background:none}
 .cf-chip{display:inline-block;background:var(--glace);color:var(--encre);border-radius:99px;padding:3px 10px;font-size:.8rem;font-weight:700;margin:0 4px 4px 0}
+
+/* Champ de date aligné sur les autres champs (iOS et Android affichent sinon un petit champ natif) */
+.cf-champ input[type=date]{-webkit-appearance:none;appearance:none;min-height:50px;line-height:1.3;text-align:left}
+.cf-champ input[type=date]::-webkit-date-and-time-value{text-align:left}
+.cf-champ input[type=date]::-webkit-calendar-picker-indicator{opacity:.6;cursor:pointer}
 
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Limpid","image":"https://limpid-nettoyage.fr/assets/logo-limpid.webp","url":"https://limpid-nettoyage.fr/","telephone":"+33626556569","email":"bonjour@limpid-nettoyage.fr","address":{"@type":"PostalAddress","streetAddress":"5 rue des Sapins","postalCode":"88390","addressLocality":"Darnieulles","addressRegion":"Vosges","addressCountry":"FR"},"geo":{"@type":"GeoCoordinates","latitude":48.1991887,"longitude":6.3539957},"areaServed":["Darnieulles","Épinal","Golbey","Thaon-les-Vosges","Chantraine","Uxegney","Chavelot"],"priceRange":"€€","openingHours":"Mo-Fr 08:30-20:00 Sa 10:00-20:00","aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"12"}}</script>
@@ -410,7 +415,7 @@ body[data-tunnel="configurateur"] footer{padding-bottom:90px}
     <input type="email" name="email" id="f-email" autocomplete="email" inputmode="email" required></label>
    <label class="cf-champ">Téléphone <small>Facultatif, utile si un point reste à préciser.</small>
     <input type="tel" name="telephone" id="f-tel" autocomplete="tel" inputmode="tel"></label>
-   <div class="cf-champ">Joindre des photos ? <small>Facultatif, utile pour un canapé, un tapis, des vitres ou une véranda : votre prix n'en sera que plus précis. Si vous répondez oui, juste après l'envoi de votre demande, deux boutons vous permettront de nous les envoyer par WhatsApp ou par e-mail, sans rien avoir à saisir.</small>
+   <div class="cf-champ">Joindre des photos ? <small>Facultatif : elles rendent votre devis plus précis. Vous pourrez nous les envoyer juste après votre demande.</small>
     <div class="cf-seg" id="f-photos" style="margin:8px 0 0"><button type="button" data-v="oui">Oui, après ma demande</button><button type="button" data-v="non">Non</button></div></div>
    <label class="cf-champ">Précisions <small>Facultatif : accès, contraintes d'horaires, ce qui compte le plus pour vous.</small>
     <textarea name="precisions" id="f-precisions" rows="3"></textarea></label>
