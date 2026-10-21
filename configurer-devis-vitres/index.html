@@ -173,9 +173,14 @@ footer.lp a{color:#fff}
 .cf-recap h3{font-size:1rem;margin:14px 0 6px}
 .cf-recap ul{margin:0 0 8px 18px}
 .cf-recap li{margin-bottom:3px}
-.cf-nav{display:flex;gap:10px;justify-content:space-between;margin-top:16px}
+.cf-nav{position:fixed;left:0;right:0;bottom:0;z-index:70;background:#fff;border-top:1px solid #E3EEF5;box-shadow:0 -4px 18px rgba(11,37,69,.08);padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
+.cf-nav-in{display:flex;gap:10px;max-width:760px;margin:0 auto}
 .cf-nav .btn{flex:1;text-align:center;padding:14px 16px}
-.cf-nav .btn.sec{background:#fff;color:var(--bleu);border:2px solid #CFE0F7;flex:0 0 auto}
+.cf-nav .btn.sec{background:#fff;color:var(--bleu);border:2px solid #CFE0F7;flex:0 0 auto;min-width:104px}
+/* Configurateur /devis/ : la barre de navigation fixe remplace la barre d'appel mobile, et laisse la place au contenu */
+body[data-tunnel="configurateur"] .appel-mobile{display:none}
+body[data-tunnel="configurateur"] .cf{padding-bottom:110px}
+body[data-tunnel="configurateur"] footer{padding-bottom:90px}
 .cf-nav .btn[disabled]{opacity:.5;cursor:not-allowed}
 .cf-envoyer{width:100%;font-size:1.05rem;padding:16px}
 .cf-rgpd{font-size:.8rem;color:var(--gris);margin:8px 0 0}
@@ -247,9 +252,12 @@ footer.lp a{color:#fff}
 .pc-attente{max-width:640px;margin:12px auto 0;padding:0 16px}
 .pc-rappel-lien{text-align:center;margin:14px 0 0;font-size:.92rem}
 .pc-rappel-lien button{background:none;border:none;color:var(--bleu);font:inherit;font-weight:700;text-decoration:underline;cursor:pointer}
-.cf-nav{display:flex;gap:10px;justify-content:space-between;margin-top:14px}
-.cf-nav .btn{flex:1;text-align:center;padding:14px 16px}
-.cf-nav .btn.sec{flex:0 0 auto}
+.pc-nav-fixe{position:fixed;left:0;right:0;bottom:0;z-index:70;background:#fff;border-top:1px solid #E3EEF5;box-shadow:0 -4px 18px rgba(11,37,69,.08);padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
+.pc-nav-in{display:flex;gap:10px;max-width:640px;margin:0 auto}
+.pc-nav-in .btn{flex:1;text-align:center;padding:14px 16px}
+.pc-nav-in .btn.sec{flex:0 0 auto;min-width:104px}
+body.pc-en-cours main{padding-bottom:96px}
+body.pc-en-cours footer.lp{padding-bottom:96px}
 body.pc-en-cours .rassure,body.pc-en-cours .pc-plus{display:none}
 /* Pendant le parcours, la barre d'appel du bas ne masque pas les boutons Retour et Continuer */
 body.pc-en-cours .appel-mobile{display:none}
@@ -274,7 +282,6 @@ body.pc-en-cours .appel-mobile{display:none}
   <p>Décrivez vos fenêtres et vos besoins en quelques étapes. Nous étudierons votre demande et préparerons un devis personnalisé, sans engagement.</p>
   <button type="button" class="btn" data-pc-demarrer>Configurer ma demande</button>
   <p class="pc-sous-cta">Aucun prix automatique : votre demande est étudiée avant l'envoi du devis.</p>
-  <button type="button" class="pc-alt" data-pc-rappel>Je préfère être rappelé</button>
   <p class="pc-confiance">Devis sans engagement · Note Google 5,0 ★ · Entreprise déclarée services à la personne · 50 % de crédit d'impôt, selon conditions</p>
  </section>
 <section class="rassure pc-plus" style="padding:0">
@@ -287,15 +294,17 @@ body.pc-en-cours .appel-mobile{display:none}
 </section>
 
  <div class="pc-app" id="pc-app" hidden>
-  <div class="cf-prog" id="pc-prog" aria-live="polite"><div class="cf-barre"><i id="pc-barre"></i></div><span id="pc-prog-txt"></span></div>
+  <div class="cf-prog" id="pc-prog"><div class="cf-barre" role="progressbar" aria-label="Progression de votre demande"><i id="pc-barre"></i></div></div>
   <div class="pc-carte">
    <div id="pc-corps"></div>
-   <div class="cf-nav" id="pc-nav">
-    <button type="button" class="btn sec" id="pc-retour">Retour</button>
-    <button type="button" class="btn" id="pc-suite">Continuer</button>
-   </div>
   </div>
-  <p class="pc-rappel-lien"><button type="button" data-pc-rappel>Je préfère être rappelé</button></p>
+ </div>
+ <!-- Boutons de navigation fixés en bas de l'écran : même place à chaque étape -->
+ <div class="pc-nav-fixe" id="pc-nav" hidden>
+  <div class="pc-nav-in">
+   <button type="button" class="btn sec" id="pc-retour">Retour</button>
+   <button type="button" class="btn" id="pc-suite">Continuer</button>
+  </div>
  </div>
  <!-- Champs de provenance (gclid, gbraid, wbraid, UTM, page d'arrivée) remplis par campagne.js -->
  <form id="pc-tracage" data-campagne="1" hidden aria-hidden="true"></form>
@@ -776,18 +785,17 @@ window.LIMPID_PARCOURS = (function () {
   var TYPES = [
     ["fenetres", "🪟", "Fenêtres et portes-fenêtres", "Le nettoyage classique de vos vitres."],
     ["baies", "🚪", "Baies vitrées", "Baies coulissantes, grandes surfaces vitrées."],
-    ["veranda", "🌿", "Véranda", "Parois vitrées et, si l'accès le permet, toiture."],
-    ["difficile", "🪜", "Vitres difficiles d'accès", "En hauteur, à l'étage sans accès facile, verrière."],
-    ["autre", "✏️", "Autre situation", "Vous nous la décrivez en quelques mots."]
+    ["veranda", "🌿", "Véranda", "Les parois vitrées, intérieur et extérieur."],
+    ["autre", "✏️", "Autre surface vitrée", "Vitrine, porte vitrée, cloison… décrite en quelques mots."]
   ];
-  var PLAGES = [["moins5", "Moins de 5", 3], ["5a10", "5 à 10", 8], ["10a20", "10 à 20", 15], ["plus20", "Plus de 20", 25]];
   var COTES = [["int_ext", "Intérieur et extérieur"], ["ext", "Extérieur uniquement"], ["int", "Intérieur uniquement"]];
   var FREQ = [["0", "Une seule fois"], ["2", "Deux fois par an"], ["4", "Chaque trimestre"], ["12", "Chaque mois"], ["1", "Une fois par an"]];
   var QUAND = [["asap", "Dès que possible"], ["mois", "Dans le mois"], ["date", "À une date précise"], ["flexible", "Je ne suis pas pressé"]];
   var LOGEMENT = [["maison", "Maison"], ["appartement", "Appartement"], ["autre", "Autre"]];
   var ETAGES = [["rdc", "Rez-de-chaussée"], ["1", "1er étage"], ["2", "2e étage"], ["3", "3e étage ou plus"]];
   var NIVEAUX = [["plainpied", "De plain-pied"], ["etage", "Avec étage"]];
-  var DIFF = [["etage", "Fenêtres à l'étage sans accès facile"], ["toiture", "Toiture de véranda ou verrière"], ["hauteur", "Grande hauteur (escalier, mezzanine)"], ["autre", "Autre difficulté"]];
+  /* Limite d'intervention de Limpid : petits velux oui ; rien qui demande plus qu'un escabeau de 3 marches. */
+  var REGLE_ACCES = "Limpid nettoie les vitres accessibles depuis le sol, l'intérieur ou un balcon, avec au plus un petit escabeau de 3 marches. Les vitres en hauteur, les toitures et les grands velux ne sont pas pris en charge.";
   function lib(l, v) { for (var i = 0; i < l.length; i++) if (l[i][0] === v) return l[i][1]; return ""; }
 
   /* ---------- Petits composants ---------- */
@@ -806,7 +814,6 @@ window.LIMPID_PARCOURS = (function () {
       '<input type="number" min="0" inputmode="numeric" data-k="' + k + '" value="' + (n(R[k]) || 0) + '" aria-label="' + esc(libelle) + '">' +
       '<button type="button" aria-label="plus" data-pas="' + k + '" data-d="1">+</button></span>' + (aide ? '<small class="cf-aide">' + esc(aide) + '</small>' : '') + '</div>';
   }
-  function nsp(k, R, texte) { return '<label class="cf-coche pc-nsp"><input type="checkbox" data-k="' + k + '"' + (R[k] ? " checked" : "") + '><span class="l">' + esc(texte || "Je ne sais pas exactement") + '</span></label>'; }
   function txt(k, libelle, aide, R, ph, zone) {
     return '<label class="cf-champ">' + esc(libelle) + (aide ? '<small>' + esc(aide) + '</small>' : '') +
       (zone ? '<textarea data-k="' + k + '" rows="3" placeholder="' + esc(ph || "") + '">' + esc(R[k] || "") + '</textarea>'
@@ -816,14 +823,13 @@ window.LIMPID_PARCOURS = (function () {
   /* ---------- Conversion en saisie du moteur ---------- */
   function faces(R) {
     var cotes = R.cotes === "int_ext" ? 2 : 1;
-    if (R.fNsp) { var p = PLAGES.filter(function (x) { return x[0] === R.fPlage; })[0]; return p ? p[2] * 2 * cotes : 0; }
-    return (n(R.f1) + 2 * n(R.f2)) * cotes;
+    return (n(R.f1) + n(R.fVelux) + 2 * n(R.f2)) * cotes;
   }
   function saisie(R) {
     var fen = has(R, "types", "fenetres"), bai = has(R, "types", "baies"), ver = has(R, "types", "veranda");
-    return { type: "vitres", frequence: R.frequence || "0", niveau: 1, hauteur: has(R, "types", "difficile"), travaux: false,
-      elements: { faces: fen ? faces(R) : 0, baiesP: bai && !R.baiesNsp ? n(R.baiesP) : 0, baies: bai ? (R.baiesNsp ? 1 : n(R.baies)) : 0, baiesG: bai && !R.baiesNsp ? n(R.baiesG) : 0,
-        verandaM2: ver && !R.verandaNsp ? n(R.verandaM2) : 0, glissieres: 0, volets: 0 } };
+    return { type: "vitres", frequence: R.frequence || "0", niveau: 1, hauteur: false, travaux: false,
+      elements: { faces: fen ? faces(R) : 0, baiesP: bai ? n(R.baiesP) : 0, baies: bai ? n(R.baies) : 0, baiesG: bai ? n(R.baiesG) : 0,
+        verandaM2: ver ? n(R.verandaM2) : 0, glissieres: 0, volets: 0 } };
   }
 
   /* ---------- Écrans ---------- */
@@ -833,79 +839,55 @@ window.LIMPID_PARCOURS = (function () {
         rendre: function (R) {
           return '<div class="cf-choix">' + TYPES.map(function (t) {
             var on = has(R, "types", t[0]);
-            return '<button type="button" class="cf-carte cf-multi' + (on ? " on" : "") + '" data-multi="types|' + t[0] + '" aria-pressed="' + on + '"><span class="ic">' + t[1] + '</span><span><b>' + esc(t[2]) + '</b><span class="d">' + esc(t[3]) + '</span></span><span class="cf-case" aria-hidden="true"></span></button>'; }).join("") + '</div>';
+            return '<button type="button" class="cf-carte cf-multi' + (on ? " on" : "") + '" data-multi="types|' + t[0] + '" aria-pressed="' + on + '"><span class="ic">' + t[1] + '</span><span><b>' + esc(t[2]) + '</b><span class="d">' + esc(t[3]) + '</span></span><span class="cf-case" aria-hidden="true"></span></button>'; }).join("") + '</div>' +
+            '<div class="cf-alerte bleu" style="font-size:.84rem">' + esc(REGLE_ACCES) + '</div>';
         },
         valider: function (R) { return a(R, "types").length ? "" : "Choisissez au moins une réponse."; } },
 
-      { id: "fenetres", titre: "Combien de fenêtres et portes-fenêtres ?", sous: "Un nombre approximatif suffit.", si: function (R) { return has(R, "types", "fenetres"); }, rerendre: ["fNsp"],
+      { id: "fenetres", titre: "Combien de fenêtres et portes-fenêtres ?", sous: "Comptez seulement les vitres accessibles sans échelle.", si: function (R) { return has(R, "types", "fenetres"); },
         rendre: function (R) {
-          var h = "";
-          if (!R.fNsp) h += '<div class="cf-compteurs">' + cpt("f1", "À un battant", "Petites fenêtres, fenêtres de toit, portes vitrées simples", R) + cpt("f2", "À deux battants", "Fenêtres classiques et portes-fenêtres", R) + '</div>';
-          h += nsp("fNsp", R, "Je ne sais pas exactement");
-          if (R.fNsp) h += '<p class="cf-sous" style="margin:6px 0">Environ combien ?</p>' + opts("fPlage", PLAGES, R);
-          h += txt("fDim", "Dimensions particulières", "Facultatif : une très grande fenêtre, des petits carreaux…", R, "Ex. : 2 fenêtres de 2 m de haut");
-          return h;
+          return '<div class="cf-compteurs">' + cpt("f1", "À un battant", "Petites fenêtres, portes vitrées simples", R) + cpt("f2", "À deux battants", "Fenêtres classiques et portes-fenêtres", R) +
+            cpt("fVelux", "Petits velux", "Fenêtres de toit de petite taille, nettoyées depuis l'intérieur", R) + '</div>' +
+            txt("fDim", "Dimensions particulières", "Facultatif : une très grande fenêtre, des petits carreaux…", R, "Ex. : 2 fenêtres de 2 m de haut");
         },
-        valider: function (R) { if (R.fNsp) return R.fPlage ? "" : "Choisissez une fourchette."; return (n(R.f1) + n(R.f2)) ? "" : "Indiquez au moins une fenêtre, ou cochez « Je ne sais pas exactement »."; } },
+        valider: function (R) { return (n(R.f1) + n(R.f2) + n(R.fVelux)) ? "" : "Indiquez au moins une fenêtre."; } },
 
-      { id: "baies", titre: "Combien de baies vitrées ?", sous: "Comptez-les selon leur taille.", si: function (R) { return has(R, "types", "baies"); }, rerendre: ["baiesNsp"],
+      { id: "baies", titre: "Combien de baies vitrées ?", sous: "Comptez-les selon leur taille.", si: function (R) { return has(R, "types", "baies"); },
         rendre: function (R) {
-          var h = "";
-          if (!R.baiesNsp) h += '<div class="cf-compteurs">' + cpt("baiesP", "Petites (1 vantail)", "", R) + cpt("baies", "Standard (2 vantaux)", "", R) + cpt("baiesG", "Grandes (3 vantaux et +)", "", R) + '</div>';
-          h += nsp("baiesNsp", R);
-          h += txt("baiesDim", "Dimensions si vous les connaissez", "Facultatif.", R, "Ex. : baie de 3 m de large");
-          return h;
+          return '<div class="cf-compteurs">' + cpt("baiesP", "Petites (1 vantail)", "", R) + cpt("baies", "Standard (2 vantaux)", "", R) + cpt("baiesG", "Grandes (3 vantaux et +)", "", R) + '</div>' +
+            txt("baiesDim", "Dimensions si vous les connaissez", "Facultatif.", R, "Ex. : baie de 3 m de large");
         },
-        valider: function (R) { return R.baiesNsp || (n(R.baiesP) + n(R.baies) + n(R.baiesG)) ? "" : "Indiquez au moins une baie, ou cochez « Je ne sais pas exactement »."; } },
+        valider: function (R) { return (n(R.baiesP) + n(R.baies) + n(R.baiesG)) ? "" : "Indiquez au moins une baie."; } },
 
-      { id: "veranda", titre: "Votre véranda", si: function (R) { return has(R, "types", "veranda"); }, rerendre: ["verandaNsp"],
+      { id: "veranda", titre: "Votre véranda", sous: "Nous nettoyons les parois vitrées, à l'intérieur et à l'extérieur. La toiture n'est pas prise en charge.", si: function (R) { return has(R, "types", "veranda"); },
         rendre: function (R) {
-          var h = "";
-          if (!R.verandaNsp) h += '<label class="cf-champ">Surface au sol (m²)<input type="number" min="1" inputmode="numeric" data-k="verandaM2" value="' + (R.verandaM2 || "") + '" placeholder="15"></label>';
-          h += nsp("verandaNsp", R, "Je ne connais pas sa surface");
-          h += '<p class="cf-sous" style="margin:8px 0 6px">Que faut-il nettoyer ?</p>' + opts("verandaPart", [["parois", "Les parois"], ["parois_toit", "Les parois et la toiture"], ["nsp", "Je ne sais pas"]], R);
-          h += txt("verandaDim", "Dimensions si vous les connaissez", "Facultatif.", R, "Ex. : 4 m × 3 m");
-          return h;
+          return '<label class="cf-champ">Surface au sol (m²)<small>Longueur × largeur : une véranda de 4 m sur 3 m fait 12 m².</small><input type="number" min="1" inputmode="numeric" data-k="verandaM2" value="' + (R.verandaM2 || "") + '" placeholder="12"></label>';
         },
-        valider: function (R) {
-          if (!R.verandaNsp && !n(R.verandaM2)) return "Indiquez la surface, ou cochez « Je ne connais pas sa surface ».";
-          return R.verandaPart ? "" : "Indiquez ce qu'il faut nettoyer.";
-        } },
+        valider: function (R) { return n(R.verandaM2) ? "" : "Indiquez la surface au sol de la véranda."; } },
 
-      { id: "particulier", titre: "Précisez la situation", si: function (R) { return has(R, "types", "difficile") || has(R, "types", "autre"); },
-        rendre: function (R) {
-          var h = "";
-          if (has(R, "types", "difficile")) h += '<p class="cf-sous" style="margin:0 0 6px">Quelles vitres sont difficiles d\'accès ?</p>' + multi("diff", DIFF, R) +
-            txt("diffTxt", "Quelques mots", "Facultatif : hauteur approximative, accès possible ou non par l'intérieur…", R, "", true);
-          if (has(R, "types", "autre")) h += txt("autreTxt", "Votre situation", "", R, "Ex. : vitrine, verrière d'atelier, cage d'escalier vitrée…", true);
-          h += '<p class="cf-mention">Les vitrages difficiles d\'accès sont étudiés avant le devis : nous vérifions qu\'ils peuvent être nettoyés en sécurité.</p>';
-          return h;
-        },
-        valider: function (R) {
-          if (has(R, "types", "difficile") && !a(R, "diff").length) return "Indiquez quelles vitres sont difficiles d'accès.";
-          if (has(R, "types", "autre") && String(R.autreTxt || "").trim().length < 4) return "Décrivez votre situation en quelques mots.";
-          return "";
-        } },
+      { id: "particulier", titre: "Décrivez cette surface vitrée", si: function (R) { return has(R, "types", "autre"); },
+        rendre: function (R) { return txt("autreTxt", "Votre situation", "Ce qu'il faut nettoyer, combien, et sa taille approximative.", R, "Ex. : une vitrine de 3 m × 2 m, une porte d'entrée vitrée…", true); },
+        valider: function (R) { return String(R.autreTxt || "").trim().length < 8 ? "Décrivez la surface vitrée en quelques mots." : ""; } },
 
       { id: "cotes", titre: "Quelles faces faut-il nettoyer ?", rendre: function (R) { return opts("cotes", COTES, R); },
         valider: function (R) { return R.cotes ? "" : "Choisissez une réponse."; } },
 
-      { id: "logement", titre: "Votre logement", rerendre: ["logement", "accesType"],
+      { id: "logement", titre: "Votre logement", rerendre: ["logement", "accessible"],
         rendre: function (R) {
           var h = opts("logement", LOGEMENT, R);
           if (R.logement === "appartement") h += '<p class="cf-sous" style="margin:8px 0 6px">À quel étage ?</p>' + opts("etage", ETAGES, R);
           if (R.logement === "maison") h += '<p class="cf-sous" style="margin:8px 0 6px">Votre maison est…</p>' + opts("niveaux", NIVEAUX, R);
           if (R.logement === "autre") h += txt("logementTxt", "Précisez", "", R, "Ex. : gîte, local attenant…");
-          h += '<p class="cf-sous" style="margin:10px 0 6px">L\'accès aux vitres est…</p>' + opts("accesType", [["habituel", "Habituel"], ["particulier", "Particulier"]], R);
-          if (R.accesType === "particulier") h += txt("accesTxt", "Précisez l'accès", "", R, "Ex. : terrain en pente, haie devant les fenêtres, pas d'accès extérieur…");
+          h += '<p class="cf-sous" style="margin:10px 0 6px">Toutes les vitres indiquées sont-elles accessibles depuis le sol, l\'intérieur ou un balcon, avec au plus un escabeau de 3 marches ?</p>' +
+            opts("accessible", [["oui", "Oui, toutes"], ["non", "Non, certaines sont en hauteur"]], R);
+          if (R.accessible === "non") h += '<div class="cf-alerte ambre">Limpid ne nettoie pas les vitres qui demandent une échelle, une perche ou un travail en hauteur. Retirez-les de vos quantités : votre demande portera sur les vitres accessibles.</div>';
           return h;
         },
         valider: function (R) {
           if (!R.logement) return "Indiquez votre type de logement.";
           if (R.logement === "appartement" && !R.etage) return "Indiquez l'étage.";
           if (R.logement === "maison" && !R.niveaux) return "Indiquez si votre maison a un étage.";
-          if (!R.accesType) return "Indiquez si l'accès est habituel ou particulier.";
-          if (R.accesType === "particulier" && String(R.accesTxt || "").trim().length < 3) return "Précisez l'accès en quelques mots.";
+          if (!R.accessible) return "Indiquez si toutes les vitres sont accessibles.";
           return "";
         } },
 
@@ -943,7 +925,7 @@ window.LIMPID_PARCOURS = (function () {
           return '<label class="cf-champ">Nom et prénom<input type="text" data-k="nom" autocomplete="name" value="' + esc(R.nom || "") + '"></label>' +
             '<label class="cf-champ">Téléphone<input type="tel" data-k="tel" autocomplete="tel" inputmode="tel" value="' + esc(R.tel || "") + '"></label>' +
             '<label class="cf-champ">E-mail<input type="email" data-k="email" autocomplete="email" inputmode="email" value="' + esc(R.email || "") + '"></label>' +
-            '<div class="cf-champ">Joindre des photos ? <small>Facultatif, utile pour une véranda ou des vitres difficiles d\'accès : votre devis n\'en sera que plus précis. Si vous répondez oui, juste après l\'envoi de votre demande, deux boutons vous permettront de nous les envoyer par WhatsApp ou par e-mail, sans rien avoir à saisir.</small>' +
+            '<div class="cf-champ">Joindre des photos ? <small>Facultatif, utile pour une véranda, des baies ou une surface vitrée particulière : votre devis n\'en sera que plus précis. Si vous répondez oui, juste après l\'envoi de votre demande, deux boutons vous permettront de nous les envoyer par WhatsApp ou par e-mail, sans rien avoir à saisir.</small>' +
             '<div class="cf-seg" style="margin:8px 0 0"><button type="button" class="' + (R.photos === "oui" ? "on" : "") + '" data-photos="oui">Oui, après ma demande</button><button type="button" class="' + (R.photos === "non" ? "on" : "") + '" data-photos="non">Non</button></div></div>' +
             txt("message", "Informations complémentaires", "Facultatif : état des vitres, contraintes d'horaires, présence d'animaux…", R, "", true);
         },
@@ -959,13 +941,12 @@ window.LIMPID_PARCOURS = (function () {
   /* ---------- Récapitulatif ---------- */
   function lignesQuantites(R) {
     var L = [];
-    if (has(R, "types", "fenetres")) L.push(R.fNsp ? "Fenêtres et portes-fenêtres : environ " + lib(PLAGES, R.fPlage).toLowerCase() : "Fenêtres : " + (n(R.f1) ? n(R.f1) + " à un battant" : "") + (n(R.f1) && n(R.f2) ? ", " : "") + (n(R.f2) ? n(R.f2) + " à deux battants" : ""));
+    if (has(R, "types", "fenetres")) L.push("Fenêtres : " + [[R.f1, "à un battant"], [R.f2, "à deux battants"], [R.fVelux, "petit(s) velux"]].filter(function (x) { return n(x[0]); }).map(function (x) { return n(x[0]) + " " + x[1]; }).join(", "));
     if (R.fDim && has(R, "types", "fenetres")) L.push("Dimensions : " + R.fDim);
-    if (has(R, "types", "baies")) L.push(R.baiesNsp ? "Baies vitrées : nombre à préciser" : "Baies vitrées : " + [[R.baiesP, "petite(s)"], [R.baies, "standard"], [R.baiesG, "grande(s)"]].filter(function (x) { return n(x[0]); }).map(function (x) { return n(x[0]) + " " + x[1]; }).join(", "));
+    if (has(R, "types", "baies")) L.push("Baies vitrées : " + [[R.baiesP, "petite(s)"], [R.baies, "standard"], [R.baiesG, "grande(s)"]].filter(function (x) { return n(x[0]); }).map(function (x) { return n(x[0]) + " " + x[1]; }).join(", "));
     if (R.baiesDim && has(R, "types", "baies")) L.push("Dimensions des baies : " + R.baiesDim);
-    if (has(R, "types", "veranda")) L.push("Véranda : " + (R.verandaNsp ? "surface à préciser" : n(R.verandaM2) + " m² au sol") + (R.verandaPart ? ", " + lib([["parois", "parois"], ["parois_toit", "parois et toiture"], ["nsp", "parties à préciser"]], R.verandaPart) : "") + (R.verandaDim ? " (" + R.verandaDim + ")" : ""));
-    if (has(R, "types", "difficile")) L.push("Accès difficile : " + a(R, "diff").map(function (k) { return lib(DIFF, k).toLowerCase(); }).join(", ") + (R.diffTxt ? " · " + R.diffTxt : ""));
-    if (has(R, "types", "autre")) L.push("Autre situation : " + (R.autreTxt || ""));
+    if (has(R, "types", "veranda")) L.push("Véranda : " + n(R.verandaM2) + " m² au sol, parois vitrées");
+    if (has(R, "types", "autre")) L.push("Autre surface vitrée : " + (R.autreTxt || ""));
     return L;
   }
   function logementTxt(R) {
@@ -977,7 +958,7 @@ window.LIMPID_PARCOURS = (function () {
       { titre: "Service", ecran: "quoi", lignes: ["Nettoyage de vitres : " + a(R, "types").map(function (t) { return lib(TYPES.map(function (x) { return [x[0], x[2]]; }), t); }).join(", ")] },
       { titre: "Quantités", ecran: visiblePremier(R), lignes: lignesQuantites(R) },
       { titre: "Faces à nettoyer", ecran: "cotes", lignes: [lib(COTES, R.cotes)] },
-      { titre: "Logement et accès", ecran: "logement", lignes: [logementTxt(R), "Accès " + (R.accesType === "particulier" ? "particulier : " + (R.accesTxt || "") : "habituel")] },
+      { titre: "Logement et accès", ecran: "logement", lignes: [logementTxt(R), R.accessible === "non" ? "Certaines vitres sont en hauteur : non comprises dans la demande" : "Toutes les vitres sont accessibles sans échelle"] },
       { titre: "Fréquence et date souhaitée", ecran: "quand", lignes: [lib(FREQ, R.frequence), "Première intervention : " + quandTxt(R)] },
       { titre: "Adresse", ecran: "adresse", lignes: [[R.adresse, [R.cp, R.commune].filter(Boolean).join(" ")].filter(Boolean).join(", ")] },
       { titre: "Coordonnées", ecran: "contact", lignes: [R.nom || "", [R.tel, R.email].filter(Boolean).join(" · "), "Photos : " + (R.photos === "oui" ? "oui, après la demande" : "non")].concat(R.message ? ["« " + R.message + " »"] : []) }
@@ -988,24 +969,18 @@ window.LIMPID_PARCOURS = (function () {
   /* ---------- Dossier « À compléter avant devis » ---------- */
   function aCompleter(R, zone) {
     var l = [];
-    if (has(R, "types", "fenetres") && R.fNsp) l.push({ client: "le nombre exact de fenêtres", interne: "nombre de fenêtres approximatif (" + lib(PLAGES, R.fPlage) + ")" });
-    if (has(R, "types", "baies") && R.baiesNsp) l.push({ client: "le nombre de baies", interne: "nombre de baies à préciser" });
-    if (has(R, "types", "veranda") && R.verandaNsp) l.push({ client: "la surface de la véranda", interne: "surface de la véranda à préciser" });
-    if (has(R, "types", "veranda") && R.verandaPart === "nsp") l.push({ client: "les parties de la véranda à nettoyer", interne: "parties de la véranda à préciser" });
-    if (has(R, "types", "difficile")) l.push({ client: "l'accès aux vitres difficiles", interne: "accès difficile à vérifier : " + a(R, "diff").map(function (k) { return lib(DIFF, k).toLowerCase(); }).join(", ") });
-    if (has(R, "types", "autre")) l.push({ client: "votre situation particulière", interne: "autre situation à étudier" });
-    if (R.accesType === "particulier") l.push({ client: "l'accès au logement", interne: "accès particulier : " + (R.accesTxt || "") });
+    if (has(R, "types", "autre")) l.push({ client: "la surface vitrée que vous avez décrite", interne: "autre surface vitrée à étudier" });
+    if (R.accessible === "non") l.push({ client: "", interne: "le client signale des vitres en hauteur : vérifier qu'elles sont bien exclues" });
     if (R.logement === "autre") l.push({ client: "", interne: "logement « autre » : " + (R.logementTxt || "") });
     if (/hors table|au-delà/.test(zone || "")) l.push({ client: "", interne: zone });
     return l;
   }
   function qualification(R) {
-    return { types: a(R, "types"), fenetres: { unBattant: n(R.f1), deuxBattants: n(R.f2), nsp: !!R.fNsp, plage: R.fNsp ? lib(PLAGES, R.fPlage) : "", dimensions: R.fDim || "" },
-      baies: { petites: n(R.baiesP), standard: n(R.baies), grandes: n(R.baiesG), nsp: !!R.baiesNsp, dimensions: R.baiesDim || "" },
-      veranda: { m2: n(R.verandaM2), nsp: !!R.verandaNsp, parties: R.verandaPart || "", dimensions: R.verandaDim || "" },
-      difficile: a(R, "diff"), difficileTxt: R.diffTxt || "", autre: R.autreTxt || "",
+    return { types: a(R, "types"), fenetres: { unBattant: n(R.f1), deuxBattants: n(R.f2), velux: n(R.fVelux), dimensions: R.fDim || "" },
+      baies: { petites: n(R.baiesP), standard: n(R.baies), grandes: n(R.baiesG), dimensions: R.baiesDim || "" },
+      veranda: { m2: n(R.verandaM2), parties: "parois" }, autre: R.autreTxt || "",
       cotes: R.cotes || "", logement: R.logement || "", etage: R.etage || "", niveaux: R.niveaux || "", logementTxt: R.logementTxt || "",
-      acces: R.accesType || "", accesTxt: R.accesTxt || "", frequence: R.frequence || "", frequenceLib: lib(FREQ, R.frequence),
+      accessible: R.accessible || "", frequence: R.frequence || "", frequenceLib: lib(FREQ, R.frequence),
       quand: R.quand || "", dateSouhaitee: R.dateSouhaitee || "", quandLib: quandTxt(R) };
   }
   function fiche(R, ac) {
@@ -1093,8 +1068,9 @@ window.LIMPID_PARCOURS = (function () {
     $("pc-app").hidden = ec === "accueil";
     var vis = visibles(), i = vis.map(function (x) { return x.id; }).indexOf(ec);
     var prog = $("pc-prog");
-    if (i >= 0) { prog.hidden = false; $("pc-barre").style.width = Math.round((i + 1) / (vis.length + 1) * 100) + "%"; $("pc-prog-txt").textContent = "Étape " + (i + 1) + " sur " + (vis.length + 1); }
-    else if (ec === "recap") { prog.hidden = false; $("pc-barre").style.width = "100%"; $("pc-prog-txt").textContent = "Vérification"; }
+    /* Barre de progression sans compteur d'étapes */
+    if (i >= 0) { prog.hidden = false; $("pc-barre").style.width = Math.round((i + 1) / (vis.length + 1) * 100) + "%"; }
+    else if (ec === "recap") { prog.hidden = false; $("pc-barre").style.width = "100%"; }
     else prog.hidden = true;
     var x = ecran(ec);
     if (x) h = '<h2 tabindex="-1" id="pc-titre">' + esc(x.titre) + '</h2>' + (x.sous ? '<p class="cf-sous">' + x.sous + '</p>' : '') + x.rendre(R) + '<div class="cf-erreurs" id="pc-err" role="alert"></div>';
@@ -1102,10 +1078,11 @@ window.LIMPID_PARCOURS = (function () {
     else if (ec === "rappel") h = rendreRappel();
     else if (ec === "fin") h = rendreFin();
     z.innerHTML = h;
+    /* Les deux boutons gardent la même place à chaque écran, récapitulatif compris. */
     var nav = $("pc-nav");
-    nav.hidden = !(x || ec === "rappel");
-    $("pc-retour").style.display = (i > 0 || ec === "rappel") ? "" : (i === 0 ? "" : "none");
-    $("pc-suite").textContent = E.retourRecap && x ? "Retour au récapitulatif" : (ec === "rappel" ? "Être rappelé" : "Continuer");
+    nav.hidden = !(x || ec === "rappel" || ec === "recap");
+    $("pc-suite").disabled = false;
+    $("pc-suite").textContent = E.retourRecap && x ? "Retour au récapitulatif" : (ec === "recap" ? "Envoyer ma demande de devis" : (ec === "rappel" ? "Être rappelé" : "Continuer"));
     var t = $("pc-titre") || z.querySelector("h2");
     if (t && E.ecran !== "accueil") { try { t.focus({ preventScroll: true }); } catch (e2) {} }
     var app = $("pc-app"); if (app && window.scrollY > app.offsetTop) app.scrollIntoView({ block: "start" });
@@ -1130,6 +1107,7 @@ window.LIMPID_PARCOURS = (function () {
     return !err;
   }
   function suivant() {
+    if (E.ecran === "recap") { envoyer("devis"); return; }
     if (!valider()) return;
     if (E.ecran === "rappel") { envoyer("rappel"); return; }
     ev("config_step_complete", { step: E.ecran });
@@ -1260,10 +1238,9 @@ window.LIMPID_PARCOURS = (function () {
       h += '<div class="pc-rub"><div class="pc-rub-t"><b>' + esc(s.titre) + '</b><button type="button" class="pc-modif" data-aller="' + s.ecran + '">Modifier</button></div>' +
         s.lignes.map(function (l) { return '<div class="pc-l">' + esc(l) + '</div>'; }).join("") + '</div>';
     });
-    var ac2 = CFG.aCompleter(R, zoneTexte());
-    if (ac2.length) h += '<div class="cf-alerte bleu">Certains points seront précisés avec vous avant l\'établissement du devis : ' + esc(ac2.map(function (x) { return x.client; }).filter(Boolean).join(", ")) + '.</div>';
+    var ac2 = CFG.aCompleter(R, zoneTexte()).map(function (x) { return x.client; }).filter(Boolean);
+    if (ac2.length) h += '<div class="cf-alerte bleu">Certains points seront précisés avec vous avant l\'établissement du devis : ' + esc(ac2.join(", ")) + '.</div>';
     h += '<div class="cf-erreurs" id="pc-err" role="alert"></div><div id="pc-etat-envoi"></div>';
-    h += '<button type="button" class="btn cf-envoyer" id="pc-envoyer">Envoyer ma demande de devis</button>';
     h += '<p class="pc-rassure">Votre demande sera étudiée par Limpid. Nous vous contacterons si une précision ou une visite est nécessaire avant de vous transmettre un devis personnalisé.</p>';
     h += '<p class="cf-rgpd">Vos informations servent uniquement à établir et suivre votre devis. Elles ne sont ni revendues ni transmises à des outils de mesure d\'audience. <a href="/politique-confidentialite/">Politique de confidentialité</a></p>';
     return h;
@@ -1351,7 +1328,7 @@ window.LIMPID_PARCOURS = (function () {
   }
   function transmettre(paquet, depuisAttente) {
     if (enCours) return; enCours = true;
-    var b = $("pc-envoyer") || $("pc-suite"), lib = b ? b.textContent : "";
+    var b = $("pc-suite"), lib = b ? b.textContent : "";
     if (b) { b.disabled = true; b.textContent = "Envoi en cours…"; }
     var z = $("pc-etat-envoi"); if (z) z.innerHTML = "";
     ev("config_submit", { type: paquet.type });
@@ -1368,7 +1345,7 @@ window.LIMPID_PARCOURS = (function () {
         } else echec(paquet, (x.j && x.j.message) || "refus");
       })
       .catch(function (e) { echec(paquet, String(e && e.message || e)); })
-      .then(function () { enCours = false; var b2 = $("pc-envoyer") || $("pc-suite"); if (b2 && E.ecran !== "fin") { b2.disabled = false; b2.textContent = lib || "Envoyer ma demande de devis"; } });
+      .then(function () { enCours = false; var b2 = $("pc-suite"); if (b2 && E.ecran !== "fin") { b2.disabled = false; b2.textContent = lib || "Envoyer ma demande de devis"; } });
   }
   /* La conversion métier ne part qu'une fois par identifiant, après un envoi confirmé, jamais en mode test. */
   function convertir(paquet) {

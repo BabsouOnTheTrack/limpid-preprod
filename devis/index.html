@@ -250,9 +250,14 @@ footer h3{color:#fff;font-size:1rem;margin-bottom:10px}
 .cf-recap h3{font-size:1rem;margin:14px 0 6px}
 .cf-recap ul{margin:0 0 8px 18px}
 .cf-recap li{margin-bottom:3px}
-.cf-nav{display:flex;gap:10px;justify-content:space-between;margin-top:16px}
+.cf-nav{position:fixed;left:0;right:0;bottom:0;z-index:70;background:#fff;border-top:1px solid #E3EEF5;box-shadow:0 -4px 18px rgba(11,37,69,.08);padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
+.cf-nav-in{display:flex;gap:10px;max-width:760px;margin:0 auto}
 .cf-nav .btn{flex:1;text-align:center;padding:14px 16px}
-.cf-nav .btn.sec{background:#fff;color:var(--bleu);border:2px solid #CFE0F7;flex:0 0 auto}
+.cf-nav .btn.sec{background:#fff;color:var(--bleu);border:2px solid #CFE0F7;flex:0 0 auto;min-width:104px}
+/* Configurateur /devis/ : la barre de navigation fixe remplace la barre d'appel mobile, et laisse la place au contenu */
+body[data-tunnel="configurateur"] .appel-mobile{display:none}
+body[data-tunnel="configurateur"] .cf{padding-bottom:110px}
+body[data-tunnel="configurateur"] footer{padding-bottom:90px}
 .cf-nav .btn[disabled]{opacity:.5;cursor:not-allowed}
 .cf-envoyer{width:100%;font-size:1.05rem;padding:16px}
 .cf-rgpd{font-size:.8rem;color:var(--gris);margin:8px 0 0}
@@ -317,7 +322,7 @@ footer h3{color:#fff;font-size:1rem;margin-bottom:10px}
   <h1>Votre devis de nettoyage</h1>
   <p id="cf-intro"></p>
  </div>
- <div class="cf-prog" aria-live="polite"><div class="cf-barre"><i id="cf-barre"></i></div><span id="cf-prog-txt">Étape 1 sur 7</span></div>
+ <div class="cf-prog"><div class="cf-barre" role="progressbar" aria-label="Progression de votre demande"><i id="cf-barre"></i></div><span id="cf-prog-txt" hidden></span></div>
 
  <!-- 1. Localisation -->
  <section class="cf-etape on" data-etape="1" aria-labelledby="cf-t1">
@@ -410,7 +415,7 @@ footer h3{color:#fff;font-size:1rem;margin-bottom:10px}
    <label class="cf-champ">Précisions <small>Facultatif : accès, contraintes d'horaires, ce qui compte le plus pour vous.</small>
     <textarea name="precisions" id="f-precisions" rows="3"></textarea></label>
    <div class="cf-erreurs" id="err-7"></div>
-   <button type="submit" class="btn cf-envoyer" id="f-envoyer">Recevoir mon devis</button>
+   <button type="submit" class="btn cf-envoyer" id="f-envoyer" hidden>Recevoir mon devis</button>
    <p class="cf-rgpd">Vos informations servent uniquement à établir et suivre votre devis. Elles ne sont ni revendues ni utilisées à des fins publicitaires. <a href="/politique-confidentialite/">Politique de confidentialité</a></p>
   </form>
   <div id="f-etat-envoi"></div>
@@ -427,9 +432,12 @@ footer h3{color:#fff;font-size:1rem;margin-bottom:10px}
   </div>
  </section>
 
+ <!-- Boutons de navigation fixés en bas de l'écran : même place à chaque étape -->
  <div class="cf-nav" id="cf-nav">
-  <button type="button" class="btn sec" id="b-retour">Retour</button>
-  <button type="button" class="btn" id="b-suite">Continuer</button>
+  <div class="cf-nav-in">
+   <button type="button" class="btn sec" id="b-retour">Retour</button>
+   <button type="button" class="btn" id="b-suite">Continuer</button>
+  </div>
  </div>
 </main>
 <section class="cf-zone">
@@ -1395,11 +1403,11 @@ var LimpidMoteur = (function () {
     document.querySelectorAll(".cf-etape").forEach(function (s) { s.classList.toggle("on", String(s.dataset.etape) === String(et)); });
     var i = ETAPES.indexOf(et), rang = et === 8 ? ETAPES.length : i + 1;
     $("cf-barre").style.width = Math.round(rang / ETAPES.length * 100) + "%";
-    $("cf-prog-txt").textContent = et === 8 ? "Demande envoyée" : "Étape " + rang + " sur " + ETAPES.length;
-    $("b-retour").style.display = (i > 0 && et !== 8) ? "" : "none";
-    $("b-suite").style.display = (et === 7 || et === 8) ? "none" : "";
-    $("b-suite").textContent = et === 6 ? "C'est bien ça, continuer" : "Continuer";
-    $("cf-nav").style.display = et === 8 ? "none" : "flex";
+    /* Barre de progression seule : pas de compteur d'étapes */
+    /* Les deux boutons restent toujours à la même place ; à la première étape, Retour est simplement inactif. */
+    $("b-retour").disabled = !(i > 0 && et !== 8);
+    $("b-suite").textContent = et === 7 ? "Recevoir mon devis" : (et === 6 ? "C'est bien ça, continuer" : "Continuer");
+    $("cf-nav").style.display = et === 8 ? "none" : "block";
     rendreEtape(et);
     if (et === 6) ev("configurateur_recapitulatif", { prestation: listeOffres() });
     var main = $("cf"); if (main && main.scrollIntoView && window.scrollY > main.offsetTop) main.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -1428,6 +1436,7 @@ var LimpidMoteur = (function () {
       '<a class="btn sec" href="mailto:' + MAIL + '?subject=' + encodeURIComponent(ref) + '&body=' + encodeURIComponent("Bonjour,\nvoici les photos pour ma demande de devis.\n\n(joignez vos photos avant d'envoyer)") + '">Envoyer par e-mail</a></p>';
   }
   function suivant() {
+    if (E.etape === 7) { envoyer({ preventDefault: function () {} }); return; }
     var i = ETAPES.indexOf(E.etape);
     if (!valider(E.etape)) return;
     if (i < ETAPES.length - 1) { ev("configurateur_etape", { etape: E.etape, prestation: listeOffres() }); aller(ETAPES[i + 1]); }
@@ -1559,7 +1568,7 @@ var LimpidMoteur = (function () {
     fd.append("validation_manuelle", raisonsValidation().join(" ; ") || "non");
     fd.append("code_import", LimpidMoteur.coder(demande));
     enCours = true;
-    var bouton = $("f-envoyer"); bouton.disabled = true; bouton.textContent = "Envoi en cours…";
+    var bouton = $("b-suite"); bouton.disabled = true; bouton.textContent = "Envoi en cours…";
     $("f-etat-envoi").innerHTML = "";
     ev("configurateur_envoi", { prestation: listeOffres() });
     fetch("https://api.web3forms.com/submit", { method: "POST", body: fd, headers: { Accept: "application/json" } })
