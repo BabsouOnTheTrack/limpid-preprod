@@ -1,5 +1,5 @@
 {
- "version": "2026-10-21",
+ "version": "2026-10-21.2",
  "base": {
   "nom": "Darnieulles",
   "cp": "88390"
@@ -239,7 +239,7 @@
     },
     {
      "id": "entree",
-     "lib": "Entrée et couloir",
+     "lib": "Entrée",
      "taches": [
       {
        "id": "en_meubles",
@@ -249,6 +249,24 @@
       },
       {
        "id": "en_sols",
+       "lib": "Aspiration et lavage du sol selon sa nature",
+       "min": 0,
+       "commun": true
+      }
+     ]
+    },
+    {
+     "id": "couloir",
+     "lib": "Couloir",
+     "taches": [
+      {
+       "id": "co_surfaces",
+       "lib": "Dépoussiérage des surfaces accessibles",
+       "min": 0,
+       "commun": true
+      },
+      {
+       "id": "co_sols",
        "lib": "Aspiration et lavage du sol selon sa nature",
        "min": 0,
        "commun": true
@@ -288,25 +306,43 @@
     },
     {
      "id": "opt_fenetres",
-     "lib": "Fenêtres",
-     "desc": "Lavage des vitres, en complément du ménage, par fenêtre.",
+     "lib": "Faces vitrées des fenêtres",
+     "desc": "Comptez chaque face à laver : une fenêtre à deux battants lavée à l'intérieur et à l'extérieur compte 4 faces.",
      "min": 4,
      "quantite": true,
      "actif": true
     },
     {
+     "id": "opt_baies_p",
+     "lib": "Petites baies (1 vantail)",
+     "desc": "",
+     "min": 6,
+     "quantite": true,
+     "actif": true
+    },
+    {
      "id": "opt_baies",
-     "lib": "Baies vitrées",
-     "desc": "Lavage, en complément du ménage, par baie.",
+     "lib": "Baies standard (2 vantaux)",
+     "desc": "",
      "min": 8,
+     "quantite": true,
+     "actif": true
+    },
+    {
+     "id": "opt_baies_g",
+     "lib": "Grandes baies (3 vantaux et +)",
+     "desc": "",
+     "min": 12,
      "quantite": true,
      "actif": true
     },
     {
      "id": "opt_veranda",
      "lib": "Véranda",
-     "desc": "En complément du ménage.",
-     "min": 120,
+     "desc": "Surface au sol, en m².",
+     "min": 12,
+     "quantite": true,
+     "surface": true,
      "actif": true
     }
    ],
@@ -320,13 +356,14 @@
     "Détachage spécialisé des textiles",
     "Désinfection approfondie",
     "Détartrage intensif, traitement des moisissures ou remise en état",
-    "Ménage après travaux, fin de déménagement ou grand nettoyage, qui relèvent d'une prestation dédiée",
+    "Ménage après travaux ou fin de chantier",
+    "Grand nettoyage, qui relève d'une prestation dédiée",
     "Surfaces encombrées ou non accessibles"
    ],
    "creditImpot": true
   },
   "grand": {
-   "nom": "Grand nettoyage ou remise à niveau",
+   "nom": "Grand nettoyage",
    "communes": {
     "lib": "Les détails qui font la différence",
     "parM2": true,
@@ -375,7 +412,7 @@
      "taches": [
       {
        "id": "gs_sols",
-       "lib": "Sols, plinthes et détails, comptés au mètre carré",
+       "lib": "Sols, plinthes et détails",
        "min": 0,
        "commun": true
       }
@@ -488,19 +525,24 @@
     {
      "id": "fenetres",
      "lib": "Fenêtres : vitres intérieures, rebords et rails",
+     "aide": "Nombre de fenêtres.",
      "min": 6,
      "quantite": true
     },
     {
      "id": "baies",
      "lib": "Baies vitrées : vitres intérieures, rebords et rails",
+     "aide": "Nombre de baies.",
      "min": 12,
      "quantite": true
     },
     {
      "id": "veranda",
      "lib": "Véranda",
-     "min": 150
+     "aide": "Surface au sol, en m².",
+     "min": 15,
+     "quantite": true,
+     "surface": true
     }
    ],
    "options": [],
@@ -511,7 +553,7 @@
     "Rangement important ou désencombrement",
     "Détachage spécialisé des textiles : prestation Textiles, chiffrée à part",
     "Surfaces en hauteur nécessitant un équipement spécifique",
-    "Ménage après travaux : devis spécifique, établi après visite"
+    "Ménage après travaux ou fin de chantier"
    ],
    "creditImpot": true
   },
@@ -525,26 +567,41 @@
    "elements": [
     {
      "id": "faces",
-     "lib": "Faces vitrées standard (une fenêtre = 2 faces)",
+     "lib": "Faces vitrées des fenêtres",
+     "aide": "Comptez chaque face à laver : une fenêtre à deux battants lavée à l'intérieur et à l'extérieur compte 4 faces.",
      "min": 4,
      "quantite": true
     },
     {
+     "id": "baiesP",
+     "lib": "Petites baies (1 vantail)",
+     "min": 6,
+     "quantite": true
+    },
+    {
      "id": "baies",
-     "lib": "Grandes baies ou vitrines",
+     "lib": "Baies standard ou vitrines (2 vantaux)",
      "min": 8,
      "quantite": true
     },
     {
+     "id": "baiesG",
+     "lib": "Grandes baies (3 vantaux et +)",
+     "min": 12,
+     "quantite": true
+    },
+    {
      "id": "verandaM2",
-     "lib": "Véranda, en m² au sol (repère : 10 m² en 2 h)",
+     "lib": "Véranda",
+     "aide": "Surface au sol, en m².",
      "min": 12,
      "quantite": true,
      "surface": true
     },
     {
      "id": "glissieres",
-     "lib": "Glissières et rails, par fenêtre",
+     "lib": "Glissières et rails",
+     "aide": "Nombre de fenêtres.",
      "min": 5,
      "quantite": true
     },
