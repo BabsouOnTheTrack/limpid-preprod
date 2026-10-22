@@ -107,7 +107,7 @@
      navigateur bloque Google. Cette fonction tranche en trois secondes.
      Depuis la console : limpidTest()
      Depuis un téléphone : ajouter ?limpid-debug=1 à l'adresse de la page. */
-  var VERSION = "2026-10-04";
+  var VERSION = "2026-10-22";
 
   function joindre(url) {
     try {
@@ -141,6 +141,16 @@
 
   window.limpidTest = function () {
     var e = etatBase();
+    /* Sans consentement accordé, le diagnostic ne contacte jamais Google. */
+    if (lire() !== "oui") {
+      e["googletagmanager joignable"] = "non testé";
+      e["google-analytics joignable"] = "non testé";
+      e.verdict = e.choix === "non"
+        ? "Le consentement est sur REFUS : rien ne part, et le test réseau n'est pas fait. Tapez limpidCookies() puis acceptez pour tester."
+        : "Aucun choix enregistré : acceptez le bandeau pour lancer le test réseau. Aucun contact avec Google sans accord.";
+      if (window.console) { if (console.table) console.table(e); console.log(e.verdict); }
+      return Promise.resolve(e);
+    }
     return Promise.all([
       joindre("https://www.googletagmanager.com/gtag/js?id=" + ID + "&_t=" + Date.now()),
       joindre("https://www.google-analytics.com/g/collect?v=2&tid=" + ID + "&_t=" + Date.now())
@@ -170,8 +180,8 @@
       d.innerHTML = "<b>Diagnostic Limpid</b> · version " + e.version +
         "<br>Consentement : <b>" + e.choix + "</b>" +
         "<br>Balise dans la page : <b>" + (e.balise === "AUCUNE" ? "AUCUNE" : "oui") + "</b>" +
-        "<br>googletagmanager joignable : <b>" + (e["googletagmanager joignable"] ? "oui" : "NON") + "</b>" +
-        "<br>google-analytics joignable : <b>" + (e["google-analytics joignable"] ? "oui" : "NON") + "</b>" +
+        "<br>googletagmanager joignable : <b>" + (e["googletagmanager joignable"] === "non testé" ? "non testé" : e["googletagmanager joignable"] ? "oui" : "NON") + "</b>" +
+        "<br>google-analytics joignable : <b>" + (e["google-analytics joignable"] === "non testé" ? "non testé" : e["google-analytics joignable"] ? "oui" : "NON") + "</b>" +
         "<br><br>" + e.verdict +
         "<br><br><button type=\"button\" style=\"font:inherit;padding:8px 14px;border-radius:99px;border:0;background:#4CC9F0;color:#0B2545;font-weight:700\" onclick=\"this.closest('div').remove()\">Fermer</button>";
     });

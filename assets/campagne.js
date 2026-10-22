@@ -1,8 +1,13 @@
 /* Limpid · tunnels Google Ads
    1. Capture des identifiants de clic et des paramètres UTM à l'arrivée,
       conservation pendant la session, injection dans les formulaires dédiés.
-   2. Événements de suivi envoyés au dataLayer et à GA4 quand la mesure
-      a été acceptée. Sans consentement, rien n'est envoyé nulle part.
+   2. Événements de suivi envoyés à GA4 seulement quand la mesure a été
+      acceptée. Sans consentement, rien n'est envoyé nulle part.
+      Minimisation (22/10/2026) : aucun identifiant publicitaire (gclid,
+      gbraid, wbraid...), aucune UTM et aucun numéro de téléphone dans les
+      événements. GA4 attribue la visite par lui-même ; ces informations
+      restent dans le courriel de demande et le code d'import, pas dans GA4.
+      Plus d'écriture dans le dataLayer : seul gtag, chargé après accord.
    Ce fichier ne dépose aucun cookie : sessionStorage seulement, effacé
    à la fermeture de l'onglet. */
 (function () {
@@ -72,7 +77,6 @@
   }
 
   /* ---------- 2. Événements ---------- */
-  window.dataLayer = window.dataLayer || [];
 
   /* Un visiteur venu d'une annonce peut envoyer le formulaire avant
      d'avoir répondu au bandeau. L'événement est alors mis de côté et
@@ -90,15 +94,11 @@
     return false;
   }
 
+  /* Paramètres jamais transmis, même si un appelant les fournit. */
+  var INTERDITS = CLICS.concat(UTM, ["numero", "telephone", "tel", "email", "nom", "adresse"]);
   function evenement(nom, extra) {
-    var d = { event: nom };
-    if (extra) for (var k in extra) d[k] = extra[k];
-    CLICS.forEach(function (k) { if (donnees[k]) d[k] = donnees[k]; });
-    if (donnees.utm_campaign) d.utm_campaign = donnees.utm_campaign;
-    if (donnees.utm_source) d.utm_source = donnees.utm_source;
-    window.dataLayer.push(d);
     var p = {};
-    for (var j in d) { if (j !== "event") p[j] = d[j]; }
+    if (extra) for (var k in extra) { if (INTERDITS.indexOf(k) < 0) p[k] = extra[k]; }
     if (!versGA(nom, p)) { file.push([nom, p]); sauverFile(); }
   }
   window.limpidEvenement = evenement;
@@ -145,7 +145,7 @@
       var t = a.getAttribute("data-tunnel") || document.body.getAttribute("data-tunnel") || "";
       var tun = t || "b2b";
       if (h.indexOf("tel:") === 0) {
-        evenement(tun + "_phone_click", { numero: h.replace("tel:", "") });
+        evenement(tun + "_phone_click");
       } else if (h.indexOf("wa.me") > -1 || h.indexOf("whatsapp") > -1) {
         evenement(tun + "_whatsapp_click");
       }

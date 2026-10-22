@@ -955,13 +955,31 @@ var LimpidMoteur = (function () {
   /* Mêmes registres que les parcours spécialisés : une référence = une demande = un seul envoi compté. */
   var CLE_DEMANDES = "limpid_demandes", CLE_ATTENTE = "limpid_attente", CLE_LEADS = "limpid_leads", CLE_TEST = "limpid_test";
   var SERVICE = "general", CONSERVATION_ATTENTE_J = 7;
-  var TEST = false;
+  /* Mode test : activé par ?test=1, valable 2 heures, quitté par ?test=0 ou le bouton du bandeau.
+     L'état est figé au chargement de la page : une demande commencée en test reste un test. */
+  var DUREE_TEST = 2 * 3600 * 1000, TEST = false, FIN_TEST = 0;
+  function debutTest() { try { var t = parseInt(sessionStorage.getItem(CLE_TEST) || "0", 10); return t > 1e12 ? t : 0; } catch (e) { return 0; } }
   try {
-    var q0 = new URLSearchParams(location.search);
-    if (q0.get("test") === "1") sessionStorage.setItem(CLE_TEST, "1");
-    if (q0.get("test") === "0") sessionStorage.removeItem(CLE_TEST);
-    TEST = sessionStorage.getItem(CLE_TEST) === "1";
+    var qT = new URLSearchParams(location.search);
+    if (qT.get("test") === "1") sessionStorage.setItem(CLE_TEST, String(Date.now()));
+    if (qT.get("test") === "0") sessionStorage.removeItem(CLE_TEST);
+    var tT = debutTest();
+    if (tT && Date.now() - tT < DUREE_TEST) { TEST = true; FIN_TEST = tT + DUREE_TEST; }
+    else sessionStorage.removeItem(CLE_TEST);
   } catch (e) {}
+  function quitterTest() {
+    try { sessionStorage.removeItem(CLE_TEST); } catch (e) {}
+    var u = location.pathname + location.search.replace(/([?&])test=[01](&|$)/, function (m, a, b) { return b ? a : ""; }).replace(/[?&]$/, "");
+    location.replace(u);
+  }
+  function bandeauTest(id) {
+    var t = document.getElementById(id); if (!t || !TEST) return;
+    var h = new Date(FIN_TEST).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+    t.hidden = false;
+    t.innerHTML = "MODE TEST jusqu'à " + h + " : demande marquée [TEST], aucune conversion publicitaire " +
+      '<button type="button" style="margin-left:8px;background:#fff;color:#7A1A1A;border:0;border-radius:99px;padding:3px 10px;font:inherit;font-weight:700;cursor:pointer">Quitter le mode test</button>';
+    t.querySelector("button").onclick = quitterTest;
+  }
   function lireLS(k, d) { try { var v = JSON.parse(localStorage.getItem(k) || "null"); return v == null ? d : v; } catch (e) { return d; } }
   function ecrireLS(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
   function oublierLS(k) { try { localStorage.removeItem(k); } catch (e) {} }
@@ -1589,6 +1607,43 @@ var LimpidMoteur = (function () {
     if (D && D.statut === "envoye") { reussite({ id: E.id, photos: E.photos === "oui", nom: nom }); return; }
     transmettre(construire(), false);
   }
+
+  /* ---------- Conversion métier : au plus un *_lead par demande ----------
+     Règle validée le 22/10 : le *_lead n'est envoyé que si les trois conditions sont réunies.
+     1. Indice publicitaire dans la visite : gclid, gbraid ou wbraid, ou utm_source google avec utm_medium cpc, ppc ou paid.
+        Une arrivée sur une landing sans cet indice (visite naturelle, accès direct) n'est pas un clic publicitaire.
+     2. Première page de la visite = une page de destination d'annonce (landing ou parcours du service).
+     3. La demande contient bien ce service.
+     Sinon : aucun *_lead, seulement configurateur_demande (analytique). Une demande combinée ne compte qu'une fois. */
+  var PAGES_SERVICE = {
+    vitres: ["/nettoyage-vitres-domicile-epinal/", "/configurer-devis-vitres/"],
+    menage: ["/menage-domicile-epinal/", "/configurer-devis-menage/"],
+    b2b: ["/nettoyage-locaux-professionnels-epinal/", "/configurer-devis-locaux-professionnels/"]
+  };
+  function indicePub(a) {
+    if (a.gclid || a.gbraid || a.wbraid) return "identifiant de clic Google Ads";
+    if (/^google$/i.test(a.utm_source || "") && /^(cpc|ppc|paid|paid_search)$/i.test(a.utm_medium || "")) return "UTM google / " + a.utm_medium;
+    return "";
+  }
+  function serviceDeLaPage(chemin) {
+    var c = String(chemin || "").replace(/\/?$/, "/");
+    for (var k in PAGES_SERVICE) if (PAGES_SERVICE[k].indexOf(c) >= 0) return k;
+    return "";
+  }
+  function contientService(svc) {
+    if (svc === "vitres") return E.offres.indexOf("vitres") >= 0;
+    if (svc === "menage") return E.offres.indexOf("regulier") >= 0 || E.offres.indexOf("grand") >= 0;
+    if (svc === "b2b") return E.profil === "pro";
+    return false;
+  }
+  function routage() {
+    var a = {}; try { a = JSON.parse(sessionStorage.getItem("limpid_campagne") || "{}"); } catch (e) {}
+    var svc = serviceDeLaPage(a.arrivee), pub = indicePub(a);
+    if (!pub) return { lead: "", motif: "aucun indice publicitaire" + (svc ? " (arrivée " + svc + " non payante)" : "") };
+    if (!svc) return { lead: "", motif: "indice publicitaire mais première page hors destinations d'annonce (" + (a.arrivee || "inconnue") + ")" };
+    if (!contientService(svc)) return { lead: "", motif: "arrivée " + svc + " mais la demande ne contient pas ce service" };
+    return { lead: svc + "_lead", motif: "arrivée " + a.arrivee + ", " + pub };
+  }
   function construire() {
     var nom = $("f-nom").value.trim(), mail = $("f-email").value.trim();
     var c = communeChoisie();
@@ -1606,6 +1661,7 @@ var LimpidMoteur = (function () {
     var demande = { v: 2, id: E.id, parcours: SERVICE, type: "devis", test: TEST, date: new Date().toISOString(), client: client, demandes: demandes,
       offre: d0.offre, saisie: d0.saisie, duree: d0.duree, estimation: d0.estimation, configVersion: cfg().version, attribution: camp };
     var libs = choisies().map(function (o) { return o.court; }).join(" + ");
+    var rt = routage();
     var sujet = "[CONFIGURATEUR] " + libs + " · " + (E.commune || E.cp) + " · " + E.id;
     if (TEST) sujet = "[TEST] " + sujet;
     var fd = new FormData($("f-form")), entrees = [];
@@ -1622,8 +1678,9 @@ var LimpidMoteur = (function () {
       ["photos", E.photos === "oui" ? "oui, à venir par WhatsApp ou e-mail avec la référence" : "non"],
       ["recapitulatif", texteRecap()],
       ["validation_manuelle", raisonsValidation().join(" ; ") || "non"],
+      ["conversion_publicitaire", TEST ? "aucune (mode test)" : (rt.lead ? rt.lead + " : " + rt.motif : "aucune : " + rt.motif)],
       ["code_import", LimpidMoteur.coder(demande)]);
-    return { id: E.id, entrees: entrees, photos: E.photos === "oui", nom: nom, prestation: listeOffres(), profil: E.profil, mode: E.mode };
+    return { id: E.id, entrees: entrees, photos: E.photos === "oui", nom: nom, prestation: listeOffres(), profil: E.profil, mode: E.mode, test: TEST, lead: rt.lead };
   }
 
   /* Phase C (désactivée tant que la balise limpid-stockage vaut 0) : copie de la demande sur le serveur du site,
@@ -1662,8 +1719,11 @@ var LimpidMoteur = (function () {
   function convertir(paquet) {
     var C = lireLS(CLE_LEADS, {}); if (C[paquet.id]) return;
     C[paquet.id] = Date.now(); ecrireLS(CLE_LEADS, C);
-    if (TEST) { ev("config_test_lead", { type: "devis", request_id: paquet.id }); return; }
-    ev("configurateur_demande", { prestation: paquet.prestation, profil: paquet.profil, mode: paquet.mode, photos: paquet.photos ? "oui" : "non", request_id: paquet.id });
+    if (TEST || paquet.test) { ev("config_test_lead", { type: "devis", request_id: paquet.id }); return; }
+    /* Analytique : jamais une conversion principale. */
+    ev("configurateur_demande", { prestation: paquet.prestation, profil: paquet.profil, mode: paquet.mode, photos: paquet.photos ? "oui" : "non", request_id: paquet.id, lead_routage: paquet.lead || "aucun" });
+    /* Conversion métier : une seule, et seulement si le routage l'a retenue à la préparation. */
+    if (paquet.lead) ev(paquet.lead, { type: "devis", request_id: paquet.id, tunnel: "devis_configurateur", service: paquet.lead.replace("_lead", "") });
   }
   function reussite(paquet) {
     E.envoye = true; E.ref = paquet.id; E.photosFin = !!paquet.photos; E.nomFin = paquet.nom || "";
@@ -1700,7 +1760,7 @@ var LimpidMoteur = (function () {
   /* ---------- Démarrage ---------- */
   function demarrer() {
     $("cf-intro").textContent = cfg().textes.intro;
-    if (TEST) { var t = $("cf-test"); if (t) t.hidden = false; }
+    bandeauTest("cf-test");
     E.offres = (E.offres || []).filter(function (id) { return offre(id); });
     if (E.etape === 8) E.etape = 1;
     brancher();

@@ -1137,13 +1137,31 @@ window.LIMPID_PARCOURS = (function () {
   }
 
   /* ---------- Mode test : demandes et événements isolés de la production ---------- */
-  var TEST = false;
+  /* Mode test : activé par ?test=1, valable 2 heures, quitté par ?test=0 ou le bouton du bandeau.
+     L'état est figé au chargement de la page : une demande commencée en test reste un test. */
+  var DUREE_TEST = 2 * 3600 * 1000, TEST = false, FIN_TEST = 0;
+  function debutTest() { try { var t = parseInt(sessionStorage.getItem(CLE_TEST) || "0", 10); return t > 1e12 ? t : 0; } catch (e) { return 0; } }
   try {
-    var q = new URLSearchParams(location.search);
-    if (q.get("test") === "1") sessionStorage.setItem(CLE_TEST, "1");
-    if (q.get("test") === "0") sessionStorage.removeItem(CLE_TEST);
-    TEST = sessionStorage.getItem(CLE_TEST) === "1";
+    var qT = new URLSearchParams(location.search);
+    if (qT.get("test") === "1") sessionStorage.setItem(CLE_TEST, String(Date.now()));
+    if (qT.get("test") === "0") sessionStorage.removeItem(CLE_TEST);
+    var tT = debutTest();
+    if (tT && Date.now() - tT < DUREE_TEST) { TEST = true; FIN_TEST = tT + DUREE_TEST; }
+    else sessionStorage.removeItem(CLE_TEST);
   } catch (e) {}
+  function quitterTest() {
+    try { sessionStorage.removeItem(CLE_TEST); } catch (e) {}
+    var u = location.pathname + location.search.replace(/([?&])test=[01](&|$)/, function (m, a, b) { return b ? a : ""; }).replace(/[?&]$/, "");
+    location.replace(u);
+  }
+  function bandeauTest(id) {
+    var t = document.getElementById(id); if (!t || !TEST) return;
+    var h = new Date(FIN_TEST).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+    t.hidden = false;
+    t.innerHTML = "MODE TEST jusqu'à " + h + " : demande marquée [TEST], aucune conversion publicitaire " +
+      '<button type="button" style="margin-left:8px;background:#fff;color:#7A1A1A;border:0;border-radius:99px;padding:3px 10px;font:inherit;font-weight:700;cursor:pointer">Quitter le mode test</button>';
+    t.querySelector("button").onclick = quitterTest;
+  }
 
   /* ---------- État du parcours, conservé dans l'onglet ---------- */
   function etatVide() { return { ecran: "accueil", id: "", r: { types: [] }, retourRecap: false, debut: false }; }
@@ -1425,7 +1443,7 @@ window.LIMPID_PARCOURS = (function () {
     var tracage = $("pc-tracage"), fd0 = tracage ? new FormData(tracage) : null, extras = [];
     if (fd0) fd0.forEach(function (v, k) { extras.push([k, String(v)]); });
     var tout = base.concat(champs, extras, [["code_import", LimpidMoteur.coder(demande)]]);
-    return { id: E.id, type: type, entrees: tout, photos: R.photos === "oui", nom: demande.client.nom };
+    return { id: E.id, type: type, entrees: tout, photos: R.photos === "oui", nom: demande.client.nom, test: TEST };
   }
   function envoyer(type) {
     if (enCours) return;
@@ -1472,7 +1490,8 @@ window.LIMPID_PARCOURS = (function () {
     var C = lireLS("limpid_leads", {});
     if (C[paquet.id]) return;
     C[paquet.id] = Date.now(); ecrireLS("limpid_leads", C);
-    if (TEST) { ev("config_test_lead", { type: paquet.type, request_id: paquet.id }); return; }
+    /* Un paquet préparé en mode test reste un test, même renvoyé après l'expiration du mode. */
+    if (TEST || paquet.test) { ev("config_test_lead", { type: paquet.type, request_id: paquet.id }); return; }
     ev(CFG.conversion, { type: paquet.type, request_id: paquet.id, tunnel: CFG.service + "_configurateur" });
   }
   function echec(paquet, raison) {
@@ -1511,7 +1530,7 @@ window.LIMPID_PARCOURS = (function () {
 
   /* ---------- Démarrage ---------- */
   function init() {
-    if (TEST) { var t = $("pc-test"); if (t) t.hidden = false; }
+    bandeauTest("pc-test");
     brancher();
     if (E.ecran === "fin" && !E.fin) E.ecran = "accueil";
     /* Un écran qui n'existe plus ou n'est plus visible ramène à l'accueil, réponses conservées. */
