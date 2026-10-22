@@ -94,9 +94,29 @@
     return false;
   }
 
+  /* Conversions métier réservées au domaine officiel (correctif du 22/10/2026).
+     Sur tout autre domaine (préproduction, Worker, *.pages.dev, localhost),
+     vitres_lead, menage_lead et b2b_lead ne partent jamais, ni tout de suite,
+     ni depuis la file d'attente rejouée après consentement. Les événements
+     analytiques (config_*, config_test_lead...) restent envoyés partout. */
+  var DOMAINES_OFFICIELS = ["limpid-nettoyage.fr"];
+  var CONVERSIONS_METIER = ["vitres_lead", "menage_lead", "b2b_lead"];
+  function domaineOfficiel() {
+    var h = "";
+    try { h = String(window.location.hostname || "").toLowerCase(); } catch (e) {}
+    return DOMAINES_OFFICIELS.indexOf(h) >= 0;
+  }
+  function autorise(nom) {
+    if (CONVERSIONS_METIER.indexOf(nom) < 0) return true;
+    if (domaineOfficiel()) return true;
+    try { if (window.console) console.info("[Limpid] " + nom + " bloqué : domaine non officiel (" + window.location.hostname + ")"); } catch (e) {}
+    return false;
+  }
+
   /* Paramètres jamais transmis, même si un appelant les fournit. */
   var INTERDITS = CLICS.concat(UTM, ["numero", "telephone", "tel", "email", "nom", "adresse"]);
   function evenement(nom, extra) {
+    if (!autorise(nom)) return;
     var p = {};
     if (extra) for (var k in extra) { if (INTERDITS.indexOf(k) < 0) p[k] = extra[k]; }
     if (!versGA(nom, p)) { file.push([nom, p]); sauverFile(); }
@@ -105,7 +125,7 @@
 
   window.limpidRejouer = function () {
     if (!file.length) return;
-    for (var i = 0; i < file.length; i++) versGA(file[i][0], file[i][1]);
+    for (var i = 0; i < file.length; i++) { if (autorise(file[i][0])) versGA(file[i][0], file[i][1]); }
     file = []; sauverFile();
   };
 
