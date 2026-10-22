@@ -99,6 +99,9 @@ footer.lp a{color:#fff}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 :focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+
+/* Logo cliquable vers le site officiel (22/10/2026) */
+header.lp a.logo{display:flex;align-items:center;flex:none;line-height:0;border-radius:6px}header.lp a.logo:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
 </style>
 <script src="/assets/mesure.js" defer></script>
 <script src="/assets/campagne.js" defer></script>
@@ -107,7 +110,7 @@ footer.lp a{color:#fff}
 
 <header class="lp">
  <div class="in">
-  <img src="/assets/logo-limpid.webp" alt="Limpid, entreprise de nettoyage dans les Vosges" width="160" height="44">
+  <a class="logo" href="https://limpid-nettoyage.fr/" aria-label="Accéder au site officiel Limpid"><img src="/assets/logo-limpid.webp" alt="Limpid, entreprise de nettoyage dans les Vosges" width="160" height="44"></a>
   <a class="tel" href="tel:+33626556569">06 26 55 65 69</a>
  </div>
 </header>
