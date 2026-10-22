@@ -1,5 +1,5 @@
 {
- "version": "2026-10-21.2",
+ "version": "2026-10-22",
  "base": {
   "nom": "Darnieulles",
   "cp": "88390"
@@ -562,7 +562,7 @@
    "inclus": [
     "Vitrages, encadrements et appuis, à l'intérieur comme à l'extérieur",
     "Baies vitrées et portes-fenêtres",
-    "Véranda : parois et toiture, lorsque l'accès permet de travailler en sécurité"
+    "Véranda : parois vitrées, à l'intérieur et à l'extérieur (la toiture n'est pas prise en charge)"
    ],
    "elements": [
     {
