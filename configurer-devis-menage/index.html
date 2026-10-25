@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="limpid-stockage" content="0">
 <title>Configurez votre demande de ménage à domicile | Limpid, Épinal et alentours</title>
-<meta name="description" content="Décrivez votre logement et vos besoins en quelques étapes. Limpid étudie votre demande et prépare un devis personnalisé, sans engagement.">
+<meta name="description" content="Décrivez votre logement et vos besoins en quelques étapes. Limpid étudie votre demande et prépare un devis personnalisé et gratuit.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -316,16 +316,16 @@ body.pc-en-cours .appel-mobile{display:none}
  <section class="pc-accueil" id="pc-accueil">
   <span class="pc-badge">Particuliers · 15 km autour de Darnieulles</span>
   <h1>Configurez votre demande de ménage à domicile</h1>
-  <p>Décrivez votre logement et vos besoins en quelques étapes. Nous étudierons votre demande et préparerons un devis personnalisé, sans engagement.</p>
+  <p>Décrivez votre logement et vos besoins en quelques étapes. Nous étudierons votre demande et préparerons un devis personnalisé et gratuit : la décision vous appartient.</p>
   <button type="button" class="btn" data-pc-demarrer>Configurer ma demande</button>
   <p class="pc-sous-cta">Aucun prix automatique : votre demande est étudiée avant l'envoi du devis.</p>
-  <p class="pc-confiance">Sans engagement · Note Google 5,0 ★ · Entreprise déclarée services à la personne · 50 % de crédit d'impôt, selon conditions</p>
+  <p class="pc-confiance">Devis gratuit · Sans durée minimale · Note Google 5,0 ★ · Entreprise déclarée services à la personne · 50 % de crédit d'impôt, selon conditions</p>
  </section>
 <section class="rassure pc-plus" style="padding:0">
  <div class="in">
   <div class="c"><b>2 h minimum</b>Le temps de faire le travail correctement.</div>
   <div class="c"><b>Chaque semaine</b>Ou tous les 15 jours, selon votre rythme.</div>
-  <div class="c"><b>Sans engagement</b>Vous arrêtez quand vous le souhaitez.</div>
+  <div class="c"><b>Sans durée minimale</b>Vous arrêtez quand vous le souhaitez.</div>
   <div class="c"><b>Entreprise locale</b>Darnieulles, aux portes d'Épinal.</div>
  </div>
 </section>
@@ -947,7 +947,7 @@ window.LIMPID_PARCOURS = (function () {
           var h = C.cartes("logement", LOGEMENT, R);
           if (R.logement === "maison") h += C.titre("Votre maison est…") + C.opts("niveaux", NIV_MAISON, R);
           if (R.logement === "appartement") h += C.titre("Votre appartement est…") + C.opts("niveaux", NIV_APPART, R);
-          if (R.logement === "autre") h += C.txt("logementTxt", "Précisez", "", R, "Ex. : studio meublé, gîte…");
+          if (R.logement === "autre") h += C.txt("logementTxt", "Précisez", "", R, "Ex. : studio, maison mitoyenne…");
           return h;
         },
         valider: function (R) {
@@ -1329,7 +1329,7 @@ window.LIMPID_PARCOURS = (function () {
     if (ac2.length) h += '<div class="cf-alerte bleu">Certains points seront précisés avec vous avant l\'établissement du devis : ' + esc(ac2.join(", ")) + '.</div>';
     h += '<div class="cf-erreurs" id="pc-err" role="alert"></div><div id="pc-etat-envoi"></div>';
     h += '<p class="pc-rassure">' + esc(CFG.texteRassure || "Votre demande sera étudiée par Limpid. Nous vous contacterons si une précision ou une visite est nécessaire avant de vous transmettre un devis personnalisé.") + '</p>';
-    h += '<p class="cf-rgpd">Vos informations servent uniquement à établir et suivre votre devis. Elles ne sont ni revendues ni transmises à des outils de mesure d\'audience. <a href="/politique-confidentialite/">Politique de confidentialité</a></p>';
+    h += '<p class="cf-rgpd">Aucun démarchage : vos informations servent uniquement à établir et suivre votre devis. Elles ne sont ni revendues ni transmises à des outils de mesure d\'audience. <a href="/politique-confidentialite/">Politique de confidentialité</a></p>';
     return h;
   }
 

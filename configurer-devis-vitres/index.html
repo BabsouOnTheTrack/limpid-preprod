@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="limpid-stockage" content="0">
 <title>Configurez votre demande de nettoyage de vitres | Limpid, Épinal et alentours</title>
-<meta name="description" content="Décrivez vos fenêtres et vos besoins en quelques étapes. Limpid étudie votre demande et prépare un devis personnalisé, sans engagement.">
+<meta name="description" content="Décrivez vos fenêtres et vos besoins en quelques étapes. Limpid étudie votre demande et prépare un devis personnalisé et gratuit.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -293,10 +293,10 @@ body.pc-en-cours .appel-mobile{display:none}
  <section class="pc-accueil" id="pc-accueil">
   <span class="pc-badge">Particuliers · Épinal et alentours</span>
   <h1>Configurez votre demande de nettoyage de vitres</h1>
-  <p>Décrivez vos fenêtres et vos besoins en quelques étapes. Nous étudierons votre demande et préparerons un devis personnalisé, sans engagement.</p>
+  <p>Décrivez vos fenêtres et vos besoins en quelques étapes. Nous étudierons votre demande et préparerons un devis personnalisé et gratuit : la décision vous appartient.</p>
   <button type="button" class="btn" data-pc-demarrer>Configurer ma demande</button>
   <p class="pc-sous-cta">Aucun prix automatique : votre demande est étudiée avant l'envoi du devis.</p>
-  <p class="pc-confiance">Devis sans engagement · Note Google 5,0 ★ · Entreprise déclarée services à la personne · 50 % de crédit d'impôt, selon conditions</p>
+  <p class="pc-confiance">Devis gratuit · Note Google 5,0 ★ · Entreprise déclarée services à la personne · 50 % de crédit d'impôt, selon conditions</p>
  </section>
 <section class="rassure pc-plus" style="padding:0">
  <div class="in">
@@ -985,7 +985,7 @@ window.LIMPID_PARCOURS = (function () {
           var h = opts("logement", LOGEMENT, R);
           if (R.logement === "appartement") h += '<p class="cf-sous" style="margin:8px 0 6px">À quel étage ?</p>' + opts("etage", ETAGES, R);
           if (R.logement === "maison") h += '<p class="cf-sous" style="margin:8px 0 6px">Votre maison est…</p>' + opts("niveaux", NIVEAUX, R);
-          if (R.logement === "autre") h += txt("logementTxt", "Précisez", "", R, "Ex. : gîte, local attenant…");
+          if (R.logement === "autre") h += txt("logementTxt", "Précisez", "", R, "Ex. : local attenant, atelier…");
           h += '<p class="cf-sous" style="margin:10px 0 6px">Certaines vitres demandent-elles une échelle ou une perche ?</p>' +
             opts("accessible", [["non", "Non, toutes sont à portée de main"], ["oui", "Oui, certaines sont en hauteur"]], R);
           return h;
@@ -1367,7 +1367,7 @@ window.LIMPID_PARCOURS = (function () {
     if (ac2.length) h += '<div class="cf-alerte bleu">Certains points seront précisés avec vous avant l\'établissement du devis : ' + esc(ac2.join(", ")) + '.</div>';
     h += '<div class="cf-erreurs" id="pc-err" role="alert"></div><div id="pc-etat-envoi"></div>';
     h += '<p class="pc-rassure">' + esc(CFG.texteRassure || "Votre demande sera étudiée par Limpid. Nous vous contacterons si une précision ou une visite est nécessaire avant de vous transmettre un devis personnalisé.") + '</p>';
-    h += '<p class="cf-rgpd">Vos informations servent uniquement à établir et suivre votre devis. Elles ne sont ni revendues ni transmises à des outils de mesure d\'audience. <a href="/politique-confidentialite/">Politique de confidentialité</a></p>';
+    h += '<p class="cf-rgpd">Aucun démarchage : vos informations servent uniquement à établir et suivre votre devis. Elles ne sont ni revendues ni transmises à des outils de mesure d\'audience. <a href="/politique-confidentialite/">Politique de confidentialité</a></p>';
     return h;
   }
 

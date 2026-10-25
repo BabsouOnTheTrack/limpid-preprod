@@ -428,7 +428,7 @@ body[data-tunnel="configurateur"] footer{padding-bottom:90px}
     <textarea name="precisions" id="f-precisions" rows="3"></textarea></label>
    <div class="cf-erreurs" id="err-7" role="alert"></div>
    <button type="submit" class="btn cf-envoyer" id="f-envoyer" hidden>Recevoir mon devis</button>
-   <p class="cf-rgpd">Vos informations servent uniquement à établir et suivre votre devis. Elles ne sont ni revendues ni utilisées à des fins publicitaires. <a href="/politique-confidentialite/">Politique de confidentialité</a></p>
+   <p class="cf-rgpd">Aucun démarchage : vos informations servent uniquement à établir et suivre votre devis. Elles ne sont ni revendues ni utilisées à des fins publicitaires. <a href="/politique-confidentialite/">Politique de confidentialité</a></p>
   </form>
   <div id="f-etat-envoi"></div>
  </section>
@@ -1342,8 +1342,8 @@ var LimpidMoteur = (function () {
         var ch = n(E.heures[id]) * 60;
         if (ch) {
           var ec = ch - est.minutes;
-          x += '<div class="cf-comp"><div>Estimée par Limpid<b>' + (est.minutes ? duree(est.minutes) : "—") + '</b></div><div>Votre choix<b>' + duree(ch) + '</b></div><div>Écart<b>' +
-            (est.minutes ? (ec < 0 ? "−" : "+") + duree(Math.abs(ec)) : "—") + '</b></div></div>';
+          x += '<div class="cf-comp"><div>Estimée par Limpid<b>' + (est.minutes ? duree(est.minutes) : "à préciser") + '</b></div><div>Votre choix<b>' + duree(ch) + '</b></div><div>Écart<b>' +
+            (est.minutes ? (ec < 0 ? "−" : "+") + duree(Math.abs(ec)) : "à préciser") + '</b></div></div>';
           if (est.minutes && ch < est.minutes - 1) x += '<div class="cf-alerte ambre">' + esc(T.dureeInsuffisante) + '</div>';
           else if (est.minutes && ch > est.minutes * 1.5) x += '<div class="cf-alerte bleu">Votre durée dépasse largement notre estimation : précisez ce que vous souhaitez faire de ce temps dans le champ « Précisions », à la dernière étape.</div>';
         }
@@ -1351,7 +1351,7 @@ var LimpidMoteur = (function () {
         if (g.length) x += '<div class="cf-prios"><b>Vos priorités</b><div class="note">Si le temps manque, Limpid commence par là. Elles seront confirmées avec vous.</div>' +
           g.map(function (y) { return '<label class="cf-coche"><input type="checkbox" data-prio="' + id + '|' + esc(y) + '"' + (pr.indexOf(y) >= 0 ? " checked" : "") + '><span class="l">' + esc(y) + '</span></label>'; }).join("") + '</div>';
       } else {
-        x += '<div class="cf-duree"><b>' + (est.minutes ? duree(est.minutes) : "—") + '</b><span>' + (parPassage(id) ? "par intervention. " : "") + esc(T.estimation) + '</span></div>';
+        x += '<div class="cf-duree"><b>' + (est.minutes ? duree(est.minutes) : "à préciser") + '</b><span>' + (parPassage(id) ? "par intervention. " : "") + esc(T.estimation) + '</span></div>';
       }
       if (id === "regulier" && est.minutes) x += '<div class="cf-alerte bleu">Le premier passage, plus long, remet le logement à niveau : environ ' + duree(est.minutes * (1 + (cfg().premierPassage || 0) / 100)) + ' pour l\'ensemble du périmètre. Votre devis le précisera.</div>';
       h += '<div class="cf-piece">' + titre + x + '</div>';
@@ -1410,7 +1410,7 @@ var LimpidMoteur = (function () {
     choisies().forEach(function (o) {
       var id = o.id, s = saisie(id), est = estimation(id), P = PP(id), p = LimpidMoteur.perimetre(s), x = "<dl>";
       x += "<dt>Fréquence</dt><dd>" + esc(libFrequence(id)) + "</dd>";
-      x += "<dt>Durée</dt><dd>" + (heuresChoisies(id) ? duree(heuresChoisies(id) * 60) + " (votre choix)" : (est.minutes ? duree(est.minutes) + " (estimée)" : "—")) + "</dd></dl>";
+      x += "<dt>Durée</dt><dd>" + (heuresChoisies(id) ? duree(heuresChoisies(id) * 60) + " (votre choix)" : (est.minutes ? duree(est.minutes) + " (estimée)" : "à préciser")) + "</dd></dl>";
       x += "<h4>Compris</h4><ul>" + p.inclus.map(function (y) { return "<li>" + (y.piece ? "<b>" + esc(y.piece) + "</b> : " : "") + esc(y.taches.join(", ")) + "</li>"; }).join("") + "</ul>";
       if (p.options.length) x += "<h4>Éléments et options</h4><ul>" + p.options.map(function (y) { return "<li>" + esc(y) + "</li>"; }).join("") + "</ul>";
       if (p.retires.length) x += "<h4>Retiré à votre demande</h4><ul>" + p.retires.map(function (y) { return "<li>" + esc(y) + "</li>"; }).join("") + "</ul>";

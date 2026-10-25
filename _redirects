@@ -23,3 +23,6 @@
 /services/ / 301
 /configurateur/ /devis/ 301
 /configurateur /devis/ 301
+# Ancienne page de remerciement, plus reliée à aucun formulaire (25/10/2026)
+/merci/ /devis/ 301
+/merci /devis/ 301
