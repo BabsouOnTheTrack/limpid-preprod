@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="limpid-stockage" content="0">
-<title>Configurez votre demande de ménage à domicile | Limpid, Épinal et alentours</title>
-<meta name="description" content="Décrivez votre logement et vos besoins en quelques étapes. Limpid étudie votre demande et prépare un devis personnalisé et gratuit.">
+<title>Ménage à domicile à Épinal et alentours | Devis gratuit, Limpid</title>
+<meta name="description" content="Entretien régulier ou grand ménage autour d'Épinal. Décrivez votre logement en quelques étapes : Limpid étudie votre demande et prépare un devis personnalisé et gratuit.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -298,6 +298,66 @@ body.pc-en-cours footer.lp{padding-bottom:96px}
 body.pc-en-cours .rassure,body.pc-en-cours .pc-plus{display:none}
 /* Pendant le parcours, la barre d'appel du bas ne masque pas les boutons Retour et Continuer */
 body.pc-en-cours .appel-mobile{display:none}
+.pc-sous-titre{font-family:'Nunito',sans-serif;font-weight:800;font-size:1.12rem;color:#fff!important;margin-top:-4px!important}
+.pc-court{display:none}
+.pc-ci-pastille{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.55);color:#fff;border-radius:16px;padding:9px 16px;margin:0 auto 16px;cursor:pointer;font:inherit;font-size:.95rem;line-height:1.3;transition:background .2s,transform .2s}
+.pc-ci-pastille:hover,.pc-ci-pastille:focus-visible{background:rgba(255,255,255,.24);transform:translateY(-1px)}
+.pc-ci-pastille b{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.45rem;color:#7CF0B0;line-height:1}
+.pc-ci-pastille i{font-style:normal;font-weight:700;font-size:.82rem;text-decoration:underline;color:#DCEBF5}
+.pc-lp h2{margin-bottom:.35em}
+.pc-lp .sous{color:var(--gris);margin-bottom:18px}
+.pc-choix{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.pc-tuile{background:#fff;border:1.5px solid #E3EEF5;border-radius:16px;padding:18px 20px;box-shadow:0 2px 10px rgba(11,37,69,.05);display:flex;flex-direction:column;transition:border-color .2s,box-shadow .2s,transform .2s}
+.pc-tuile:hover{border-color:var(--cyan);box-shadow:0 6px 20px rgba(11,37,69,.1);transform:translateY(-2px)}
+.pc-tuile .ico{width:44px;height:44px;border-radius:12px;background:var(--glace);display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.pc-lp svg{width:24px;height:24px;fill:none;stroke:var(--bleu);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pc-tuile h3{font-size:1.06rem;margin-bottom:5px}
+.pc-tuile p{flex:1}
+.pc-puces{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.pc-puce{display:inline-block;background:var(--glace);color:var(--bleu);border:1.5px solid #CFE3F3;border-radius:99px;padding:10px 16px;font:inherit;font-weight:700;font-size:.93rem;cursor:pointer;text-decoration:none;min-height:44px;transition:background .15s,color .15s,border-color .15s}
+.pc-puce:hover,.pc-puce:focus-visible{background:var(--bleu);color:#fff;border-color:var(--bleu)}
+.pc-lp .pc-lp-cta{margin-top:22px;text-align:center}
+.pc-ci{background:#EAF7EF;border:1px solid #B9E0C9;border-radius:18px;padding:24px;max-width:760px;margin:0 auto}
+.pc-ci h2{color:#0E5F34}
+.pc-ci .eyebrow{color:var(--vert)}
+.pc-bascule{display:inline-flex;background:#fff;border:1.5px solid #B9E0C9;border-radius:99px;padding:4px;margin:6px 0 18px;flex-wrap:wrap}
+.pc-bascule button{border:none;background:none;font:inherit;font-weight:700;font-size:.9rem;color:#2F6A4A;padding:9px 14px;border-radius:99px;cursor:pointer;min-height:40px}
+.pc-bascule button[aria-pressed="true"]{background:var(--vert);color:#fff}
+.pc-barre{position:relative;height:58px;border-radius:12px;overflow:hidden;background:repeating-linear-gradient(135deg,#BFE8D0 0 10px,#D3F0DF 10px 20px);border:1px solid #B9E0C9}
+.pc-barre .part{position:absolute;left:0;top:0;bottom:0;width:100%;background:var(--vert);display:flex;align-items:center;padding-left:14px;color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:.95rem;white-space:nowrap;transition:width .9s cubic-bezier(.3,.7,.2,1)}
+.pc-barre .etat{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-family:'Nunito',sans-serif;font-weight:800;font-size:.88rem;color:#0E5F34;text-align:right;line-height:1.15;opacity:0;transition:opacity .4s .5s}
+.pc-ci[data-mode="avance"] .pc-barre .part{width:50%}
+.pc-ci[data-mode="avance"] .pc-barre .etat{opacity:1}
+.pc-ci .legende{display:flex;justify-content:space-between;font-size:.8rem;color:#2F6A4A;margin-top:6px}
+.pc-ci .expl{margin:14px 0 6px;min-height:3em}
+.pc-ci .cond{font-size:.82rem;color:#2F6A4A}
+.pc-ci .liens{margin-top:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.pc-ci .liens a{color:#0E5F34;font-weight:700}
+.pc-zone{max-width:640px;margin:0 auto;text-align:center}
+.pc-zone .ico{width:52px;height:52px;border-radius:50%;background:#fff;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(11,37,69,.08);margin-bottom:8px}
+.pc-zone form{display:flex;gap:8px;margin-top:14px}
+.pc-zone input{flex:1;min-width:0;font:inherit;font-size:1rem;padding:13px 16px;border:1.5px solid #CFE3F3;border-radius:99px;background:#fff;min-height:48px}
+.pc-zone input:focus{outline:none;border-color:var(--bleu);box-shadow:0 0 0 3px rgba(26,86,219,.15)}
+.pc-zone form .btn{padding:12px 20px}
+.pc-zone-res{margin-top:14px;border-radius:14px;padding:14px 16px;text-align:left;background:#fff;border:1.5px solid #E3EEF5}
+.pc-zone-res[data-r="prioritaire"]{border-color:#B9E0C9;background:#EAF7EF}
+.pc-zone-res[data-r="etendue"],.pc-zone-res[data-r="inconnue"]{border-color:#F3DFA8;background:#FFF9E8}
+.pc-zone-res p{margin:0 0 10px}
+.pc-zone-res .btn{width:100%}
+.pc-lp .etapes{max-width:640px}
+.pc-lp .avis{background:#fff;border-left:4px solid var(--cyan);border-radius:0 14px 14px 0;padding:16px 20px;box-shadow:0 2px 10px rgba(11,37,69,.05);margin:0}
+.pc-lp .avis p{margin-bottom:0}
+.pc-lp .avis .qui{font-weight:700;font-size:.88rem;color:var(--gris);margin-top:6px}
+.pc-lp .avis-grille{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:18px}
+.pc-lp .source{margin-top:14px;font-size:.9rem}
+.pc-lp .source a{color:var(--bleu);font-weight:700}
+.pc-lp .faqs{max-width:720px}
+.pc-lp .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.pc-anim .pc-rev{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+.pc-anim .pc-rev.vu{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.pc-barre .part,.pc-barre .etat,.pc-tuile,.pc-ci-pastille{transition:none}}
+@media(max-width:760px){.pc-choix,.pc-lp .avis-grille{grid-template-columns:1fr}}
+@media(max-width:600px){.pc-long{display:none}.pc-court{display:block}.pc-accueil .pc-sous-titre{font-size:1.02rem}.pc-accueil h1{margin-bottom:8px}.pc-ci{padding:20px 16px}.pc-ci-pastille{gap:6px;padding:7px 12px;font-size:.86rem;margin-bottom:14px;flex-wrap:nowrap;text-align:left}.pc-ci-pastille b{font-size:1.2rem}.pc-ci-pastille i{display:none}.pc-barre .part{font-size:.86rem;padding-left:10px}.pc-barre .etat{font-size:.8rem;right:8px}}
 </style>
 <script src="/assets/mesure.js" defer></script>
 <script src="/assets/campagne.js" defer></script>
@@ -315,20 +375,170 @@ body.pc-en-cours .appel-mobile{display:none}
  <div id="pc-attente" class="pc-attente" hidden></div>
  <section class="pc-accueil" id="pc-accueil">
   <span class="pc-badge">Particuliers · 15 km autour de Darnieulles</span>
-  <h1>Configurez votre demande de ménage à domicile</h1>
-  <p>Décrivez votre logement et vos besoins en quelques étapes. Nous étudierons votre demande et préparerons un devis personnalisé et gratuit : la décision vous appartient.</p>
-  <button type="button" class="btn" data-pc-demarrer>Configurer ma demande</button>
-  <p class="pc-sous-cta">Aucun prix automatique : votre demande est étudiée avant l'envoi du devis.</p>
-  <p class="pc-confiance">Devis gratuit · Sans durée minimale · Note Google 5,0 ★ · Entreprise déclarée services à la personne · 50 % de crédit d'impôt, selon conditions</p>
+  <h1>Ménage à domicile à Épinal et alentours</h1>
+  <p class="pc-sous-titre">Un logement propre, un entretien adapté à votre rythme.</p>
+  <p class="pc-long">Vous recherchez une entreprise locale pour le ménage de votre maison ou appartement ? Limpid propose des prestations d'entretien régulier et de grand ménage autour d'Épinal. Décrivez votre besoin en quelques étapes pour recevoir un devis personnalisé et gratuit.</p>
+  <p class="pc-court">Entretien régulier ou grand ménage autour d'Épinal. Décrivez votre besoin en quelques étapes pour recevoir un devis personnalisé et gratuit.</p>
+  <button type="button" class="pc-ci-pastille" data-lp-aller="credit-impot"><b>50&nbsp;%</b><span>de crédit d'impôt · Avance immédiate possible</span><i>Voir comment ›</i></button>
+  <button type="button" class="btn" data-pc-demarrer="accueil">Configurer mon devis gratuit</button>
+  <p class="pc-sous-cta">Devis gratuit · Entreprise locale à Darnieulles</p>
+  <p class="pc-confiance">Chaque demande est étudiée personnellement afin de proposer un devis adapté.</p>
  </section>
 <section class="rassure pc-plus" style="padding:0">
  <div class="in">
-  <div class="c"><b>2 h minimum</b>Le temps de faire le travail correctement.</div>
-  <div class="c"><b>Chaque semaine</b>Ou tous les 15 jours, selon votre rythme.</div>
-  <div class="c"><b>Sans durée minimale</b>Vous arrêtez quand vous le souhaitez.</div>
-  <div class="c"><b>Entreprise locale</b>Darnieulles, aux portes d'Épinal.</div>
+  <div class="c"><b>Intervention de 2 h minimum</b>Un temps d'intervention prévu pour réaliser le ménage correctement.</div>
+  <div class="c"><b>Chaque semaine ou tous les 15 jours</b>Choisissez la fréquence adaptée à votre logement et à votre rythme.</div>
+  <div class="c"><b>Sans durée minimale d'engagement</b>Vous restez libre d'arrêter les prestations, selon les conditions convenues.</div>
+  <div class="c"><b>50 % de crédit d'impôt</b>Avance immédiate possible, selon éligibilité.</div>
  </div>
 </section>
+<section class="pc-plus pc-lp">
+ <div class="wrap">
+  <p class="eyebrow">Nos prestations</p>
+  <h2>Quel est votre besoin ?</h2>
+  <p class="sous">Choisissez votre situation pour commencer votre demande.</p>
+  <div class="pc-choix">
+   <div class="pc-tuile pc-rev">
+    <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/><path d="M10 19.5v-5h4v5"/></svg></div>
+    <h3>Entretien régulier du logement</h3>
+    <p>Cuisine, salle de bains, sols et surfaces : un ménage à domicile chaque semaine ou tous les quinze jours, selon vos besoins.</p>
+    <div class="pc-puces">
+     <button type="button" class="pc-puce" data-pc-demarrer="prestations_semaine" data-pc-preset="frequence|4.33">Chaque semaine</button>
+     <button type="button" class="pc-puce" data-pc-demarrer="prestations_15j" data-pc-preset="frequence|2.17">Tous les 15 jours</button>
+    </div>
+   </div>
+   <div class="pc-tuile pc-rev">
+    <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><path d="m6 6 2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg></div>
+    <h3>Grand ménage ponctuel</h3>
+    <p>Un nettoyage approfondi pour remettre votre logement en état avant ou après un déménagement, ou simplement lorsque c'est nécessaire.</p>
+    <div class="pc-puces"><a class="pc-puce" href="/devis/" data-lp-cta="grand_menage">Décrire mon grand ménage</a></div>
+   </div>
+  </div>
+  <div class="pc-lp-cta"><button type="button" class="btn" data-pc-demarrer="prestations">Décrire mon besoin et obtenir un devis</button></div>
+ </div>
+</section>
+<section class="glace pc-plus pc-lp" id="credit-impot">
+ <div class="wrap">
+  <div class="pc-ci pc-rev" data-mode="classique">
+   <p class="eyebrow">Crédit d'impôt et Avance immédiate</p>
+   <h2>Le crédit d'impôt divise votre coût par deux</h2>
+   <p>Le ménage à domicile relève des services à la personne : les particuliers éligibles bénéficient d'un crédit d'impôt de 50 %. Comparez :</p>
+   <div class="pc-bascule" role="group" aria-label="Mode de paiement">
+    <button type="button" data-lp-mode="classique" aria-pressed="true">Sans Avance immédiate</button>
+    <button type="button" data-lp-mode="avance" aria-pressed="false">Avec l'Avance immédiate</button>
+   </div>
+   <div class="pc-barre" aria-hidden="true"><div class="part" id="pc-ci-part">Vous réglez 100 %</div><div class="etat">50 % pris<br>en charge</div></div>
+   <div class="legende" aria-hidden="true"><span>Votre part</span><span>Crédit d'impôt</span></div>
+   <p class="expl" id="pc-ci-expl" aria-live="polite">Vous réglez la totalité de la prestation. 50 % vous sont ensuite remboursés par l'État, l'année suivante, après votre déclaration de revenus.</p>
+   <p class="cond">Sous réserve des conditions d'éligibilité et d'activation applicables, et dans la limite des plafonds en vigueur. Limpid vous accompagne dans les démarches.</p>
+   <div class="liens"><button type="button" class="btn" data-pc-demarrer="credit_impot">Configurer mon devis gratuit</button><a href="/credit-impot-menage-vosges/">Exemples et conditions</a></div>
+  </div>
+ </div>
+</section>
+<section class="pc-plus pc-lp">
+ <div class="wrap">
+  <p class="eyebrow">En pratique</p>
+  <h2>Comment se déroule votre demande ?</h2>
+  <ol class="etapes">
+   <li class="pc-rev"><b>Décrivez votre logement</b>Indiquez votre commune, votre logement, les prestations souhaitées et la fréquence éventuelle.</li>
+   <li class="pc-rev"><b>Limpid étudie votre demande</b>Les informations transmises permettent de préparer une proposition adaptée à votre besoin.</li>
+   <li class="pc-rev"><b>Recevez votre devis personnalisé</b>Limpid vous répond avec une proposition gratuite, sans obligation de l'accepter.</li>
+  </ol>
+  <div class="pc-lp-cta"><button type="button" class="btn" data-pc-demarrer="etapes">Configurer mon devis gratuit</button></div>
+ </div>
+</section>
+<section class="glace pc-plus pc-lp">
+ <div class="wrap pc-zone pc-rev">
+  <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div>
+  <h2>Intervenez-vous chez moi ?</h2>
+  <p>Limpid intervient dans un rayon d'environ 15 km autour de Darnieulles. Vérifiez votre commune.</p>
+  <form id="pc-zone-f" autocomplete="off">
+   <label for="pc-zone-c" class="sr">Votre commune</label>
+   <input id="pc-zone-c" list="pc-zone-l" placeholder="Votre commune, ex. Golbey" enterkeyhint="search">
+   <datalist id="pc-zone-l"></datalist>
+   <button type="submit" class="btn">Vérifier</button>
+  </form>
+  <div class="pc-zone-res" id="pc-zone-r" aria-live="polite" hidden>
+   <p id="pc-zone-t"></p>
+   <button type="button" class="btn" data-pc-demarrer="zone">Configurer mon devis gratuit</button>
+  </div>
+ </div>
+</section>
+<section class="pc-plus pc-lp">
+ <div class="wrap">
+  <p class="eyebrow">Avis Google</p>
+  <h2>Ils ont fait confiance à Limpid</h2>
+  <div class="avis-grille">
+   <div class="pc-rev"><div class="avis"><p>«&nbsp;C'est un vrai plaisir de faire appel à Limpid pour le ménage de ma maison, moi qui désespérait de trouver un prestataire fiable. […] Les vitres, qui ont toujours été ma bête noire, sont nickel chrome et le rendu dure dans le temps.&nbsp;»</p><p class="qui">Fatou V. · avis Google</p></div></div>
+   <div class="pc-rev"><div class="avis"><p>«&nbsp;Clement le gérant s'est montré extrêmement aimable, disponible et surtout très clair dans ses explications. […] Rentrer chez soi et avoir une maison parfaite c'est que du bonheur! Le résultat est impeccable et dépasse largement mes attentes.&nbsp;»</p><p class="qui">Cindy · avis Google</p></div></div>
+  </div>
+  <p class="source"><a href="https://maps.app.goo.gl/W6Sz6Znuvvoo87Mn6" target="_blank" rel="noopener">Lire tous les avis sur Google</a></p>
+ </div>
+</section>
+<section class="glace pc-plus pc-lp">
+ <div class="wrap faqs">
+  <p class="eyebrow">Questions fréquentes</p>
+  <h2>Vos questions avant de demander un devis</h2>
+  <details class="faq"><summary>Combien coûte un ménage à domicile ?</summary><p>Le tarif dépend notamment de votre logement, des prestations demandées et de la fréquence souhaitée. Limpid établit un devis personnalisé.</p></details>
+  <details class="faq"><summary>Suis-je obligé de m'engager ?</summary><p>La demande de devis est gratuite et ne vous oblige à rien. Les conditions d'une prestation régulière sont précisées avant son démarrage.</p></details>
+  <details class="faq"><summary>Intervenez-vous dans ma commune ?</summary><p>Limpid intervient dans un rayon d'environ 15 km autour de Darnieulles. Le configurateur permet de vérifier votre commune.</p></details>
+  <details class="faq"><summary>Puis-je bénéficier du crédit d'impôt ?</summary><p>Certaines prestations de ménage à domicile peuvent ouvrir droit à un crédit d'impôt de 50 %, selon les conditions légales et l'éligibilité de la prestation. <a href="/credit-impot-menage-vosges/">Tout savoir sur le crédit d'impôt</a>.</p></details>
+  <div class="pc-lp-cta"><button type="button" class="btn" data-pc-demarrer="faq">Configurer mon devis gratuit</button></div>
+ </div>
+</section>
+<script>
+/* Landing ménage : interactions légères. Aucune donnée saisie n'est transmise (la commune ne sort pas du navigateur). */
+(function () {
+  function ev(n, p) { try { if (window.limpidLpEvenement) window.limpidLpEvenement(n, p); } catch (e) {} }
+  var calme = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* Pastille du premier écran : défile jusqu'au bloc crédit d'impôt (sans ancre, pour ne pas toucher l'historique du configurateur). */
+  document.querySelectorAll("[data-lp-aller]").forEach(function (b) { b.addEventListener("click", function () {
+    var c = document.getElementById(b.getAttribute("data-lp-aller")); if (!c) return;
+    ev("lp_interaction", { element: "pastille_credit_impot" });
+    c.scrollIntoView({ behavior: calme ? "auto" : "smooth", block: "start" });
+  }); });
+  /* Bascule Sans / Avec Avance immédiate */
+  var ci = document.querySelector(".pc-ci"), part = document.getElementById("pc-ci-part"), expl = document.getElementById("pc-ci-expl");
+  var TXT = { classique: ["Vous réglez 100 %", "Vous réglez la totalité de la prestation. 50 % vous sont ensuite remboursés par l'État, l'année suivante, après votre déclaration de revenus."],
+              avance: ["Vous réglez 50 %", "Vous ne réglez que votre part, soit 50 %. L'autre moitié est prise en charge directement : vous n'avancez rien et n'attendez pas l'année suivante."] };
+  function mode(m, parClic) {
+    if (!ci) return; ci.setAttribute("data-mode", m); part.textContent = TXT[m][0]; expl.textContent = TXT[m][1];
+    ci.querySelectorAll("[data-lp-mode]").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-lp-mode") === m ? "true" : "false"); });
+    if (parClic) ev("lp_interaction", { element: "credit_impot_" + m });
+  }
+  if (ci) ci.querySelectorAll("[data-lp-mode]").forEach(function (b) { b.addEventListener("click", function () { mode(b.getAttribute("data-lp-mode"), true); }); });
+  /* Apparition au défilement ; la barre passe d'elle-même à l'Avance immédiate la première fois qu'elle est vue. */
+  var auto = false;
+  if ("IntersectionObserver" in window && !calme) {
+    document.documentElement.classList.add("pc-anim");
+    var io = new IntersectionObserver(function (l) { l.forEach(function (x) {
+      if (!x.isIntersecting) return; x.target.classList.add("vu"); io.unobserve(x.target);
+      if (x.target === ci && !auto) { auto = true; setTimeout(function () { if (ci.getAttribute("data-mode") === "classique") mode("avance"); }, 900); }
+    }); }, { threshold: 0, rootMargin: "0px 0px -8% 0px" });
+    document.querySelectorAll(".pc-rev").forEach(function (e) { io.observe(e); });
+  }
+  /* Vérification de la commune, sur la liste des communes du configurateur */
+  var f = document.getElementById("pc-zone-f"), inp = document.getElementById("pc-zone-c"), dl = document.getElementById("pc-zone-l"), res = document.getElementById("pc-zone-r"), t = document.getElementById("pc-zone-t");
+  function communes() { try { return (window.LimpidMoteur && LimpidMoteur.config().communes) || []; } catch (e) { return []; } }
+  function norm(s) { return String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, " ").trim(); }
+  if (inp) inp.addEventListener("focus", function () {
+    if (dl.children.length) return; var l = communes(); if (!l.length) return;
+    dl.innerHTML = l.map(function (c) { return '<option value="' + c.nom.replace(/"/g, "") + '">'; }).join("");
+  });
+  if (f) f.addEventListener("submit", function (e) {
+    e.preventDefault(); var q = norm(inp.value); if (!q) { inp.focus(); return; }
+    var c = null, l = communes();
+    for (var i = 0; i < l.length; i++) if (norm(l[i].nom) === q) { c = l[i]; break; }
+    var r = !l.length || !c ? "inconnue" : (c.vol <= 15 ? "prioritaire" : "etendue");
+    var nom = c ? c.nom : inp.value.trim().slice(0, 60);
+    t.textContent = r === "prioritaire" ? "Oui, Limpid intervient à " + nom + "." :
+      r === "etendue" ? nom + " est un peu au-delà de notre zone habituelle. Décrivez votre demande : nous vous dirons si une intervention est possible." :
+      "Nous ne trouvons pas cette commune dans notre liste. Indiquez votre adresse dans le configurateur : nous vérifions pour vous.";
+    res.setAttribute("data-r", r); res.hidden = false;
+    ev("lp_interaction", { element: "zone", resultat: r });
+  });
+})();
+</script>
 
  <div class="pc-app" id="pc-app" hidden>
   <div class="cf-prog" id="pc-prog"><div class="cf-barre" role="progressbar" aria-label="Progression de votre demande"><i id="pc-barre"></i></div></div>
@@ -357,7 +567,7 @@ body.pc-en-cours .appel-mobile{display:none}
 
 <nav class="appel-mobile" aria-label="Contact rapide">
  <a href="tel:+33626556569">📞 Appeler</a>
- <a class="second" href="#" data-pc-demarrer>Configurer ma demande</a>
+ <a class="second" href="#" data-pc-demarrer="barre_mobile">Configurer mon devis</a>
 </nav>
 <script>
 /* @@MOTEUR-DEBUT@@ */
@@ -1248,7 +1458,15 @@ window.LIMPID_PARCOURS = (function () {
     });
     $("pc-suite").addEventListener("click", suivant);
     $("pc-retour").addEventListener("click", precedent);
-    document.querySelectorAll("[data-pc-demarrer]").forEach(function (b) { b.addEventListener("click", function (e) { e.preventDefault(); demarrer(); }); });
+    /* lp_cta_click : micro-événement analytique (emplacement du bouton), jamais une conversion. */
+    document.querySelectorAll("[data-pc-demarrer]").forEach(function (b) { b.addEventListener("click", function (e) {
+      e.preventDefault(); ev("lp_cta_click", { emplacement: b.getAttribute("data-pc-demarrer") || "accueil" });
+      /* Pré-sélection facultative (ex. « frequence|4.33 ») : la réponse reste modifiable à son étape, aucune étape n'est sautée. */
+      var pre = (b.getAttribute("data-pc-preset") || "").split("|");
+      if (pre.length === 2 && pre[0] === "frequence" && /^(4\.33|2\.17)$/.test(pre[1])) { R.frequence = pre[1]; sauver(); }
+      demarrer(); }); });
+    window.limpidLpEvenement = function (nom, p) { if (/^lp_/.test(nom)) ev(nom, p); };
+    document.querySelectorAll("[data-lp-cta]").forEach(function (b) { b.addEventListener("click", function () { ev("lp_cta_click", { emplacement: b.getAttribute("data-lp-cta") }); }); });
     document.querySelectorAll("[data-pc-rappel]").forEach(function (b) { b.addEventListener("click", function (e) {
       e.preventDefault(); if (!E.id || dejaEnvoye(E.id)) E.id = nouvelId(); E.avantRappel = E.ecran === "rappel" ? E.avantRappel : E.ecran; aller("rappel"); }); });
     window.addEventListener("popstate", function (e) {
