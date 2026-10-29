@@ -592,7 +592,9 @@ var LIMPID_CONFIG_DEFAUT = {
   base: { nom: "Darnieulles", cp: "88390" },
   /* Zone prioritaire : 15 km autour de Darnieulles (vol) pour toutes les prestations ;
      pour les prestations de servicesEpinal (lavage de vitres), aussi 15 km autour d'Épinal (volEp), comme la campagne Google Ads. */
-  zone: { rayonKm: 15, tableKm: 25, servicesEpinal: ["vitres"] },
+  zone: { rayonKm: 15, tableKm: 25, servicesEpinal: ["vitres"],
+    /* Chefs-lieux IGN (ADMIN EXPRESS) : références des distances, [longitude, latitude]. */
+    centres: { darnieulles: [6.34915907, 48.19921544], epinal: [6.45017081, 48.17540989] } },
   premierPassage: 50,
   facteurs: {
     niveau: { "1": 1, "2": 1.2, "3": 1.4, "4": 1.6, "5": 1.8 },
@@ -894,6 +896,40 @@ var LimpidMoteur = (function () {
     var l = (C.communes || []).filter(function (c) { return normalise(c.nom) === n && (!cp || c.cp === cp); });
     return l[0] || null;
   }
+  /* Situation d'une adresse par rapport à la zone, avant même le choix des prestations.
+     classe : "tout" (15 km de Darnieulles), "vitres" (15 km d'Épinal seulement : zone du lavage de vitres),
+     "proche" (dans la table, au-delà de la zone), "hors" (en dehors : commune absente d'une table IGN complète
+     jusqu'à 25 km), "inconnue" (commune non trouvée, sans adresse pour trancher). */
+  function km2(a, lon, lat) {
+    var R = 6371, r = Math.PI / 180, dLa = (lat - a[1]) * r, dLo = (lon - a[0]) * r;
+    var x = Math.sin(dLa / 2) * Math.sin(dLa / 2) + Math.cos(a[1] * r) * Math.cos(lat * r) * Math.sin(dLo / 2) * Math.sin(dLo / 2);
+    return Math.round(2 * R * Math.asin(Math.sqrt(x)) * 10) / 10;
+  }
+  function classeZone(c, cp, geo) {
+    var Z = C.zone || {}, R = Z.rayonKm || 15, ce = Z.centres || {}, vol, ep;
+    if (c) { vol = c.vol; ep = typeof c.volEp === "number" ? c.volEp : distEpinal(c); }
+    else if (geo && isFinite(geo.lat) && isFinite(geo.lon) && ce.darnieulles && ce.epinal) { vol = km2(ce.darnieulles, geo.lon, geo.lat); ep = km2(ce.epinal, geo.lon, geo.lat); }
+    else if (/^\d{5}$/.test(String(cp || "")) && !communesDuCP(cp).length) return "hors";
+    else return "inconnue";
+    if (vol <= R) return "tout";
+    if (ep <= R && (Z.servicesEpinal || []).length) return "vitres";
+    if (c || vol <= (Z.tableKm || 25)) return "proche";
+    return "hors";
+  }
+  /* Message affiché au client. svc : type de prestation (parcours spécialisé), ou rien (configurateur général,
+     prestations pas encore choisies). Retour : { ton: vert | bleu | ambre | rouge, texte }. */
+  function messageZone(classe, nom, svc) {
+    var n = nom || "Votre commune";
+    if (classe === "tout" || (classe === "vitres" && epinalCompte(svc)))
+      return { ton: "vert", texte: n + " est dans notre zone d'intervention" + (svc ? "." : ", pour toutes nos prestations.") };
+    if (classe === "vitres" && !svc)
+      return { ton: "bleu", texte: n + " est dans notre zone pour le lavage de vitres. Pour le ménage et nos autres prestations, " + n + " est au-delà de notre zone : Limpid vous dira avec votre devis si l'intervention est possible." };
+    if (classe === "vitres" || classe === "proche")
+      return { ton: "ambre", texte: n + " est un peu au-delà de notre zone d'intervention. Vous pouvez décrire votre besoin : Limpid vous dira avec votre devis si l'intervention est possible." };
+    if (classe === "hors")
+      return { ton: "rouge", texte: n + " est en dehors de notre zone d'intervention : 15 km autour de Darnieulles, et autour d'Épinal pour le lavage de vitres. Nous ne pourrons probablement pas intervenir. Une question ? Appelez-nous au 06 26 55 65 69." };
+    return { ton: "ambre", texte: "Nous ne trouvons pas " + n + " dans notre liste de communes. Indiquez votre adresse complète : nous vérifierons la distance." };
+  }
   function communesDuCP(cp) { return (C.communes || []).filter(function (c) { return c.cp === String(cp || "").trim(); }); }
   /* svc : type de prestation (vitres, menage, grand, bureaux, textile...). Sans svc : règle de base, Darnieulles seul. */
   function epinalCompte(svc) { var l = (C.zone && C.zone.servicesEpinal) || []; return !!svc && l.indexOf(svc) >= 0; }
@@ -1040,7 +1076,7 @@ var LimpidMoteur = (function () {
     return JSON.parse(t);
   }
   return { charger: charger, config: config, fusion: fusion, commune: commune, communesDuCP: communesDuCP,
-           zoneDe: zoneDe, epinalCompte: epinalCompte, estimer: estimer, perimetre: perimetre, coder: coder, decoder: decoder, normalise: normalise };
+           zoneDe: zoneDe, epinalCompte: epinalCompte, classeZone: classeZone, messageZone: messageZone, estimer: estimer, perimetre: perimetre, coder: coder, decoder: decoder, normalise: normalise };
 })();
 
 /* @@MOTEUR-FIN@@ */
@@ -1252,7 +1288,7 @@ window.LIMPID_PARCOURS = (function () {
         },
         valider: function (R) { var e = C.validerQuand(R); if (e) return e; return C.a(R, "creneaux").length ? "" : "Choisissez au moins un créneau."; } },
 
-      { id: "adresse", titre: "Où se trouve le logement ?", sous: "Le déplacement est compris dans le prix, sans supplément.",
+      { id: "adresse", titre: "Où se trouve le logement ?", sous: "Dans notre zone d'intervention, le déplacement est compris dans le prix.",
         rendre: function (R) { return C.blocAdresse(R); }, valider: C.validerAdresse },
 
       { id: "contact", titre: "Vos coordonnées", sous: "Pour vous envoyer votre devis, et vous joindre si un point reste à préciser.",
@@ -1386,6 +1422,14 @@ window.LIMPID_PARCOURS = (function () {
   function visibles() { return ECRANS.filter(function (x) { return !x.si || x.si(R); }); }
   function ecran(id) { for (var i = 0; i < ECRANS.length; i++) if (ECRANS[i].id === id) return ECRANS[i]; return null; }
 
+  /* Zone d'intervention, affichée dès que l'adresse est choisie : la règle dépend de la prestation du parcours. */
+  function zoneAdresse() {
+    if (!R.commune || !/^\d{5}$/.test(String(R.cp || ""))) return "";
+    var c = LimpidMoteur.commune(R.commune, R.cp), nom = c ? c.nom : R.commune;
+    var cl = LimpidMoteur.classeZone(c, R.cp, R.geo), m = LimpidMoteur.messageZone(cl, nom, CFG.service);
+    var t = esc(m.texte), en = esc(nom); if (en && t.indexOf(en) >= 0) t = t.replace(en, "<b>" + en + "</b>");
+    return '<div class="cf-alerte ' + m.ton + '" id="pc-zone" data-zone="' + cl + '">' + t + '</div>';
+  }
   function rendre() {
     var z = $("pc-corps"), ec = E.ecran, h = "";
     document.body.classList.toggle("pc-en-cours", ec !== "accueil");
@@ -1398,7 +1442,7 @@ window.LIMPID_PARCOURS = (function () {
     else if (ec === "recap") { prog.hidden = false; $("pc-barre").style.width = "100%"; }
     else prog.hidden = true;
     var x = ecran(ec);
-    if (x) h = '<h2 tabindex="-1" id="pc-titre">' + esc(x.titre) + '</h2>' + (x.sous ? '<p class="cf-sous">' + x.sous + '</p>' : '') + x.rendre(R) + '<div class="cf-erreurs" id="pc-err" role="alert"></div>';
+    if (x) h = '<h2 tabindex="-1" id="pc-titre">' + esc(x.titre) + '</h2>' + (x.sous ? '<p class="cf-sous">' + x.sous + '</p>' : '') + x.rendre(R) + (ec === "adresse" ? zoneAdresse() : "") + '<div class="cf-erreurs" id="pc-err" role="alert"></div>';
     else if (ec === "recap") h = rendreRecap();
     else if (ec === "rappel") h = rendreRappel();
     else if (ec === "fin") h = rendreFin();

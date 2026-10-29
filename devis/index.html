@@ -339,7 +339,7 @@ body[data-tunnel="configurateur"] footer{padding-bottom:90px}
  <!-- 1. Localisation -->
  <section class="cf-etape on" data-etape="1" aria-labelledby="cf-t1">
   <h2 id="cf-t1">Où intervient-on ?</h2>
-  <p class="cf-sous">Le déplacement est compris dans le prix, sans supplément.</p>
+  <p class="cf-sous">Dans notre zone d'intervention, le déplacement est compris dans le prix.</p>
   <div class="cf-ac">
    <label class="cf-champ" for="f-adresse">Adresse <small>Commencez à la taper puis choisissez-la dans la liste : le code postal et la commune se remplissent seuls.</small></label>
    <input type="text" id="f-adresse" class="cf-ac-champ" autocomplete="off" placeholder="Ex. : 5 rue des Sapins, Darnieulles" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="f-adresse-sug">
@@ -368,6 +368,7 @@ body[data-tunnel="configurateur"] footer{padding-bottom:90px}
   <div class="cf-choix" id="f-prestations"></div>
   <p class="cf-combi" id="f-combi" aria-live="polite"></p>
   <div id="f-note-combi"></div>
+  <div id="f-zone2" aria-live="polite"></div>
   <div class="cf-erreurs" id="err-2" role="alert"></div>
  </section>
 
@@ -455,7 +456,7 @@ body[data-tunnel="configurateur"] footer{padding-bottom:90px}
 </main>
 <section class="cf-zone">
  <h2>Où nous intervenons</h2>
- <p>Limpid intervient à Darnieulles, Épinal, Golbey, Chantraine, Thaon-les-Vosges, Uxegney, Chavelot, Les Forges, Sanchey, Nomexy, Dogneville et dans toutes les communes à moins de 15 km de Darnieulles, sans frais de déplacement. Une question avant de configurer ? Appelez-nous au <a href="tel:+33626556569">06 26 55 65 69</a>. Le devis est gratuit et la décision vous appartient.</p>
+ <p>Limpid intervient à Darnieulles, Épinal, Golbey, Chantraine, Thaon-les-Vosges, Uxegney, Chavelot, Les Forges, Sanchey, Nomexy, Dogneville et dans toutes les communes à moins de 15 km de Darnieulles, sans frais de déplacement. Pour le lavage de vitres, nous intervenons aussi dans un rayon de 15 km autour d'Épinal. Une question avant de configurer ? Appelez-nous au <a href="tel:+33626556569">06 26 55 65 69</a>. Le devis est gratuit et la décision vous appartient.</p>
 </section>
 
 <footer class="site">
@@ -511,7 +512,9 @@ var LIMPID_CONFIG_DEFAUT = {
   base: { nom: "Darnieulles", cp: "88390" },
   /* Zone prioritaire : 15 km autour de Darnieulles (vol) pour toutes les prestations ;
      pour les prestations de servicesEpinal (lavage de vitres), aussi 15 km autour d'Épinal (volEp), comme la campagne Google Ads. */
-  zone: { rayonKm: 15, tableKm: 25, servicesEpinal: ["vitres"] },
+  zone: { rayonKm: 15, tableKm: 25, servicesEpinal: ["vitres"],
+    /* Chefs-lieux IGN (ADMIN EXPRESS) : références des distances, [longitude, latitude]. */
+    centres: { darnieulles: [6.34915907, 48.19921544], epinal: [6.45017081, 48.17540989] } },
   premierPassage: 50,
   facteurs: {
     niveau: { "1": 1, "2": 1.2, "3": 1.4, "4": 1.6, "5": 1.8 },
@@ -813,6 +816,40 @@ var LimpidMoteur = (function () {
     var l = (C.communes || []).filter(function (c) { return normalise(c.nom) === n && (!cp || c.cp === cp); });
     return l[0] || null;
   }
+  /* Situation d'une adresse par rapport à la zone, avant même le choix des prestations.
+     classe : "tout" (15 km de Darnieulles), "vitres" (15 km d'Épinal seulement : zone du lavage de vitres),
+     "proche" (dans la table, au-delà de la zone), "hors" (en dehors : commune absente d'une table IGN complète
+     jusqu'à 25 km), "inconnue" (commune non trouvée, sans adresse pour trancher). */
+  function km2(a, lon, lat) {
+    var R = 6371, r = Math.PI / 180, dLa = (lat - a[1]) * r, dLo = (lon - a[0]) * r;
+    var x = Math.sin(dLa / 2) * Math.sin(dLa / 2) + Math.cos(a[1] * r) * Math.cos(lat * r) * Math.sin(dLo / 2) * Math.sin(dLo / 2);
+    return Math.round(2 * R * Math.asin(Math.sqrt(x)) * 10) / 10;
+  }
+  function classeZone(c, cp, geo) {
+    var Z = C.zone || {}, R = Z.rayonKm || 15, ce = Z.centres || {}, vol, ep;
+    if (c) { vol = c.vol; ep = typeof c.volEp === "number" ? c.volEp : distEpinal(c); }
+    else if (geo && isFinite(geo.lat) && isFinite(geo.lon) && ce.darnieulles && ce.epinal) { vol = km2(ce.darnieulles, geo.lon, geo.lat); ep = km2(ce.epinal, geo.lon, geo.lat); }
+    else if (/^\d{5}$/.test(String(cp || "")) && !communesDuCP(cp).length) return "hors";
+    else return "inconnue";
+    if (vol <= R) return "tout";
+    if (ep <= R && (Z.servicesEpinal || []).length) return "vitres";
+    if (c || vol <= (Z.tableKm || 25)) return "proche";
+    return "hors";
+  }
+  /* Message affiché au client. svc : type de prestation (parcours spécialisé), ou rien (configurateur général,
+     prestations pas encore choisies). Retour : { ton: vert | bleu | ambre | rouge, texte }. */
+  function messageZone(classe, nom, svc) {
+    var n = nom || "Votre commune";
+    if (classe === "tout" || (classe === "vitres" && epinalCompte(svc)))
+      return { ton: "vert", texte: n + " est dans notre zone d'intervention" + (svc ? "." : ", pour toutes nos prestations.") };
+    if (classe === "vitres" && !svc)
+      return { ton: "bleu", texte: n + " est dans notre zone pour le lavage de vitres. Pour le ménage et nos autres prestations, " + n + " est au-delà de notre zone : Limpid vous dira avec votre devis si l'intervention est possible." };
+    if (classe === "vitres" || classe === "proche")
+      return { ton: "ambre", texte: n + " est un peu au-delà de notre zone d'intervention. Vous pouvez décrire votre besoin : Limpid vous dira avec votre devis si l'intervention est possible." };
+    if (classe === "hors")
+      return { ton: "rouge", texte: n + " est en dehors de notre zone d'intervention : 15 km autour de Darnieulles, et autour d'Épinal pour le lavage de vitres. Nous ne pourrons probablement pas intervenir. Une question ? Appelez-nous au 06 26 55 65 69." };
+    return { ton: "ambre", texte: "Nous ne trouvons pas " + n + " dans notre liste de communes. Indiquez votre adresse complète : nous vérifierons la distance." };
+  }
   function communesDuCP(cp) { return (C.communes || []).filter(function (c) { return c.cp === String(cp || "").trim(); }); }
   /* svc : type de prestation (vitres, menage, grand, bureaux, textile...). Sans svc : règle de base, Darnieulles seul. */
   function epinalCompte(svc) { var l = (C.zone && C.zone.servicesEpinal) || []; return !!svc && l.indexOf(svc) >= 0; }
@@ -959,7 +996,7 @@ var LimpidMoteur = (function () {
     return JSON.parse(t);
   }
   return { charger: charger, config: config, fusion: fusion, commune: commune, communesDuCP: communesDuCP,
-           zoneDe: zoneDe, epinalCompte: epinalCompte, estimer: estimer, perimetre: perimetre, coder: coder, decoder: decoder, normalise: normalise };
+           zoneDe: zoneDe, epinalCompte: epinalCompte, classeZone: classeZone, messageZone: messageZone, estimer: estimer, perimetre: perimetre, coder: coder, decoder: decoder, normalise: normalise };
 })();
 
 /* @@MOTEUR-FIN@@ */
@@ -1111,6 +1148,19 @@ var LimpidMoteur = (function () {
     if (ok === l.length) return "prioritaire";
     return ok ? "partielle" : (E.offres.length ? "etendue" : (LimpidMoteur.zoneDe(c, "vitres") === "prioritaire" ? "vitres" : "etendue"));
   }
+  /* Message de zone affiché dès l'étape 1 (avant le choix des prestations), puis à l'étape 2 selon les prestations choisies. */
+  function alerteZone() {
+    var c = communeChoisie(), cl = LimpidMoteur.classeZone(c, E.cp, E.geo), nom = c ? c.nom : E.commune, m;
+    if (E.offres.length && (cl === "tout" || cl === "vitres" || cl === "proche")) {
+      var ko = E.offres.filter(function (id) { return !(cl === "tout" || (cl === "vitres" && LimpidMoteur.epinalCompte(typeOffre(id)))); });
+      if (!ko.length) m = { ton: "vert", texte: nom + " est dans notre zone d'intervention." };
+      else if (ko.length < E.offres.length) m = { ton: "bleu", texte: nom + " est dans notre zone pour le lavage de vitres, mais au-delà pour : " + ko.map(function (id) { return offre(id).court.toLowerCase(); }).join(", ") + ". Limpid vous dira avec votre devis si l'intervention est possible." };
+      else m = LimpidMoteur.messageZone("proche", nom, "");
+    } else m = LimpidMoteur.messageZone(cl, nom, "");
+    var t = esc(m.texte), en = esc(nom);
+    if (en && t.indexOf(en) >= 0) t = t.replace(en, "<b>" + en + "</b>");
+    return '<div class="cf-alerte ' + m.ton + '" data-zone="' + cl + '">' + t + '</div>';
+  }
   function libZone(c) {
     var z = zoneOffres(c);
     return (z === "prioritaire" ? "zone prioritaire" : z === "partielle" ? "zone prioritaire pour les vitres seulement" : "au-delà de la zone prioritaire") + " · " + c.kmAR + " km A/R estimés";
@@ -1124,18 +1174,15 @@ var LimpidMoteur = (function () {
       sel.style.display = "block"; txt.style.display = "none";
       sel.innerHTML = (liste.length > 1 ? '<option value="">Choisir</option>' : "") +
         liste.map(function (c) { return '<option' + (c.nom === E.commune ? " selected" : "") + '>' + esc(c.nom) + '</option>'; }).join("") +
-        '<option value="__autre"' + (E.commune && !LimpidMoteur.commune(E.commune, E.cp) ? " selected" : "") + '>Autre commune</option>';
-      if (liste.length === 1 && !E.commune) { E.commune = liste[0].nom; sauver(); }
+        '<option value="__autre"' + (E.autre || (E.commune && !LimpidMoteur.commune(E.commune, E.cp)) ? " selected" : "") + '>Autre commune</option>';
+      if (liste.length === 1 && !E.commune && !E.autre) { E.commune = liste[0].nom; sauver(); }
       if (sel.value === "__autre") { txt.style.display = "block"; if (document.activeElement !== txt) txt.value = E.commune; }
     } else {
       sel.style.display = "none"; txt.style.display = "block"; if (document.activeElement !== txt) txt.value = E.commune;
     }
     var z = $("f-zone"), c = communeChoisie();
     if (!E.commune || !/^\d{5}$/.test(E.cp)) { z.innerHTML = ""; return; }
-    var zo = zoneOffres(c);
-    if (c && zo === "prioritaire") z.innerHTML = '<div class="cf-alerte vert"><b>' + esc(c.nom) + "</b> est dans notre zone d'intervention.</div>";
-    else if (c && (zo === "partielle" || zo === "vitres")) z.innerHTML = '<div class="cf-alerte vert"><b>' + esc(c.nom) + "</b> est dans notre zone pour le lavage de vitres. Pour les autres prestations, Limpid confirme l'intervention avec votre devis.</div>";
-    else z.innerHTML = '<div class="cf-alerte bleu">Votre demande est bien possible à <b>' + esc(E.commune) + "</b> : Limpid confirme l'intervention avec votre devis.</div>";
+    z.innerHTML = alerteZone();
   }
 
   /* Distance routière approchée depuis Darnieulles, même règle que la table des communes : vol d'oiseau × 1,3, aller-retour. */
@@ -1186,7 +1233,7 @@ var LimpidMoteur = (function () {
     var x = ac.items[i]; if (!x) return;
     /* Commune seule choisie : le champ se vide pour que le visiteur tape son numéro et sa rue. */
     E.adresse = x.voie || "";
-    E.cp = x.cp;
+    E.cp = x.cp; E.autre = false;
     var t = LimpidMoteur.commune(x.ville, x.cp);
     E.commune = t ? t.nom : x.ville;
     E.geo = { lat: x.lat, lon: x.lon, citycode: x.citycode };
@@ -1214,6 +1261,7 @@ var LimpidMoteur = (function () {
       return '<button type="button" class="cf-carte cf-multi' + (on ? " on" : "") + '" data-v="' + o.id + '" aria-pressed="' + on + '"><span class="ic">' + o.ic + '</span><span><b>' + esc(o.lib) + '</b><span class="d">' + esc(o.d) + '</span></span><span class="cf-case" aria-hidden="true"></span></button>';
     }).join("");
     $("f-combi").textContent = E.offres.length ? (E.offres.length + (E.offres.length > 1 ? " prestations choisies." : " prestation choisie. Vous pouvez en ajouter une autre.")) : "";
+    var z2 = $("f-zone2"); if (z2) { var a = E.offres.length && E.commune && /^\d{5}$/.test(E.cp) ? alerteZone() : ""; z2.innerHTML = /cf-alerte vert/.test(a) ? "" : a; }
   }
   function basculerOffre(id) {
     var o = offre(id), i = E.offres.indexOf(id), note = "";
@@ -1414,7 +1462,7 @@ var LimpidMoteur = (function () {
   /* ---------- Étape 6 : récapitulatif ---------- */
   function raisonsValidation() {
     var r = [], c = communeChoisie();
-    if (!c) r.push("distance à vérifier jusqu'à " + (E.commune || "la commune indiquée"));
+    if (!c) r.push(LimpidMoteur.classeZone(null, E.cp, E.geo) === "hors" ? "commune en dehors de la zone d'intervention : " + (E.commune || "commune indiquée") : "distance à vérifier jusqu'à " + (E.commune || "la commune indiquée"));
     else if (zoneOffres(c) !== "prioritaire") r.push((zoneOffres(c) === "partielle" ? "commune dans la zone vitres seulement, au-delà pour les autres prestations" : "commune au-delà de la zone prioritaire") + " (" + c.kmAR + " km A/R estimés)");
     E.offres.forEach(function (id) { if (saisie(id).hauteur) r.push("vitrages en hauteur, sécurité à vérifier"); });
     return r;
@@ -1589,7 +1637,7 @@ var LimpidMoteur = (function () {
     var root = $("cf");
     root.addEventListener("input", function (e) {
       var t = e.target;
-      if (t.id === "f-cp") { E.cp = t.value.replace(/\D/g, "").slice(0, 5); t.value = E.cp; E.commune = ""; debuter(); sauver(); rendreLocalisation(); return; }
+      if (t.id === "f-cp") { E.cp = t.value.replace(/\D/g, "").slice(0, 5); t.value = E.cp; E.commune = ""; E.autre = false; debuter(); sauver(); rendreLocalisation(); return; }
       if (t.id === "f-commune-txt") { E.commune = t.value.trim(); sauver(); rendreLocalisation(); return; }
       if (t.id === "f-adresse") { E.adresse = t.value; E.geo = null; debuter(); sauver(); suggererAdresse(t.value); return; }
       if (t.closest("#f-form")) return;
@@ -1597,7 +1645,7 @@ var LimpidMoteur = (function () {
     });
     root.addEventListener("change", function (e) {
       var t = e.target;
-      if (t.id === "f-commune-sel") { E.commune = t.value === "__autre" ? "" : t.value; sauver(); rendreLocalisation(); if (t.value === "__autre") $("f-commune-txt").focus(); return; }
+      if (t.id === "f-commune-sel") { E.autre = t.value === "__autre"; E.commune = E.autre ? "" : t.value; sauver(); rendreLocalisation(); if (t.value === "__autre") $("f-commune-txt").focus(); return; }
       if (t.closest("#f-form")) return;
       if (t.tagName === "SELECT" || t.type === "checkbox") majChamp(t);
     });
