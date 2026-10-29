@@ -6,7 +6,10 @@
  },
  "zone": {
   "rayonKm": 15,
-  "tableKm": 25
+  "tableKm": 25,
+  "servicesEpinal": [
+   "vitres"
+  ]
  },
  "premierPassage": 50,
  "facteurs": {
