@@ -273,6 +273,9 @@ body[data-tunnel="configurateur"] footer{padding-bottom:90px}
 .pc-app h2{font-size:clamp(1.2rem,4.4vw,1.45rem);margin:2px 0 6px;outline:none}
 .pc-carte{background:#fff;border:1px solid #E3EEF5;border-radius:16px;padding:20px 18px;box-shadow:0 2px 12px rgba(11,37,69,.06)}
 .pc-choix{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+.pc-besoins{display:grid;gap:10px;margin:0 0 6px}
+.pc-lien{background:none;border:none;padding:0;color:var(--bleu);font:inherit;font-weight:700;text-decoration:underline;cursor:pointer}
+.pc-filet{margin:18px 0 0;font-size:.88rem;color:var(--gris);text-align:center}
 .pc-opt{flex:1 1 auto;min-width:46%;border:2px solid #E3EEF5;background:#fff;border-radius:12px;padding:13px 12px;font:inherit;font-weight:700;font-size:.95rem;color:var(--encre);cursor:pointer;text-align:center}
 .pc-opt.on{border-color:var(--bleu);background:#F3F8FF;color:var(--bleu)}
 .pc-coche.on::before{content:"✓ "}
@@ -361,6 +364,7 @@ body.pc-en-cours .appel-mobile{display:none}
 </style>
 <script src="/assets/mesure.js" defer></script>
 <script src="/assets/campagne.js" defer></script>
+<link rel="stylesheet" href="/assets/aide-visuelle.css">
 </head>
 <body data-tunnel="menage">
 <div class="pc-test" id="pc-test" hidden>MODE TEST : demande marquée [TEST], aucune conversion publicitaire</div>
@@ -411,7 +415,7 @@ body.pc-en-cours .appel-mobile{display:none}
     <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><path d="m6 6 2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg></div>
     <h3>Grand ménage ponctuel</h3>
     <p>Un nettoyage approfondi pour remettre votre logement en état avant ou après un déménagement, ou simplement lorsque c'est nécessaire.</p>
-    <div class="pc-puces"><a class="pc-puce" href="/devis/" data-lp-cta="grand_menage">Décrire mon grand ménage</a></div>
+    <div class="pc-puces"><a class="pc-puce" href="/devis/" data-lp-cta="grand_menage" data-pc-bascule="grand">Décrire mon grand ménage</a></div>
    </div>
   </div>
   <div class="pc-lp-cta"><button type="button" class="btn" data-pc-demarrer="prestations">Décrire mon besoin et obtenir un devis</button></div>
@@ -1243,7 +1247,8 @@ window.LIMPID_PARCOURS = (function () {
         rendre: function (R) {
           var h = C.opts("frequence", FREQ, R);
           if (R.frequence === "autre") h += C.txt("frequenceTxt", "Quel rythme ?", "", R, "Ex. : deux fois par semaine, une fois par mois…");
-          return h + '<p class="cf-mention">Chaque intervention dure au moins 2 h.</p>';
+          return h + '<p class="cf-mention">Chaque intervention dure au moins 2 h.</p>' +
+            '<p class="cf-mention">Une seule intervention ? <button type="button" class="pc-lien" data-pc-bascule="grand">Demander plutôt un grand ménage ponctuel</button></p>';
         },
         valider: function (R) {
           if (!R.frequence) return "Choisissez un rythme.";
@@ -1334,6 +1339,11 @@ window.LIMPID_PARCOURS = (function () {
   function pret(R) { return ecrans().every(function (e) { return (e.si && !e.si(R)) || !e.valider || !e.valider(R); }); }
 
   return { service: "menage", prefixe: "M", conversion: "menage_lead", offre: "regulier", libOffre: "Entretien régulier du logement", libCourt: "Ménage",
+    /* Aiguillage : premier écran. Un besoin qui n'est pas celui de ce parcours bascule vers le configurateur général,
+       prestation cochée d'avance, sans rien perdre de ce qui a été saisi. */
+    aiguillage: { ici: ["Un entretien régulier", "Chaque semaine ou tous les 15 jours.", "🏠"], autres: [
+      { id: "grand", lib: "Un grand ménage ponctuel", d: "Une seule intervention : fin de bail, emménagement, grand nettoyage.", ic: "✨", offres: ["grand"] },
+      { id: "autre", lib: "Une autre prestation", d: "Vitres, canapés et textiles, ou plusieurs prestations ensemble.", ic: "➕", offres: [] } ] },
     retour: "/menage-domicile-epinal/", profil: "particulier", ecrans: ecrans, recap: recap, aCompleter: aCompleter, qualification: qualification, saisie: saisie,
     fiche: function (R, ac) { return C.fiche(recap(R), ac); }, pret: pret };
 })();
@@ -1419,6 +1429,29 @@ window.LIMPID_PARCOURS = (function () {
 
   /* ---------- Écrans du parcours ---------- */
   var ECRANS = CFG.ecrans(R, { n: n, esc: esc });
+  /* ---------- Aiguillage : « Quel est votre besoin ? » en premier écran ---------- */
+  var AIG = CFG.aiguillage || null;
+  if (AIG) ECRANS.unshift({ id: "besoin", titre: "Quel est votre besoin ?", sous: "Choisissez ce qui correspond le mieux : votre demande sera adaptée.",
+    rendre: function (R) {
+      var carte = function (attr, ic, lib, d, on) { return '<button type="button" class="cf-carte' + (on ? " on" : "") + '" ' + attr + (on !== null ? ' aria-pressed="' + !!on + '"' : "") + '><span class="ic">' + ic + '</span><span><b>' + esc(lib) + '</b><span class="d">' + esc(d) + '</span></span></button>'; };
+      return '<div class="pc-besoins">' + carte('data-choix="besoin|ici"', AIG.ici[2], AIG.ici[0], AIG.ici[1], R.besoin === "ici") +
+        AIG.autres.map(function (o) { return carte('data-pc-bascule="' + o.id + '"', o.ic, o.lib, o.d, null); }).join("") + '</div>';
+    },
+    valider: function (R) { return R.besoin === "ici" ? "" : "Choisissez votre besoin pour continuer."; } });
+  /* Bascule vers le configurateur général : prestation cochée d'avance, adresse et coordonnées reprises.
+     L'origine publicitaire reste en session (campagne.js) : la règle de conversion du configurateur général s'applique. */
+  function basculer(id) {
+    var o = null; (AIG ? AIG.autres : []).forEach(function (x) { if (x.id === id) o = x; }); if (!o) return false;
+    var lieu = R.cp && R.commune && /^\d{5}$/.test(String(R.cp));
+    var etat = { etape: lieu ? 2 : 1, cp: R.cp || "", commune: R.commune || "", adresse: R.adresse || "", geo: R.geo || null,
+      profil: o.profil || CFG.profil || "particulier", offres: o.offres.slice(), ss: {}, mode: "auto", heures: {}, priorites: {}, photos: "",
+      contact: { "f-nom": R.nom || "", "f-email": R.email || "", "f-tel": R.tel || "", "f-entreprise": R.entreprise || "" },
+      debut: true, envoye: false, id: "", depuisParcours: CFG.service };
+    ev("config_switch", { vers: id, depuis: E.ecran });
+    try { sessionStorage.setItem("limpid_cf_v2", JSON.stringify(etat)); } catch (e) {}
+    location.href = "/devis/";
+    return true;
+  }
   function visibles() { return ECRANS.filter(function (x) { return !x.si || x.si(R); }); }
   function ecran(id) { for (var i = 0; i < ECRANS.length; i++) if (ECRANS[i].id === id) return ECRANS[i]; return null; }
 
@@ -1442,7 +1475,7 @@ window.LIMPID_PARCOURS = (function () {
     else if (ec === "recap") { prog.hidden = false; $("pc-barre").style.width = "100%"; }
     else prog.hidden = true;
     var x = ecran(ec);
-    if (x) h = '<h2 tabindex="-1" id="pc-titre">' + esc(x.titre) + '</h2>' + (x.sous ? '<p class="cf-sous">' + x.sous + '</p>' : '') + x.rendre(R) + (ec === "adresse" ? zoneAdresse() : "") + '<div class="cf-erreurs" id="pc-err" role="alert"></div>';
+    if (x) h = '<h2 tabindex="-1" id="pc-titre">' + esc(x.titre) + '</h2>' + (x.sous ? '<p class="cf-sous">' + x.sous + '</p>' : '') + x.rendre(R) + (ec === "adresse" ? zoneAdresse() : "") + '<div class="cf-erreurs" id="pc-err" role="alert"></div>' + (AIG && ec !== "besoin" ? '<p class="pc-filet">Votre besoin est différent ? <button type="button" class="pc-lien" data-pc-besoin>Changer de prestation</button></p>' : "");
     else if (ec === "recap") h = rendreRecap();
     else if (ec === "rappel") h = rendreRappel();
     else if (ec === "fin") h = rendreFin();
@@ -1491,10 +1524,12 @@ window.LIMPID_PARCOURS = (function () {
     var vis = visibles().map(function (x) { return x.id; }), i = vis.indexOf(E.ecran);
     aller(i > 0 ? vis[i - 1] : "accueil");
   }
-  function demarrer() {
+  function demarrer(sauterBesoin) {
     if (!E.id || dejaEnvoye(E.id)) E.id = nouvelId();
     if (!E.debut) { E.debut = true; ev("config_start", {}); }
-    aller(visibles()[0].id);
+    var v = visibles();
+    if (sauterBesoin && v[0].id === "besoin" && v[1]) { R.besoin = "ici"; sauver(); aller(v[1].id); return; }
+    aller(v[0].id);
   }
 
   /* ---------- Saisie générique : data-k (valeur), data-choix (un seul), data-multi (plusieurs) ---------- */
@@ -1535,8 +1570,16 @@ window.LIMPID_PARCOURS = (function () {
       e.preventDefault(); ev("lp_cta_click", { emplacement: b.getAttribute("data-pc-demarrer") || "accueil" });
       /* Pré-sélection facultative (ex. « frequence|4.33 ») : la réponse reste modifiable à son étape, aucune étape n'est sautée. */
       var pre = (b.getAttribute("data-pc-preset") || "").split("|");
-      if (pre.length === 2 && pre[0] === "frequence" && /^(4\.33|2\.17)$/.test(pre[1])) { R.frequence = pre[1]; sauver(); }
-      demarrer(); }); });
+      var saute = false;
+      if (pre.length === 2 && pre[0] === "frequence" && /^(4\.33|2\.17)$/.test(pre[1])) { R.frequence = pre[1]; sauver(); saute = true; }
+      demarrer(saute); }); });
+    /* Bascule (cartes de l'aiguillage, lien « grand ménage » de la fréquence, tuile de la landing) et retour à l'aiguillage */
+    document.addEventListener("click", function (e) {
+      var b = e.target.closest && e.target.closest("[data-pc-bascule]");
+      if (b && basculer(b.getAttribute("data-pc-bascule"))) { e.preventDefault(); return; }
+      var r = e.target.closest && e.target.closest("[data-pc-besoin]");
+      if (r) { e.preventDefault(); ev("config_back", { step: E.ecran, vers: "besoin" }); aller("besoin"); }
+    });
     window.limpidLpEvenement = function (nom, p) { if (/^lp_/.test(nom)) ev(nom, p); };
     document.querySelectorAll("[data-lp-cta]").forEach(function (b) { b.addEventListener("click", function () { ev("lp_cta_click", { emplacement: b.getAttribute("data-lp-cta") }); }); });
     document.querySelectorAll("[data-pc-rappel]").forEach(function (b) { b.addEventListener("click", function (e) {
@@ -1802,5 +1845,6 @@ window.LIMPID_PARCOURS = (function () {
 })();
 
 </script>
+<script defer src="/assets/aide-visuelle.js"></script>
 </body>
 </html>

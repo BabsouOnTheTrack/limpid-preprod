@@ -1,0 +1,232 @@
+{
+  "vitres": [
+    {
+      "title": "Fenêtre classique",
+      "description": "Comptez la fenêtre entière, pas ses faces.",
+      "img": "/assets/guides/vitres-01.webp"
+    },
+    {
+      "title": "Petite baie (1 vantail)",
+      "description": "Une petite porte ou baie vitrée.",
+      "img": "/assets/guides/vitres-02.webp"
+    },
+    {
+      "title": "Baie standard (2 vantaux)",
+      "description": "Comptez une baie complète.",
+      "img": "/assets/guides/vitres-03.webp"
+    },
+    {
+      "title": "Grande baie (3 vantaux et +)",
+      "description": "Comptez une grande ouverture complète.",
+      "img": "/assets/guides/vitres-04.webp"
+    },
+    {
+      "title": "Petit Velux accessible",
+      "description": "Seulement si le vitrage entier est lavable depuis l’intérieur.",
+      "img": "/assets/guides/vitres-05.webp"
+    },
+    {
+      "title": "Véranda",
+      "description": "Parois vitrées ; toiture exclue.",
+      "img": "/assets/guides/vitres-06.webp"
+    },
+    {
+      "title": "Rails et glissières",
+      "description": "Option : nettoyage des rainures.",
+      "img": "/assets/guides/vitres-07.webp"
+    },
+    {
+      "title": "Volets",
+      "description": "Option à sélectionner séparément.",
+      "img": "/assets/guides/vitres-08.webp"
+    }
+  ],
+  "menage": [
+    {
+      "title": "Logement complet",
+      "description": "Maison ou appartement entier.",
+      "img": "/assets/guides/menage-01.webp"
+    },
+    {
+      "title": "Pièces à entretenir",
+      "description": "Salon, chambres, cuisine, salle de bains…",
+      "img": "/assets/guides/menage-02.webp"
+    },
+    {
+      "title": "Surface habitable",
+      "description": "Indiquez les m² approximatifs.",
+      "img": "/assets/guides/menage-03.webp"
+    },
+    {
+      "title": "Fréquence",
+      "description": "Chaque semaine, tous les quinze jours…",
+      "img": "/assets/guides/menage-04.webp"
+    },
+    {
+      "title": "Encrassement",
+      "description": "Entretien habituel ou remise à niveau.",
+      "img": "/assets/guides/menage-05.webp"
+    },
+    {
+      "title": "Étages et accès",
+      "description": "Précisez les niveaux et l’accès.",
+      "img": "/assets/guides/menage-06.webp"
+    },
+    {
+      "title": "Animaux",
+      "description": "À signaler si vous en avez.",
+      "img": "/assets/guides/menage-07.webp"
+    },
+    {
+      "title": "Logement fumeur",
+      "description": "À indiquer pour une estimation adaptée.",
+      "img": "/assets/guides/menage-08.webp"
+    },
+    {
+      "title": "Après travaux",
+      "description": "Une prestation spécifique à préciser.",
+      "img": "/assets/guides/menage-09.webp"
+    },
+    {
+      "title": "Premier grand passage",
+      "description": "Une remise à niveau peut être utile.",
+      "img": "/assets/guides/menage-10.webp"
+    }
+  ],
+  "grand": [
+    {
+      "title": "Sols et poussière",
+      "description": "Toujours compris dans le socle.",
+      "img": "/assets/guides/grand-01.webp"
+    },
+    {
+      "title": "Cuisine",
+      "description": "Surfaces extérieures accessibles.",
+      "img": "/assets/guides/grand-02.webp"
+    },
+    {
+      "title": "Salle de bains",
+      "description": "Nettoyage renforcé des surfaces accessibles.",
+      "img": "/assets/guides/grand-03.webp"
+    },
+    {
+      "title": "Portes et plinthes",
+      "description": "Détails accessibles plus soignés.",
+      "img": "/assets/guides/grand-04.webp"
+    },
+    {
+      "title": "Toiles d’araignée",
+      "description": "Zones accessibles uniquement.",
+      "img": "/assets/guides/grand-05.webp"
+    },
+    {
+      "title": "Vitres",
+      "description": "Seulement si ajoutées au périmètre.",
+      "img": "/assets/guides/grand-06.webp"
+    },
+    {
+      "title": "Exclusions",
+      "description": "Pas d’intérieur de placards, de réfrigérateur ou de volets.",
+      "img": "/assets/guides/grand-07.webp"
+    },
+    {
+      "title": "Avant ou après départ",
+      "description": "Pour une remise à niveau du logement.",
+      "img": "/assets/guides/grand-08.webp"
+    }
+  ],
+  "bureaux": [
+    {
+      "title": "Surface des locaux",
+      "description": "Une superficie approximative suffit pour démarrer.",
+      "img": "/assets/guides/bureaux-01.webp"
+    },
+    {
+      "title": "Fréquence",
+      "description": "Indiquez les passages souhaités.",
+      "img": "/assets/guides/bureaux-02.webp"
+    },
+    {
+      "title": "Zones de travail",
+      "description": "Accueil, bureaux, open space…",
+      "img": "/assets/guides/bureaux-03.webp"
+    },
+    {
+      "title": "Sanitaires",
+      "description": "Précisez les sanitaires présents.",
+      "img": "/assets/guides/bureaux-04.webp"
+    },
+    {
+      "title": "Salle de pause",
+      "description": "À indiquer si elle est à nettoyer.",
+      "img": "/assets/guides/bureaux-05.webp"
+    },
+    {
+      "title": "Sols",
+      "description": "Carrelage, moquette, PVC…",
+      "img": "/assets/guides/bureaux-06.webp"
+    },
+    {
+      "title": "Vitrerie",
+      "description": "À sélectionner séparément si nécessaire.",
+      "img": "/assets/guides/bureaux-07.webp"
+    },
+    {
+      "title": "Accès et contraintes",
+      "description": "Étages, horaires, site occupé, parking.",
+      "img": "/assets/guides/bureaux-08.webp"
+    },
+    {
+      "title": "Type de locaux",
+      "description": "Bureaux, commerce, cabinet…",
+      "img": "/assets/guides/bureaux-09.webp"
+    }
+  ],
+  "textile": [
+    {
+      "title": "Canapé",
+      "description": "Indiquez le nombre de places.",
+      "img": "/assets/guides/textile-01.webp"
+    },
+    {
+      "title": "Fauteuil",
+      "description": "Nombre de fauteuils.",
+      "img": "/assets/guides/textile-02.webp"
+    },
+    {
+      "title": "Chaises en tissu",
+      "description": "Nombre de sièges à nettoyer.",
+      "img": "/assets/guides/textile-03.webp"
+    },
+    {
+      "title": "Tapis",
+      "description": "Précisez la taille si vous la connaissez.",
+      "img": "/assets/guides/textile-04.webp"
+    },
+    {
+      "title": "Matelas",
+      "description": "Uniquement si cette prestation est proposée.",
+      "img": "/assets/guides/textile-05.webp"
+    },
+    {
+      "title": "Nature des taches",
+      "description": "Précisez si possible leur origine.",
+      "img": "/assets/guides/textile-06.webp"
+    },
+    {
+      "title": "Revêtement",
+      "description": "Tissu, velours ou matière délicate.",
+      "img": "/assets/guides/textile-07.webp"
+    },
+    {
+      "title": "Photos",
+      "description": "Utiles pour vérifier la faisabilité.",
+      "img": "/assets/guides/textile-08.webp"
+    },
+    {
+      "title": "Accès",
+      "description": "Escaliers, étage et stationnement.",
+      "img": "/assets/guides/textile-09.webp"
+    }
+  ]
+}
