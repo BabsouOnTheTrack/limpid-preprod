@@ -1,2658 +1,2660 @@
 {
- "version": "2026-10-22",
- "base": {
-  "nom": "Darnieulles",
-  "cp": "88390"
- },
- "zone": {
-  "rayonKm": 15,
-  "tableKm": 25,
-  "servicesEpinal": [
-   "vitres"
+  "version": "2026-10-31-limpid-coherence-v665",
+  "base": {
+    "nom": "Darnieulles",
+    "cp": "88390"
+  },
+  "zone": {
+    "rayonKm": 15,
+    "tableKm": 25,
+    "servicesEpinal": [
+      "vitres"
+    ]
+  },
+  "premierPassage": 50,
+  "facteurs": {
+    "niveau": {
+      "1": 1,
+      "2": 1.2,
+      "3": 1.4,
+      "4": 1.6,
+      "5": 1.8
+    },
+    "acces": {
+      "plainpied": 1,
+      "ascenseur": 1.05,
+      "sansascenseur": 1.15,
+      "etages": 1.1
+    },
+    "encombrement": {
+      "faible": 0.9,
+      "normal": 1,
+      "charge": 1.15
+    },
+    "frequenceMenage": {
+      "0": 1,
+      "8.66": 0.9,
+      "4.33": 1,
+      "2.17": 1.1
+    },
+    "animaux": 1.15,
+    "fumeur": 1.15,
+    "travaux": 1.6
+  },
+  "prestations": {
+    "menage": {
+      "nom": "Ménage à domicile",
+      "communes": {
+        "lib": "Toutes les pièces et circulations",
+        "parM2": true,
+        "taches": [
+          {
+            "id": "c_poussiere",
+            "lib": "Dépoussiérage des surfaces et meubles accessibles et dégagés",
+            "min": 0.3
+          },
+          {
+            "id": "c_traces",
+            "lib": "Nettoyage léger des traces sur les interrupteurs et poignées accessibles, lorsque le support le permet",
+            "min": 0.05
+          },
+          {
+            "id": "c_aspi",
+            "lib": "Aspiration des sols accessibles et des tapis compatibles",
+            "min": 0.3
+          },
+          {
+            "id": "c_lavage",
+            "lib": "Lavage des sols durs compatibles avec un nettoyage humide",
+            "min": 0.3
+          },
+          {
+            "id": "c_poubelles",
+            "lib": "Vidage des petites poubelles, lorsque les sacs de remplacement sont prévus",
+            "min": 0.05
+          }
+        ]
+      },
+      "pieces": [
+        {
+          "id": "sejour",
+          "lib": "Salon et séjour",
+          "taches": [
+            {
+              "id": "s_meubles",
+              "lib": "Dépoussiérage des meubles, tables, étagères et surfaces accessibles",
+              "min": 0,
+              "commun": true
+            },
+            {
+              "id": "s_sols",
+              "lib": "Aspiration et lavage des sols et tapis compatibles",
+              "min": 0,
+              "commun": true
+            }
+          ]
+        },
+        {
+          "id": "chambre",
+          "lib": "Chambre",
+          "taches": [
+            {
+              "id": "ch_surfaces",
+              "lib": "Dépoussiérage des surfaces accessibles de la chambre",
+              "min": 12
+            },
+            {
+              "id": "ch_sols",
+              "lib": "Aspiration et lavage des sols compatibles",
+              "min": 0,
+              "commun": true
+            }
+          ],
+          "note": "Le déplacement ou le rangement des effets personnels n'est pas compris."
+        },
+        {
+          "id": "bureau",
+          "lib": "Bureau",
+          "taches": [
+            {
+              "id": "bu_surfaces",
+              "lib": "Dépoussiérage des surfaces accessibles",
+              "min": 8
+            },
+            {
+              "id": "bu_degagees",
+              "lib": "Nettoyage des surfaces dégagées",
+              "min": 4
+            },
+            {
+              "id": "bu_sols",
+              "lib": "Aspiration et lavage des sols selon leur nature",
+              "min": 0,
+              "commun": true
+            }
+          ],
+          "note": "Dossiers, papiers, documents, équipements informatiques et appareils ne sont ni déplacés ni débranchés."
+        },
+        {
+          "id": "cuisine",
+          "lib": "Cuisine",
+          "taches": [
+            {
+              "id": "cu_plans",
+              "lib": "Nettoyage des plans de travail dégagés",
+              "min": 7
+            },
+            {
+              "id": "cu_evier",
+              "lib": "Nettoyage de l'évier et de la robinetterie",
+              "min": 5
+            },
+            {
+              "id": "cu_table",
+              "lib": "Nettoyage de la table et des surfaces accessibles",
+              "min": 4
+            },
+            {
+              "id": "cu_facades",
+              "lib": "Nettoyage extérieur des façades de meubles et des appareils accessibles",
+              "min": 8
+            },
+            {
+              "id": "cu_plaque",
+              "lib": "Nettoyage de la plaque de cuisson, lorsqu'elle est froide",
+              "min": 6
+            },
+            {
+              "id": "cu_sol",
+              "lib": "Aspiration et lavage du sol",
+              "min": 0,
+              "commun": true
+            }
+          ],
+          "note": "L'intérieur du réfrigérateur, du four et des placards n'est pas compris par défaut."
+        },
+        {
+          "id": "sdb",
+          "lib": "Salle de bains",
+          "taches": [
+            {
+              "id": "sb_lavabo",
+              "lib": "Nettoyage du lavabo et de la robinetterie",
+              "min": 6
+            },
+            {
+              "id": "sb_douche",
+              "lib": "Nettoyage de la douche ou de la baignoire",
+              "min": 12
+            },
+            {
+              "id": "sb_miroirs",
+              "lib": "Nettoyage des miroirs et surfaces accessibles",
+              "min": 5
+            },
+            {
+              "id": "sb_calcaire",
+              "lib": "Retrait des traces légères de savon et de calcaire, en entretien courant",
+              "min": 7
+            },
+            {
+              "id": "sb_sol",
+              "lib": "Aspiration et lavage du sol",
+              "min": 0,
+              "commun": true
+            }
+          ],
+          "note": "Le détartrage intensif, le traitement des moisissures et la remise en état ne sont pas compris."
+        },
+        {
+          "id": "wc",
+          "lib": "WC",
+          "verrou": true,
+          "taches": [
+            {
+              "id": "wc_cuvette",
+              "lib": "Nettoyage de la cuvette, intérieur et extérieur",
+              "min": 5
+            },
+            {
+              "id": "wc_abattant",
+              "lib": "Nettoyage de l'abattant et des surfaces de contact",
+              "min": 2
+            },
+            {
+              "id": "wc_reservoir",
+              "lib": "Nettoyage extérieur du réservoir et des surfaces accessibles",
+              "min": 2
+            },
+            {
+              "id": "wc_lavemains",
+              "lib": "Nettoyage du lave-mains, lorsqu'il existe",
+              "min": 1
+            },
+            {
+              "id": "wc_sol",
+              "lib": "Aspiration et lavage du sol",
+              "min": 0,
+              "commun": true
+            }
+          ],
+          "note": "L'entretien courant des WC est toujours compris lorsque la pièce est retenue."
+        },
+        {
+          "id": "entree",
+          "lib": "Entrée",
+          "taches": [
+            {
+              "id": "en_meubles",
+              "lib": "Dépoussiérage des meubles et surfaces accessibles",
+              "min": 0,
+              "commun": true
+            },
+            {
+              "id": "en_sols",
+              "lib": "Aspiration et lavage du sol selon sa nature",
+              "min": 0,
+              "commun": true
+            }
+          ]
+        },
+        {
+          "id": "couloir",
+          "lib": "Couloir",
+          "taches": [
+            {
+              "id": "co_surfaces",
+              "lib": "Dépoussiérage des surfaces accessibles",
+              "min": 0,
+              "commun": true
+            },
+            {
+              "id": "co_sols",
+              "lib": "Aspiration et lavage du sol selon sa nature",
+              "min": 0,
+              "commun": true
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "id": "opt_lit",
+          "lib": "Réfection simple du lit",
+          "desc": "Lorsque le linge est déjà en place, par chambre.",
+          "min": 5,
+          "parPiece": "chambre",
+          "actif": true
+        },
+        {
+          "id": "opt_frigo",
+          "lib": "Intérieur du réfrigérateur",
+          "desc": "Réfrigérateur vidé au préalable par vos soins.",
+          "min": 20,
+          "actif": true
+        },
+        {
+          "id": "opt_four",
+          "lib": "Intérieur du four",
+          "desc": "Four froid, nettoyage de l'enceinte et de la vitre.",
+          "min": 30,
+          "actif": true
+        },
+        {
+          "id": "opt_placards",
+          "lib": "Intérieur des placards de cuisine",
+          "desc": "Placards vidés au préalable.",
+          "min": 20,
+          "actif": true
+        },
+        {
+          "id": "opt_fenetres",
+          "lib": "Faces vitrées des fenêtres",
+          "desc": "Comptez chaque face à laver : une fenêtre à deux battants lavée à l'intérieur et à l'extérieur compte 4 faces.",
+          "min": 4,
+          "quantite": true,
+          "actif": true
+        },
+        {
+          "id": "opt_baies_p",
+          "lib": "Petites baies (1 vantail)",
+          "desc": "",
+          "min": 6,
+          "quantite": true,
+          "actif": true
+        },
+        {
+          "id": "opt_baies",
+          "lib": "Baies standard (2 vantaux)",
+          "desc": "",
+          "min": 8,
+          "quantite": true,
+          "actif": true
+        },
+        {
+          "id": "opt_baies_g",
+          "lib": "Grandes baies (3 vantaux et +)",
+          "desc": "",
+          "min": 12,
+          "quantite": true,
+          "actif": true
+        },
+        {
+          "id": "opt_veranda",
+          "lib": "Véranda",
+          "desc": "Surface au sol, en m².",
+          "min": 12,
+          "quantite": true,
+          "surface": true,
+          "actif": true
+        }
+      ],
+      "exclusions": [
+        "Lavage des vitres, fenêtres, baies vitrées, encadrements, rails et volets, sauf option choisie",
+        "Surfaces en hauteur nécessitant un équipement spécifique",
+        "Intérieur du four, du réfrigérateur et des placards, sauf option choisie",
+        "Vaisselle, lessive, repassage et changement complet du linge de lit",
+        "Déplacement de meubles lourds",
+        "Rangement important ou désencombrement",
+        "Détachage spécialisé des textiles",
+        "Désinfection approfondie",
+        "Détartrage intensif, traitement des moisissures ou remise en état",
+        "Ménage après travaux ou fin de chantier",
+        "Grand nettoyage, qui relève d'une prestation dédiée",
+        "Surfaces encombrées ou non accessibles"
+      ],
+      "creditImpot": true
+    },
+    "grand": {
+      "nom": "Grand ménage approfondi",
+      "communes": {
+        "lib": "Entretien approfondi des surfaces accessibles",
+        "parM2": true,
+        "taches": [
+          {
+            "id": "g_poussiere",
+            "lib": "Dépoussiérage approfondi des meubles et surfaces accessibles et dégagés",
+            "min": 0.42
+          },
+          {
+            "id": "g_sols",
+            "lib": "Aspiration et lavage soigné des sols compatibles et accessibles",
+            "min": 0.55
+          },
+          {
+            "id": "g_plinthes",
+            "lib": "Nettoyage des plinthes accessibles",
+            "min": 0.22
+          },
+          {
+            "id": "g_portes",
+            "lib": "Nettoyage extérieur des portes et encadrements accessibles",
+            "min": 0.14
+          },
+          {
+            "id": "g_points",
+            "lib": "Nettoyage des traces sur les poignées et interrupteurs accessibles",
+            "min": 0.07
+          },
+          {
+            "id": "g_radiateurs",
+            "lib": "Dépoussiérage extérieur des radiateurs accessibles, sans démontage",
+            "min": 0.1
+          },
+          {
+            "id": "g_escaliers",
+            "lib": "Nettoyage des escaliers et rampes accessibles lorsqu'ils existent",
+            "min": 0.04
+          },
+          {
+            "id": "g_toiles",
+            "lib": "Retrait des toiles d'araignée à portée de main, sans accès en hauteur",
+            "min": 0.1
+          }
+        ]
+      },
+      "pieces": [
+        {
+          "id": "sejour",
+          "lib": "Pièces de vie",
+          "taches": [
+            {
+              "id": "gs_surfaces",
+              "lib": "Surfaces extérieures et meubles dégagés nettoyés avec soin",
+              "min": 0,
+              "commun": true
+            }
+          ]
+        },
+        {
+          "id": "chambre",
+          "lib": "Chambre",
+          "taches": [
+            {
+              "id": "gc_surfaces",
+              "lib": "Dépoussiérage soigné des surfaces et meubles accessibles",
+              "min": 8
+            },
+            {
+              "id": "gc_facades",
+              "lib": "Nettoyage extérieur des façades de meubles accessibles",
+              "min": 4
+            }
+          ],
+          "note": "Aucun intérieur de placard ou de penderie ; aucun déplacement d'effets personnels."
+        },
+        {
+          "id": "bureau",
+          "lib": "Bureau",
+          "taches": [
+            {
+              "id": "gb_surfaces",
+              "lib": "Dépoussiérage et nettoyage soigné des surfaces dégagées",
+              "min": 8
+            },
+            {
+              "id": "gb_facades",
+              "lib": "Nettoyage extérieur du mobilier accessible",
+              "min": 3
+            }
+          ],
+          "note": "Documents, équipements et appareils ne sont pas déplacés ni débranchés."
+        },
+        {
+          "id": "cuisine",
+          "lib": "Cuisine",
+          "taches": [
+            {
+              "id": "gk_plans",
+              "lib": "Nettoyage approfondi des plans de travail et de la crédence accessibles",
+              "min": 9
+            },
+            {
+              "id": "gk_plaques",
+              "lib": "Nettoyage soigné de la plaque de cuisson froide",
+              "min": 8
+            },
+            {
+              "id": "gk_facades",
+              "lib": "Nettoyage extérieur des façades des meubles et appareils accessibles",
+              "min": 8
+            },
+            {
+              "id": "gk_evier",
+              "lib": "Nettoyage soigné de l'évier et de la robinetterie",
+              "min": 7
+            }
+          ],
+          "note": "Intérieurs des appareils et des rangements non compris ; aucun vidage ou dégivrage."
+        },
+        {
+          "id": "sdb",
+          "lib": "Salle de bains",
+          "taches": [
+            {
+              "id": "gd_detartrage",
+              "lib": "Nettoyage renforcé de la douche ou baignoire et des robinetteries accessibles",
+              "min": 13
+            },
+            {
+              "id": "gd_joints",
+              "lib": "Nettoyage soigné des parois, miroirs et faïences accessibles",
+              "min": 10
+            },
+            {
+              "id": "gd_facades",
+              "lib": "Nettoyage extérieur des meubles et surfaces dégagées",
+              "min": 6
+            }
+          ],
+          "note": "Hors intérieur des rangements, détartrage lourd et traitement des moisissures."
+        },
+        {
+          "id": "wc",
+          "lib": "WC",
+          "verrou": true,
+          "taches": [
+            {
+              "id": "gw_complet",
+              "lib": "Nettoyage approfondi des WC, abattant, réservoir extérieur et surfaces accessibles",
+              "min": 15
+            }
+          ]
+        }
+      ],
+      "elements": [
+        {
+          "id": "fenetres",
+          "lib": "Fenêtres : vitres intérieures, rebords et rails",
+          "aide": "Nombre de fenêtres.",
+          "min": 6,
+          "quantite": true
+        },
+        {
+          "id": "baies",
+          "lib": "Baies vitrées : vitres intérieures, rebords et rails",
+          "aide": "Nombre de baies.",
+          "min": 12,
+          "quantite": true
+        },
+        {
+          "id": "veranda",
+          "lib": "Véranda",
+          "aide": "Surface au sol, en m².",
+          "min": 15,
+          "quantite": true,
+          "surface": true
+        }
+      ],
+      "options": [],
+      "exclusions": [
+        "Intérieur des placards, penderies, tiroirs et autres rangements",
+        "Intérieur des fours, réfrigérateurs, congélateurs et autres appareils ; vidage et dégivrage",
+        "Volets roulants, stores et démontage des équipements",
+        "Faces extérieures des vitres : hors forfait sauf option de vitrerie extérieure expressément retenue",
+        "Vaisselle, lessive et repassage",
+        "Déplacement de meubles lourds et rangement des effets personnels",
+        "Rangement important ou désencombrement",
+        "Détachage spécialisé des textiles : prestation distincte",
+        "Surfaces non accessibles ou en hauteur nécessitant un équipement particulier",
+        "Décapage, restauration des matériaux, détartrage lourd ou traitement des moisissures",
+        "Ménage après travaux ou fin de chantier"
+      ],
+      "creditImpot": true
+    },
+    "vitres": {
+      "nom": "Vitres et véranda",
+      "inclus": [
+        "Vitrages, encadrements et appuis, à l'intérieur comme à l'extérieur",
+        "Baies vitrées et portes-fenêtres",
+        "Véranda : parois vitrées, à l'intérieur et à l'extérieur (la toiture n'est pas prise en charge)"
+      ],
+      "elements": [
+        {
+          "id": "faces",
+          "lib": "Faces vitrées des fenêtres",
+          "aide": "Comptez chaque face à laver : une fenêtre à deux battants lavée à l'intérieur et à l'extérieur compte 4 faces.",
+          "min": 4,
+          "quantite": true
+        },
+        {
+          "id": "baiesP",
+          "lib": "Petites baies (1 vantail)",
+          "min": 6,
+          "quantite": true
+        },
+        {
+          "id": "baies",
+          "lib": "Baies standard ou vitrines (2 vantaux)",
+          "min": 8,
+          "quantite": true
+        },
+        {
+          "id": "baiesG",
+          "lib": "Grandes baies (3 vantaux et +)",
+          "min": 12,
+          "quantite": true
+        },
+        {
+          "id": "verandaM2",
+          "lib": "Véranda",
+          "aide": "Surface au sol, en m².",
+          "min": 12,
+          "quantite": true,
+          "surface": true
+        },
+        {
+          "id": "glissieres",
+          "lib": "Glissières et rails",
+          "aide": "Nombre de fenêtres.",
+          "min": 5,
+          "quantite": true
+        },
+        {
+          "id": "volets",
+          "lib": "Volets",
+          "min": 10,
+          "quantite": true
+        }
+      ],
+      "facteurs": {
+        "hauteur": 1.4,
+        "travaux": 1.5
+      },
+      "options": [],
+      "exclusions": [
+        "Vitrages qui ne peuvent pas être lavés en sécurité : étudiés au cas par cas, et refusés si besoin",
+        "Surfaces en hauteur nécessitant un équipement spécifique"
+      ],
+      "creditImpot": true
+    },
+    "textile": {
+      "nom": "Canapés, tapis et textiles",
+      "inclus": [
+        "Détachage ciblé",
+        "Injection-extraction en profondeur",
+        "Désodorisation"
+      ],
+      "info": "Textile utilisable après quelques heures de séchage, selon la matière et l'aération de la pièce.",
+      "elements": [
+        {
+          "id": "places",
+          "lib": "Places de canapé (assises, méridienne ou angle compris)",
+          "min": 20,
+          "quantite": true
+        },
+        {
+          "id": "fauteuil",
+          "lib": "Fauteuils",
+          "min": 20,
+          "quantite": true
+        },
+        {
+          "id": "chaise",
+          "lib": "Chaises et sièges tissu",
+          "min": 10,
+          "quantite": true
+        },
+        {
+          "id": "coussin",
+          "lib": "Coussins, à l'unité",
+          "min": 0,
+          "quantite": true
+        },
+        {
+          "id": "matelas1",
+          "lib": "Matelas 1 place",
+          "min": 20,
+          "quantite": true
+        },
+        {
+          "id": "matelas2",
+          "lib": "Matelas 2 places",
+          "min": 20,
+          "quantite": true
+        },
+        {
+          "id": "moquette",
+          "lib": "Tapis ou moquette, en m²",
+          "min": 6,
+          "quantite": true,
+          "surface": true
+        }
+      ],
+      "options": [],
+      "exclusions": [],
+      "creditImpot": true
+    },
+    "bureaux": {
+      "nom": "Entretien de bureaux",
+      "inclus": [
+        "Sols aspirés et lavés",
+        "Sanitaires désinfectés",
+        "Surfaces dépoussiérées",
+        "Corbeilles vidées",
+        "Points de contact traités"
+      ],
+      "elements": [
+        {
+          "id": "surface",
+          "lib": "Surface des locaux, en m²",
+          "min": 0.8,
+          "quantite": true,
+          "surface": true
+        },
+        {
+          "id": "postes",
+          "lib": "Postes de travail",
+          "min": 5,
+          "quantite": true
+        },
+        {
+          "id": "sanit",
+          "lib": "Sanitaires",
+          "min": 15,
+          "quantite": true
+        },
+        {
+          "id": "reunion",
+          "lib": "Salles de réunion",
+          "min": 10,
+          "quantite": true
+        },
+        {
+          "id": "cuisine",
+          "lib": "Coins cuisine",
+          "min": 15,
+          "quantite": true
+        },
+        {
+          "id": "vitres",
+          "lib": "Vitres intérieures",
+          "min": 20
+        }
+      ],
+      "frequence": {
+        "ponctuel": 1.15,
+        "frequent": 0.9,
+        "espace": 1.15
+      },
+      "options": [],
+      "exclusions": [
+        "Déplacement des dossiers, papiers, documents, équipements informatiques ou appareils, et débranchement des équipements",
+        "Faces extérieures des vitres, sauf demande chiffrée à part"
+      ],
+      "creditImpot": false
+    }
+  },
+  "textes": {
+    "intro": "Décrivez votre besoin en quelques étapes. Limpid vous envoie ensuite votre devis par e-mail, sous 48 h.",
+    "estimation": "Durée indicative, à confirmer par Limpid. Elle ne constitue pas un engagement de durée.",
+    "prixParEmail": "Le prix vous est communiqué avec votre devis, par e-mail : il tient compte de votre logement, de la fréquence et du déplacement, sans frais cachés.",
+    "creditImpot": "Les prestations à domicile des particuliers peuvent ouvrir droit à un crédit d'impôt de 50 %, sous réserve des conditions légales. Avec l'avance immédiate, lorsqu'elle est activée et applicable, vous ne réglez que le reste à charge au moment du paiement, au lieu d'avancer la totalité. Votre devis précisera le reste à charge estimé.",
+    "dureeInsuffisante": "La durée choisie semble courte pour tout le périmètre demandé. Indiquez vos priorités : Limpid confirmera avec vous ce qui peut être fait dans ce temps.",
+    "validationManuelle": "Cette demande nécessite un échange avec Limpid avant chiffrage : nous vous rappelons pour la préciser.",
+    "confirmation": "Votre demande est bien arrivée. Limpid vous envoie votre devis par e-mail sous 48 h, et vous appelle si un point reste à préciser.",
+    "erreurEnvoi": "L'envoi n'a pas abouti. Votre configuration est conservée : réessayez, ou appelez-nous au 06 26 55 65 69."
+  },
+  "communes": [
+    {
+      "nom": "Darnieulles",
+      "cp": "88390",
+      "vol": 0.0,
+      "kmAR": 4,
+      "minAR": 10,
+      "verifie": false,
+      "volEp": 7.9,
+      "insee": "88126"
+    },
+    {
+      "nom": "Uxegney",
+      "cp": "88390",
+      "vol": 1.7,
+      "kmAR": 4,
+      "minAR": 10,
+      "verifie": false,
+      "volEp": 6.3,
+      "insee": "88483"
+    },
+    {
+      "nom": "Fomerey",
+      "cp": "88390",
+      "vol": 2.5,
+      "kmAR": 6,
+      "minAR": 15,
+      "verifie": false,
+      "volEp": 9.6,
+      "insee": "88174"
+    },
+    {
+      "nom": "Domèvre-sur-Avière",
+      "cp": "88390",
+      "vol": 2.9,
+      "kmAR": 8,
+      "minAR": 15,
+      "verifie": false,
+      "volEp": 6.6,
+      "insee": "88142"
+    },
+    {
+      "nom": "Sanchey",
+      "cp": "88390",
+      "vol": 2.9,
+      "kmAR": 8,
+      "minAR": 15,
+      "verifie": false,
+      "volEp": 6.6,
+      "insee": "88439"
+    },
+    {
+      "nom": "Chaumousey",
+      "cp": "88390",
+      "vol": 3.0,
+      "kmAR": 8,
+      "minAR": 15,
+      "verifie": false,
+      "volEp": 8.6,
+      "insee": "88098"
+    },
+    {
+      "nom": "Gigney",
+      "cp": "88390",
+      "vol": 3.6,
+      "kmAR": 9,
+      "minAR": 15,
+      "verifie": false,
+      "volEp": 10.3,
+      "insee": "88200"
+    },
+    {
+      "nom": "Les Forges",
+      "cp": "88390",
+      "vol": 3.7,
+      "kmAR": 10,
+      "minAR": 15,
+      "verifie": false,
+      "volEp": 4.6,
+      "insee": "88178"
+    },
+    {
+      "nom": "Bocquegney",
+      "cp": "88270",
+      "vol": 3.8,
+      "kmAR": 10,
+      "minAR": 15,
+      "verifie": false,
+      "volEp": 11.7,
+      "insee": "88063"
+    },
+    {
+      "nom": "Hennecourt",
+      "cp": "88270",
+      "vol": 4.8,
+      "kmAR": 12,
+      "minAR": 20,
+      "verifie": false,
+      "volEp": 12.7,
+      "insee": "88237"
+    },
+    {
+      "nom": "Gorhey",
+      "cp": "88270",
+      "vol": 4.9,
+      "kmAR": 13,
+      "minAR": 20,
+      "verifie": false,
+      "volEp": 12.5,
+      "insee": "88210"
+    },
+    {
+      "nom": "Mazeley",
+      "cp": "88150",
+      "vol": 4.9,
+      "kmAR": 13,
+      "minAR": 20,
+      "verifie": false,
+      "volEp": 11.1,
+      "insee": "88294"
+    },
+    {
+      "nom": "Girancourt",
+      "cp": "88390",
+      "vol": 5.0,
+      "kmAR": 13,
+      "minAR": 20,
+      "verifie": false,
+      "volEp": 10.4,
+      "insee": "88201"
+    },
+    {
+      "nom": "Damas-et-Bettegney",
+      "cp": "88270",
+      "vol": 6.6,
+      "kmAR": 17,
+      "minAR": 25,
+      "verifie": false,
+      "volEp": 14.5,
+      "insee": "88122"
+    },
+    {
+      "nom": "Renauvoid",
+      "cp": "88390",
+      "vol": 6.7,
+      "kmAR": 17,
+      "minAR": 25,
+      "verifie": false,
+      "volEp": 6.1,
+      "insee": "88388"
+    },
+    {
+      "nom": "Golbey",
+      "cp": "88190",
+      "vol": 6.8,
+      "kmAR": 18,
+      "minAR": 25,
+      "verifie": false,
+      "volEp": 2.5,
+      "insee": "88209"
+    },
+    {
+      "nom": "Dommartin-aux-Bois",
+      "cp": "88390",
+      "vol": 7.0,
+      "kmAR": 18,
+      "minAR": 25,
+      "verifie": false,
+      "volEp": 13.1,
+      "insee": "88147"
+    },
+    {
+      "nom": "Bouxières-aux-Bois",
+      "cp": "88270",
+      "vol": 7.6,
+      "kmAR": 20,
+      "minAR": 30,
+      "verifie": false,
+      "volEp": 14.0,
+      "insee": "88069"
+    },
+    {
+      "nom": "Chantraine",
+      "cp": "88000",
+      "vol": 7.6,
+      "kmAR": 20,
+      "minAR": 30,
+      "verifie": false,
+      "volEp": 0.9,
+      "insee": "88087"
+    },
+    {
+      "nom": "Chavelot",
+      "cp": "88150",
+      "vol": 7.7,
+      "kmAR": 20,
+      "minAR": 30,
+      "verifie": false,
+      "volEp": 6.6,
+      "insee": "88099"
+    },
+    {
+      "nom": "Circourt",
+      "cp": "88270",
+      "vol": 7.7,
+      "kmAR": 20,
+      "minAR": 30,
+      "verifie": false,
+      "volEp": 15.0,
+      "insee": "88103"
+    },
+    {
+      "nom": "Thaon-les-Vosges",
+      "cp": "88150",
+      "vol": 7.7,
+      "kmAR": 20,
+      "minAR": 30,
+      "verifie": false,
+      "volEp": 8.7,
+      "insee": "88465"
+    },
+    {
+      "nom": "Épinal",
+      "cp": "88000",
+      "vol": 7.9,
+      "kmAR": 21,
+      "minAR": 30,
+      "verifie": false,
+      "volEp": 0.0,
+      "insee": "88160"
+    },
+    {
+      "nom": "Dogneville",
+      "cp": "88000",
+      "vol": 8.6,
+      "kmAR": 22,
+      "minAR": 30,
+      "verifie": false,
+      "volEp": 5.4,
+      "insee": "88136"
+    },
+    {
+      "nom": "Madonne-et-Lamerey",
+      "cp": "88270",
+      "vol": 8.9,
+      "kmAR": 23,
+      "minAR": 30,
+      "verifie": false,
+      "volEp": 16.9,
+      "insee": "88281"
+    },
+    {
+      "nom": "Igney",
+      "cp": "88150",
+      "vol": 9.0,
+      "kmAR": 23,
+      "minAR": 30,
+      "verifie": false,
+      "volEp": 11.6,
+      "insee": "88247"
+    },
+    {
+      "nom": "Harol",
+      "cp": "88270",
+      "vol": 9.1,
+      "kmAR": 24,
+      "minAR": 30,
+      "verifie": false,
+      "volEp": 15.2,
+      "insee": "88233"
+    },
+    {
+      "nom": "Saint-Vallier",
+      "cp": "88270",
+      "vol": 9.3,
+      "kmAR": 24,
+      "minAR": 30,
+      "verifie": false,
+      "volEp": 15.3,
+      "insee": "88437"
+    },
+    {
+      "nom": "Dompaire",
+      "cp": "88270",
+      "vol": 9.4,
+      "kmAR": 24,
+      "minAR": 35,
+      "verifie": false,
+      "volEp": 17.4,
+      "insee": "88151"
+    },
+    {
+      "nom": "Frizon",
+      "cp": "88440",
+      "vol": 9.6,
+      "kmAR": 25,
+      "minAR": 35,
+      "verifie": false,
+      "volEp": 13.8,
+      "insee": "88190"
+    },
+    {
+      "nom": "Derbamont",
+      "cp": "88270",
+      "vol": 9.7,
+      "kmAR": 25,
+      "minAR": 35,
+      "verifie": false,
+      "volEp": 17.0,
+      "insee": "88129"
+    },
+    {
+      "nom": "Bouzemont",
+      "cp": "88270",
+      "vol": 10.0,
+      "kmAR": 26,
+      "minAR": 35,
+      "verifie": false,
+      "volEp": 17.8,
+      "insee": "88071"
+    },
+    {
+      "nom": "Jeuxey",
+      "cp": "88000",
+      "vol": 10.3,
+      "kmAR": 27,
+      "minAR": 35,
+      "verifie": false,
+      "volEp": 4.0,
+      "insee": "88253"
+    },
+    {
+      "nom": "Ville-sur-Illon",
+      "cp": "88270",
+      "vol": 10.6,
+      "kmAR": 28,
+      "minAR": 35,
+      "verifie": false,
+      "volEp": 17.8,
+      "insee": "88508"
+    },
+    {
+      "nom": "Regney",
+      "cp": "88450",
+      "vol": 10.7,
+      "kmAR": 28,
+      "minAR": 35,
+      "verifie": false,
+      "volEp": 16.7,
+      "insee": "88378"
+    },
+    {
+      "nom": "Madegney",
+      "cp": "88450",
+      "vol": 11.0,
+      "kmAR": 29,
+      "minAR": 35,
+      "verifie": false,
+      "volEp": 17.4,
+      "insee": "88280"
+    },
+    {
+      "nom": "Vaxoncourt",
+      "cp": "88330",
+      "vol": 11.3,
+      "kmAR": 29,
+      "minAR": 40,
+      "verifie": false,
+      "volEp": 13.3,
+      "insee": "88497"
+    },
+    {
+      "nom": "Dinozé",
+      "cp": "88000",
+      "vol": 11.5,
+      "kmAR": 30,
+      "minAR": 40,
+      "verifie": false,
+      "volEp": 4.3,
+      "insee": "88134"
+    },
+    {
+      "nom": "Uriménil",
+      "cp": "88220",
+      "vol": 11.5,
+      "kmAR": 30,
+      "minAR": 40,
+      "verifie": false,
+      "volEp": 9.0,
+      "insee": "88481"
+    },
+    {
+      "nom": "Bettegney-Saint-Brice",
+      "cp": "88450",
+      "vol": 11.6,
+      "kmAR": 30,
+      "minAR": 40,
+      "verifie": false,
+      "volEp": 17.4,
+      "insee": "88055"
+    },
+    {
+      "nom": "Bazegney",
+      "cp": "88270",
+      "vol": 11.7,
+      "kmAR": 30,
+      "minAR": 40,
+      "verifie": false,
+      "volEp": 19.4,
+      "insee": "88041"
+    },
+    {
+      "nom": "Les Ableuvenettes",
+      "cp": "88270",
+      "vol": 12.1,
+      "kmAR": 31,
+      "minAR": 40,
+      "verifie": false,
+      "volEp": 19.6,
+      "insee": "88001"
+    },
+    {
+      "nom": "Charmois-l'Orgueilleux",
+      "cp": "88270",
+      "vol": 12.2,
+      "kmAR": 32,
+      "minAR": 40,
+      "verifie": false,
+      "volEp": 15.5,
+      "insee": "88092"
+    },
+    {
+      "nom": "Nomexy",
+      "cp": "88440",
+      "vol": 12.2,
+      "kmAR": 32,
+      "minAR": 40,
+      "verifie": false,
+      "volEp": 15.5,
+      "insee": "88327"
+    },
+    {
+      "nom": "Vaubexy",
+      "cp": "88500",
+      "vol": 12.2,
+      "kmAR": 32,
+      "minAR": 40,
+      "verifie": false,
+      "volEp": 19.6,
+      "insee": "88494"
+    },
+    {
+      "nom": "Deyvillers",
+      "cp": "88000",
+      "vol": 12.3,
+      "kmAR": 32,
+      "minAR": 40,
+      "verifie": false,
+      "volEp": 5.5,
+      "insee": "88132"
+    },
+    {
+      "nom": "Dounoux",
+      "cp": "88220",
+      "vol": 12.4,
+      "kmAR": 32,
+      "minAR": 40,
+      "verifie": false,
+      "volEp": 7.6,
+      "insee": "88157"
+    },
+    {
+      "nom": "Longchamp",
+      "cp": "88000",
+      "vol": 12.5,
+      "kmAR": 32,
+      "minAR": 40,
+      "verifie": false,
+      "volEp": 7.2,
+      "insee": "88273"
+    },
+    {
+      "nom": "Uzemain",
+      "cp": "88220",
+      "vol": 12.5,
+      "kmAR": 32,
+      "minAR": 40,
+      "verifie": false,
+      "volEp": 12.4,
+      "insee": "88484"
+    },
+    {
+      "nom": "Pallegney",
+      "cp": "88330",
+      "vol": 12.6,
+      "kmAR": 33,
+      "minAR": 40,
+      "verifie": false,
+      "volEp": 13.1,
+      "insee": "88342"
+    },
+    {
+      "nom": "Dignonville",
+      "cp": "88000",
+      "vol": 12.7,
+      "kmAR": 33,
+      "minAR": 40,
+      "verifie": false,
+      "volEp": 8.7,
+      "insee": "88133"
+    },
+    {
+      "nom": "Bayecourt",
+      "cp": "88150",
+      "vol": 12.9,
+      "kmAR": 34,
+      "minAR": 45,
+      "verifie": false,
+      "volEp": 10.6,
+      "insee": "88040"
+    },
+    {
+      "nom": "Châtel-sur-Moselle",
+      "cp": "88330",
+      "vol": 13.0,
+      "kmAR": 34,
+      "minAR": 45,
+      "verifie": false,
+      "volEp": 15.8,
+      "insee": "88094"
+    },
+    {
+      "nom": "Domèvre-sur-Durbion",
+      "cp": "88330",
+      "vol": 13.0,
+      "kmAR": 34,
+      "minAR": 45,
+      "verifie": false,
+      "volEp": 12.1,
+      "insee": "88143"
+    },
+    {
+      "nom": "Gugney-aux-Aulx",
+      "cp": "88450",
+      "vol": 13.1,
+      "kmAR": 34,
+      "minAR": 45,
+      "verifie": false,
+      "volEp": 19.6,
+      "insee": "88223"
+    },
+    {
+      "nom": "Pierrefitte",
+      "cp": "88270",
+      "vol": 13.3,
+      "kmAR": 35,
+      "minAR": 45,
+      "verifie": false,
+      "volEp": 20.3,
+      "insee": "88347"
+    },
+    {
+      "nom": "Racécourt",
+      "cp": "88270",
+      "vol": 13.3,
+      "kmAR": 35,
+      "minAR": 45,
+      "verifie": false,
+      "volEp": 21.2,
+      "insee": "88365"
+    },
+    {
+      "nom": "Gelvécourt-et-Adompt",
+      "cp": "88270",
+      "vol": 13.7,
+      "kmAR": 36,
+      "minAR": 45,
+      "verifie": false,
+      "volEp": 21.4,
+      "insee": "88192"
+    },
+    {
+      "nom": "Zincourt",
+      "cp": "88330",
+      "vol": 13.9,
+      "kmAR": 36,
+      "minAR": 45,
+      "verifie": false,
+      "volEp": 14.9,
+      "insee": "88532"
+    },
+    {
+      "nom": "Villoncourt",
+      "cp": "88150",
+      "vol": 14.0,
+      "kmAR": 36,
+      "minAR": 45,
+      "verifie": false,
+      "volEp": 10.8,
+      "insee": "88509"
+    },
+    {
+      "nom": "Begnécourt",
+      "cp": "88270",
+      "vol": 14.1,
+      "kmAR": 37,
+      "minAR": 45,
+      "verifie": false,
+      "volEp": 21.9,
+      "insee": "88047"
+    },
+    {
+      "nom": "Jorxey",
+      "cp": "88500",
+      "vol": 14.2,
+      "kmAR": 37,
+      "minAR": 45,
+      "verifie": false,
+      "volEp": 21.2,
+      "insee": "88254"
+    },
+    {
+      "nom": "Rapey",
+      "cp": "88130",
+      "vol": 14.5,
+      "kmAR": 38,
+      "minAR": 45,
+      "verifie": false,
+      "volEp": 21.1,
+      "insee": "88374"
+    },
+    {
+      "nom": "Évaux-et-Ménil",
+      "cp": "88450",
+      "vol": 14.5,
+      "kmAR": 38,
+      "minAR": 45,
+      "verifie": false,
+      "volEp": 20.1,
+      "insee": "88166"
+    },
+    {
+      "nom": "Varmonzey",
+      "cp": "88450",
+      "vol": 14.6,
+      "kmAR": 38,
+      "minAR": 45,
+      "verifie": false,
+      "volEp": 20.5,
+      "insee": "88493"
+    },
+    {
+      "nom": "Légéville-et-Bonfays",
+      "cp": "88270",
+      "vol": 14.7,
+      "kmAR": 38,
+      "minAR": 50,
+      "verifie": false,
+      "volEp": 22.2,
+      "insee": "88264"
+    },
+    {
+      "nom": "Vaudéville",
+      "cp": "88000",
+      "vol": 14.7,
+      "kmAR": 38,
+      "minAR": 50,
+      "verifie": false,
+      "volEp": 9.1,
+      "insee": "88495"
+    },
+    {
+      "nom": "Ahéville",
+      "cp": "88500",
+      "vol": 14.9,
+      "kmAR": 39,
+      "minAR": 50,
+      "verifie": false,
+      "volEp": 22.6,
+      "insee": "88002"
+    },
+    {
+      "nom": "Escles",
+      "cp": "88260",
+      "vol": 14.9,
+      "kmAR": 39,
+      "minAR": 50,
+      "verifie": false,
+      "volEp": 20.8,
+      "insee": "88161"
+    },
+    {
+      "nom": "Sercœur",
+      "cp": "88600",
+      "vol": 14.9,
+      "kmAR": 39,
+      "minAR": 50,
+      "verifie": false,
+      "volEp": 10.7,
+      "insee": "88454"
+    },
+    {
+      "nom": "Velotte-et-Tatignécourt",
+      "cp": "88270",
+      "vol": 14.9,
+      "kmAR": 39,
+      "minAR": 50,
+      "verifie": false,
+      "volEp": 22.8,
+      "insee": "88499"
+    },
+    {
+      "nom": "Hagécourt",
+      "cp": "88270",
+      "vol": 15.0,
+      "kmAR": 39,
+      "minAR": 50,
+      "verifie": false,
+      "volEp": 22.9,
+      "insee": "88226"
+    },
+    {
+      "nom": "Hadol",
+      "cp": "88220",
+      "vol": 15.4,
+      "kmAR": 40,
+      "minAR": 50,
+      "verifie": false,
+      "volEp": 9.6,
+      "insee": "88225"
+    },
+    {
+      "nom": "Maroncourt",
+      "cp": "88270",
+      "vol": 15.4,
+      "kmAR": 40,
+      "minAR": 50,
+      "verifie": false,
+      "volEp": 23.3,
+      "insee": "88288"
+    },
+    {
+      "nom": "Bainville-aux-Saules",
+      "cp": "88270",
+      "vol": 15.7,
+      "kmAR": 41,
+      "minAR": 50,
+      "verifie": false,
+      "volEp": 23.4,
+      "insee": "88030"
+    },
+    {
+      "nom": "Vincey",
+      "cp": "88450",
+      "vol": 15.8,
+      "kmAR": 41,
+      "minAR": 50,
+      "verifie": false,
+      "volEp": 20.4,
+      "insee": "88513"
+    },
+    {
+      "nom": "Lerrain",
+      "cp": "88260",
+      "vol": 15.9,
+      "kmAR": 41,
+      "minAR": 50,
+      "verifie": false,
+      "volEp": 22.5,
+      "insee": "88267"
+    },
+    {
+      "nom": "Archettes",
+      "cp": "88380",
+      "vol": 16.0,
+      "kmAR": 42,
+      "minAR": 50,
+      "verifie": false,
+      "volEp": 8.4,
+      "insee": "88012"
+    },
+    {
+      "nom": "Arches",
+      "cp": "88380",
+      "vol": 16.1,
+      "kmAR": 42,
+      "minAR": 50,
+      "verifie": false,
+      "volEp": 8.6,
+      "insee": "88011"
+    },
+    {
+      "nom": "Hadigny-les-Verrières",
+      "cp": "88330",
+      "vol": 16.1,
+      "kmAR": 42,
+      "minAR": 50,
+      "verifie": false,
+      "volEp": 16.5,
+      "insee": "88224"
+    },
+    {
+      "nom": "Portieux",
+      "cp": "88330",
+      "vol": 16.1,
+      "kmAR": 42,
+      "minAR": 50,
+      "verifie": false,
+      "volEp": 20.3,
+      "insee": "88355"
+    },
+    {
+      "nom": "Ubexy",
+      "cp": "88130",
+      "vol": 16.1,
+      "kmAR": 42,
+      "minAR": 50,
+      "verifie": false,
+      "volEp": 22.1,
+      "insee": "88480"
+    },
+    {
+      "nom": "Valleroy-aux-Saules",
+      "cp": "88270",
+      "vol": 16.1,
+      "kmAR": 42,
+      "minAR": 50,
+      "verifie": false,
+      "volEp": 24.1,
+      "insee": "88489"
+    },
+    {
+      "nom": "Avillers",
+      "cp": "88500",
+      "vol": 16.3,
+      "kmAR": 42,
+      "minAR": 50,
+      "verifie": false,
+      "volEp": 23.5,
+      "insee": "88023"
+    },
+    {
+      "nom": "Pont-lès-Bonfays",
+      "cp": "88260",
+      "vol": 16.4,
+      "kmAR": 43,
+      "minAR": 50,
+      "verifie": false,
+      "volEp": 23.5,
+      "insee": "88353"
+    },
+    {
+      "nom": "Vroville",
+      "cp": "88500",
+      "vol": 16.4,
+      "kmAR": 43,
+      "minAR": 50,
+      "verifie": false,
+      "volEp": 24.1,
+      "insee": "88525"
+    },
+    {
+      "nom": "Aydoilles",
+      "cp": "88600",
+      "vol": 16.6,
+      "kmAR": 43,
+      "minAR": 55,
+      "verifie": false,
+      "volEp": 9.9,
+      "insee": "88026"
+    },
+    {
+      "nom": "Brantigny",
+      "cp": "88130",
+      "vol": 16.9,
+      "kmAR": 44,
+      "minAR": 55,
+      "verifie": false,
+      "volEp": 22.7,
+      "insee": "88073"
+    },
+    {
+      "nom": "Frénois",
+      "cp": "88270",
+      "vol": 16.9,
+      "kmAR": 44,
+      "minAR": 55,
+      "verifie": false,
+      "volEp": 24.4,
+      "insee": "88187"
+    },
+    {
+      "nom": "Dompierre",
+      "cp": "88600",
+      "vol": 17.0,
+      "kmAR": 44,
+      "minAR": 55,
+      "verifie": false,
+      "volEp": 12.2,
+      "insee": "88152"
+    },
+    {
+      "nom": "Badménil-aux-Bois",
+      "cp": "88330",
+      "vol": 17.1,
+      "kmAR": 44,
+      "minAR": 55,
+      "verifie": false,
+      "volEp": 15.1,
+      "insee": "88027"
+    },
+    {
+      "nom": "Hymont",
+      "cp": "88500",
+      "vol": 17.1,
+      "kmAR": 44,
+      "minAR": 55,
+      "verifie": false,
+      "volEp": 25.0,
+      "insee": "88246"
+    },
+    {
+      "nom": "Bouxurulles",
+      "cp": "88130",
+      "vol": 17.3,
+      "kmAR": 45,
+      "minAR": 55,
+      "verifie": false,
+      "volEp": 23.8,
+      "insee": "88070"
+    },
+    {
+      "nom": "La Baffe",
+      "cp": "88460",
+      "vol": 17.3,
+      "kmAR": 45,
+      "minAR": 55,
+      "verifie": false,
+      "volEp": 9.4,
+      "insee": "88028"
+    },
+    {
+      "nom": "Villers",
+      "cp": "88500",
+      "vol": 17.3,
+      "kmAR": 45,
+      "minAR": 55,
+      "verifie": false,
+      "volEp": 24.8,
+      "insee": "88507"
+    },
+    {
+      "nom": "Vioménil",
+      "cp": "88260",
+      "vol": 17.3,
+      "kmAR": 45,
+      "minAR": 55,
+      "verifie": false,
+      "volEp": 22.1,
+      "insee": "88515"
+    },
+    {
+      "nom": "Les Vallois",
+      "cp": "88260",
+      "vol": 17.5,
+      "kmAR": 46,
+      "minAR": 55,
+      "verifie": false,
+      "volEp": 24.4,
+      "insee": "88491"
+    },
+    {
+      "nom": "Moriville",
+      "cp": "88330",
+      "vol": 17.5,
+      "kmAR": 46,
+      "minAR": 55,
+      "verifie": false,
+      "volEp": 19.1,
+      "insee": "88313"
+    },
+    {
+      "nom": "Madecourt",
+      "cp": "88270",
+      "vol": 17.6,
+      "kmAR": 46,
+      "minAR": 55,
+      "verifie": false,
+      "volEp": 25.5,
+      "insee": "88279"
+    },
+    {
+      "nom": "La Haye",
+      "cp": "88240",
+      "vol": 17.7,
+      "kmAR": 46,
+      "minAR": 55,
+      "verifie": false,
+      "volEp": 20.8,
+      "insee": "88236"
+    },
+    {
+      "nom": "Xertigny",
+      "cp": "88220",
+      "vol": 17.7,
+      "kmAR": 46,
+      "minAR": 55,
+      "verifie": false,
+      "volEp": 15.0,
+      "insee": "88530"
+    },
+    {
+      "nom": "Fontenay",
+      "cp": "88600",
+      "vol": 17.9,
+      "kmAR": 47,
+      "minAR": 55,
+      "verifie": false,
+      "volEp": 11.4,
+      "insee": "88175"
+    },
+    {
+      "nom": "Langley",
+      "cp": "88130",
+      "vol": 17.9,
+      "kmAR": 47,
+      "minAR": 55,
+      "verifie": false,
+      "volEp": 22.4,
+      "insee": "88260"
+    },
+    {
+      "nom": "La Chapelle-aux-Bois",
+      "cp": "88240",
+      "vol": 18.1,
+      "kmAR": 47,
+      "minAR": 55,
+      "verifie": false,
+      "volEp": 17.7,
+      "insee": "88088"
+    },
+    {
+      "nom": "Rancourt",
+      "cp": "88270",
+      "vol": 18.1,
+      "kmAR": 47,
+      "minAR": 55,
+      "verifie": false,
+      "volEp": 25.9,
+      "insee": "88370"
+    },
+    {
+      "nom": "Rugney",
+      "cp": "88130",
+      "vol": 18.1,
+      "kmAR": 47,
+      "minAR": 55,
+      "verifie": false,
+      "volEp": 24.1,
+      "insee": "88406"
+    },
+    {
+      "nom": "Charmois-devant-Bruyères",
+      "cp": "88460",
+      "vol": 18.4,
+      "kmAR": 48,
+      "minAR": 60,
+      "verifie": false,
+      "volEp": 10.6,
+      "insee": "88091"
+    },
+    {
+      "nom": "Mattaincourt",
+      "cp": "88500",
+      "vol": 18.5,
+      "kmAR": 48,
+      "minAR": 60,
+      "verifie": false,
+      "volEp": 26.3,
+      "insee": "88292"
+    },
+    {
+      "nom": "Sans-Vallois",
+      "cp": "88260",
+      "vol": 18.5,
+      "kmAR": 48,
+      "minAR": 60,
+      "verifie": false,
+      "volEp": 25.6,
+      "insee": "88441"
+    },
+    {
+      "nom": "Padoux",
+      "cp": "88700",
+      "vol": 18.6,
+      "kmAR": 48,
+      "minAR": 60,
+      "verifie": false,
+      "volEp": 14.6,
+      "insee": "88340"
+    },
+    {
+      "nom": "Valfroicourt",
+      "cp": "88270",
+      "vol": 18.8,
+      "kmAR": 49,
+      "minAR": 60,
+      "verifie": false,
+      "volEp": 26.4,
+      "insee": "88488"
+    },
+    {
+      "nom": "Essegney",
+      "cp": "88130",
+      "vol": 18.9,
+      "kmAR": 49,
+      "minAR": 60,
+      "verifie": false,
+      "volEp": 23.6,
+      "insee": "88163"
+    },
+    {
+      "nom": "Grandrupt-de-Bains",
+      "cp": "88240",
+      "vol": 19.1,
+      "kmAR": 50,
+      "minAR": 60,
+      "verifie": false,
+      "volEp": 23.1,
+      "insee": "88214"
+    },
+    {
+      "nom": "Jarménil",
+      "cp": "88550",
+      "vol": 19.1,
+      "kmAR": 50,
+      "minAR": 60,
+      "verifie": false,
+      "volEp": 11.4,
+      "insee": "88250"
+    },
+    {
+      "nom": "Les Voivres",
+      "cp": "88240",
+      "vol": 19.1,
+      "kmAR": 50,
+      "minAR": 60,
+      "verifie": false,
+      "volEp": 19.7,
+      "insee": "88520"
+    },
+    {
+      "nom": "Pouxeux",
+      "cp": "88550",
+      "vol": 19.1,
+      "kmAR": 50,
+      "minAR": 60,
+      "verifie": false,
+      "volEp": 11.5,
+      "insee": "88358"
+    },
+    {
+      "nom": "Bazoilles-et-Ménil",
+      "cp": "88500",
+      "vol": 19.2,
+      "kmAR": 50,
+      "minAR": 60,
+      "verifie": false,
+      "volEp": 27.2,
+      "insee": "88043"
+    },
+    {
+      "nom": "Girecourt-sur-Durbion",
+      "cp": "88600",
+      "vol": 19.4,
+      "kmAR": 50,
+      "minAR": 60,
+      "verifie": false,
+      "volEp": 13.7,
+      "insee": "88203"
+    },
+    {
+      "nom": "Jésonville",
+      "cp": "88260",
+      "vol": 19.4,
+      "kmAR": 50,
+      "minAR": 60,
+      "verifie": false,
+      "volEp": 25.7,
+      "insee": "88252"
+    },
+    {
+      "nom": "Méménil",
+      "cp": "88600",
+      "vol": 19.5,
+      "kmAR": 51,
+      "minAR": 60,
+      "verifie": false,
+      "volEp": 12.9,
+      "insee": "88297"
+    },
+    {
+      "nom": "Gircourt-lès-Viéville",
+      "cp": "88500",
+      "vol": 19.6,
+      "kmAR": 51,
+      "minAR": 60,
+      "verifie": false,
+      "volEp": 26.5,
+      "insee": "88202"
+    },
+    {
+      "nom": "Mirecourt",
+      "cp": "88500",
+      "vol": 19.6,
+      "kmAR": 51,
+      "minAR": 60,
+      "verifie": false,
+      "volEp": 27.3,
+      "insee": "88304"
+    },
+    {
+      "nom": "Savigny",
+      "cp": "88130",
+      "vol": 19.6,
+      "kmAR": 51,
+      "minAR": 60,
+      "verifie": false,
+      "volEp": 26.1,
+      "insee": "88449"
+    },
+    {
+      "nom": "Charmes",
+      "cp": "88130",
+      "vol": 19.7,
+      "kmAR": 51,
+      "minAR": 60,
+      "verifie": false,
+      "volEp": 24.8,
+      "insee": "88090"
+    },
+    {
+      "nom": "Florémont",
+      "cp": "88130",
+      "vol": 19.7,
+      "kmAR": 51,
+      "minAR": 60,
+      "verifie": false,
+      "volEp": 25.5,
+      "insee": "88173"
+    },
+    {
+      "nom": "Cheniménil",
+      "cp": "88460",
+      "vol": 20.0,
+      "kmAR": 52,
+      "minAR": 65,
+      "verifie": false,
+      "volEp": 12.1,
+      "insee": "88101"
+    },
+    {
+      "nom": "Dommartin-lès-Vallois",
+      "cp": "88260",
+      "vol": 20.1,
+      "kmAR": 52,
+      "minAR": 65,
+      "verifie": false,
+      "volEp": 27.1,
+      "insee": "88149"
+    },
+    {
+      "nom": "Rehaincourt",
+      "cp": "88330",
+      "vol": 20.2,
+      "kmAR": 53,
+      "minAR": 65,
+      "verifie": false,
+      "volEp": 20.9,
+      "insee": "88379"
+    },
+    {
+      "nom": "Le Roulier",
+      "cp": "88460",
+      "vol": 20.3,
+      "kmAR": 53,
+      "minAR": 65,
+      "verifie": false,
+      "volEp": 12.5,
+      "insee": "88399"
+    },
+    {
+      "nom": "Mazirot",
+      "cp": "88500",
+      "vol": 20.3,
+      "kmAR": 53,
+      "minAR": 65,
+      "verifie": false,
+      "volEp": 27.8,
+      "insee": "88295"
+    },
+    {
+      "nom": "Raon-aux-Bois",
+      "cp": "88220",
+      "vol": 20.3,
+      "kmAR": 53,
+      "minAR": 65,
+      "verifie": false,
+      "volEp": 14.2,
+      "insee": "88371"
+    },
+    {
+      "nom": "Rozerotte",
+      "cp": "88500",
+      "vol": 20.4,
+      "kmAR": 53,
+      "minAR": 65,
+      "verifie": false,
+      "volEp": 28.3,
+      "insee": "88403"
+    },
+    {
+      "nom": "Docelles",
+      "cp": "88460",
+      "vol": 20.8,
+      "kmAR": 54,
+      "minAR": 65,
+      "verifie": false,
+      "volEp": 12.9,
+      "insee": "88135"
+    },
+    {
+      "nom": "Chauffecourt",
+      "cp": "88500",
+      "vol": 20.9,
+      "kmAR": 54,
+      "minAR": 65,
+      "verifie": false,
+      "volEp": 28.2,
+      "insee": "88097"
+    },
+    {
+      "nom": "Gugnécourt",
+      "cp": "88600",
+      "vol": 20.9,
+      "kmAR": 54,
+      "minAR": 65,
+      "verifie": false,
+      "volEp": 14.9,
+      "insee": "88222"
+    },
+    {
+      "nom": "Viménil",
+      "cp": "88600",
+      "vol": 21.2,
+      "kmAR": 55,
+      "minAR": 65,
+      "verifie": false,
+      "volEp": 14.6,
+      "insee": "88512"
+    },
+    {
+      "nom": "Poussay",
+      "cp": "88500",
+      "vol": 21.4,
+      "kmAR": 56,
+      "minAR": 65,
+      "verifie": false,
+      "volEp": 29.0,
+      "insee": "88357"
+    },
+    {
+      "nom": "Destord",
+      "cp": "88600",
+      "vol": 21.6,
+      "kmAR": 56,
+      "minAR": 65,
+      "verifie": false,
+      "volEp": 16.6,
+      "insee": "88130"
+    },
+    {
+      "nom": "Domèvre-sous-Montfort",
+      "cp": "88500",
+      "vol": 21.6,
+      "kmAR": 56,
+      "minAR": 65,
+      "verifie": false,
+      "volEp": 29.5,
+      "insee": "88144"
+    },
+    {
+      "nom": "Saint-Genest",
+      "cp": "88700",
+      "vol": 21.6,
+      "kmAR": 56,
+      "minAR": 65,
+      "verifie": false,
+      "volEp": 20.7,
+      "insee": "88416"
+    },
+    {
+      "nom": "Bettoncourt",
+      "cp": "88500",
+      "vol": 21.7,
+      "kmAR": 56,
+      "minAR": 65,
+      "verifie": false,
+      "volEp": 28.8,
+      "insee": "88056"
+    },
+    {
+      "nom": "Dombasle-devant-Darney",
+      "cp": "88260",
+      "vol": 21.7,
+      "kmAR": 56,
+      "minAR": 65,
+      "verifie": false,
+      "volEp": 28.2,
+      "insee": "88138"
+    },
+    {
+      "nom": "Gruey-lès-Surance",
+      "cp": "88240",
+      "vol": 21.7,
+      "kmAR": 56,
+      "minAR": 65,
+      "verifie": false,
+      "volEp": 24.9,
+      "insee": "88221"
+    },
+    {
+      "nom": "Bellefontaine",
+      "cp": "88370",
+      "vol": 21.8,
+      "kmAR": 57,
+      "minAR": 70,
+      "verifie": false,
+      "volEp": 18.0,
+      "insee": "88048"
+    },
+    {
+      "nom": "Bult",
+      "cp": "88700",
+      "vol": 21.8,
+      "kmAR": 57,
+      "minAR": 70,
+      "verifie": false,
+      "volEp": 17.6,
+      "insee": "88080"
+    },
+    {
+      "nom": "Esley",
+      "cp": "88260",
+      "vol": 21.8,
+      "kmAR": 57,
+      "minAR": 70,
+      "verifie": false,
+      "volEp": 29.0,
+      "insee": "88162"
+    },
+    {
+      "nom": "Avrainville",
+      "cp": "88130",
+      "vol": 22.0,
+      "kmAR": 57,
+      "minAR": 70,
+      "verifie": false,
+      "volEp": 28.3,
+      "insee": "88024"
+    },
+    {
+      "nom": "Moyemont",
+      "cp": "88700",
+      "vol": 22.0,
+      "kmAR": 57,
+      "minAR": 70,
+      "verifie": false,
+      "volEp": 20.6,
+      "insee": "88318"
+    },
+    {
+      "nom": "Senonges",
+      "cp": "88260",
+      "vol": 22.1,
+      "kmAR": 57,
+      "minAR": 70,
+      "verifie": false,
+      "volEp": 28.9,
+      "insee": "88452"
+    },
+    {
+      "nom": "Nonzeville",
+      "cp": "88600",
+      "vol": 22.2,
+      "kmAR": 58,
+      "minAR": 70,
+      "verifie": false,
+      "volEp": 16.8,
+      "insee": "88331"
+    },
+    {
+      "nom": "Ortoncourt",
+      "cp": "88700",
+      "vol": 22.3,
+      "kmAR": 58,
+      "minAR": 70,
+      "verifie": false,
+      "volEp": 21.9,
+      "insee": "88338"
+    },
+    {
+      "nom": "Ramecourt",
+      "cp": "88500",
+      "vol": 22.3,
+      "kmAR": 58,
+      "minAR": 70,
+      "verifie": false,
+      "volEp": 30.0,
+      "insee": "88368"
+    },
+    {
+      "nom": "Remoncourt",
+      "cp": "88800",
+      "vol": 22.4,
+      "kmAR": 58,
+      "minAR": 70,
+      "verifie": false,
+      "volEp": 30.2,
+      "insee": "88385"
+    },
+    {
+      "nom": "Ambacourt",
+      "cp": "88500",
+      "vol": 22.5,
+      "kmAR": 58,
+      "minAR": 70,
+      "verifie": false,
+      "volEp": 29.8,
+      "insee": "88006"
+    },
+    {
+      "nom": "Belrupt",
+      "cp": "88260",
+      "vol": 22.6,
+      "kmAR": 59,
+      "minAR": 70,
+      "verifie": false,
+      "volEp": 28.2,
+      "insee": "88052"
+    },
+    {
+      "nom": "Vomécourt-sur-Madon",
+      "cp": "88500",
+      "vol": 22.7,
+      "kmAR": 59,
+      "minAR": 70,
+      "verifie": false,
+      "volEp": 29.6,
+      "insee": "88522"
+    },
+    {
+      "nom": "Deycimont",
+      "cp": "88600",
+      "vol": 22.8,
+      "kmAR": 59,
+      "minAR": 70,
+      "verifie": false,
+      "volEp": 15.0,
+      "insee": "88131"
+    },
+    {
+      "nom": "Éloyes",
+      "cp": "88510",
+      "vol": 22.8,
+      "kmAR": 59,
+      "minAR": 70,
+      "verifie": false,
+      "volEp": 15.1,
+      "insee": "88158"
+    },
+    {
+      "nom": "La Vôge-les-Bains",
+      "cp": "88240",
+      "vol": 22.9,
+      "kmAR": 60,
+      "minAR": 70,
+      "verifie": false,
+      "volEp": 23.8,
+      "insee": "88029"
+    },
+    {
+      "nom": "Thiraucourt",
+      "cp": "88500",
+      "vol": 22.9,
+      "kmAR": 60,
+      "minAR": 70,
+      "verifie": false,
+      "volEp": 30.8,
+      "insee": "88469"
+    },
+    {
+      "nom": "Estrennes",
+      "cp": "88500",
+      "vol": 23.1,
+      "kmAR": 60,
+      "minAR": 70,
+      "verifie": false,
+      "volEp": 31.1,
+      "insee": "88164"
+    },
+    {
+      "nom": "Vomécourt",
+      "cp": "88700",
+      "vol": 23.1,
+      "kmAR": 60,
+      "minAR": 70,
+      "verifie": false,
+      "volEp": 19.2,
+      "insee": "88521"
+    },
+    {
+      "nom": "Xaronval",
+      "cp": "88130",
+      "vol": 23.1,
+      "kmAR": 60,
+      "minAR": 70,
+      "verifie": false,
+      "volEp": 29.7,
+      "insee": "88529"
+    },
+    {
+      "nom": "Domvallier",
+      "cp": "88500",
+      "vol": 23.2,
+      "kmAR": 60,
+      "minAR": 70,
+      "verifie": false,
+      "volEp": 31.0,
+      "insee": "88155"
+    },
+    {
+      "nom": "Socourt",
+      "cp": "88130",
+      "vol": 23.2,
+      "kmAR": 60,
+      "minAR": 70,
+      "verifie": false,
+      "volEp": 28.7,
+      "insee": "88458"
+    },
+    {
+      "nom": "Damas-aux-Bois",
+      "cp": "88330",
+      "vol": 23.3,
+      "kmAR": 61,
+      "minAR": 70,
+      "verifie": false,
+      "volEp": 24.7,
+      "insee": "88121"
+    },
+    {
+      "nom": "Pierrepont-sur-l'Arentèle",
+      "cp": "88600",
+      "vol": 23.3,
+      "kmAR": 61,
+      "minAR": 70,
+      "verifie": false,
+      "volEp": 17.7,
+      "insee": "88348"
+    },
+    {
+      "nom": "Hennezel",
+      "cp": "88260",
+      "vol": 23.4,
+      "kmAR": 61,
+      "minAR": 70,
+      "verifie": false,
+      "volEp": 28.0,
+      "insee": "88238"
+    },
+    {
+      "nom": "Hergugney",
+      "cp": "88130",
+      "vol": 23.6,
+      "kmAR": 61,
+      "minAR": 75,
+      "verifie": false,
+      "volEp": 29.9,
+      "insee": "88239"
+    },
+    {
+      "nom": "Remicourt",
+      "cp": "88500",
+      "vol": 23.6,
+      "kmAR": 61,
+      "minAR": 75,
+      "verifie": false,
+      "volEp": 31.5,
+      "insee": "88382"
+    },
+    {
+      "nom": "Haillainville",
+      "cp": "88330",
+      "vol": 23.7,
+      "kmAR": 62,
+      "minAR": 75,
+      "verifie": false,
+      "volEp": 24.4,
+      "insee": "88228"
+    },
+    {
+      "nom": "La Neuveville-devant-Lépanges",
+      "cp": "88600",
+      "vol": 23.7,
+      "kmAR": 62,
+      "minAR": 75,
+      "verifie": false,
+      "volEp": 15.9,
+      "insee": "88322"
+    },
+    {
+      "nom": "Xamontarupt",
+      "cp": "88460",
+      "vol": 23.7,
+      "kmAR": 62,
+      "minAR": 75,
+      "verifie": false,
+      "volEp": 15.7,
+      "insee": "88528"
+    },
+    {
+      "nom": "Chamagne",
+      "cp": "88130",
+      "vol": 23.8,
+      "kmAR": 62,
+      "minAR": 75,
+      "verifie": false,
+      "volEp": 28.8,
+      "insee": "88084"
+    },
+    {
+      "nom": "Lépanges-sur-Vologne",
+      "cp": "88600",
+      "vol": 23.8,
+      "kmAR": 62,
+      "minAR": 75,
+      "verifie": false,
+      "volEp": 16.2,
+      "insee": "88266"
+    },
+    {
+      "nom": "Pont-sur-Madon",
+      "cp": "88500",
+      "vol": 23.8,
+      "kmAR": 62,
+      "minAR": 75,
+      "verifie": false,
+      "volEp": 30.8,
+      "insee": "88354"
+    },
+    {
+      "nom": "Fauconcourt",
+      "cp": "88700",
+      "vol": 23.9,
+      "kmAR": 62,
+      "minAR": 75,
+      "verifie": false,
+      "volEp": 22.9,
+      "insee": "88168"
+    },
+    {
+      "nom": "Grandvillers",
+      "cp": "88600",
+      "vol": 24.0,
+      "kmAR": 62,
+      "minAR": 75,
+      "verifie": false,
+      "volEp": 17.6,
+      "insee": "88216"
+    },
+    {
+      "nom": "Puzieux",
+      "cp": "88500",
+      "vol": 24.0,
+      "kmAR": 62,
+      "minAR": 75,
+      "verifie": false,
+      "volEp": 31.6,
+      "insee": "88364"
+    },
+    {
+      "nom": "Saint-Nabord",
+      "cp": "88200",
+      "vol": 24.0,
+      "kmAR": 62,
+      "minAR": 75,
+      "verifie": false,
+      "volEp": 17.1,
+      "insee": "88429"
+    },
+    {
+      "nom": "Fays",
+      "cp": "88600",
+      "vol": 24.2,
+      "kmAR": 63,
+      "minAR": 75,
+      "verifie": false,
+      "volEp": 16.8,
+      "insee": "88169"
+    },
+    {
+      "nom": "Monthureux-le-Sec",
+      "cp": "88800",
+      "vol": 24.2,
+      "kmAR": 63,
+      "minAR": 75,
+      "verifie": false,
+      "volEp": 31.5,
+      "insee": "88309"
+    },
+    {
+      "nom": "Saint-Rémy-aux-Bois",
+      "cp": "54290",
+      "vol": 24.3,
+      "kmAR": 63,
+      "minAR": 75,
+      "verifie": false,
+      "volEp": 27.1,
+      "insee": "54487"
+    },
+    {
+      "nom": "Battexey",
+      "cp": "88130",
+      "vol": 24.5,
+      "kmAR": 64,
+      "minAR": 75,
+      "verifie": false,
+      "volEp": 31.0,
+      "insee": "88038"
+    },
+    {
+      "nom": "Bonvillet",
+      "cp": "88260",
+      "vol": 24.5,
+      "kmAR": 64,
+      "minAR": 75,
+      "verifie": false,
+      "volEp": 30.5,
+      "insee": "88065"
+    },
+    {
+      "nom": "La Neuveville-sous-Montfort",
+      "cp": "88800",
+      "vol": 24.6,
+      "kmAR": 64,
+      "minAR": 75,
+      "verifie": false,
+      "volEp": 32.4,
+      "insee": "88325"
+    },
+    {
+      "nom": "Offroicourt",
+      "cp": "88500",
+      "vol": 24.6,
+      "kmAR": 64,
+      "minAR": 75,
+      "verifie": false,
+      "volEp": 32.5,
+      "insee": "88335"
+    },
+    {
+      "nom": "Faucompierre",
+      "cp": "88460",
+      "vol": 24.8,
+      "kmAR": 64,
+      "minAR": 75,
+      "verifie": false,
+      "volEp": 16.9,
+      "insee": "88167"
+    },
+    {
+      "nom": "Romont",
+      "cp": "88700",
+      "vol": 24.8,
+      "kmAR": 64,
+      "minAR": 75,
+      "verifie": false,
+      "volEp": 22.6,
+      "insee": "88395"
+    },
+    {
+      "nom": "Sainte-Hélène",
+      "cp": "88700",
+      "vol": 24.8,
+      "kmAR": 64,
+      "minAR": 75,
+      "verifie": false,
+      "volEp": 19.9,
+      "insee": "88418"
+    }
   ]
- },
- "premierPassage": 50,
- "facteurs": {
-  "niveau": {
-   "1": 1,
-   "2": 1.2,
-   "3": 1.4,
-   "4": 1.6,
-   "5": 1.8
-  },
-  "acces": {
-   "plainpied": 1,
-   "ascenseur": 1.05,
-   "sansascenseur": 1.15,
-   "etages": 1.1
-  },
-  "encombrement": {
-   "faible": 0.9,
-   "normal": 1,
-   "charge": 1.15
-  },
-  "frequenceMenage": {
-   "0": 1,
-   "8.66": 0.9,
-   "4.33": 1,
-   "2.17": 1.1
-  },
-  "animaux": 1.15,
-  "fumeur": 1.15,
-  "travaux": 1.6
- },
- "prestations": {
-  "menage": {
-   "nom": "Ménage à domicile",
-   "communes": {
-    "lib": "Toutes les pièces et circulations",
-    "parM2": true,
-    "taches": [
-     {
-      "id": "c_poussiere",
-      "lib": "Dépoussiérage des surfaces et meubles accessibles et dégagés",
-      "min": 0.3
-     },
-     {
-      "id": "c_traces",
-      "lib": "Nettoyage léger des traces sur les interrupteurs et poignées accessibles, lorsque le support le permet",
-      "min": 0.05
-     },
-     {
-      "id": "c_aspi",
-      "lib": "Aspiration des sols accessibles et des tapis compatibles",
-      "min": 0.3
-     },
-     {
-      "id": "c_lavage",
-      "lib": "Lavage des sols durs compatibles avec un nettoyage humide",
-      "min": 0.3
-     },
-     {
-      "id": "c_poubelles",
-      "lib": "Vidage des petites poubelles, lorsque les sacs de remplacement sont prévus",
-      "min": 0.05
-     }
-    ]
-   },
-   "pieces": [
-    {
-     "id": "sejour",
-     "lib": "Salon et séjour",
-     "taches": [
-      {
-       "id": "s_meubles",
-       "lib": "Dépoussiérage des meubles, tables, étagères et surfaces accessibles",
-       "min": 0,
-       "commun": true
-      },
-      {
-       "id": "s_sols",
-       "lib": "Aspiration et lavage des sols et tapis compatibles",
-       "min": 0,
-       "commun": true
-      }
-     ]
-    },
-    {
-     "id": "chambre",
-     "lib": "Chambre",
-     "taches": [
-      {
-       "id": "ch_surfaces",
-       "lib": "Dépoussiérage des surfaces accessibles de la chambre",
-       "min": 12
-      },
-      {
-       "id": "ch_sols",
-       "lib": "Aspiration et lavage des sols compatibles",
-       "min": 0,
-       "commun": true
-      }
-     ],
-     "note": "Le déplacement ou le rangement des effets personnels n'est pas compris."
-    },
-    {
-     "id": "bureau",
-     "lib": "Bureau",
-     "taches": [
-      {
-       "id": "bu_surfaces",
-       "lib": "Dépoussiérage des surfaces accessibles",
-       "min": 8
-      },
-      {
-       "id": "bu_degagees",
-       "lib": "Nettoyage des surfaces dégagées",
-       "min": 4
-      },
-      {
-       "id": "bu_sols",
-       "lib": "Aspiration et lavage des sols selon leur nature",
-       "min": 0,
-       "commun": true
-      }
-     ],
-     "note": "Dossiers, papiers, documents, équipements informatiques et appareils ne sont ni déplacés ni débranchés."
-    },
-    {
-     "id": "cuisine",
-     "lib": "Cuisine",
-     "taches": [
-      {
-       "id": "cu_plans",
-       "lib": "Nettoyage des plans de travail dégagés",
-       "min": 7
-      },
-      {
-       "id": "cu_evier",
-       "lib": "Nettoyage de l'évier et de la robinetterie",
-       "min": 5
-      },
-      {
-       "id": "cu_table",
-       "lib": "Nettoyage de la table et des surfaces accessibles",
-       "min": 4
-      },
-      {
-       "id": "cu_facades",
-       "lib": "Nettoyage extérieur des façades de meubles et des appareils accessibles",
-       "min": 8
-      },
-      {
-       "id": "cu_plaque",
-       "lib": "Nettoyage de la plaque de cuisson, lorsqu'elle est froide",
-       "min": 6
-      },
-      {
-       "id": "cu_sol",
-       "lib": "Aspiration et lavage du sol",
-       "min": 0,
-       "commun": true
-      }
-     ],
-     "note": "L'intérieur du réfrigérateur, du four et des placards n'est pas compris par défaut."
-    },
-    {
-     "id": "sdb",
-     "lib": "Salle de bains",
-     "taches": [
-      {
-       "id": "sb_lavabo",
-       "lib": "Nettoyage du lavabo et de la robinetterie",
-       "min": 6
-      },
-      {
-       "id": "sb_douche",
-       "lib": "Nettoyage de la douche ou de la baignoire",
-       "min": 12
-      },
-      {
-       "id": "sb_miroirs",
-       "lib": "Nettoyage des miroirs et surfaces accessibles",
-       "min": 5
-      },
-      {
-       "id": "sb_calcaire",
-       "lib": "Retrait des traces légères de savon et de calcaire, en entretien courant",
-       "min": 7
-      },
-      {
-       "id": "sb_sol",
-       "lib": "Aspiration et lavage du sol",
-       "min": 0,
-       "commun": true
-      }
-     ],
-     "note": "Le détartrage intensif, le traitement des moisissures et la remise en état ne sont pas compris."
-    },
-    {
-     "id": "wc",
-     "lib": "WC",
-     "verrou": true,
-     "taches": [
-      {
-       "id": "wc_cuvette",
-       "lib": "Nettoyage de la cuvette, intérieur et extérieur",
-       "min": 5
-      },
-      {
-       "id": "wc_abattant",
-       "lib": "Nettoyage de l'abattant et des surfaces de contact",
-       "min": 2
-      },
-      {
-       "id": "wc_reservoir",
-       "lib": "Nettoyage extérieur du réservoir et des surfaces accessibles",
-       "min": 2
-      },
-      {
-       "id": "wc_lavemains",
-       "lib": "Nettoyage du lave-mains, lorsqu'il existe",
-       "min": 1
-      },
-      {
-       "id": "wc_sol",
-       "lib": "Aspiration et lavage du sol",
-       "min": 0,
-       "commun": true
-      }
-     ],
-     "note": "L'entretien courant des WC est toujours compris lorsque la pièce est retenue."
-    },
-    {
-     "id": "entree",
-     "lib": "Entrée",
-     "taches": [
-      {
-       "id": "en_meubles",
-       "lib": "Dépoussiérage des meubles et surfaces accessibles",
-       "min": 0,
-       "commun": true
-      },
-      {
-       "id": "en_sols",
-       "lib": "Aspiration et lavage du sol selon sa nature",
-       "min": 0,
-       "commun": true
-      }
-     ]
-    },
-    {
-     "id": "couloir",
-     "lib": "Couloir",
-     "taches": [
-      {
-       "id": "co_surfaces",
-       "lib": "Dépoussiérage des surfaces accessibles",
-       "min": 0,
-       "commun": true
-      },
-      {
-       "id": "co_sols",
-       "lib": "Aspiration et lavage du sol selon sa nature",
-       "min": 0,
-       "commun": true
-      }
-     ]
-    }
-   ],
-   "options": [
-    {
-     "id": "opt_lit",
-     "lib": "Réfection simple du lit",
-     "desc": "Lorsque le linge est déjà en place, par chambre.",
-     "min": 5,
-     "parPiece": "chambre",
-     "actif": true
-    },
-    {
-     "id": "opt_frigo",
-     "lib": "Intérieur du réfrigérateur",
-     "desc": "Réfrigérateur vidé au préalable par vos soins.",
-     "min": 20,
-     "actif": true
-    },
-    {
-     "id": "opt_four",
-     "lib": "Intérieur du four",
-     "desc": "Four froid, nettoyage de l'enceinte et de la vitre.",
-     "min": 30,
-     "actif": true
-    },
-    {
-     "id": "opt_placards",
-     "lib": "Intérieur des placards de cuisine",
-     "desc": "Placards vidés au préalable.",
-     "min": 20,
-     "actif": true
-    },
-    {
-     "id": "opt_fenetres",
-     "lib": "Faces vitrées des fenêtres",
-     "desc": "Comptez chaque face à laver : une fenêtre à deux battants lavée à l'intérieur et à l'extérieur compte 4 faces.",
-     "min": 4,
-     "quantite": true,
-     "actif": true
-    },
-    {
-     "id": "opt_baies_p",
-     "lib": "Petites baies (1 vantail)",
-     "desc": "",
-     "min": 6,
-     "quantite": true,
-     "actif": true
-    },
-    {
-     "id": "opt_baies",
-     "lib": "Baies standard (2 vantaux)",
-     "desc": "",
-     "min": 8,
-     "quantite": true,
-     "actif": true
-    },
-    {
-     "id": "opt_baies_g",
-     "lib": "Grandes baies (3 vantaux et +)",
-     "desc": "",
-     "min": 12,
-     "quantite": true,
-     "actif": true
-    },
-    {
-     "id": "opt_veranda",
-     "lib": "Véranda",
-     "desc": "Surface au sol, en m².",
-     "min": 12,
-     "quantite": true,
-     "surface": true,
-     "actif": true
-    }
-   ],
-   "exclusions": [
-    "Lavage des vitres, fenêtres, baies vitrées, encadrements, rails et volets, sauf option choisie",
-    "Surfaces en hauteur nécessitant un équipement spécifique",
-    "Intérieur du four, du réfrigérateur et des placards, sauf option choisie",
-    "Vaisselle, lessive, repassage et changement complet du linge de lit",
-    "Déplacement de meubles lourds",
-    "Rangement important ou désencombrement",
-    "Détachage spécialisé des textiles",
-    "Désinfection approfondie",
-    "Détartrage intensif, traitement des moisissures ou remise en état",
-    "Ménage après travaux ou fin de chantier",
-    "Grand nettoyage, qui relève d'une prestation dédiée",
-    "Surfaces encombrées ou non accessibles"
-   ],
-   "creditImpot": true
-  },
-  "grand": {
-   "nom": "Grand nettoyage",
-   "communes": {
-    "lib": "Les détails qui font la différence",
-    "parM2": true,
-    "taches": [
-     {
-      "id": "g_sols",
-      "lib": "Sols aspirés puis lavés, y compris sous les éléments déplaçables",
-      "min": 0.6
-     },
-     {
-      "id": "g_plinthes",
-      "lib": "Plinthes, portes, chambranles et poignées",
-      "min": 0.3
-     },
-     {
-      "id": "g_inter",
-      "lib": "Interrupteurs et prises",
-      "min": 0.1
-     },
-     {
-      "id": "g_radiateurs",
-      "lib": "Radiateurs, dessus et interstices",
-      "min": 0.2
-     },
-     {
-      "id": "g_escaliers",
-      "lib": "Escaliers, rampes, paliers",
-      "min": 0.1
-     },
-     {
-      "id": "g_adhesifs",
-      "lib": "Traces de scotch, d'adhésif et marques de meubles",
-      "min": 0.1
-     },
-     {
-      "id": "g_toiles",
-      "lib": "Toiles d'araignée, angles de plafond, luminaires accessibles",
-      "min": 0.2
-     }
-    ]
-   },
-   "pieces": [
-    {
-     "id": "sejour",
-     "lib": "Pièces de vie",
-     "taches": [
-      {
-       "id": "gs_sols",
-       "lib": "Sols, plinthes et détails",
-       "min": 0,
-       "commun": true
-      }
-     ]
-    },
-    {
-     "id": "chambre",
-     "lib": "Chambre",
-     "taches": [
-      {
-       "id": "gc_placards",
-       "lib": "Placards et penderies nettoyés à l'intérieur",
-       "min": 12
-      },
-      {
-       "id": "gc_volets",
-       "lib": "Volets roulants et appuis de fenêtre",
-       "min": 8
-      }
-     ]
-    },
-    {
-     "id": "bureau",
-     "lib": "Bureau",
-     "taches": [
-      {
-       "id": "gb_placards",
-       "lib": "Placards et rangements nettoyés à l'intérieur",
-       "min": 12
-      },
-      {
-       "id": "gb_volets",
-       "lib": "Volets roulants et appuis de fenêtre",
-       "min": 8
-      }
-     ],
-     "note": "Dossiers, documents et équipements ne sont ni déplacés ni débranchés."
-    },
-    {
-     "id": "cuisine",
-     "lib": "Cuisine",
-     "taches": [
-      {
-       "id": "gk_four",
-       "lib": "Four, grilles et vitre intérieure, hotte et filtres",
-       "min": 15
-      },
-      {
-       "id": "gk_plaques",
-       "lib": "Plaques de cuisson, crédence, plan de travail",
-       "min": 8
-      },
-      {
-       "id": "gk_frigo",
-       "lib": "Réfrigérateur et congélateur vidés, dégivrés et désinfectés",
-       "min": 10
-      },
-      {
-       "id": "gk_placards",
-       "lib": "Intérieur et extérieur des placards, tiroirs, poignées",
-       "min": 12
-      },
-      {
-       "id": "gk_evier",
-       "lib": "Évier, robinetterie, calcaire, siphon visible",
-       "min": 5
-      }
-     ]
-    },
-    {
-     "id": "sdb",
-     "lib": "Salle de bains",
-     "taches": [
-      {
-       "id": "gd_detartrage",
-       "lib": "Détartrage de la douche, de la baignoire et des robinetteries",
-       "min": 18
-      },
-      {
-       "id": "gd_joints",
-       "lib": "Joints, parois, miroirs, faïence",
-       "min": 19
-      },
-      {
-       "id": "gd_meubles",
-       "lib": "Meubles vasques, intérieur des rangements",
-       "min": 10
-      },
-      {
-       "id": "gd_ventil",
-       "lib": "Grilles de ventilation dépoussiérées",
-       "min": 3
-      }
-     ]
-    },
-    {
-     "id": "wc",
-     "lib": "WC",
-     "verrou": true,
-     "taches": [
-      {
-       "id": "gw_complet",
-       "lib": "Cuvette, abattant, réservoir, sol et arrière des WC",
-       "min": 18
-      }
-     ]
-    }
-   ],
-   "elements": [
-    {
-     "id": "fenetres",
-     "lib": "Fenêtres : vitres intérieures, rebords et rails",
-     "aide": "Nombre de fenêtres.",
-     "min": 6,
-     "quantite": true
-    },
-    {
-     "id": "baies",
-     "lib": "Baies vitrées : vitres intérieures, rebords et rails",
-     "aide": "Nombre de baies.",
-     "min": 12,
-     "quantite": true
-    },
-    {
-     "id": "veranda",
-     "lib": "Véranda",
-     "aide": "Surface au sol, en m².",
-     "min": 15,
-     "quantite": true,
-     "surface": true
-    }
-   ],
-   "options": [],
-   "exclusions": [
-    "Faces extérieures des vitres : prestation Vitres, chiffrée à part",
-    "Vaisselle, lessive et repassage",
-    "Déplacement de meubles lourds",
-    "Rangement important ou désencombrement",
-    "Détachage spécialisé des textiles : prestation Textiles, chiffrée à part",
-    "Surfaces en hauteur nécessitant un équipement spécifique",
-    "Ménage après travaux ou fin de chantier"
-   ],
-   "creditImpot": true
-  },
-  "vitres": {
-   "nom": "Vitres et véranda",
-   "inclus": [
-    "Vitrages, encadrements et appuis, à l'intérieur comme à l'extérieur",
-    "Baies vitrées et portes-fenêtres",
-    "Véranda : parois vitrées, à l'intérieur et à l'extérieur (la toiture n'est pas prise en charge)"
-   ],
-   "elements": [
-    {
-     "id": "faces",
-     "lib": "Faces vitrées des fenêtres",
-     "aide": "Comptez chaque face à laver : une fenêtre à deux battants lavée à l'intérieur et à l'extérieur compte 4 faces.",
-     "min": 4,
-     "quantite": true
-    },
-    {
-     "id": "baiesP",
-     "lib": "Petites baies (1 vantail)",
-     "min": 6,
-     "quantite": true
-    },
-    {
-     "id": "baies",
-     "lib": "Baies standard ou vitrines (2 vantaux)",
-     "min": 8,
-     "quantite": true
-    },
-    {
-     "id": "baiesG",
-     "lib": "Grandes baies (3 vantaux et +)",
-     "min": 12,
-     "quantite": true
-    },
-    {
-     "id": "verandaM2",
-     "lib": "Véranda",
-     "aide": "Surface au sol, en m².",
-     "min": 12,
-     "quantite": true,
-     "surface": true
-    },
-    {
-     "id": "glissieres",
-     "lib": "Glissières et rails",
-     "aide": "Nombre de fenêtres.",
-     "min": 5,
-     "quantite": true
-    },
-    {
-     "id": "volets",
-     "lib": "Volets",
-     "min": 10,
-     "quantite": true
-    }
-   ],
-   "facteurs": {
-    "hauteur": 1.4,
-    "travaux": 1.5
-   },
-   "options": [],
-   "exclusions": [
-    "Vitrages qui ne peuvent pas être lavés en sécurité : étudiés au cas par cas, et refusés si besoin",
-    "Surfaces en hauteur nécessitant un équipement spécifique"
-   ],
-   "creditImpot": true
-  },
-  "textile": {
-   "nom": "Canapés, tapis et textiles",
-   "inclus": [
-    "Détachage ciblé",
-    "Injection-extraction en profondeur",
-    "Désodorisation"
-   ],
-   "info": "Textile utilisable après quelques heures de séchage, selon la matière et l'aération de la pièce.",
-   "elements": [
-    {
-     "id": "places",
-     "lib": "Places de canapé (assises, méridienne ou angle compris)",
-     "min": 20,
-     "quantite": true
-    },
-    {
-     "id": "fauteuil",
-     "lib": "Fauteuils",
-     "min": 20,
-     "quantite": true
-    },
-    {
-     "id": "chaise",
-     "lib": "Chaises et sièges tissu",
-     "min": 10,
-     "quantite": true
-    },
-    {
-     "id": "coussin",
-     "lib": "Coussins, à l'unité",
-     "min": 0,
-     "quantite": true
-    },
-    {
-     "id": "matelas1",
-     "lib": "Matelas 1 place",
-     "min": 20,
-     "quantite": true
-    },
-    {
-     "id": "matelas2",
-     "lib": "Matelas 2 places",
-     "min": 20,
-     "quantite": true
-    },
-    {
-     "id": "moquette",
-     "lib": "Tapis ou moquette, en m²",
-     "min": 6,
-     "quantite": true,
-     "surface": true
-    }
-   ],
-   "options": [],
-   "exclusions": [],
-   "creditImpot": true
-  },
-  "bureaux": {
-   "nom": "Entretien de bureaux",
-   "inclus": [
-    "Sols aspirés et lavés",
-    "Sanitaires désinfectés",
-    "Surfaces dépoussiérées",
-    "Corbeilles vidées",
-    "Points de contact traités"
-   ],
-   "elements": [
-    {
-     "id": "surface",
-     "lib": "Surface des locaux, en m²",
-     "min": 0.8,
-     "quantite": true,
-     "surface": true
-    },
-    {
-     "id": "postes",
-     "lib": "Postes de travail",
-     "min": 5,
-     "quantite": true
-    },
-    {
-     "id": "sanit",
-     "lib": "Sanitaires",
-     "min": 15,
-     "quantite": true
-    },
-    {
-     "id": "reunion",
-     "lib": "Salles de réunion",
-     "min": 10,
-     "quantite": true
-    },
-    {
-     "id": "cuisine",
-     "lib": "Coins cuisine",
-     "min": 15,
-     "quantite": true
-    },
-    {
-     "id": "vitres",
-     "lib": "Vitres intérieures",
-     "min": 20
-    }
-   ],
-   "frequence": {
-    "ponctuel": 1.15,
-    "frequent": 0.9,
-    "espace": 1.15
-   },
-   "options": [],
-   "exclusions": [
-    "Déplacement des dossiers, papiers, documents, équipements informatiques ou appareils, et débranchement des équipements",
-    "Faces extérieures des vitres, sauf demande chiffrée à part"
-   ],
-   "creditImpot": false
-  }
- },
- "textes": {
-  "intro": "Décrivez votre besoin en quelques étapes. Limpid vous envoie ensuite votre devis par e-mail, sous 48 h.",
-  "estimation": "Durée indicative, à confirmer par Limpid. Elle ne constitue pas un engagement de durée.",
-  "prixParEmail": "Le prix vous est communiqué avec votre devis, par e-mail : il tient compte de votre logement, de la fréquence et du déplacement, sans frais cachés.",
-  "creditImpot": "Les prestations à domicile des particuliers peuvent ouvrir droit à un crédit d'impôt de 50 %, sous réserve des conditions légales. Avec l'avance immédiate, lorsqu'elle est activée et applicable, vous ne réglez que le reste à charge au moment du paiement, au lieu d'avancer la totalité. Votre devis précisera le reste à charge estimé.",
-  "dureeInsuffisante": "La durée choisie semble courte pour tout le périmètre demandé. Indiquez vos priorités : Limpid confirmera avec vous ce qui peut être fait dans ce temps.",
-  "validationManuelle": "Cette demande nécessite un échange avec Limpid avant chiffrage : nous vous rappelons pour la préciser.",
-  "confirmation": "Votre demande est bien arrivée. Limpid vous envoie votre devis par e-mail sous 48 h, et vous appelle si un point reste à préciser.",
-  "erreurEnvoi": "L'envoi n'a pas abouti. Votre configuration est conservée : réessayez, ou appelez-nous au 06 26 55 65 69."
- },
- "communes": [
-  {
-   "nom": "Darnieulles",
-   "cp": "88390",
-   "vol": 0.0,
-   "kmAR": 4,
-   "minAR": 10,
-   "verifie": false,
-   "volEp": 7.9,
-   "insee": "88126"
-  },
-  {
-   "nom": "Uxegney",
-   "cp": "88390",
-   "vol": 1.7,
-   "kmAR": 4,
-   "minAR": 10,
-   "verifie": false,
-   "volEp": 6.3,
-   "insee": "88483"
-  },
-  {
-   "nom": "Fomerey",
-   "cp": "88390",
-   "vol": 2.5,
-   "kmAR": 6,
-   "minAR": 15,
-   "verifie": false,
-   "volEp": 9.6,
-   "insee": "88174"
-  },
-  {
-   "nom": "Domèvre-sur-Avière",
-   "cp": "88390",
-   "vol": 2.9,
-   "kmAR": 8,
-   "minAR": 15,
-   "verifie": false,
-   "volEp": 6.6,
-   "insee": "88142"
-  },
-  {
-   "nom": "Sanchey",
-   "cp": "88390",
-   "vol": 2.9,
-   "kmAR": 8,
-   "minAR": 15,
-   "verifie": false,
-   "volEp": 6.6,
-   "insee": "88439"
-  },
-  {
-   "nom": "Chaumousey",
-   "cp": "88390",
-   "vol": 3.0,
-   "kmAR": 8,
-   "minAR": 15,
-   "verifie": false,
-   "volEp": 8.6,
-   "insee": "88098"
-  },
-  {
-   "nom": "Gigney",
-   "cp": "88390",
-   "vol": 3.6,
-   "kmAR": 9,
-   "minAR": 15,
-   "verifie": false,
-   "volEp": 10.3,
-   "insee": "88200"
-  },
-  {
-   "nom": "Les Forges",
-   "cp": "88390",
-   "vol": 3.7,
-   "kmAR": 10,
-   "minAR": 15,
-   "verifie": false,
-   "volEp": 4.6,
-   "insee": "88178"
-  },
-  {
-   "nom": "Bocquegney",
-   "cp": "88270",
-   "vol": 3.8,
-   "kmAR": 10,
-   "minAR": 15,
-   "verifie": false,
-   "volEp": 11.7,
-   "insee": "88063"
-  },
-  {
-   "nom": "Hennecourt",
-   "cp": "88270",
-   "vol": 4.8,
-   "kmAR": 12,
-   "minAR": 20,
-   "verifie": false,
-   "volEp": 12.7,
-   "insee": "88237"
-  },
-  {
-   "nom": "Gorhey",
-   "cp": "88270",
-   "vol": 4.9,
-   "kmAR": 13,
-   "minAR": 20,
-   "verifie": false,
-   "volEp": 12.5,
-   "insee": "88210"
-  },
-  {
-   "nom": "Mazeley",
-   "cp": "88150",
-   "vol": 4.9,
-   "kmAR": 13,
-   "minAR": 20,
-   "verifie": false,
-   "volEp": 11.1,
-   "insee": "88294"
-  },
-  {
-   "nom": "Girancourt",
-   "cp": "88390",
-   "vol": 5.0,
-   "kmAR": 13,
-   "minAR": 20,
-   "verifie": false,
-   "volEp": 10.4,
-   "insee": "88201"
-  },
-  {
-   "nom": "Damas-et-Bettegney",
-   "cp": "88270",
-   "vol": 6.6,
-   "kmAR": 17,
-   "minAR": 25,
-   "verifie": false,
-   "volEp": 14.5,
-   "insee": "88122"
-  },
-  {
-   "nom": "Renauvoid",
-   "cp": "88390",
-   "vol": 6.7,
-   "kmAR": 17,
-   "minAR": 25,
-   "verifie": false,
-   "volEp": 6.1,
-   "insee": "88388"
-  },
-  {
-   "nom": "Golbey",
-   "cp": "88190",
-   "vol": 6.8,
-   "kmAR": 18,
-   "minAR": 25,
-   "verifie": false,
-   "volEp": 2.5,
-   "insee": "88209"
-  },
-  {
-   "nom": "Dommartin-aux-Bois",
-   "cp": "88390",
-   "vol": 7.0,
-   "kmAR": 18,
-   "minAR": 25,
-   "verifie": false,
-   "volEp": 13.1,
-   "insee": "88147"
-  },
-  {
-   "nom": "Bouxières-aux-Bois",
-   "cp": "88270",
-   "vol": 7.6,
-   "kmAR": 20,
-   "minAR": 30,
-   "verifie": false,
-   "volEp": 14.0,
-   "insee": "88069"
-  },
-  {
-   "nom": "Chantraine",
-   "cp": "88000",
-   "vol": 7.6,
-   "kmAR": 20,
-   "minAR": 30,
-   "verifie": false,
-   "volEp": 0.9,
-   "insee": "88087"
-  },
-  {
-   "nom": "Chavelot",
-   "cp": "88150",
-   "vol": 7.7,
-   "kmAR": 20,
-   "minAR": 30,
-   "verifie": false,
-   "volEp": 6.6,
-   "insee": "88099"
-  },
-  {
-   "nom": "Circourt",
-   "cp": "88270",
-   "vol": 7.7,
-   "kmAR": 20,
-   "minAR": 30,
-   "verifie": false,
-   "volEp": 15.0,
-   "insee": "88103"
-  },
-  {
-   "nom": "Thaon-les-Vosges",
-   "cp": "88150",
-   "vol": 7.7,
-   "kmAR": 20,
-   "minAR": 30,
-   "verifie": false,
-   "volEp": 8.7,
-   "insee": "88465"
-  },
-  {
-   "nom": "Épinal",
-   "cp": "88000",
-   "vol": 7.9,
-   "kmAR": 21,
-   "minAR": 30,
-   "verifie": false,
-   "volEp": 0.0,
-   "insee": "88160"
-  },
-  {
-   "nom": "Dogneville",
-   "cp": "88000",
-   "vol": 8.6,
-   "kmAR": 22,
-   "minAR": 30,
-   "verifie": false,
-   "volEp": 5.4,
-   "insee": "88136"
-  },
-  {
-   "nom": "Madonne-et-Lamerey",
-   "cp": "88270",
-   "vol": 8.9,
-   "kmAR": 23,
-   "minAR": 30,
-   "verifie": false,
-   "volEp": 16.9,
-   "insee": "88281"
-  },
-  {
-   "nom": "Igney",
-   "cp": "88150",
-   "vol": 9.0,
-   "kmAR": 23,
-   "minAR": 30,
-   "verifie": false,
-   "volEp": 11.6,
-   "insee": "88247"
-  },
-  {
-   "nom": "Harol",
-   "cp": "88270",
-   "vol": 9.1,
-   "kmAR": 24,
-   "minAR": 30,
-   "verifie": false,
-   "volEp": 15.2,
-   "insee": "88233"
-  },
-  {
-   "nom": "Saint-Vallier",
-   "cp": "88270",
-   "vol": 9.3,
-   "kmAR": 24,
-   "minAR": 30,
-   "verifie": false,
-   "volEp": 15.3,
-   "insee": "88437"
-  },
-  {
-   "nom": "Dompaire",
-   "cp": "88270",
-   "vol": 9.4,
-   "kmAR": 24,
-   "minAR": 35,
-   "verifie": false,
-   "volEp": 17.4,
-   "insee": "88151"
-  },
-  {
-   "nom": "Frizon",
-   "cp": "88440",
-   "vol": 9.6,
-   "kmAR": 25,
-   "minAR": 35,
-   "verifie": false,
-   "volEp": 13.8,
-   "insee": "88190"
-  },
-  {
-   "nom": "Derbamont",
-   "cp": "88270",
-   "vol": 9.7,
-   "kmAR": 25,
-   "minAR": 35,
-   "verifie": false,
-   "volEp": 17.0,
-   "insee": "88129"
-  },
-  {
-   "nom": "Bouzemont",
-   "cp": "88270",
-   "vol": 10.0,
-   "kmAR": 26,
-   "minAR": 35,
-   "verifie": false,
-   "volEp": 17.8,
-   "insee": "88071"
-  },
-  {
-   "nom": "Jeuxey",
-   "cp": "88000",
-   "vol": 10.3,
-   "kmAR": 27,
-   "minAR": 35,
-   "verifie": false,
-   "volEp": 4.0,
-   "insee": "88253"
-  },
-  {
-   "nom": "Ville-sur-Illon",
-   "cp": "88270",
-   "vol": 10.6,
-   "kmAR": 28,
-   "minAR": 35,
-   "verifie": false,
-   "volEp": 17.8,
-   "insee": "88508"
-  },
-  {
-   "nom": "Regney",
-   "cp": "88450",
-   "vol": 10.7,
-   "kmAR": 28,
-   "minAR": 35,
-   "verifie": false,
-   "volEp": 16.7,
-   "insee": "88378"
-  },
-  {
-   "nom": "Madegney",
-   "cp": "88450",
-   "vol": 11.0,
-   "kmAR": 29,
-   "minAR": 35,
-   "verifie": false,
-   "volEp": 17.4,
-   "insee": "88280"
-  },
-  {
-   "nom": "Vaxoncourt",
-   "cp": "88330",
-   "vol": 11.3,
-   "kmAR": 29,
-   "minAR": 40,
-   "verifie": false,
-   "volEp": 13.3,
-   "insee": "88497"
-  },
-  {
-   "nom": "Dinozé",
-   "cp": "88000",
-   "vol": 11.5,
-   "kmAR": 30,
-   "minAR": 40,
-   "verifie": false,
-   "volEp": 4.3,
-   "insee": "88134"
-  },
-  {
-   "nom": "Uriménil",
-   "cp": "88220",
-   "vol": 11.5,
-   "kmAR": 30,
-   "minAR": 40,
-   "verifie": false,
-   "volEp": 9.0,
-   "insee": "88481"
-  },
-  {
-   "nom": "Bettegney-Saint-Brice",
-   "cp": "88450",
-   "vol": 11.6,
-   "kmAR": 30,
-   "minAR": 40,
-   "verifie": false,
-   "volEp": 17.4,
-   "insee": "88055"
-  },
-  {
-   "nom": "Bazegney",
-   "cp": "88270",
-   "vol": 11.7,
-   "kmAR": 30,
-   "minAR": 40,
-   "verifie": false,
-   "volEp": 19.4,
-   "insee": "88041"
-  },
-  {
-   "nom": "Les Ableuvenettes",
-   "cp": "88270",
-   "vol": 12.1,
-   "kmAR": 31,
-   "minAR": 40,
-   "verifie": false,
-   "volEp": 19.6,
-   "insee": "88001"
-  },
-  {
-   "nom": "Charmois-l'Orgueilleux",
-   "cp": "88270",
-   "vol": 12.2,
-   "kmAR": 32,
-   "minAR": 40,
-   "verifie": false,
-   "volEp": 15.5,
-   "insee": "88092"
-  },
-  {
-   "nom": "Nomexy",
-   "cp": "88440",
-   "vol": 12.2,
-   "kmAR": 32,
-   "minAR": 40,
-   "verifie": false,
-   "volEp": 15.5,
-   "insee": "88327"
-  },
-  {
-   "nom": "Vaubexy",
-   "cp": "88500",
-   "vol": 12.2,
-   "kmAR": 32,
-   "minAR": 40,
-   "verifie": false,
-   "volEp": 19.6,
-   "insee": "88494"
-  },
-  {
-   "nom": "Deyvillers",
-   "cp": "88000",
-   "vol": 12.3,
-   "kmAR": 32,
-   "minAR": 40,
-   "verifie": false,
-   "volEp": 5.5,
-   "insee": "88132"
-  },
-  {
-   "nom": "Dounoux",
-   "cp": "88220",
-   "vol": 12.4,
-   "kmAR": 32,
-   "minAR": 40,
-   "verifie": false,
-   "volEp": 7.6,
-   "insee": "88157"
-  },
-  {
-   "nom": "Longchamp",
-   "cp": "88000",
-   "vol": 12.5,
-   "kmAR": 32,
-   "minAR": 40,
-   "verifie": false,
-   "volEp": 7.2,
-   "insee": "88273"
-  },
-  {
-   "nom": "Uzemain",
-   "cp": "88220",
-   "vol": 12.5,
-   "kmAR": 32,
-   "minAR": 40,
-   "verifie": false,
-   "volEp": 12.4,
-   "insee": "88484"
-  },
-  {
-   "nom": "Pallegney",
-   "cp": "88330",
-   "vol": 12.6,
-   "kmAR": 33,
-   "minAR": 40,
-   "verifie": false,
-   "volEp": 13.1,
-   "insee": "88342"
-  },
-  {
-   "nom": "Dignonville",
-   "cp": "88000",
-   "vol": 12.7,
-   "kmAR": 33,
-   "minAR": 40,
-   "verifie": false,
-   "volEp": 8.7,
-   "insee": "88133"
-  },
-  {
-   "nom": "Bayecourt",
-   "cp": "88150",
-   "vol": 12.9,
-   "kmAR": 34,
-   "minAR": 45,
-   "verifie": false,
-   "volEp": 10.6,
-   "insee": "88040"
-  },
-  {
-   "nom": "Châtel-sur-Moselle",
-   "cp": "88330",
-   "vol": 13.0,
-   "kmAR": 34,
-   "minAR": 45,
-   "verifie": false,
-   "volEp": 15.8,
-   "insee": "88094"
-  },
-  {
-   "nom": "Domèvre-sur-Durbion",
-   "cp": "88330",
-   "vol": 13.0,
-   "kmAR": 34,
-   "minAR": 45,
-   "verifie": false,
-   "volEp": 12.1,
-   "insee": "88143"
-  },
-  {
-   "nom": "Gugney-aux-Aulx",
-   "cp": "88450",
-   "vol": 13.1,
-   "kmAR": 34,
-   "minAR": 45,
-   "verifie": false,
-   "volEp": 19.6,
-   "insee": "88223"
-  },
-  {
-   "nom": "Pierrefitte",
-   "cp": "88270",
-   "vol": 13.3,
-   "kmAR": 35,
-   "minAR": 45,
-   "verifie": false,
-   "volEp": 20.3,
-   "insee": "88347"
-  },
-  {
-   "nom": "Racécourt",
-   "cp": "88270",
-   "vol": 13.3,
-   "kmAR": 35,
-   "minAR": 45,
-   "verifie": false,
-   "volEp": 21.2,
-   "insee": "88365"
-  },
-  {
-   "nom": "Gelvécourt-et-Adompt",
-   "cp": "88270",
-   "vol": 13.7,
-   "kmAR": 36,
-   "minAR": 45,
-   "verifie": false,
-   "volEp": 21.4,
-   "insee": "88192"
-  },
-  {
-   "nom": "Zincourt",
-   "cp": "88330",
-   "vol": 13.9,
-   "kmAR": 36,
-   "minAR": 45,
-   "verifie": false,
-   "volEp": 14.9,
-   "insee": "88532"
-  },
-  {
-   "nom": "Villoncourt",
-   "cp": "88150",
-   "vol": 14.0,
-   "kmAR": 36,
-   "minAR": 45,
-   "verifie": false,
-   "volEp": 10.8,
-   "insee": "88509"
-  },
-  {
-   "nom": "Begnécourt",
-   "cp": "88270",
-   "vol": 14.1,
-   "kmAR": 37,
-   "minAR": 45,
-   "verifie": false,
-   "volEp": 21.9,
-   "insee": "88047"
-  },
-  {
-   "nom": "Jorxey",
-   "cp": "88500",
-   "vol": 14.2,
-   "kmAR": 37,
-   "minAR": 45,
-   "verifie": false,
-   "volEp": 21.2,
-   "insee": "88254"
-  },
-  {
-   "nom": "Rapey",
-   "cp": "88130",
-   "vol": 14.5,
-   "kmAR": 38,
-   "minAR": 45,
-   "verifie": false,
-   "volEp": 21.1,
-   "insee": "88374"
-  },
-  {
-   "nom": "Évaux-et-Ménil",
-   "cp": "88450",
-   "vol": 14.5,
-   "kmAR": 38,
-   "minAR": 45,
-   "verifie": false,
-   "volEp": 20.1,
-   "insee": "88166"
-  },
-  {
-   "nom": "Varmonzey",
-   "cp": "88450",
-   "vol": 14.6,
-   "kmAR": 38,
-   "minAR": 45,
-   "verifie": false,
-   "volEp": 20.5,
-   "insee": "88493"
-  },
-  {
-   "nom": "Légéville-et-Bonfays",
-   "cp": "88270",
-   "vol": 14.7,
-   "kmAR": 38,
-   "minAR": 50,
-   "verifie": false,
-   "volEp": 22.2,
-   "insee": "88264"
-  },
-  {
-   "nom": "Vaudéville",
-   "cp": "88000",
-   "vol": 14.7,
-   "kmAR": 38,
-   "minAR": 50,
-   "verifie": false,
-   "volEp": 9.1,
-   "insee": "88495"
-  },
-  {
-   "nom": "Ahéville",
-   "cp": "88500",
-   "vol": 14.9,
-   "kmAR": 39,
-   "minAR": 50,
-   "verifie": false,
-   "volEp": 22.6,
-   "insee": "88002"
-  },
-  {
-   "nom": "Escles",
-   "cp": "88260",
-   "vol": 14.9,
-   "kmAR": 39,
-   "minAR": 50,
-   "verifie": false,
-   "volEp": 20.8,
-   "insee": "88161"
-  },
-  {
-   "nom": "Sercœur",
-   "cp": "88600",
-   "vol": 14.9,
-   "kmAR": 39,
-   "minAR": 50,
-   "verifie": false,
-   "volEp": 10.7,
-   "insee": "88454"
-  },
-  {
-   "nom": "Velotte-et-Tatignécourt",
-   "cp": "88270",
-   "vol": 14.9,
-   "kmAR": 39,
-   "minAR": 50,
-   "verifie": false,
-   "volEp": 22.8,
-   "insee": "88499"
-  },
-  {
-   "nom": "Hagécourt",
-   "cp": "88270",
-   "vol": 15.0,
-   "kmAR": 39,
-   "minAR": 50,
-   "verifie": false,
-   "volEp": 22.9,
-   "insee": "88226"
-  },
-  {
-   "nom": "Hadol",
-   "cp": "88220",
-   "vol": 15.4,
-   "kmAR": 40,
-   "minAR": 50,
-   "verifie": false,
-   "volEp": 9.6,
-   "insee": "88225"
-  },
-  {
-   "nom": "Maroncourt",
-   "cp": "88270",
-   "vol": 15.4,
-   "kmAR": 40,
-   "minAR": 50,
-   "verifie": false,
-   "volEp": 23.3,
-   "insee": "88288"
-  },
-  {
-   "nom": "Bainville-aux-Saules",
-   "cp": "88270",
-   "vol": 15.7,
-   "kmAR": 41,
-   "minAR": 50,
-   "verifie": false,
-   "volEp": 23.4,
-   "insee": "88030"
-  },
-  {
-   "nom": "Vincey",
-   "cp": "88450",
-   "vol": 15.8,
-   "kmAR": 41,
-   "minAR": 50,
-   "verifie": false,
-   "volEp": 20.4,
-   "insee": "88513"
-  },
-  {
-   "nom": "Lerrain",
-   "cp": "88260",
-   "vol": 15.9,
-   "kmAR": 41,
-   "minAR": 50,
-   "verifie": false,
-   "volEp": 22.5,
-   "insee": "88267"
-  },
-  {
-   "nom": "Archettes",
-   "cp": "88380",
-   "vol": 16.0,
-   "kmAR": 42,
-   "minAR": 50,
-   "verifie": false,
-   "volEp": 8.4,
-   "insee": "88012"
-  },
-  {
-   "nom": "Arches",
-   "cp": "88380",
-   "vol": 16.1,
-   "kmAR": 42,
-   "minAR": 50,
-   "verifie": false,
-   "volEp": 8.6,
-   "insee": "88011"
-  },
-  {
-   "nom": "Hadigny-les-Verrières",
-   "cp": "88330",
-   "vol": 16.1,
-   "kmAR": 42,
-   "minAR": 50,
-   "verifie": false,
-   "volEp": 16.5,
-   "insee": "88224"
-  },
-  {
-   "nom": "Portieux",
-   "cp": "88330",
-   "vol": 16.1,
-   "kmAR": 42,
-   "minAR": 50,
-   "verifie": false,
-   "volEp": 20.3,
-   "insee": "88355"
-  },
-  {
-   "nom": "Ubexy",
-   "cp": "88130",
-   "vol": 16.1,
-   "kmAR": 42,
-   "minAR": 50,
-   "verifie": false,
-   "volEp": 22.1,
-   "insee": "88480"
-  },
-  {
-   "nom": "Valleroy-aux-Saules",
-   "cp": "88270",
-   "vol": 16.1,
-   "kmAR": 42,
-   "minAR": 50,
-   "verifie": false,
-   "volEp": 24.1,
-   "insee": "88489"
-  },
-  {
-   "nom": "Avillers",
-   "cp": "88500",
-   "vol": 16.3,
-   "kmAR": 42,
-   "minAR": 50,
-   "verifie": false,
-   "volEp": 23.5,
-   "insee": "88023"
-  },
-  {
-   "nom": "Pont-lès-Bonfays",
-   "cp": "88260",
-   "vol": 16.4,
-   "kmAR": 43,
-   "minAR": 50,
-   "verifie": false,
-   "volEp": 23.5,
-   "insee": "88353"
-  },
-  {
-   "nom": "Vroville",
-   "cp": "88500",
-   "vol": 16.4,
-   "kmAR": 43,
-   "minAR": 50,
-   "verifie": false,
-   "volEp": 24.1,
-   "insee": "88525"
-  },
-  {
-   "nom": "Aydoilles",
-   "cp": "88600",
-   "vol": 16.6,
-   "kmAR": 43,
-   "minAR": 55,
-   "verifie": false,
-   "volEp": 9.9,
-   "insee": "88026"
-  },
-  {
-   "nom": "Brantigny",
-   "cp": "88130",
-   "vol": 16.9,
-   "kmAR": 44,
-   "minAR": 55,
-   "verifie": false,
-   "volEp": 22.7,
-   "insee": "88073"
-  },
-  {
-   "nom": "Frénois",
-   "cp": "88270",
-   "vol": 16.9,
-   "kmAR": 44,
-   "minAR": 55,
-   "verifie": false,
-   "volEp": 24.4,
-   "insee": "88187"
-  },
-  {
-   "nom": "Dompierre",
-   "cp": "88600",
-   "vol": 17.0,
-   "kmAR": 44,
-   "minAR": 55,
-   "verifie": false,
-   "volEp": 12.2,
-   "insee": "88152"
-  },
-  {
-   "nom": "Badménil-aux-Bois",
-   "cp": "88330",
-   "vol": 17.1,
-   "kmAR": 44,
-   "minAR": 55,
-   "verifie": false,
-   "volEp": 15.1,
-   "insee": "88027"
-  },
-  {
-   "nom": "Hymont",
-   "cp": "88500",
-   "vol": 17.1,
-   "kmAR": 44,
-   "minAR": 55,
-   "verifie": false,
-   "volEp": 25.0,
-   "insee": "88246"
-  },
-  {
-   "nom": "Bouxurulles",
-   "cp": "88130",
-   "vol": 17.3,
-   "kmAR": 45,
-   "minAR": 55,
-   "verifie": false,
-   "volEp": 23.8,
-   "insee": "88070"
-  },
-  {
-   "nom": "La Baffe",
-   "cp": "88460",
-   "vol": 17.3,
-   "kmAR": 45,
-   "minAR": 55,
-   "verifie": false,
-   "volEp": 9.4,
-   "insee": "88028"
-  },
-  {
-   "nom": "Villers",
-   "cp": "88500",
-   "vol": 17.3,
-   "kmAR": 45,
-   "minAR": 55,
-   "verifie": false,
-   "volEp": 24.8,
-   "insee": "88507"
-  },
-  {
-   "nom": "Vioménil",
-   "cp": "88260",
-   "vol": 17.3,
-   "kmAR": 45,
-   "minAR": 55,
-   "verifie": false,
-   "volEp": 22.1,
-   "insee": "88515"
-  },
-  {
-   "nom": "Les Vallois",
-   "cp": "88260",
-   "vol": 17.5,
-   "kmAR": 46,
-   "minAR": 55,
-   "verifie": false,
-   "volEp": 24.4,
-   "insee": "88491"
-  },
-  {
-   "nom": "Moriville",
-   "cp": "88330",
-   "vol": 17.5,
-   "kmAR": 46,
-   "minAR": 55,
-   "verifie": false,
-   "volEp": 19.1,
-   "insee": "88313"
-  },
-  {
-   "nom": "Madecourt",
-   "cp": "88270",
-   "vol": 17.6,
-   "kmAR": 46,
-   "minAR": 55,
-   "verifie": false,
-   "volEp": 25.5,
-   "insee": "88279"
-  },
-  {
-   "nom": "La Haye",
-   "cp": "88240",
-   "vol": 17.7,
-   "kmAR": 46,
-   "minAR": 55,
-   "verifie": false,
-   "volEp": 20.8,
-   "insee": "88236"
-  },
-  {
-   "nom": "Xertigny",
-   "cp": "88220",
-   "vol": 17.7,
-   "kmAR": 46,
-   "minAR": 55,
-   "verifie": false,
-   "volEp": 15.0,
-   "insee": "88530"
-  },
-  {
-   "nom": "Fontenay",
-   "cp": "88600",
-   "vol": 17.9,
-   "kmAR": 47,
-   "minAR": 55,
-   "verifie": false,
-   "volEp": 11.4,
-   "insee": "88175"
-  },
-  {
-   "nom": "Langley",
-   "cp": "88130",
-   "vol": 17.9,
-   "kmAR": 47,
-   "minAR": 55,
-   "verifie": false,
-   "volEp": 22.4,
-   "insee": "88260"
-  },
-  {
-   "nom": "La Chapelle-aux-Bois",
-   "cp": "88240",
-   "vol": 18.1,
-   "kmAR": 47,
-   "minAR": 55,
-   "verifie": false,
-   "volEp": 17.7,
-   "insee": "88088"
-  },
-  {
-   "nom": "Rancourt",
-   "cp": "88270",
-   "vol": 18.1,
-   "kmAR": 47,
-   "minAR": 55,
-   "verifie": false,
-   "volEp": 25.9,
-   "insee": "88370"
-  },
-  {
-   "nom": "Rugney",
-   "cp": "88130",
-   "vol": 18.1,
-   "kmAR": 47,
-   "minAR": 55,
-   "verifie": false,
-   "volEp": 24.1,
-   "insee": "88406"
-  },
-  {
-   "nom": "Charmois-devant-Bruyères",
-   "cp": "88460",
-   "vol": 18.4,
-   "kmAR": 48,
-   "minAR": 60,
-   "verifie": false,
-   "volEp": 10.6,
-   "insee": "88091"
-  },
-  {
-   "nom": "Mattaincourt",
-   "cp": "88500",
-   "vol": 18.5,
-   "kmAR": 48,
-   "minAR": 60,
-   "verifie": false,
-   "volEp": 26.3,
-   "insee": "88292"
-  },
-  {
-   "nom": "Sans-Vallois",
-   "cp": "88260",
-   "vol": 18.5,
-   "kmAR": 48,
-   "minAR": 60,
-   "verifie": false,
-   "volEp": 25.6,
-   "insee": "88441"
-  },
-  {
-   "nom": "Padoux",
-   "cp": "88700",
-   "vol": 18.6,
-   "kmAR": 48,
-   "minAR": 60,
-   "verifie": false,
-   "volEp": 14.6,
-   "insee": "88340"
-  },
-  {
-   "nom": "Valfroicourt",
-   "cp": "88270",
-   "vol": 18.8,
-   "kmAR": 49,
-   "minAR": 60,
-   "verifie": false,
-   "volEp": 26.4,
-   "insee": "88488"
-  },
-  {
-   "nom": "Essegney",
-   "cp": "88130",
-   "vol": 18.9,
-   "kmAR": 49,
-   "minAR": 60,
-   "verifie": false,
-   "volEp": 23.6,
-   "insee": "88163"
-  },
-  {
-   "nom": "Grandrupt-de-Bains",
-   "cp": "88240",
-   "vol": 19.1,
-   "kmAR": 50,
-   "minAR": 60,
-   "verifie": false,
-   "volEp": 23.1,
-   "insee": "88214"
-  },
-  {
-   "nom": "Jarménil",
-   "cp": "88550",
-   "vol": 19.1,
-   "kmAR": 50,
-   "minAR": 60,
-   "verifie": false,
-   "volEp": 11.4,
-   "insee": "88250"
-  },
-  {
-   "nom": "Les Voivres",
-   "cp": "88240",
-   "vol": 19.1,
-   "kmAR": 50,
-   "minAR": 60,
-   "verifie": false,
-   "volEp": 19.7,
-   "insee": "88520"
-  },
-  {
-   "nom": "Pouxeux",
-   "cp": "88550",
-   "vol": 19.1,
-   "kmAR": 50,
-   "minAR": 60,
-   "verifie": false,
-   "volEp": 11.5,
-   "insee": "88358"
-  },
-  {
-   "nom": "Bazoilles-et-Ménil",
-   "cp": "88500",
-   "vol": 19.2,
-   "kmAR": 50,
-   "minAR": 60,
-   "verifie": false,
-   "volEp": 27.2,
-   "insee": "88043"
-  },
-  {
-   "nom": "Girecourt-sur-Durbion",
-   "cp": "88600",
-   "vol": 19.4,
-   "kmAR": 50,
-   "minAR": 60,
-   "verifie": false,
-   "volEp": 13.7,
-   "insee": "88203"
-  },
-  {
-   "nom": "Jésonville",
-   "cp": "88260",
-   "vol": 19.4,
-   "kmAR": 50,
-   "minAR": 60,
-   "verifie": false,
-   "volEp": 25.7,
-   "insee": "88252"
-  },
-  {
-   "nom": "Méménil",
-   "cp": "88600",
-   "vol": 19.5,
-   "kmAR": 51,
-   "minAR": 60,
-   "verifie": false,
-   "volEp": 12.9,
-   "insee": "88297"
-  },
-  {
-   "nom": "Gircourt-lès-Viéville",
-   "cp": "88500",
-   "vol": 19.6,
-   "kmAR": 51,
-   "minAR": 60,
-   "verifie": false,
-   "volEp": 26.5,
-   "insee": "88202"
-  },
-  {
-   "nom": "Mirecourt",
-   "cp": "88500",
-   "vol": 19.6,
-   "kmAR": 51,
-   "minAR": 60,
-   "verifie": false,
-   "volEp": 27.3,
-   "insee": "88304"
-  },
-  {
-   "nom": "Savigny",
-   "cp": "88130",
-   "vol": 19.6,
-   "kmAR": 51,
-   "minAR": 60,
-   "verifie": false,
-   "volEp": 26.1,
-   "insee": "88449"
-  },
-  {
-   "nom": "Charmes",
-   "cp": "88130",
-   "vol": 19.7,
-   "kmAR": 51,
-   "minAR": 60,
-   "verifie": false,
-   "volEp": 24.8,
-   "insee": "88090"
-  },
-  {
-   "nom": "Florémont",
-   "cp": "88130",
-   "vol": 19.7,
-   "kmAR": 51,
-   "minAR": 60,
-   "verifie": false,
-   "volEp": 25.5,
-   "insee": "88173"
-  },
-  {
-   "nom": "Cheniménil",
-   "cp": "88460",
-   "vol": 20.0,
-   "kmAR": 52,
-   "minAR": 65,
-   "verifie": false,
-   "volEp": 12.1,
-   "insee": "88101"
-  },
-  {
-   "nom": "Dommartin-lès-Vallois",
-   "cp": "88260",
-   "vol": 20.1,
-   "kmAR": 52,
-   "minAR": 65,
-   "verifie": false,
-   "volEp": 27.1,
-   "insee": "88149"
-  },
-  {
-   "nom": "Rehaincourt",
-   "cp": "88330",
-   "vol": 20.2,
-   "kmAR": 53,
-   "minAR": 65,
-   "verifie": false,
-   "volEp": 20.9,
-   "insee": "88379"
-  },
-  {
-   "nom": "Le Roulier",
-   "cp": "88460",
-   "vol": 20.3,
-   "kmAR": 53,
-   "minAR": 65,
-   "verifie": false,
-   "volEp": 12.5,
-   "insee": "88399"
-  },
-  {
-   "nom": "Mazirot",
-   "cp": "88500",
-   "vol": 20.3,
-   "kmAR": 53,
-   "minAR": 65,
-   "verifie": false,
-   "volEp": 27.8,
-   "insee": "88295"
-  },
-  {
-   "nom": "Raon-aux-Bois",
-   "cp": "88220",
-   "vol": 20.3,
-   "kmAR": 53,
-   "minAR": 65,
-   "verifie": false,
-   "volEp": 14.2,
-   "insee": "88371"
-  },
-  {
-   "nom": "Rozerotte",
-   "cp": "88500",
-   "vol": 20.4,
-   "kmAR": 53,
-   "minAR": 65,
-   "verifie": false,
-   "volEp": 28.3,
-   "insee": "88403"
-  },
-  {
-   "nom": "Docelles",
-   "cp": "88460",
-   "vol": 20.8,
-   "kmAR": 54,
-   "minAR": 65,
-   "verifie": false,
-   "volEp": 12.9,
-   "insee": "88135"
-  },
-  {
-   "nom": "Chauffecourt",
-   "cp": "88500",
-   "vol": 20.9,
-   "kmAR": 54,
-   "minAR": 65,
-   "verifie": false,
-   "volEp": 28.2,
-   "insee": "88097"
-  },
-  {
-   "nom": "Gugnécourt",
-   "cp": "88600",
-   "vol": 20.9,
-   "kmAR": 54,
-   "minAR": 65,
-   "verifie": false,
-   "volEp": 14.9,
-   "insee": "88222"
-  },
-  {
-   "nom": "Viménil",
-   "cp": "88600",
-   "vol": 21.2,
-   "kmAR": 55,
-   "minAR": 65,
-   "verifie": false,
-   "volEp": 14.6,
-   "insee": "88512"
-  },
-  {
-   "nom": "Poussay",
-   "cp": "88500",
-   "vol": 21.4,
-   "kmAR": 56,
-   "minAR": 65,
-   "verifie": false,
-   "volEp": 29.0,
-   "insee": "88357"
-  },
-  {
-   "nom": "Destord",
-   "cp": "88600",
-   "vol": 21.6,
-   "kmAR": 56,
-   "minAR": 65,
-   "verifie": false,
-   "volEp": 16.6,
-   "insee": "88130"
-  },
-  {
-   "nom": "Domèvre-sous-Montfort",
-   "cp": "88500",
-   "vol": 21.6,
-   "kmAR": 56,
-   "minAR": 65,
-   "verifie": false,
-   "volEp": 29.5,
-   "insee": "88144"
-  },
-  {
-   "nom": "Saint-Genest",
-   "cp": "88700",
-   "vol": 21.6,
-   "kmAR": 56,
-   "minAR": 65,
-   "verifie": false,
-   "volEp": 20.7,
-   "insee": "88416"
-  },
-  {
-   "nom": "Bettoncourt",
-   "cp": "88500",
-   "vol": 21.7,
-   "kmAR": 56,
-   "minAR": 65,
-   "verifie": false,
-   "volEp": 28.8,
-   "insee": "88056"
-  },
-  {
-   "nom": "Dombasle-devant-Darney",
-   "cp": "88260",
-   "vol": 21.7,
-   "kmAR": 56,
-   "minAR": 65,
-   "verifie": false,
-   "volEp": 28.2,
-   "insee": "88138"
-  },
-  {
-   "nom": "Gruey-lès-Surance",
-   "cp": "88240",
-   "vol": 21.7,
-   "kmAR": 56,
-   "minAR": 65,
-   "verifie": false,
-   "volEp": 24.9,
-   "insee": "88221"
-  },
-  {
-   "nom": "Bellefontaine",
-   "cp": "88370",
-   "vol": 21.8,
-   "kmAR": 57,
-   "minAR": 70,
-   "verifie": false,
-   "volEp": 18.0,
-   "insee": "88048"
-  },
-  {
-   "nom": "Bult",
-   "cp": "88700",
-   "vol": 21.8,
-   "kmAR": 57,
-   "minAR": 70,
-   "verifie": false,
-   "volEp": 17.6,
-   "insee": "88080"
-  },
-  {
-   "nom": "Esley",
-   "cp": "88260",
-   "vol": 21.8,
-   "kmAR": 57,
-   "minAR": 70,
-   "verifie": false,
-   "volEp": 29.0,
-   "insee": "88162"
-  },
-  {
-   "nom": "Avrainville",
-   "cp": "88130",
-   "vol": 22.0,
-   "kmAR": 57,
-   "minAR": 70,
-   "verifie": false,
-   "volEp": 28.3,
-   "insee": "88024"
-  },
-  {
-   "nom": "Moyemont",
-   "cp": "88700",
-   "vol": 22.0,
-   "kmAR": 57,
-   "minAR": 70,
-   "verifie": false,
-   "volEp": 20.6,
-   "insee": "88318"
-  },
-  {
-   "nom": "Senonges",
-   "cp": "88260",
-   "vol": 22.1,
-   "kmAR": 57,
-   "minAR": 70,
-   "verifie": false,
-   "volEp": 28.9,
-   "insee": "88452"
-  },
-  {
-   "nom": "Nonzeville",
-   "cp": "88600",
-   "vol": 22.2,
-   "kmAR": 58,
-   "minAR": 70,
-   "verifie": false,
-   "volEp": 16.8,
-   "insee": "88331"
-  },
-  {
-   "nom": "Ortoncourt",
-   "cp": "88700",
-   "vol": 22.3,
-   "kmAR": 58,
-   "minAR": 70,
-   "verifie": false,
-   "volEp": 21.9,
-   "insee": "88338"
-  },
-  {
-   "nom": "Ramecourt",
-   "cp": "88500",
-   "vol": 22.3,
-   "kmAR": 58,
-   "minAR": 70,
-   "verifie": false,
-   "volEp": 30.0,
-   "insee": "88368"
-  },
-  {
-   "nom": "Remoncourt",
-   "cp": "88800",
-   "vol": 22.4,
-   "kmAR": 58,
-   "minAR": 70,
-   "verifie": false,
-   "volEp": 30.2,
-   "insee": "88385"
-  },
-  {
-   "nom": "Ambacourt",
-   "cp": "88500",
-   "vol": 22.5,
-   "kmAR": 58,
-   "minAR": 70,
-   "verifie": false,
-   "volEp": 29.8,
-   "insee": "88006"
-  },
-  {
-   "nom": "Belrupt",
-   "cp": "88260",
-   "vol": 22.6,
-   "kmAR": 59,
-   "minAR": 70,
-   "verifie": false,
-   "volEp": 28.2,
-   "insee": "88052"
-  },
-  {
-   "nom": "Vomécourt-sur-Madon",
-   "cp": "88500",
-   "vol": 22.7,
-   "kmAR": 59,
-   "minAR": 70,
-   "verifie": false,
-   "volEp": 29.6,
-   "insee": "88522"
-  },
-  {
-   "nom": "Deycimont",
-   "cp": "88600",
-   "vol": 22.8,
-   "kmAR": 59,
-   "minAR": 70,
-   "verifie": false,
-   "volEp": 15.0,
-   "insee": "88131"
-  },
-  {
-   "nom": "Éloyes",
-   "cp": "88510",
-   "vol": 22.8,
-   "kmAR": 59,
-   "minAR": 70,
-   "verifie": false,
-   "volEp": 15.1,
-   "insee": "88158"
-  },
-  {
-   "nom": "La Vôge-les-Bains",
-   "cp": "88240",
-   "vol": 22.9,
-   "kmAR": 60,
-   "minAR": 70,
-   "verifie": false,
-   "volEp": 23.8,
-   "insee": "88029"
-  },
-  {
-   "nom": "Thiraucourt",
-   "cp": "88500",
-   "vol": 22.9,
-   "kmAR": 60,
-   "minAR": 70,
-   "verifie": false,
-   "volEp": 30.8,
-   "insee": "88469"
-  },
-  {
-   "nom": "Estrennes",
-   "cp": "88500",
-   "vol": 23.1,
-   "kmAR": 60,
-   "minAR": 70,
-   "verifie": false,
-   "volEp": 31.1,
-   "insee": "88164"
-  },
-  {
-   "nom": "Vomécourt",
-   "cp": "88700",
-   "vol": 23.1,
-   "kmAR": 60,
-   "minAR": 70,
-   "verifie": false,
-   "volEp": 19.2,
-   "insee": "88521"
-  },
-  {
-   "nom": "Xaronval",
-   "cp": "88130",
-   "vol": 23.1,
-   "kmAR": 60,
-   "minAR": 70,
-   "verifie": false,
-   "volEp": 29.7,
-   "insee": "88529"
-  },
-  {
-   "nom": "Domvallier",
-   "cp": "88500",
-   "vol": 23.2,
-   "kmAR": 60,
-   "minAR": 70,
-   "verifie": false,
-   "volEp": 31.0,
-   "insee": "88155"
-  },
-  {
-   "nom": "Socourt",
-   "cp": "88130",
-   "vol": 23.2,
-   "kmAR": 60,
-   "minAR": 70,
-   "verifie": false,
-   "volEp": 28.7,
-   "insee": "88458"
-  },
-  {
-   "nom": "Damas-aux-Bois",
-   "cp": "88330",
-   "vol": 23.3,
-   "kmAR": 61,
-   "minAR": 70,
-   "verifie": false,
-   "volEp": 24.7,
-   "insee": "88121"
-  },
-  {
-   "nom": "Pierrepont-sur-l'Arentèle",
-   "cp": "88600",
-   "vol": 23.3,
-   "kmAR": 61,
-   "minAR": 70,
-   "verifie": false,
-   "volEp": 17.7,
-   "insee": "88348"
-  },
-  {
-   "nom": "Hennezel",
-   "cp": "88260",
-   "vol": 23.4,
-   "kmAR": 61,
-   "minAR": 70,
-   "verifie": false,
-   "volEp": 28.0,
-   "insee": "88238"
-  },
-  {
-   "nom": "Hergugney",
-   "cp": "88130",
-   "vol": 23.6,
-   "kmAR": 61,
-   "minAR": 75,
-   "verifie": false,
-   "volEp": 29.9,
-   "insee": "88239"
-  },
-  {
-   "nom": "Remicourt",
-   "cp": "88500",
-   "vol": 23.6,
-   "kmAR": 61,
-   "minAR": 75,
-   "verifie": false,
-   "volEp": 31.5,
-   "insee": "88382"
-  },
-  {
-   "nom": "Haillainville",
-   "cp": "88330",
-   "vol": 23.7,
-   "kmAR": 62,
-   "minAR": 75,
-   "verifie": false,
-   "volEp": 24.4,
-   "insee": "88228"
-  },
-  {
-   "nom": "La Neuveville-devant-Lépanges",
-   "cp": "88600",
-   "vol": 23.7,
-   "kmAR": 62,
-   "minAR": 75,
-   "verifie": false,
-   "volEp": 15.9,
-   "insee": "88322"
-  },
-  {
-   "nom": "Xamontarupt",
-   "cp": "88460",
-   "vol": 23.7,
-   "kmAR": 62,
-   "minAR": 75,
-   "verifie": false,
-   "volEp": 15.7,
-   "insee": "88528"
-  },
-  {
-   "nom": "Chamagne",
-   "cp": "88130",
-   "vol": 23.8,
-   "kmAR": 62,
-   "minAR": 75,
-   "verifie": false,
-   "volEp": 28.8,
-   "insee": "88084"
-  },
-  {
-   "nom": "Lépanges-sur-Vologne",
-   "cp": "88600",
-   "vol": 23.8,
-   "kmAR": 62,
-   "minAR": 75,
-   "verifie": false,
-   "volEp": 16.2,
-   "insee": "88266"
-  },
-  {
-   "nom": "Pont-sur-Madon",
-   "cp": "88500",
-   "vol": 23.8,
-   "kmAR": 62,
-   "minAR": 75,
-   "verifie": false,
-   "volEp": 30.8,
-   "insee": "88354"
-  },
-  {
-   "nom": "Fauconcourt",
-   "cp": "88700",
-   "vol": 23.9,
-   "kmAR": 62,
-   "minAR": 75,
-   "verifie": false,
-   "volEp": 22.9,
-   "insee": "88168"
-  },
-  {
-   "nom": "Grandvillers",
-   "cp": "88600",
-   "vol": 24.0,
-   "kmAR": 62,
-   "minAR": 75,
-   "verifie": false,
-   "volEp": 17.6,
-   "insee": "88216"
-  },
-  {
-   "nom": "Puzieux",
-   "cp": "88500",
-   "vol": 24.0,
-   "kmAR": 62,
-   "minAR": 75,
-   "verifie": false,
-   "volEp": 31.6,
-   "insee": "88364"
-  },
-  {
-   "nom": "Saint-Nabord",
-   "cp": "88200",
-   "vol": 24.0,
-   "kmAR": 62,
-   "minAR": 75,
-   "verifie": false,
-   "volEp": 17.1,
-   "insee": "88429"
-  },
-  {
-   "nom": "Fays",
-   "cp": "88600",
-   "vol": 24.2,
-   "kmAR": 63,
-   "minAR": 75,
-   "verifie": false,
-   "volEp": 16.8,
-   "insee": "88169"
-  },
-  {
-   "nom": "Monthureux-le-Sec",
-   "cp": "88800",
-   "vol": 24.2,
-   "kmAR": 63,
-   "minAR": 75,
-   "verifie": false,
-   "volEp": 31.5,
-   "insee": "88309"
-  },
-  {
-   "nom": "Saint-Rémy-aux-Bois",
-   "cp": "54290",
-   "vol": 24.3,
-   "kmAR": 63,
-   "minAR": 75,
-   "verifie": false,
-   "volEp": 27.1,
-   "insee": "54487"
-  },
-  {
-   "nom": "Battexey",
-   "cp": "88130",
-   "vol": 24.5,
-   "kmAR": 64,
-   "minAR": 75,
-   "verifie": false,
-   "volEp": 31.0,
-   "insee": "88038"
-  },
-  {
-   "nom": "Bonvillet",
-   "cp": "88260",
-   "vol": 24.5,
-   "kmAR": 64,
-   "minAR": 75,
-   "verifie": false,
-   "volEp": 30.5,
-   "insee": "88065"
-  },
-  {
-   "nom": "La Neuveville-sous-Montfort",
-   "cp": "88800",
-   "vol": 24.6,
-   "kmAR": 64,
-   "minAR": 75,
-   "verifie": false,
-   "volEp": 32.4,
-   "insee": "88325"
-  },
-  {
-   "nom": "Offroicourt",
-   "cp": "88500",
-   "vol": 24.6,
-   "kmAR": 64,
-   "minAR": 75,
-   "verifie": false,
-   "volEp": 32.5,
-   "insee": "88335"
-  },
-  {
-   "nom": "Faucompierre",
-   "cp": "88460",
-   "vol": 24.8,
-   "kmAR": 64,
-   "minAR": 75,
-   "verifie": false,
-   "volEp": 16.9,
-   "insee": "88167"
-  },
-  {
-   "nom": "Romont",
-   "cp": "88700",
-   "vol": 24.8,
-   "kmAR": 64,
-   "minAR": 75,
-   "verifie": false,
-   "volEp": 22.6,
-   "insee": "88395"
-  },
-  {
-   "nom": "Sainte-Hélène",
-   "cp": "88700",
-   "vol": 24.8,
-   "kmAR": 64,
-   "minAR": 75,
-   "verifie": false,
-   "volEp": 19.9,
-   "insee": "88418"
-  }
- ]
 }

@@ -283,6 +283,7 @@ body.pc-en-cours .appel-mobile{display:none}
 <script src="/assets/mesure.js" defer></script>
 <script src="/assets/campagne.js" defer></script>
 <link rel="stylesheet" href="/assets/aide-visuelle.css">
+<link rel="stylesheet" href="/assets/navigation-v660.css">
 </head>
 <body data-tunnel="vitres">
 <div class="pc-test" id="pc-test" hidden>MODE TEST : demande marquée [TEST], aucune conversion publicitaire</div>
@@ -361,7 +362,7 @@ body.pc-en-cours .appel-mobile{display:none}
    Toutes les tâches cochées par défaut redonnent exactement les durées
    utilisées par l'outil jusqu'au 21/10/2026. */
 var LIMPID_CONFIG_DEFAUT = {
-  version: "2026-10-22",
+  version: "2026-10-31-limpid-coherence-v665",
   base: { nom: "Darnieulles", cp: "88390" },
   /* Zone prioritaire : 15 km autour de Darnieulles (vol) pour toutes les prestations ;
      pour les prestations de servicesEpinal (lavage de vitres), aussi 15 km autour d'Épinal (volEp), comme la campagne Google Ads. */
@@ -456,39 +457,43 @@ var LIMPID_CONFIG_DEFAUT = {
       creditImpot: true
     },
     grand: {
-      nom: "Grand nettoyage",
-      communes: { lib: "Les détails qui font la différence", parM2: true, taches: [
-        { id: "g_sols", lib: "Sols aspirés puis lavés, y compris sous les éléments déplaçables", min: 0.6 },
-        { id: "g_plinthes", lib: "Plinthes, portes, chambranles et poignées", min: 0.3 },
-        { id: "g_inter", lib: "Interrupteurs et prises", min: 0.1 },
-        { id: "g_radiateurs", lib: "Radiateurs, dessus et interstices", min: 0.2 },
-        { id: "g_escaliers", lib: "Escaliers, rampes, paliers", min: 0.1 },
-        { id: "g_adhesifs", lib: "Traces de scotch, d'adhésif et marques de meubles", min: 0.1 },
-        { id: "g_toiles", lib: "Toiles d'araignée, angles de plafond, luminaires accessibles", min: 0.2 }
+      nom: "Grand ménage approfondi",
+      /* Standard Limpid : tâches du ménage classique, avec davantage de soin sur
+         les surfaces ACCESSIBLES et dégagées. Ni rangement ni intérieur d'appareil. */
+      communes: { lib: "Entretien approfondi des surfaces accessibles", parM2: true, taches: [
+        { id: "g_poussiere", lib: "Dépoussiérage approfondi des meubles et surfaces accessibles et dégagés", min: 0.42 },
+        { id: "g_sols", lib: "Aspiration et lavage soigné des sols compatibles et accessibles", min: 0.55 },
+        { id: "g_plinthes", lib: "Nettoyage des plinthes accessibles", min: 0.22 },
+        { id: "g_portes", lib: "Nettoyage extérieur des portes et encadrements accessibles", min: 0.14 },
+        { id: "g_points", lib: "Nettoyage des traces sur les poignées et interrupteurs accessibles", min: 0.07 },
+        { id: "g_radiateurs", lib: "Dépoussiérage extérieur des radiateurs accessibles, sans démontage", min: 0.10 },
+        { id: "g_escaliers", lib: "Nettoyage des escaliers et rampes accessibles lorsqu'ils existent", min: 0.04 },
+        { id: "g_toiles", lib: "Retrait des toiles d'araignée à portée de main, sans accès en hauteur", min: 0.10 }
       ] },
       pieces: [
         { id: "sejour", lib: "Pièces de vie", taches: [
-          { id: "gs_sols", lib: "Sols, plinthes et détails", min: 0, commun: true } ] },
+          { id: "gs_surfaces", lib: "Surfaces extérieures et meubles dégagés nettoyés avec soin", min: 0, commun: true } ] },
         { id: "chambre", lib: "Chambre", taches: [
-          { id: "gc_placards", lib: "Placards et penderies nettoyés à l'intérieur", min: 12 },
-          { id: "gc_volets", lib: "Volets roulants et appuis de fenêtre", min: 8 } ] },
+          { id: "gc_surfaces", lib: "Dépoussiérage soigné des surfaces et meubles accessibles", min: 8 },
+          { id: "gc_facades", lib: "Nettoyage extérieur des façades de meubles accessibles", min: 4 } ],
+          note: "Aucun intérieur de placard ou de penderie ; aucun déplacement d'effets personnels." },
         { id: "bureau", lib: "Bureau", taches: [
-          { id: "gb_placards", lib: "Placards et rangements nettoyés à l'intérieur", min: 12 },
-          { id: "gb_volets", lib: "Volets roulants et appuis de fenêtre", min: 8 } ],
-          note: "Dossiers, documents et équipements ne sont ni déplacés ni débranchés." },
+          { id: "gb_surfaces", lib: "Dépoussiérage et nettoyage soigné des surfaces dégagées", min: 8 },
+          { id: "gb_facades", lib: "Nettoyage extérieur du mobilier accessible", min: 3 } ],
+          note: "Documents, équipements et appareils ne sont pas déplacés ni débranchés." },
         { id: "cuisine", lib: "Cuisine", taches: [
-          { id: "gk_four", lib: "Four, grilles et vitre intérieure, hotte et filtres", min: 15 },
-          { id: "gk_plaques", lib: "Plaques de cuisson, crédence, plan de travail", min: 8 },
-          { id: "gk_frigo", lib: "Réfrigérateur et congélateur vidés, dégivrés et désinfectés", min: 10 },
-          { id: "gk_placards", lib: "Intérieur et extérieur des placards, tiroirs, poignées", min: 12 },
-          { id: "gk_evier", lib: "Évier, robinetterie, calcaire, siphon visible", min: 5 } ] },
+          { id: "gk_plans", lib: "Nettoyage approfondi des plans de travail et de la crédence accessibles", min: 9 },
+          { id: "gk_plaques", lib: "Nettoyage soigné de la plaque de cuisson froide", min: 8 },
+          { id: "gk_facades", lib: "Nettoyage extérieur des façades des meubles et appareils accessibles", min: 8 },
+          { id: "gk_evier", lib: "Nettoyage soigné de l'évier et de la robinetterie", min: 7 } ],
+          note: "Intérieurs des appareils et des rangements non compris ; aucun vidage ou dégivrage." },
         { id: "sdb", lib: "Salle de bains", taches: [
-          { id: "gd_detartrage", lib: "Détartrage de la douche, de la baignoire et des robinetteries", min: 18 },
-          { id: "gd_joints", lib: "Joints, parois, miroirs, faïence", min: 19 },
-          { id: "gd_meubles", lib: "Meubles vasques, intérieur des rangements", min: 10 },
-          { id: "gd_ventil", lib: "Grilles de ventilation dépoussiérées", min: 3 } ] },
+          { id: "gd_detartrage", lib: "Nettoyage renforcé de la douche ou baignoire et des robinetteries accessibles", min: 13 },
+          { id: "gd_joints", lib: "Nettoyage soigné des parois, miroirs et faïences accessibles", min: 10 },
+          { id: "gd_facades", lib: "Nettoyage extérieur des meubles et surfaces dégagées", min: 6 } ],
+          note: "Hors intérieur des rangements, détartrage lourd et traitement des moisissures." },
         { id: "wc", lib: "WC", verrou: true, taches: [
-          { id: "gw_complet", lib: "Cuvette, abattant, réservoir, sol et arrière des WC", min: 18 } ] }
+          { id: "gw_complet", lib: "Nettoyage approfondi des WC, abattant, réservoir extérieur et surfaces accessibles", min: 15 } ] }
       ],
       elements: [
         { id: "fenetres", lib: "Fenêtres : vitres intérieures, rebords et rails", aide: "Nombre de fenêtres.", min: 6, quantite: true },
@@ -497,12 +502,16 @@ var LIMPID_CONFIG_DEFAUT = {
       ],
       options: [],
       exclusions: [
-        "Faces extérieures des vitres : prestation Vitres, chiffrée à part",
+        "Intérieur des placards, penderies, tiroirs et autres rangements",
+        "Intérieur des fours, réfrigérateurs, congélateurs et autres appareils ; vidage et dégivrage",
+        "Volets roulants, stores et démontage des équipements",
+        "Faces extérieures des vitres : hors forfait sauf option de vitrerie extérieure expressément retenue",
         "Vaisselle, lessive et repassage",
-        "Déplacement de meubles lourds",
+        "Déplacement de meubles lourds et rangement des effets personnels",
         "Rangement important ou désencombrement",
-        "Détachage spécialisé des textiles : prestation Textiles, chiffrée à part",
-        "Surfaces en hauteur nécessitant un équipement spécifique",
+        "Détachage spécialisé des textiles : prestation distincte",
+        "Surfaces non accessibles ou en hauteur nécessitant un équipement particulier",
+        "Décapage, restauration des matériaux, détartrage lourd ou traitement des moisissures",
         "Ménage après travaux ou fin de chantier"
       ],
       creditImpot: true
@@ -961,8 +970,8 @@ window.LIMPID_PARCOURS = (function () {
   function has(R, k, v) { return a(R, k).indexOf(v) >= 0; }
 
   var TYPES = [
-    ["fenetres", "🪟", "Fenêtres et portes-fenêtres", "Le nettoyage classique de vos vitres."],
-    ["baies", "🚪", "Baies vitrées", "Baies coulissantes, grandes surfaces vitrées."],
+    ["fenetres", "🪟", "Fenêtres classiques", "À compter hors portes-fenêtres."],
+    ["baies", "🚪", "Baies et portes-fenêtres", "Portes-fenêtres, baies coulissantes et vitrines."],
     ["veranda", "🌿", "Véranda", "Les parois vitrées, intérieur et extérieur."],
     ["autre", "✏️", "Autre surface vitrée", "Vitrine, porte vitrée, cloison… décrite en quelques mots."]
   ];
@@ -1001,7 +1010,9 @@ window.LIMPID_PARCOURS = (function () {
   /* ---------- Conversion en saisie du moteur ---------- */
   function faces(R) {
     var cotes = R.cotes === "int_ext" ? 2 : 1;
-    return (n(R.f1) + n(R.fVelux) + 2 * n(R.f2)) * cotes;
+    // Un petit Velux basculant : deux faces vitrées nettoyées depuis l'intérieur.
+    // Le choix des côtés s'applique aux fenêtres classiques, pas au lieu d'accès du Velux.
+    return (n(R.f1) + 2 * n(R.f2)) * cotes + 2 * n(R.fVelux);
   }
   function saisie(R) {
     var fen = has(R, "types", "fenetres"), bai = has(R, "types", "baies"), ver = has(R, "types", "veranda");
@@ -1022,24 +1033,26 @@ window.LIMPID_PARCOURS = (function () {
         },
         valider: function (R) { return a(R, "types").length ? "" : "Choisissez au moins une réponse."; } },
 
-      { id: "fenetres", titre: "Combien de fenêtres et portes-fenêtres ?", sous: "Comptez toutes les fenêtres à nettoyer.", si: function (R) { return has(R, "types", "fenetres"); },
+      { id: "fenetres", titre: "Combien de fenêtres classiques ?", sous: "Ne comptez pas les portes-fenêtres ici : elles vont dans les baies.", si: function (R) { return has(R, "types", "fenetres"); },
         rendre: function (R) {
-          return '<div class="cf-compteurs">' + cpt("f1", "À un battant", "Petites fenêtres, portes vitrées simples", R) + cpt("f2", "À deux battants", "Fenêtres classiques et portes-fenêtres", R) +
-            cpt("fVelux", "Petits velux", "Fenêtres de toit de petite taille, nettoyées depuis l'intérieur", R) + '</div>' +
+          return '<div class="cf-compteurs">' + cpt("f1", "Fenêtres à 1 battant", "Hors portes-fenêtres, à compter dans les baies", R) + cpt("f2", "Fenêtres à 2 battants", "Hors portes-fenêtres, à compter dans les baies", R) +
+            cpt("fVelux", "Petits Velux basculants", "2 faces par Velux : intérieure et extérieure, toutes deux nettoyées depuis l'intérieur du logement", R) + '</div>' +
             txt("fDim", "Dimensions particulières", "Facultatif : une très grande fenêtre, des petits carreaux…", R, "Ex. : 2 fenêtres de 2 m de haut");
         },
         valider: function (R) { return (n(R.f1) + n(R.f2) + n(R.fVelux)) ? "" : "Indiquez au moins une fenêtre."; } },
 
-      { id: "baies", titre: "Combien de baies vitrées ?", sous: "Comptez-les selon leur taille.", si: function (R) { return has(R, "types", "baies"); },
+      { id: "baies", titre: "Combien de baies et portes-fenêtres ?", sous: "Comptez chaque porte-fenêtre ou baie une seule fois, hors fenêtres classiques.", si: function (R) { return has(R, "types", "baies"); },
         rendre: function (R) {
-          return '<div class="cf-compteurs">' + cpt("baiesP", "Petites (1 vantail)", "", R) + cpt("baies", "Standard (2 vantaux)", "", R) + cpt("baiesG", "Grandes (3 vantaux et +)", "", R) + '</div>' +
+          return '<div class="cf-compteurs">' + cpt("baiesP", "Petites baies / portes-fenêtres (1 vantail)", "Comptez une ouverture complète, pas les faces", R) + cpt("baies", "Baies / portes-fenêtres (2 vantaux)", "Une baie ou porte-fenêtre = une ouverture", R) + cpt("baiesG", "Grandes (3 vantaux et +)", "", R) + '</div>' +
             txt("baiesDim", "Dimensions si vous les connaissez", "Facultatif.", R, "Ex. : baie de 3 m de large");
         },
         valider: function (R) { return (n(R.baiesP) + n(R.baies) + n(R.baiesG)) ? "" : "Indiquez au moins une baie."; } },
 
       { id: "veranda", titre: "Votre véranda", sous: "Nous nettoyons les parois vitrées, à l'intérieur et à l'extérieur. La toiture n'est pas prise en charge.", si: function (R) { return has(R, "types", "veranda"); },
         rendre: function (R) {
-          return '<label class="cf-champ">Surface au sol (m²)<small>Longueur × largeur : une véranda de 4 m sur 3 m fait 12 m².</small><input type="number" min="1" inputmode="numeric" data-k="verandaM2" value="' + (R.verandaM2 || "") + '" placeholder="12"></label>';
+          return '<p class="cf-mention">Indiquez une estimation de la surface au sol, sans prendre les dimensions exactes. Les parois vitrées sont comprises, la toiture est exclue.</p>' +
+            '<div class="cf-choix">' + [[8,'Petite · environ 8 m²'],[15,'Moyenne · environ 15 m²'],[25,'Grande · environ 25 m²']].map(function(q){return '<button type="button" class="pc-opt' + (n(R.verandaM2)===q[0]?' on':'') + '" data-choix="verandaM2|' + q[0] + '" aria-pressed="' + (n(R.verandaM2)===q[0]) + '">' + q[1] + '</button>';}).join('') + '</div>' +
+            '<label class="cf-champ">Ou autre surface estimée (m²)<small>Facultatif si vous avez choisi une taille ci-dessus.</small><input type="number" min="1" inputmode="decimal" data-k="verandaM2" value="' + (R.verandaM2 || "") + '" placeholder="Ex. : 12"></label>';
         },
         valider: function (R) { return n(R.verandaM2) ? "" : "Indiquez la surface au sol de la véranda."; } },
 
@@ -1047,7 +1060,8 @@ window.LIMPID_PARCOURS = (function () {
         rendre: function (R) { return txt("autreTxt", "Votre situation", "Ce qu'il faut nettoyer, combien, et sa taille approximative.", R, "Ex. : une vitrine de 3 m × 2 m, une porte d'entrée vitrée…", true); },
         valider: function (R) { return String(R.autreTxt || "").trim().length < 8 ? "Décrivez la surface vitrée en quelques mots." : ""; } },
 
-      { id: "cotes", titre: "Quelles faces faut-il nettoyer ?", rendre: function (R) { return opts("cotes", COTES, R); },
+      { id: "cotes", titre: "Quelles faces faut-il nettoyer ?", rendre: function (R) { return opts("cotes", COTES, R) +
+          (n(R.fVelux) ? '<p class="cf-mention">Pour les petits Velux basculants : les deux faces (intérieure et extérieure) seront nettoyées depuis l’intérieur du logement, sans accès extérieur. Le choix ci-dessus concerne les autres vitrages.</p>' : ''); },
         valider: function (R) { return R.cotes ? "" : "Choisissez une réponse."; } },
 
       { id: "logement", titre: "Votre logement", rerendre: ["logement", "accessible"],
@@ -1118,7 +1132,7 @@ window.LIMPID_PARCOURS = (function () {
   /* ---------- Récapitulatif ---------- */
   function lignesQuantites(R) {
     var L = [];
-    if (has(R, "types", "fenetres")) L.push("Fenêtres : " + [[R.f1, "à un battant"], [R.f2, "à deux battants"], [R.fVelux, "petit(s) velux"]].filter(function (x) { return n(x[0]); }).map(function (x) { return n(x[0]) + " " + x[1]; }).join(", "));
+    if (has(R, "types", "fenetres")) L.push("Fenêtres : " + [[R.f1, "à un battant"], [R.f2, "à deux battants"], [R.fVelux, "petit(s) Velux (2 faces, nettoyées depuis l’intérieur)"]].filter(function (x) { return n(x[0]); }).map(function (x) { return n(x[0]) + " " + x[1]; }).join(", "));
     if (R.fDim && has(R, "types", "fenetres")) L.push("Dimensions : " + R.fDim);
     if (has(R, "types", "baies")) L.push("Baies vitrées : " + [[R.baiesP, "petite(s)"], [R.baies, "standard"], [R.baiesG, "grande(s)"]].filter(function (x) { return n(x[0]); }).map(function (x) { return n(x[0]) + " " + x[1]; }).join(", "));
     if (R.baiesDim && has(R, "types", "baies")) L.push("Dimensions des baies : " + R.baiesDim);
@@ -1146,6 +1160,7 @@ window.LIMPID_PARCOURS = (function () {
   /* ---------- Dossier « À compléter avant devis » ---------- */
   function aCompleter(R, zone) {
     var l = [];
+    if (n(R.fVelux) && R.cotes && R.cotes !== "int_ext") l.push({ client: "le périmètre de nettoyage des Velux", interne: "2 faces par Velux incluses, nettoyage des deux depuis l'intérieur par basculement ; autres vitrages demandés sur un seul côté : confirmer le périmètre des Velux si nécessaire" });
     if (has(R, "types", "autre")) l.push({ client: "la surface vitrée que vous avez décrite", interne: "autre surface vitrée à étudier" });
     if (R.logement === "autre") l.push({ client: "", interne: "logement « autre » : " + (R.logementTxt || "") });
     if (/hors table|au-delà/.test(zone || "")) l.push({ client: "", interne: zone });
@@ -1314,7 +1329,7 @@ window.LIMPID_PARCOURS = (function () {
     $("pc-suite").textContent = E.retourRecap && x ? "Retour au récapitulatif" : (ec === "recap" ? "Envoyer ma demande de devis" : (ec === "rappel" ? "Être rappelé" : "Continuer"));
     var t = $("pc-titre") || z.querySelector("h2");
     if (t && E.ecran !== "accueil") { try { t.focus({ preventScroll: true }); } catch (e2) {} }
-    var app = $("pc-app"); if (app && window.scrollY > app.offsetTop) app.scrollIntoView({ block: "start" });
+    var app = $("pc-app"); if (app && window.scrollY > app.offsetTop + 180) window.scrollTo({ top: Math.max(0, app.offsetTop - 100), behavior: "instant" });
     if (ec === "adresse") brancherAdresse();
   }
   /* Le bouton Retour du navigateur ramène à l'écran précédent du parcours. */

@@ -510,7 +510,7 @@ body[data-tunnel="configurateur"] footer{padding-bottom:90px}
    Toutes les tâches cochées par défaut redonnent exactement les durées
    utilisées par l'outil jusqu'au 21/10/2026. */
 var LIMPID_CONFIG_DEFAUT = {
-  version: "2026-10-22",
+  version: "2026-10-31-limpid-coherence-v665",
   base: { nom: "Darnieulles", cp: "88390" },
   /* Zone prioritaire : 15 km autour de Darnieulles (vol) pour toutes les prestations ;
      pour les prestations de servicesEpinal (lavage de vitres), aussi 15 km autour d'Épinal (volEp), comme la campagne Google Ads. */
@@ -605,39 +605,43 @@ var LIMPID_CONFIG_DEFAUT = {
       creditImpot: true
     },
     grand: {
-      nom: "Grand nettoyage",
-      communes: { lib: "Les détails qui font la différence", parM2: true, taches: [
-        { id: "g_sols", lib: "Sols aspirés puis lavés, y compris sous les éléments déplaçables", min: 0.6 },
-        { id: "g_plinthes", lib: "Plinthes, portes, chambranles et poignées", min: 0.3 },
-        { id: "g_inter", lib: "Interrupteurs et prises", min: 0.1 },
-        { id: "g_radiateurs", lib: "Radiateurs, dessus et interstices", min: 0.2 },
-        { id: "g_escaliers", lib: "Escaliers, rampes, paliers", min: 0.1 },
-        { id: "g_adhesifs", lib: "Traces de scotch, d'adhésif et marques de meubles", min: 0.1 },
-        { id: "g_toiles", lib: "Toiles d'araignée, angles de plafond, luminaires accessibles", min: 0.2 }
+      nom: "Grand ménage approfondi",
+      /* Standard Limpid : tâches du ménage classique, avec davantage de soin sur
+         les surfaces ACCESSIBLES et dégagées. Ni rangement ni intérieur d'appareil. */
+      communes: { lib: "Entretien approfondi des surfaces accessibles", parM2: true, taches: [
+        { id: "g_poussiere", lib: "Dépoussiérage approfondi des meubles et surfaces accessibles et dégagés", min: 0.42 },
+        { id: "g_sols", lib: "Aspiration et lavage soigné des sols compatibles et accessibles", min: 0.55 },
+        { id: "g_plinthes", lib: "Nettoyage des plinthes accessibles", min: 0.22 },
+        { id: "g_portes", lib: "Nettoyage extérieur des portes et encadrements accessibles", min: 0.14 },
+        { id: "g_points", lib: "Nettoyage des traces sur les poignées et interrupteurs accessibles", min: 0.07 },
+        { id: "g_radiateurs", lib: "Dépoussiérage extérieur des radiateurs accessibles, sans démontage", min: 0.10 },
+        { id: "g_escaliers", lib: "Nettoyage des escaliers et rampes accessibles lorsqu'ils existent", min: 0.04 },
+        { id: "g_toiles", lib: "Retrait des toiles d'araignée à portée de main, sans accès en hauteur", min: 0.10 }
       ] },
       pieces: [
         { id: "sejour", lib: "Pièces de vie", taches: [
-          { id: "gs_sols", lib: "Sols, plinthes et détails", min: 0, commun: true } ] },
+          { id: "gs_surfaces", lib: "Surfaces extérieures et meubles dégagés nettoyés avec soin", min: 0, commun: true } ] },
         { id: "chambre", lib: "Chambre", taches: [
-          { id: "gc_placards", lib: "Placards et penderies nettoyés à l'intérieur", min: 12 },
-          { id: "gc_volets", lib: "Volets roulants et appuis de fenêtre", min: 8 } ] },
+          { id: "gc_surfaces", lib: "Dépoussiérage soigné des surfaces et meubles accessibles", min: 8 },
+          { id: "gc_facades", lib: "Nettoyage extérieur des façades de meubles accessibles", min: 4 } ],
+          note: "Aucun intérieur de placard ou de penderie ; aucun déplacement d'effets personnels." },
         { id: "bureau", lib: "Bureau", taches: [
-          { id: "gb_placards", lib: "Placards et rangements nettoyés à l'intérieur", min: 12 },
-          { id: "gb_volets", lib: "Volets roulants et appuis de fenêtre", min: 8 } ],
-          note: "Dossiers, documents et équipements ne sont ni déplacés ni débranchés." },
+          { id: "gb_surfaces", lib: "Dépoussiérage et nettoyage soigné des surfaces dégagées", min: 8 },
+          { id: "gb_facades", lib: "Nettoyage extérieur du mobilier accessible", min: 3 } ],
+          note: "Documents, équipements et appareils ne sont pas déplacés ni débranchés." },
         { id: "cuisine", lib: "Cuisine", taches: [
-          { id: "gk_four", lib: "Four, grilles et vitre intérieure, hotte et filtres", min: 15 },
-          { id: "gk_plaques", lib: "Plaques de cuisson, crédence, plan de travail", min: 8 },
-          { id: "gk_frigo", lib: "Réfrigérateur et congélateur vidés, dégivrés et désinfectés", min: 10 },
-          { id: "gk_placards", lib: "Intérieur et extérieur des placards, tiroirs, poignées", min: 12 },
-          { id: "gk_evier", lib: "Évier, robinetterie, calcaire, siphon visible", min: 5 } ] },
+          { id: "gk_plans", lib: "Nettoyage approfondi des plans de travail et de la crédence accessibles", min: 9 },
+          { id: "gk_plaques", lib: "Nettoyage soigné de la plaque de cuisson froide", min: 8 },
+          { id: "gk_facades", lib: "Nettoyage extérieur des façades des meubles et appareils accessibles", min: 8 },
+          { id: "gk_evier", lib: "Nettoyage soigné de l'évier et de la robinetterie", min: 7 } ],
+          note: "Intérieurs des appareils et des rangements non compris ; aucun vidage ou dégivrage." },
         { id: "sdb", lib: "Salle de bains", taches: [
-          { id: "gd_detartrage", lib: "Détartrage de la douche, de la baignoire et des robinetteries", min: 18 },
-          { id: "gd_joints", lib: "Joints, parois, miroirs, faïence", min: 19 },
-          { id: "gd_meubles", lib: "Meubles vasques, intérieur des rangements", min: 10 },
-          { id: "gd_ventil", lib: "Grilles de ventilation dépoussiérées", min: 3 } ] },
+          { id: "gd_detartrage", lib: "Nettoyage renforcé de la douche ou baignoire et des robinetteries accessibles", min: 13 },
+          { id: "gd_joints", lib: "Nettoyage soigné des parois, miroirs et faïences accessibles", min: 10 },
+          { id: "gd_facades", lib: "Nettoyage extérieur des meubles et surfaces dégagées", min: 6 } ],
+          note: "Hors intérieur des rangements, détartrage lourd et traitement des moisissures." },
         { id: "wc", lib: "WC", verrou: true, taches: [
-          { id: "gw_complet", lib: "Cuvette, abattant, réservoir, sol et arrière des WC", min: 18 } ] }
+          { id: "gw_complet", lib: "Nettoyage approfondi des WC, abattant, réservoir extérieur et surfaces accessibles", min: 15 } ] }
       ],
       elements: [
         { id: "fenetres", lib: "Fenêtres : vitres intérieures, rebords et rails", aide: "Nombre de fenêtres.", min: 6, quantite: true },
@@ -646,12 +650,16 @@ var LIMPID_CONFIG_DEFAUT = {
       ],
       options: [],
       exclusions: [
-        "Faces extérieures des vitres : prestation Vitres, chiffrée à part",
+        "Intérieur des placards, penderies, tiroirs et autres rangements",
+        "Intérieur des fours, réfrigérateurs, congélateurs et autres appareils ; vidage et dégivrage",
+        "Volets roulants, stores et démontage des équipements",
+        "Faces extérieures des vitres : hors forfait sauf option de vitrerie extérieure expressément retenue",
         "Vaisselle, lessive et repassage",
-        "Déplacement de meubles lourds",
+        "Déplacement de meubles lourds et rangement des effets personnels",
         "Rangement important ou désencombrement",
-        "Détachage spécialisé des textiles : prestation Textiles, chiffrée à part",
-        "Surfaces en hauteur nécessitant un équipement spécifique",
+        "Détachage spécialisé des textiles : prestation distincte",
+        "Surfaces non accessibles ou en hauteur nécessitant un équipement particulier",
+        "Décapage, restauration des matériaux, détartrage lourd ou traitement des moisissures",
         "Ménage après travaux ou fin de chantier"
       ],
       creditImpot: true
@@ -1143,6 +1151,19 @@ var LimpidMoteur = (function () {
     delete s.v660Comptage; delete s.v660F1; delete s.v660F2; delete s.v660Cotes;
     delete s.verandaOn;
     return s;
+  }
+  /* Qualification complémentaire : ne change jamais les unités ni le moteur.
+     Elle conserve les ouvertures physiques dans LIMPID1 même lors d'une demande multi-services. */
+  function qualificationLimpid664(id,s) {
+    var of=offre(id), r=S(id), map={interieur:"int",exterieur:"ext",int_ext:"int_ext"};
+    if(!of) return null;
+    var detail=r.v660Comptage==="ouvertures", cotes=detail?(map[r.v660Cotes]||""):"";
+    var f=detail?{unBattant:n(r.v660F1),deuxBattants:n(r.v660F2),velux:0}:null;
+    if(of.type==="vitres") return {comptage:detail?"ouvertures":"faces",fenetres:f,cotes:cotes,faces:(s.elements||{}).faces||0};
+    if(of.type==="menage"&&!aVitres()&&((s.options||{}).opt_fenetres||0)+((s.options||{}).opt_baies||0)+((s.options||{}).opt_baies_p||0)+((s.options||{}).opt_baies_g||0)>0)
+      return {vitrerieOption:{comptage:detail?"ouvertures":"faces",fenetres:f,cotes:cotes,faces:(s.options||{}).opt_fenetres||0,
+        baiesP:(s.options||{}).opt_baies_p||0,baies:(s.options||{}).opt_baies||0,baiesG:(s.options||{}).opt_baies_g||0}};
+    return null;
   }
   function estimation(id) { var s = saisie(id); return s.type ? LimpidMoteur.estimer(s) : { minutes: 0, raisons: [] }; }
   function heuresChoisies(id) { return E.mode === "manuel" ? n(E.heures[id]) : 0; }
@@ -1768,7 +1789,7 @@ var LimpidMoteur = (function () {
     var c = communeChoisie();
     var demandes = choisies().map(function (o) {
       var id = o.id, s = saisie(id);
-      return { offre: id, lib: o.lib, saisie: s,
+      return { offre: id, lib: o.lib, saisie: s, qualification: qualificationLimpid664(id,s),
         duree: { mode: E.mode, heures: heuresChoisies(id), priorites: (E.mode === "manuel" ? (E.priorites[id] || []) : []).join(", "), perimetre: "",
                  exclues: E.mode === "manuel" ? (LimpidMoteur.perimetre(s).retires || []).join(" ; ") : "" },
         estimation: { minutes: Math.round(estimation(id).minutes || 0) } };
@@ -1778,7 +1799,7 @@ var LimpidMoteur = (function () {
     var camp = {}; try { camp = JSON.parse(sessionStorage.getItem("limpid_campagne") || "{}"); } catch (e) {}
     var d0 = demandes[0] || {};
     var demande = { v: 2, id: E.id, parcours: SERVICE, type: "devis", test: TEST, date: new Date().toISOString(), client: client, demandes: demandes,
-      offre: d0.offre, saisie: d0.saisie, duree: d0.duree, estimation: d0.estimation, configVersion: cfg().version, attribution: camp };
+      offre: d0.offre, saisie: d0.saisie, qualification: d0.qualification || null, duree: d0.duree, estimation: d0.estimation, configVersion: cfg().version, attribution: camp };
     var libs = choisies().map(function (o) { return o.court; }).join(" + ");
     var rt = routage();
     var sujet = "[CONFIGURATEUR] " + libs + " · " + (E.commune || E.cp) + " · " + E.id;
