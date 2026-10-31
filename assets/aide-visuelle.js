@@ -11,8 +11,8 @@
   var D = {
     vitres: { nom: 'Vitres et vérandas', items: [
       ['Fenêtre classique', 'Fenêtre entière : ne la confondez pas avec une baie.', 'vitres-01.webp'],
-      ['Petite baie (1 vantail)', 'Une petite porte ou baie vitrée.', 'vitres-02.webp'],
-      ['Baie standard (2 vantaux)', 'Une baie entière, avec ses deux panneaux.', 'vitres-03.webp'],
+      ['Petite baie / porte-fenêtre (1 vantail)', 'Une ouverture vitrée simple.', 'vitres-02.webp'],
+      ['Baie / porte-fenêtre (2 vantaux)', 'Une ouverture avec deux panneaux.', 'vitres-03.webp'],
       ['Grande baie (3 vantaux et +)', 'Une grande ouverture complète.', 'vitres-04.webp'],
       ['Petit Velux accessible', 'Uniquement si les deux côtés peuvent être nettoyés depuis l’intérieur, en sécurité.', 'vitres-05.webp'],
       ['Véranda', 'Renseignez sa surface au sol. Les parois seules sont concernées ; la toiture est exclue.', 'vitres-06.webp'],
@@ -110,7 +110,7 @@
     var d=makeModal();
     d.querySelectorAll('[data-guide]').forEach(function(b){var on=b.dataset.guide===k;b.classList.toggle('is-active',on);b.setAttribute('aria-pressed',on?'true':'false');});
     var c=d.querySelector('#lmv-contenu');c.replaceChildren();
-    var p=elt('p','lmv-hint',k==='vitres'?'Sur le configurateur vitres, comptez chaque ouverture une seule fois. Dans le formulaire général /devis/, le champ « faces vitrées » suit encore une autre unité : lisez toujours son indication.':k==='grand'?'Seules les prestations sélectionnées et les surfaces accessibles sont comprises.':'Ces images sont des exemples pour vous aider à répondre. Les prestations effectivement prévues seront précisées dans votre devis.');
+    var p=elt('p','lmv-hint',k==='vitres'?'Comptez chaque ouverture physique une seule fois : le moteur calcule les faces techniques et la durée. Les brouillons plus anciens peuvent conserver leur ancien comptage.':k==='grand'?'Seules les prestations sélectionnées et les surfaces accessibles sont comprises.':'Ces images sont des exemples pour vous aider à répondre. Les prestations effectivement prévues seront précisées dans votre devis.');
     c.appendChild(p);c.appendChild(cards(k));
     c.appendChild(elt('p','lmv-foot','En cas de doute, décrivez votre besoin ou proposez une photo lorsque cette option est disponible.'));
   }
@@ -134,9 +134,9 @@
   function pcPlan(kind,title){
     if(kind==='vitres'){
       if(title==='Que souhaitez-vous faire nettoyer ?')return ['vitres',[0,2,5],'Choisissez vos vitrages sans compter deux fois la même ouverture.'];
-      if(title==='Combien de fenêtres et portes-fenêtres ?')return ['vitres',[0,4,1],'Petit Velux : nettoyage intégral possible depuis l’intérieur uniquement. Les grands modèles ou ceux exigeant un accès extérieur complexe ne sont pas pris en charge automatiquement.'];
-      if(title==='Combien de baies vitrées ?')return ['vitres',[1,2,3],'Une baie = une ouverture complète, même si elle possède plusieurs vantaux. Ne la recomptez pas dans les fenêtres.'];
-      if(title==='Votre véranda')return ['vitres',[5,2],'Surface au sol en m² : parois vitrées uniquement. La toiture est exclue ; ne recomptez pas les baies de la véranda.'];
+      if(title==='Combien de fenêtres classiques ?')return ['vitres',[0,4,1],'Petit Velux : nettoyage intégral possible depuis l’intérieur uniquement. Les grands modèles ou ceux exigeant un accès extérieur complexe ne sont pas pris en charge automatiquement.'];
+      if(title==='Combien de baies et portes-fenêtres ?')return ['vitres',[1,2,3],'Une baie = une ouverture complète, même si elle possède plusieurs vantaux. Ne la recomptez pas dans les fenêtres.'];
+      if(title==='Votre véranda')return ['vitres',[5],'Une estimation de la surface au sol suffit. Parois vitrées uniquement ; toiture exclue. Ne recomptez pas les baies de la véranda.'];
       if(title==='Quelles faces faut-il nettoyer ?')return ['vitres',[0,2],'Choisissez intérieur, extérieur ou les deux. Le nombre d’ouvertures ne change pas.'];
       if(title==='Votre logement')return ['vitres',[4,0],'Les petits Velux ne sont pris en charge que si les deux faces sont accessibles en sécurité depuis l’intérieur.'];
     }
@@ -144,7 +144,7 @@
       if(title==='Votre logement')return ['menage',[0,5],'Indiquez les niveaux pour faciliter l’estimation.'];
       if(title==='Sa surface et ses pièces')return ['menage',[2,1],'Une surface approximative est suffisante pour commencer.'];
       if(title==='À quel rythme ?')return ['menage',[3,9],'Une intervention dure au minimum deux heures.'];
-      if(title==='Que souhaitez-vous ?')return ['menage',[0,1,4],'Les vitres sont une prestation supplémentaire : ici, le champ « faces vitrées » doit être rempli selon sa définition, et non en nombre de fenêtres.'];
+      if(title==='Que souhaitez-vous ?')return ['menage',[0,1,4],'Comptez les fenêtres et les baies, pas les faces vitrées : la conversion technique est automatique.'];
       if(title==='Quelques précisions')return ['menage',[6,7,5],'Les animaux et le tabac sont à signaler pour une estimation juste.'];
     }
     if(kind==='bureaux'){
@@ -178,7 +178,7 @@
     var z=document.getElementById('f-description');if(!z||!z.children.length||z.querySelector('[data-guide-role="inline"]'))return;
     var chosen=selectedDevis();if(!chosen.length)return;
     var key=chosen[0];
-    var note=key==='vitres'?'Attention : dans ce formulaire général, les faces vitrées ne sont pas des fenêtres. Une fenêtre à deux battants, lavée des deux côtés, compte 4 faces. Pour un petit Velux, utilisez les précisions du devis : aucun compteur Velux dédié n’existe encore ici.':'Les images facilitent le repérage ; le calcul suit les champs et unités affichés dans ce formulaire.';
+    var note=key==='vitres'?'Comptez chaque fenêtre et chaque baie une seule fois ; le moteur assure la conversion des faces techniques. Pour un petit Velux accessible depuis l’intérieur, précisez-le dans votre message.':'Les images facilitent le repérage ; le calcul suit les champs et unités affichés dans ce formulaire.';
     var w=banner(key,chooseDefault(key),note,chosen);z.insertBefore(w,z.firstChild);
   }
   function start(){

@@ -312,6 +312,7 @@ body[data-tunnel="configurateur"] footer{padding-bottom:90px}
 <script src="/assets/mesure.js" defer></script>
 <script src="/assets/campagne.js" defer></script>
 <link rel="stylesheet" href="/assets/aide-visuelle.css">
+<link rel="stylesheet" href="/assets/navigation-v660.css">
 </head>
 <body data-tunnel="configurateur">
 <div class="cf-test" id="cf-test" hidden>MODE TEST : demande marquée [TEST], aucune conversion comptée</div>
@@ -1080,7 +1081,7 @@ var LimpidMoteur = (function () {
   /* ---------- État, conservé pendant la visite ---------- */
   function saisieVide() {
     return { frequence: "", perimetre: "complet", surface: "", surfacePart: "", pieces: {}, elements: {}, options: {}, tachesOff: [],
-      niveau: 1, acces: "plainpied", encombrement: "normal", verandaOn: false };
+      niveau: 1, acces: "plainpied", encombrement: "normal", verandaOn: false, v660Comptage: "ouvertures", v660Cotes: "int_ext" };
   }
   function etatVide() {
     return { etape: 1, cp: "", commune: "", adresse: "", profil: "particulier", offres: [], ss: {}, mode: "auto", heures: {}, priorites: {},
@@ -1130,6 +1131,16 @@ var LimpidMoteur = (function () {
       if (!s.verandaOn) delete s.elements.veranda;
       if (aVitres()) EL_VITRES_GRAND.forEach(function (k) { delete s.elements[k]; });
     }
+    if (o.type === 'vitres') {
+      s.elements = s.elements || {};
+      if (s.v660Comptage === 'ouvertures' || !n(s.elements.faces))
+        s.elements.faces = (n(s.v660F1) + 2 * n(s.v660F2)) * (s.v660Cotes === 'interieur' || s.v660Cotes === 'exterieur' ? 1 : 2);
+    }
+    if (o.type === 'menage' && s.options && !aVitres()) {
+      if (s.v660Comptage === 'ouvertures' || !n(s.options.opt_fenetres))
+        s.options.opt_fenetres = (n(s.v660F1) + 2 * n(s.v660F2)) * (s.v660Cotes === 'interieur' || s.v660Cotes === 'exterieur' ? 1 : 2);
+    }
+    delete s.v660Comptage; delete s.v660F1; delete s.v660F2; delete s.v660Cotes;
     delete s.verandaOn;
     return s;
   }
@@ -1342,7 +1353,14 @@ var LimpidMoteur = (function () {
         }
       } else if (t === "vitres") {
         x += '<div class="cf-compteurs">';
-        P.elements.forEach(function (e) { x += compteur(id + ".elements." + e.id, e.lib, e.aide || "", e.surface ? 5 : 1); });
+        P.elements.forEach(function (e) {
+          if (e.id === 'faces' && (S(id).v660Comptage === 'ouvertures' || !n((S(id).elements || {}).faces))) {
+            x += '<p class="cf-mention">Comptez les fenêtres, pas les faces : conversion automatique dans votre devis.</p>';
+            x += compteur(id + '.v660F1','Fenêtres à 1 battant','Une fenêtre complète',1);
+            x += compteur(id + '.v660F2','Fenêtres à 2 battants','Une fenêtre complète',1);
+            x += choix(id + '.v660Cotes','Côtés à nettoyer',[['int_ext','Intérieur + extérieur'],['interieur','Intérieur seulement'],['exterieur','Extérieur seulement']]);
+          } else x += compteur(id + '.elements.' + e.id, e.lib, e.aide || '', e.surface ? 5 : 1);
+        });
         x += '</div>' + choix(id + ".niveau", "État des vitres", NIVEAUX);
         x += coche(id + ".hauteur", "Vitrages en hauteur", "Accessibles seulement à l'échelle ou à la perche : nous vérifions la sécurité avant de chiffrer.");
       } else if (t === "textile") {
@@ -1381,6 +1399,13 @@ var LimpidMoteur = (function () {
           x += '<div class="cf-piece"><h3>Options</h3>';
           opts.forEach(function (op) {
             if (op.id === "opt_veranda") { x += veranda(id, id + ".options.opt_veranda", "Véranda"); return; }
+            if (op.id === 'opt_fenetres' && (S(id).v660Comptage === 'ouvertures' || !n((S(id).options || {}).opt_fenetres))) {
+              x += '<p class="note">Indiquez le nombre de fenêtres ; les faces sont calculées automatiquement.</p>';
+              x += compteur(id+'.v660F1','Fenêtres à 1 battant','1 ouverture',1);
+              x += compteur(id+'.v660F2','Fenêtres à 2 battants','1 ouverture',1);
+              x += choix(id+'.v660Cotes','Côtés à nettoyer',[['int_ext','Intérieur + extérieur'],['interieur','Intérieur seulement'],['exterieur','Extérieur seulement']]);
+              return;
+            }
             if (op.quantite) x += '<div style="margin-bottom:6px">' + compteur(id + ".options." + op.id, op.lib, op.desc || "", 1) + '</div>';
             else x += '<label class="cf-coche"><input type="checkbox" data-opt="' + id + '|' + op.id + '"' + (S(id).options[op.id] ? " checked" : "") + '><span class="l">' + esc(op.lib) + '<small>' + esc(op.desc || "") + '</small></span></label>';
           });
@@ -1564,7 +1589,7 @@ var LimpidMoteur = (function () {
     rendreEtape(et);
     if (et === 6) ev("configurateur_recapitulatif", { prestation: listeOffres() });
     if (et !== 8) ev("config_step_view", { step: NOM_ETAPE[et] || String(et) });
-    var main = $("cf"); if (main && main.scrollIntoView && window.scrollY > main.offsetTop) main.scrollIntoView({ behavior: "smooth", block: "start" });
+    var main = $("cf"); if (main && window.scrollY > main.offsetTop + 180) window.scrollTo({ top: Math.max(0, main.offsetTop - 100), behavior: "instant" });
   }
   function rendreEtape(et) {
     if (et === 1) rendreLocalisation();

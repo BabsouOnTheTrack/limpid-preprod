@@ -280,6 +280,7 @@ body.pc-en-cours .appel-mobile{display:none}
 <script src="/assets/mesure.js" defer></script>
 <script src="/assets/campagne.js" defer></script>
 <link rel="stylesheet" href="/assets/aide-visuelle.css">
+<link rel="stylesheet" href="/assets/navigation-v660.css">
 </head>
 <body data-tunnel="b2b">
 <div class="pc-test" id="pc-test" hidden>MODE TEST : demande marquée [TEST], aucune conversion publicitaire</div>
@@ -1243,7 +1244,7 @@ window.LIMPID_PARCOURS = (function () {
     $("pc-suite").textContent = E.retourRecap && x ? "Retour au récapitulatif" : (ec === "recap" ? "Envoyer ma demande de devis" : (ec === "rappel" ? "Être rappelé" : "Continuer"));
     var t = $("pc-titre") || z.querySelector("h2");
     if (t && E.ecran !== "accueil") { try { t.focus({ preventScroll: true }); } catch (e2) {} }
-    var app = $("pc-app"); if (app && window.scrollY > app.offsetTop) app.scrollIntoView({ block: "start" });
+    var app = $("pc-app"); if (app && window.scrollY > app.offsetTop + 180) window.scrollTo({ top: Math.max(0, app.offsetTop - 100), behavior: "instant" });
     if (ec === "adresse") brancherAdresse();
   }
   /* Le bouton Retour du navigateur ramène à l'écran précédent du parcours. */
