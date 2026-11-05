@@ -19,8 +19,8 @@ function init(){
   var m=make('div','lx4-hero-media');m.setAttribute('aria-hidden','true');
   var img=make('img','lx4-hero-main');img.src=p[0];img.alt='';img.loading='eager';img.decoding='async';m.appendChild(img);
   var dimg=make('img','lx4-hero-detail');dimg.src=p[1];dimg.alt='';dimg.loading='lazy';dimg.decoding='async';m.appendChild(dimg);
-  var seal=make('div','lx4-hero-seal',p[2]);seal.prepend(make('span',null,'LIMPID / VOSGES'));m.appendChild(seal);
-  m.appendChild(make('div','lx4-hero-index',p[3]));hero.appendChild(m);
+  // Keep the images; omit slide-like decorative labels and counters.
+  hero.appendChild(m);
  }
  // Editorial numbering omitted at user request; headings and native structures remain untouched.
  // A discreet conversion reminder, only after reading the page, no automatic action.
