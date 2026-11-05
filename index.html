@@ -1,89 +1,287 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#0B2545">
-  <meta name="robots" content="noindex,nofollow">
-  <title>Limpid Experience — Prototype de la nouvelle page d'accueil</title>
-  <meta name="description" content="Prototype non publié de la nouvelle expérience Limpid : entretien professionnel, ménage, vitres et devis guidé à Épinal et dans les Vosges.">
-  <link rel="icon" type="image/png" href="./assets/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="preload" href="./assets/hero-baies-vitrees-propres.webp" as="image" fetchpriority="high">
-  <link rel="stylesheet" href="./experience/experience.css">
-  <script defer src="./experience/experience.js"></script>
-</head>
-<body>
-<a class="skip" href="#main">Aller au contenu</a>
-<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;overflow:hidden"><defs>
-  <symbol id="spark" viewBox="0 0 24 24"><path d="M12 0 14.2 9.2 23.5 12 14.2 14.8 12 24 9.8 14.8.5 12 9.8 9.2Z"/></symbol>
-  <symbol id="phone" viewBox="0 0 24 24"><path d="M8 3H4.8a2 2 0 0 0-2 2.3C4 14.8 9.2 20 18.7 21.2a2 2 0 0 0 2.3-2V16l-5-2-2.2 2.3a15 15 0 0 1-6.1-6.1L10 8Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/></symbol>
-  <symbol id="building" viewBox="0 0 24 24"><path d="M3 21V5l8-3v19M11 8h10v13M3 21h19M7 7v2m0 3v2m0 3v2m8-8v2m4-2v2m-4 3v2m4-2v2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></symbol>
-  <symbol id="home" viewBox="0 0 24 24"><path d="m3 11 9-8 9 8v10H3zM9 21v-7h6v7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></symbol>
-  <symbol id="panes" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 3v18M3 12h18" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
-  <symbol id="calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M7 2v6m10-6v6M3 10h18" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
-  <symbol id="check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
-</defs></svg>
-<header class="site-header" id="site-header">
-  <div class="wrap header-inner">
-    <a class="brand" href="#top" aria-label="Limpid, retour à l'accueil"><img class="brand-logo-original" src="./assets/logo-limpid.webp" alt="Limpid" width="150" height="70"><span class="brand-descriptor">Nettoyage professionnel &amp; domicile</span></a>
-    <nav class="desktop-nav" aria-label="Navigation principale">
-      <a href="#prestations">Nos prestations</a><a href="#realisations">Le résultat</a><a href="#engagements">Nos engagements</a><a href="#entreprise">Qui sommes-nous ?</a>
-    </nav>
-    <div class="header-right"><a class="phone-link" href="tel:+33626556569"><svg viewBox="0 0 24 24"><use href="#phone"/></svg>06 26 55 65 69</a><a class="btn primary head-cta" href="#demande">Décrire mon besoin <span class="arr">↗</span></a><button type="button" class="hamburger" id="nav-open" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">☰</button></div>
-  </div>
-</header>
-<div id="menu-shade" class="mobile-backdrop" hidden></div>
-<nav class="drawer" id="mobile-menu" aria-label="Navigation mobile" aria-hidden="true">
-  <div class="drawer-top"><span class="brand"><img class="brand-logo-original" src="./assets/logo-limpid.webp" alt="Limpid" width="150" height="70"></span><button type="button" id="nav-close" class="drawer-close" aria-label="Fermer le menu">×</button></div>
-  <a href="#prestations">Nos prestations</a><a href="#realisations">Le résultat</a><a href="#engagements">Nos engagements</a><a href="#entreprise">Qui sommes-nous ?</a><a href="#questions">Vos questions</a><a class="btn primary" href="#demande">Préparer ma demande ↗</a><a href="tel:+33626556569">Nous appeler · 06 26 55 65 69</a>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Entreprise de nettoyage à Épinal (Vosges) | Limpid, avis 5,0/5</title>
+<meta content="Nettoyage professionnel de bureaux, commerces et copropriétés à Épinal, Darnieulles et dans les Vosges. Créneaux adaptés, organisation claire, tarif sans surprise. Devis gratuit sous 48h. Note Google 5,0." name="description"/>
+<link href="https://limpid-nettoyage.fr/" rel="canonical"/>
+<link href="/assets/favicon.png" rel="icon" type="image/png"/>
+<meta content="Entreprise de nettoyage à Épinal (Vosges) | Limpid, avis 5,0/5" property="og:title"/>
+<meta content="Nettoyage professionnel de bureaux, commerces et copropriétés à Épinal, Darnieulles et dans les Vosges. Créneaux adaptés, organisation claire, tarif sans surprise. Devis gratuit sous 48h. Note Google 5,0." property="og:description"/>
+<meta content="https://limpid-nettoyage.fr/assets/hero-baies-vitrees-propres.webp" property="og:image"/>
+<meta content="website" property="og:type"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&amp;family=Public+Sans:wght@400;600;700&amp;display=swap" rel="preload"/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&amp;family=Public+Sans:wght@400;600;700&amp;display=swap" media="print" onload="this.media='all'" rel="stylesheet"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&amp;family=Public+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/></noscript>
+<style>
+:root{--bleu:#1A56DB;--encre:#0B2545;--cyan:#4CC9F0;--glace:#EEF6FB;--gris:#5A7184;--blanc:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Public Sans',system-ui,sans-serif;color:var(--encre);background:var(--blanc);line-height:1.65;font-size:17px}
+h1,h2,h3{font-family:'Nunito',sans-serif;font-weight:800;line-height:1.2;color:var(--encre)}
+h1{font-size:clamp(1.7rem,4.5vw,2.6rem)}
+h2{font-size:clamp(1.35rem,3vw,1.8rem);margin-bottom:.7em}
+h3{font-size:1.12rem}
+p{margin-bottom:1em}
+a{color:var(--bleu)}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+.wrap.large{max-width:1260px}
+/* Header */
+header.site{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid #E3EEF5}
+.nav{display:flex;align-items:center;gap:18px;padding:10px 20px;max-width:1120px;margin:0 auto}
+.nav .logo img{height:56px;width:auto}
+.nav ul{display:flex;gap:4px;list-style:none;margin-left:auto;align-items:center;flex-wrap:wrap}
+.nav a{color:var(--encre);text-decoration:none;font-weight:600;font-size:.92rem;padding:8px 10px;border-radius:8px}
+.nav a:hover{background:var(--glace);color:var(--bleu)}
+.nav .cta{background:var(--bleu);color:#fff!important;border-radius:99px;padding:10px 18px;font-family:'Nunito';font-weight:800}
+.nav .cta:hover{background:#1443AE}
+details.menu{position:relative}
+details.menu summary{list-style:none;cursor:pointer;font-weight:600;font-size:.92rem;padding:8px 10px;border-radius:8px;color:var(--encre)}
+details.menu summary::-webkit-details-marker{display:none}
+details.menu summary:hover{background:var(--glace);color:var(--bleu)}
+details.menu[open] summary{background:var(--glace)}
+details.menu ul{position:absolute;top:110%;left:0;background:#fff;border:1px solid #E3EEF5;border-radius:12px;box-shadow:0 10px 30px rgba(11,37,69,.12);padding:8px;min-width:290px;display:block}
+details.menu ul a{display:block;padding:9px 12px;font-size:.9rem}
+.burger{display:none;cursor:pointer;padding:10px;margin-left:auto;border-radius:8px;background:none;border:none}
+.burger span{display:block;width:24px;height:3px;background:var(--encre);border-radius:2px;margin:5px 0;transition:transform .25s,opacity .25s}
+/* Etoile signature */
+.star{display:inline-block;width:1em;height:1em;vertical-align:-0.12em}
+ul.etoiles{list-style:none;margin:0 0 1em}
+ul.etoiles li{padding-left:1.7em;position:relative;margin-bottom:.55em}
+ul.etoiles li::before{content:"";position:absolute;left:0;top:.28em;width:1.05em;height:1.05em;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%234CC9F0" d="M12 0c1.2 6.8 4 9.6 12 12-8 2.4-10.8 5.2-12 12-1.2-6.8-4-9.6-12-12 8-2.4 10.8-5.2 12-12z"/></svg>') no-repeat center/contain}
+/* Hero */
+.hero{position:relative;background:linear-gradient(rgba(11,37,69,.55),rgba(11,37,69,.35)),url('/assets/hero-baies-vitrees-propres.webp') center/cover;color:#fff;text-align:center;padding:88px 20px}
+@media(max-width:820px){.hero{background-image:linear-gradient(rgba(11,37,69,.55),rgba(11,37,69,.35)),url('/assets/hero-baies-mobile.webp')}}
+.hero h1{color:#fff;max-width:760px;margin:0 auto 14px}
+.hero p{max-width:640px;margin:0 auto 26px;font-size:1.12rem}
+.hero .actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--bleu);color:#fff;text-decoration:none;font-family:'Nunito';font-weight:800;padding:14px 26px;border-radius:99px;font-size:1rem;border:none;cursor:pointer}
+.btn:hover{background:#1443AE}
+.btn.blanc{background:#fff;color:var(--bleu)}
+.btn.tel{background:var(--cyan);color:var(--encre)}
+.btn.tel:hover{background:#7BDCF6}
+.btn.blanc:hover{background:var(--glace)}
+/* Sections */
+section{padding:56px 0}
+section.glace{background:var(--glace)}
+.eyebrow{font-family:'Nunito';font-weight:800;letter-spacing:.1em;text-transform:uppercase;font-size:.78rem;color:var(--bleu);margin-bottom:8px}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;align-items:center}
+.carte{background:#fff;border:1px solid #E3EEF5;border-radius:16px;padding:26px;box-shadow:0 2px 10px rgba(11,37,69,.05)}
+.carte h3{margin-bottom:8px}
+.carte a.lien{font-weight:700;text-decoration:none}
+/* Garantie */
+.garantie{background:var(--encre);color:#EAF4FA;border-radius:20px;padding:34px 30px}
+.garantie h2{color:#fff}
+.garantie .g3{margin-top:18px;grid-template-columns:repeat(4,1fr)}
+.garantie .item strong{display:block;color:#fff;font-family:'Nunito';font-weight:800;font-size:1.08rem;margin-bottom:6px}
+.garantie .item{font-size:.95rem;color:#D9E9F3}
+/* Preuve / avis */
+.avis{background:#fff;border-left:4px solid var(--cyan);border-radius:0 14px 14px 0;padding:18px 22px;box-shadow:0 2px 10px rgba(11,37,69,.05);margin-bottom:16px}
+.avis .qui{font-weight:700;font-size:.88rem;color:var(--gris);margin-top:6px;margin-bottom:0}
+.note{font-family:'Nunito';font-weight:800;color:var(--encre)}
+figure.photo{border-radius:16px;overflow:hidden;box-shadow:0 6px 24px rgba(11,37,69,.12)}
+figure.photo figcaption{font-size:.82rem;color:var(--gris);padding:8px 4px 0}
+.badge{display:inline-block;background:var(--cyan);color:var(--encre);font-family:'Nunito';font-weight:800;font-size:.78rem;padding:4px 12px;border-radius:99px;margin-bottom:10px}
+/* Prix */
+.prix{background:var(--glace);border-radius:16px;padding:22px 26px;margin:1.2em 0}
+.prix .montant{font-family:'Nunito';font-weight:800;font-size:1.6rem;color:var(--bleu)}
+/* FAQ */
+details.faq{background:#fff;border:1px solid #E3EEF5;border-radius:12px;padding:16px 20px;margin-bottom:10px}
+details.faq summary{font-weight:700;cursor:pointer;font-family:'Nunito'}
+details.faq p{margin:10px 0 0}
+/* CTA final */
+.cta-final{text-align:center;background:linear-gradient(150deg,var(--bleu),#1443AE);color:#fff;border-radius:20px;padding:44px 26px}
+.cta-final h2{color:#fff}
+.cta-final p{max-width:560px;margin:0 auto 22px}
+.cta-final p:last-child{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:0}
+.cta-final p:last-child .btn{margin:0}
+/* Formulaire */
+form.devis{display:grid;gap:14px;max-width:520px}
+form.devis label{font-weight:700;font-size:.92rem}
+form.devis input,form.devis select,form.devis textarea{width:100%;padding:12px 14px;border:1px solid #C9DCE8;border-radius:10px;font-family:inherit;font-size:1rem;margin-top:5px}
+form.devis input:focus,form.devis select:focus,form.devis textarea:focus{outline:2px solid var(--cyan);border-color:var(--bleu)}
+/* Footer */
+footer.site{background:var(--encre);color:#BFD6E4;padding:44px 0 90px;font-size:.92rem}
+footer.site a{color:#fff;text-decoration:none}
+footer.site a:hover{text-decoration:underline}
+footer .g3{gap:30px}
+footer .fico{width:15px;height:15px;vertical-align:-2px;margin-right:7px;stroke:var(--cyan);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+footer .copy{text-align:center;margin-top:26px;padding-top:16px;border-top:1px solid rgba(191,214,228,.25);font-size:.82rem;color:#8AA9BC}
+footer h3{color:#fff;font-size:1rem;margin-bottom:10px}
+/* Barre d'appel mobile */
+.appel-mobile{display:none}
+@media(max-width:820px){
+ header.site{backdrop-filter:none;background:#fff}
+ .garantie .g3{grid-template-columns:1fr}
+ .burger{display:block}
+ .nav > ul{position:fixed;top:0;right:0;bottom:0;height:100vh;height:100dvh;width:min(82vw,330px);background:#fff;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:2px;margin:0;padding:84px 18px 24px;box-shadow:-12px 0 30px rgba(11,37,69,.18);transform:translateX(105%);visibility:hidden;transition:transform .28s ease,visibility .28s;overflow-y:auto;z-index:55}
+ .nav.ouvert ul{transform:none;visibility:visible}
+ .nav.ouvert .burger{position:relative;z-index:56}
+ .nav.ouvert .burger span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+ .nav.ouvert .burger span:nth-child(2){opacity:0}
+ .nav.ouvert .burger span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+ .nav ul a,details.menu summary{display:block;font-size:1rem;padding:12px 10px}
+ .nav .cta{text-align:center;margin-top:10px}
+ details.menu ul{position:static;box-shadow:none;border:none;padding:0 0 0 14px;min-width:0;transform:none;visibility:visible;height:auto}
+ details.menu ul a{font-size:.95rem;padding:10px 8px}
+ .appel-mobile{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--bleu);gap:1px}
+ .appel-mobile a{flex:1;text-align:center;color:#0B2545;text-decoration:none;font-family:'Nunito';font-weight:800;font-size:.94rem;padding:15px 6px;background:var(--cyan);white-space:nowrap}
+ .appel-mobile a.second{background:#1443AE;color:#fff}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+
+/* ===== Lot 1 benchmark (25/10/2026) ===== */
+.ariane{max-width:1060px;margin:0 auto;padding:12px 20px 0;font-size:.82rem;color:var(--gris)}
+.ariane ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.ariane li+li::before{content:"›";margin-right:6px;color:var(--gris)}
+.ariane a{color:var(--bleu);text-decoration:none}.ariane a:hover{text-decoration:underline}
+.reperes{list-style:none;padding:0;margin:18px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.reperes li{background:var(--glace);color:var(--encre);border:1px solid #D7E8F4;border-radius:99px;padding:7px 13px;font-size:.86rem;font-weight:600;line-height:1.3}
+.reperes li b{color:var(--bleu)}
+.hero .reperes{justify-content:center}
+.hero .reperes li{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);color:#fff}
+.hero .reperes li b{color:#fff}
+@media(max-width:600px){.reperes{gap:6px}.reperes li{font-size:.76rem;padding:5px 10px}}
+.bandeau-devis{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;background:var(--glace);border:1px solid #D7E8F4;border-radius:16px;padding:20px 22px;margin:28px 0}
+.bandeau-devis p{margin:0;max-width:560px}
+.bandeau-devis .btn{flex:none}
+.appel-mobile a.second{flex:1.8}
+.appel-mobile a svg{width:17px;height:17px;vertical-align:-3px;margin-right:4px}
+</style>
+<noscript><style>@media(max-width:820px){.nav ul{position:static;height:auto;transform:none;visibility:visible;box-shadow:none;padding:8px 0;width:100%}.burger{display:none}}</style></noscript><link as="image" fetchpriority="high" href="/assets/hero-baies-mobile.webp" media="(max-width:820px)" rel="preload"/><link as="image" fetchpriority="high" href="/assets/hero-baies-vitrees-propres.webp" media="(min-width:821px)" rel="preload"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Limpid","image":"https://limpid-nettoyage.fr/assets/logo-limpid.webp","url":"https://limpid-nettoyage.fr/","telephone":"+33626556569","email":"bonjour@limpid-nettoyage.fr","address":{"@type":"PostalAddress","streetAddress":"5 rue des Sapins","postalCode":"88390","addressLocality":"Darnieulles","addressRegion":"Vosges","addressCountry":"FR"},"geo":{"@type":"GeoCoordinates","latitude":48.1991887,"longitude":6.3539957},"areaServed":["Darnieulles","Épinal","Golbey","Thaon-les-Vosges","Chantraine","Uxegney","Chavelot"],"priceRange":"€€","openingHours":"Mo-Fr 08:30-20:00 Sa 10:00-20:00","aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"12"}}</script>
+<script defer="" src="/assets/mesure.js"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Dans quelles communes intervenez-vous ?","acceptedAnswer":{"@type":"Answer","text":"Dans un rayon de 15 km autour de Darnieulles, sans frais de déplacement : Épinal, Golbey, Chantraine, Les Forges, Sanchey, Chaumousey, Girancourt, Uxegney, Fomerey, Domèvre-sur-Avière, Chavelot, Thaon-les-Vosges, Igney, Nomexy, Dogneville, Jeuxey, Deyvillers et Dinozé. Pour le lavage de vitres, nous intervenons aussi dans un rayon de 15 km autour d'Épinal : Arches, Archettes, Hadol, Xertigny, Pouxeux, Cheniménil… Votre commune n'y figure pas ? Appelez-nous."}},{"@type":"Question","name":"Comment obtenir un devis ?","acceptedAnswer":{"@type":"Answer","text":"Décrivez votre besoin avec notre configurateur en ligne, ou appelez-nous. Nous étudions votre demande et, si nécessaire, nous passons voir sur place : une visite sur place, un tarif sans surprise sous 48h. Le devis est gratuit, la décision vous appartient."}},{"@type":"Question","name":"Faut-il fournir le matériel ou les produits ?","acceptedAnswer":{"@type":"Answer","text":"Non. Le matériel et les produits d'entretien sont compris dans nos prestations : vous n'avez rien à fournir."}},{"@type":"Question","name":"Les particuliers bénéficient-ils du crédit d'impôt ?","acceptedAnswer":{"@type":"Answer","text":"Oui, pour nos prestations à domicile : l'État prend en charge 50 % du montant, que vous soyez imposable ou non. Avec l'avance immédiate, vous ne réglez que la moitié dès la facture."}}]}</script>
+<link href="/assets/limpid-experience-v2.css" rel="stylesheet"/>
+<link href="/assets/limpid-experience-v3-p1.css" rel="stylesheet"/>
+<link href="/assets/limpid-experience-v3-final.css" rel="stylesheet">
+</link><link href="/assets/limpid-v4-studio.css" rel="stylesheet"/></head>
+<body class="lx lx--home lx4 lx4--home v4-site v4-home" data-lx4-family="professionnels" data-lx4-target="/devis/">
+<header class="site">
+<nav aria-label="Navigation principale" class="nav">
+<a aria-label="Limpid, accueil" class="logo" href="/"><img alt="Limpid, entreprise de nettoyage dans les Vosges" height="56" src="/assets/logo-limpid.webp" style="height:56px;width:auto" width="123"/></a>
+<button aria-controls="nav-liste" aria-expanded="false" aria-label="Ouvrir le menu" class="burger" type="button"><span></span><span></span><span></span></button>
+<ul id="nav-liste">
+<li><details class="menu"><summary>Professionnels ▾</summary><ul><li><a href="/nettoyage-bureaux-epinal/">Bureaux &amp; cabinets</a></li><li><a href="/nettoyage-cabinet-medical-epinal/">Cabinets médicaux &amp; santé</a></li><li><a href="/lavage-vitrines-commerces-epinal/">Vitrines de commerces</a></li><li><a href="/nettoyage-copropriete-vosges/">Copropriétés &amp; syndics</a></li><li><a href="/nettoyage-canapes-tapis-textiles-vosges/">Canapés, tapis &amp; textiles</a></li></ul></details></li>
+<li><details class="menu"><summary>Particuliers ▾</summary><ul><li><a href="/credit-impot-menage-vosges/">Ménage &amp; crédit d'impôt</a></li><li><a href="/grand-menage-fin-de-bail-epinal/">Grand ménage &amp; fin de bail</a></li></ul></details></li>
+<li><a href="/guides/">Guides</a></li>
+<li><a href="/references/">Références</a></li>
+<li><a class="cta" href="/devis/">Configurer mon devis</a></li>
+</ul>
 </nav>
-<main id="main">
-  <section class="hero" id="top" aria-labelledby="hero-title">
-    <div class="wrap hero-grid">
-      <div class="hero-copy reveal">
-        <div class="hero-topline">Limpid · Nettoyage à Épinal & dans les Vosges</div>
-        <h1 class="hero-title" id="hero-title">La propreté se <em>voit.</em><br>La confiance se ressent.</h1>
-        <p class="hero-sub">Des espaces soignés, un suivi sans flou et des engagements concrets. Pour vos locaux professionnels comme pour votre intérieur, Limpid rend la propreté évidente.</p>
-        <div class="hero-actions"><a class="btn primary" href="#demande">Parlons de votre lieu <span class="arr">↗</span></a><a class="btn ghost" href="#realisations">Voir nos réalisations <span class="arr">↓</span></a></div>
-        <div class="hero-proofline"><span>Basé à Darnieulles</span><span class="proof-dot"></span><span>Interlocuteur direct</span><span class="proof-dot"></span><span>Devis gratuit</span></div>
-      </div>
-      <div class="hero-image-wrap reveal">
-        <img class="hero-photo" src="./assets/hero-baies-vitrees-propres.webp" width="900" height="1150" alt="Baies vitrées nettoyées lors d'une intervention Limpid" decoding="async" fetchpriority="high">
-        <div class="photo-vertical">LIMPID / REAL PROJECT / VOSGES</div>
-        <div class="hero-caption"><svg style="width:23px;height:23px;fill:#62e5e6" viewBox="0 0 24 24"><use href="#spark"/></svg><div><strong>Le résultat se voit.</strong><span>Photographie d'une intervention réelle</span></div></div>
-        <div class="hero-float" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#spark"/></svg><strong>En clair.</strong><span>Des engagements concrets, des échanges directs, un devis compréhensible.</span></div>
-      </div>
-    </div>
-    <div class="wrap hero-bottom"><span>Vosges · France <b>5 RUE DES SAPINS</b></span><span>Des engagements qui tiennent dans la durée.</span><span class="scroll-cue">Découvrir Limpid</span></div>
-  </section>
-  <section class="choice-strip" aria-label="Choisissez votre profil">
-    <div class="wrap choice-row"><div class="choice-lead"><div class="choice-icon"><svg width="24" height="24" viewBox="0 0 24 24"><use href="#spark" fill="currentColor"/></svg></div><div><strong>Un lieu, un besoin, la bonne solution.</strong><span>Choisissez ce qui vous correspond : le contenu s'adapte.</span></div></div><div class="choice-switch" role="group" aria-label="Type de visiteur"><button class="audience-button" data-audience="pro" aria-pressed="true" type="button">Je suis un professionnel</button><button class="audience-button" data-audience="home" aria-pressed="false" type="button">Je suis un particulier</button></div><a href="#prestations" class="choice-next">Explorer les prestations ↗</a></div>
-  </section>
-  <section id="realisations" class="section" aria-labelledby="portfolio-title"><div class="wrap">
-    <div class="port-head reveal"><div><span class="eyebrow">La preuve, pas la promesse</span><h2 class="h2" id="portfolio-title">Vous n'avez pas à <em>nous croire sur parole.</em></h2></div><p class="bodylarge">De vraies vitrines. De vrais chantiers. De vrais résultats dans les Vosges. Faites glisser le curseur et voyez la différence vous-même.</p></div>
-    <div class="portfolio-grid">
-      <div class="compare-card reveal"><div class="comparison" id="comparison"><img class="compare-after" src="./assets/vitres-domicile-apres.webp" alt="Vitrages après l'intervention Limpid" loading="lazy"><img class="compare-before" src="./assets/vitres-domicile-avant.webp" alt="Les mêmes vitrages avant l'intervention" loading="lazy"><div class="compare-gradient"></div><span class="compare-label before">AVANT</span><span class="compare-label after">APRÈS</span><div class="compare-track" id="compare-track"></div><div class="compare-handle" id="compare-handle">↔</div><label class="compare-input-label" for="compare-range">Déplacer la séparation entre l'avant et l'après</label><input id="compare-range" class="compare-range" type="range" min="5" max="95" value="50" aria-label="Comparer les vitrages avant et après nettoyage"></div><div class="compare-info"><strong>La transparence retrouvée.</strong><span>Vitrages · réalisation Limpid · comparaison interactive</span></div></div>
-      <div class="project-stack reveal"><a class="project-mini" href="./references/index.html" aria-label="Voir nos références, boutique à Darnieulles"><img src="./assets/vitrine-boutique-darnieulles.webp" alt="Vitrine de la boutique Un Cadeau Une Histoire à Darnieulles" loading="lazy"><div class="mini-info"><small>Commerce · Darnieulles</small><strong>Une vitrine qui met en valeur.</strong><span>Découvrir nos références ↗</span></div></a><a class="project-mini" href="./references/index.html" aria-label="Voir nos réalisations, vitrerie de restaurant"><img src="./assets/baies-vitrees-restaurant-calmosiens-darnieulles.webp" alt="Vitrages du restaurant Les Calmosiens à Darnieulles" loading="lazy"><div class="mini-info"><small>Restaurant · Darnieulles</small><strong>Un lieu accueillant, jusque dans les détails.</strong><span>Découvrir nos références ↗</span></div></a></div>
-    </div>
-    <div class="port-foot"><p>Les photographies proviennent des réalisations déjà présentes sur le site Limpid. Une comparaison avant/après ne préjuge pas du résultat de chaque intervention.</p><a class="btn ghost" href="./references/index.html">Toutes nos réalisations <span class="arr">↗</span></a></div>
-  </div></section>
-  <section class="section services-section" id="prestations" aria-labelledby="services-title"><div class="wrap"><div class="services-top reveal"><div><span class="eyebrow">À chaque espace sa solution</span><h2 class="h2" id="services-title">Une propreté qui <em>vous ressemble.</em></h2></div><p class="bodylarge" id="service-intro">Vos locaux accueillent des collaborateurs, des clients, des visiteurs. Nous adaptons l'entretien à votre activité.</p></div><div class="service-grid" id="service-grid" aria-live="polite"></div></div></section>
-  <section class="section promise" id="engagements" aria-labelledby="promise-title"><div class="wrap promise-grid"><div class="reveal"><span class="eyebrow light">La Garantie Fiabilité Limpid</span><h2 class="h2" id="promise-title">La confiance ne devrait <em>jamais être un pari.</em></h2><p class="promise-intro">Une entreprise que vous pouvez appeler. Un engagement que vous pouvez relire. Un service qui ne se cache pas derrière une plateforme.</p><span class="promise-quote">« La régularité ne devrait jamais être une surprise. »</span></div><div class="promise-list reveal"><article class="promise-item"><b>01 / LE TEMPS</b><h3>Des créneaux convenus.</h3><p>Des horaires adaptés à votre activité, décidés avec vous et respectés intervention après intervention.</p></article><article class="promise-item"><b>02 / L'ORGANISATION</b><h3>Une information claire.</h3><p>En cas d'empêchement, vous êtes prévenu et une nouvelle organisation est définie ensemble.</p></article><article class="promise-item"><b>03 / LE BUDGET</b><h3>Un tarif sans surprise.</h3><p>Le devis constitue la référence de facturation. Les interventions non réalisées ne sont pas facturées.</p></article><article class="promise-item"><b>04 / LA RELATION</b><h3>Un interlocuteur direct.</h3><p>Vous échangez directement avec le gérant, sans plateforme ni succession d'intermédiaires.</p></article></div></div></section>
-  <section class="section guide" id="demande" aria-labelledby="guide-title"><div class="wrap"><div class="guide-head reveal"><span class="eyebrow">Le premier pas, sans complication</span><h2 class="h2" id="guide-title">On commence par <em>votre besoin.</em></h2><p class="bodylarge">Quelques choix suffisent pour rejoindre le configurateur adapté. Aucun engagement, aucune estimation inventée.</p></div><div class="wizard reveal" id="wizard"><div class="wiz-steps" aria-hidden="true"><span class="wiz-step on"></span><span class="wiz-step"></span><span class="wiz-step"></span></div>
-  <div class="wizard-panel" data-step="1"><span class="wiz-kicker">Étape 01 / 03 · Votre univers</span><h3>Quel lieu souhaitez-vous entretenir ?</h3><div class="wizard-grid"><button type="button" class="wizard-option" data-wiz-audience="pro" aria-pressed="true"><span class="opt-ico">▧</span><strong>Des locaux professionnels</strong><small>Commerce, bureaux, restaurant, copropriété...</small></button><button type="button" class="wizard-option" data-wiz-audience="home" aria-pressed="false"><span class="opt-ico">⌂</span><strong>Mon domicile</strong><small>Ménage, grand nettoyage, vitres, textiles...</small></button></div></div>
-  <div class="wizard-panel" data-step="2" hidden><span class="wiz-kicker">Étape 02 / 03 · Votre besoin</span><h3>Quel est votre besoin principal ?</h3><div class="wizard-grid" id="wizard-services"></div></div>
-  <div class="wizard-panel" data-step="3" hidden><span class="wiz-kicker">Étape 03 / 03 · Votre commune</span><h3>Où se trouve le lieu à entretenir ?</h3><label for="wizard-zone" class="wiz-kicker">Commune d'intervention</label><input id="wizard-zone" list="communes-list" class="zone-field" type="text" autocomplete="address-level2" placeholder="Ex. Épinal, Golbey, Darnieulles..."><datalist id="communes-list"><option value="Darnieulles"><option value="Épinal"><option value="Golbey"><option value="Uxegney"><option value="Chantraine"><option value="Les Forges"><option value="Chavelot"><option value="Jeuxey"><option value="Thaon-les-Vosges"><option value="Arches"><option value="Hadol"></datalist><div id="zone-feedback" class="zone-feedback" aria-live="polite">Indiquez votre commune pour une indication de couverture. La faisabilité finale est confirmée par Limpid.</div><div class="wizard-result" id="wizard-summary" style="margin-top:17px"><span>Votre parcours</span><h4 id="wizard-result-title">Entretien professionnel</h4><p id="wizard-result-description">Vous pourrez détailler votre demande dans le configurateur déjà en service.</p><a class="btn primary full" href="./devis/index.html" id="wizard-go">Continuer vers mon configurateur <span class="arr">↗</span></a></div></div>
-  <div class="wizard-actions"><button class="btn ghost" type="button" id="wizard-back" hidden>← Précédent</button><span class="wizard-muted" id="wizard-step-note">Vous pourrez modifier votre sélection.</span><button class="btn primary" type="button" id="wizard-next">Continuer <span class="arr">→</span></button></div><p class="fineprint">Ce guide sert uniquement à vous orienter. Il n'envoie pas de demande et ne transmet pas encore les choix au configurateur existant. Aucun statut client n'est créé depuis cette démonstration.</p>
-  </div></div></section>
-  <section class="section human-section" id="entreprise" aria-labelledby="human-title"><div class="wrap human-grid"><div class="human-img reveal"><img src="./assets/vitrine-limpid-darnieulles.webp" alt="Vitrine et locaux de l'entreprise Limpid à Darnieulles" loading="lazy"><div class="human-img-caption"><strong>5 rue des Sapins, Darnieulles</strong><span>Une adresse réelle, un interlocuteur direct.</span></div></div><div class="reveal"><span class="eyebrow">Limpid, tout simplement</span><h2 class="h2" id="human-title">Derrière le nom, <em>quelqu'un qui répond.</em></h2><p class="bodylarge">Nous croyons que confier l'entretien de ses locaux ne devrait jamais signifier perdre le contrôle. Limpid est une entreprise locale : on sait à qui l'on parle, où la trouver et ce qui est convenu.</p><div class="human-list"><div><strong>Présence locale</strong><span>Épinal, Darnieulles, Golbey et les communes alentour.</span></div><div><strong>Relation directe</strong><span>Un interlocuteur identifié, du premier échange au suivi.</span></div><div><strong>Devis étudié</strong><span>Votre besoin réel avant le prix, sans formule automatique trompeuse.</span></div><div><strong>Service adapté</strong><span>Fréquence et intervention pensées pour votre lieu.</span></div></div><a class="btn secondary" href="./references/index.html">Découvrir Limpid à travers ses réalisations <span class="arr">↗</span></a></div></div></section>
-  <section class="section faq" id="questions"><div class="wrap faq-grid"><div class="reveal"><span class="eyebrow">Des réponses sans détour</span><h2 class="h2">Tout est plus simple <em>quand tout est clair.</em></h2><p class="bodylarge">Quelques points essentiels avant de nous confier votre projet.</p></div><div class="faq-list reveal"><details><summary>Intervenez-vous dans ma commune ?</summary><p>Notre zone habituelle couvre notamment Darnieulles, Épinal, Golbey, Chantraine, Uxegney et les communes proches. Pour d'autres communes ou pour les prestations de vitrerie, contactez-nous : nous vérifierons la faisabilité et les déplacements.</p></details><details><summary>Comment se passe une demande de devis ?</summary><p>Vous décrivez votre besoin dans le configurateur existant ou par téléphone. Nous étudions ensuite la demande ; une visite peut être nécessaire pour confirmer le périmètre, les accès et le prix. Le devis est gratuit.</p></details><details><summary>Proposez-vous des interventions régulières ?</summary><p>Oui, notamment pour les bureaux, commerces et espaces professionnels. Nous pouvons convenir d'une fréquence adaptée au lieu et à ses usages, puis la préciser dans le devis.</p></details><details><summary>Et pour le ménage à domicile ?</summary><p>Selon les prestations et les conditions légales applicables, certains services à la personne peuvent ouvrir droit à un crédit d'impôt de 50 %. Les modalités, dont l'avance immédiate lorsqu'elle est disponible, sont expliquées dans les pages dédiées.</p></details><details><summary>Dois-je fournir du matériel ?</summary><p>Le matériel et les produits nécessaires aux prestations convenues sont normalement prévus par Limpid. Les besoins particuliers et conditions d'accès sont précisés lors de l'étude.</p></details></div></div></section>
-  <section class="final"><div class="wrap"><div class="final-banner reveal"><div><span class="eyebrow light">Une conversation suffit pour commencer</span><h2>Et si votre prochain entretien devenait la partie la plus simple de votre journée ?</h2><p>Un besoin ponctuel, des locaux à entretenir régulièrement ou simplement une question ? Parlons-en.</p></div><div class="final-buttons"><a class="btn white" href="#demande">Décrire mon besoin <span class="arr">↗</span></a><a class="btn ghost" style="color:white;border-color:#6b9db4" href="tel:+33626556569">Nous appeler · 06 26 55 65 69</a></div></div></div></section>
+</header>
+<script>(function(){var n=document.querySelector('.nav'),b=document.querySelector('.burger');function fermer(){n.classList.remove('ouvert');b.setAttribute('aria-expanded','false');b.setAttribute('aria-label','Ouvrir le menu');}if(b){b.addEventListener('click',function(){var o=n.classList.toggle('ouvert');b.setAttribute('aria-expanded',o?'true':'false');b.setAttribute('aria-label',o?'Fermer le menu':'Ouvrir le menu');});}document.addEventListener('click',function(e){if(e.target.closest('#nav-liste a'))fermer();});})();</script>
+<main>
+<section class="hero-editorial"><div class="hero-copy"><div class="eyebrow"><i></i> ENTRETIEN PROFESSIONNEL &amp; DOMICILE <span>— ÉPINAL / VOSGES</span></div><h1>Des locaux<br/>impeccables,<br/><em>sans y penser.</em></h1><p>Ce que l'on remarque, c'est le résultat. Ce que vous appréciez, c'est de ne plus avoir à y penser. À Épinal et dans les Vosges.</p><div class="hero-actions"><a class="v4-cta" href="#orientation">Décrire mon besoin</a><a class="v4-text-link" href="#vision">Découvrir Limpid</a></div><div class="hero-meta"><span>01 <b>/</b> Vos espaces, notre attention</span><span>Défilez pour découvrir <b>↓</b></span></div></div><div class="hero-media"><img alt="Baies vitrées entretenues par Limpid dans les Vosges" src="/assets/hero-baies-vitrees-propres.webp"/><div class="photo-index"><span>RÉALISATION LIMPID</span><strong>Darnieulles · Vosges</strong></div><div class="photo-corner"></div></div></section>
+<section class="orientation" data-v4-orient="" id="orientation"><div class="orientation-top"><span class="section-number">01 / L'ESSENTIEL</span><h2>Quel espace<br/><em>prend-on en main ?</em></h2><p>Pas de parcours à rallonge. Choisissez votre situation et accédez directement aux bonnes questions.</p></div><div aria-label="Type de besoin" class="orientation-choice" role="tablist"><button aria-selected="true" class="choice active" data-target="pro" role="tab" type="button"><span class="choice-number">01</span><span>Je suis un professionnel</span></button><button aria-selected="false" class="choice" data-target="change" role="tab" type="button"><span class="choice-number">02</span><span>J'envisage un autre prestataire</span></button><button aria-selected="false" class="choice" data-target="dom" role="tab" type="button"><span class="choice-number">03</span><span>J'entretiens mon domicile</span></button><button aria-selected="false" class="choice" data-target="precis" role="tab" type="button"><span class="choice-number">04</span><span>J'ai un besoin ponctuel</span></button></div><div class="orientation-answer"><div><span id="type-label">VOTRE PARCOURS · PROFESSIONNELS</span><h3 id="path-title">Un entretien pensé autour de votre activité.</h3><p id="path-desc">Bureaux, commerces, copropriétés : décrivons vos locaux, vos horaires et vos priorités avant de parler d'une proposition.</p></div><a class="v4-cta v4-cta--white" href="/configurer-devis-locaux-professionnels/" id="path-link">Décrire mes locaux</a></div></section><section class="vision" id="vision"><div class="vision-caption"><span class="section-number">02 / LA DIFFÉRENCE LIMPID</span><p>Un bon nettoyage se voit.<br/>Un service bien pensé se ressent.</p><a class="text-link dark" href="/references/">Voir nos réalisations</a></div><div class="vision-headline"><h2>Tout est dans<br/><span>le détail.</span></h2><div class="vision-line"></div><p>Des espaces accueillants, un interlocuteur direct et un entretien qui s'adapte à votre quotidien. Une exigence simple, appliquée à chaque passage.</p></div></section>
+<section aria-label="Notre savoir-faire en images" class="lx-proof">
+<div class="lx-proof-inner">
+<div>
+<span class="lx-proof-kicker">Le travail parle</span>
+<h2>Le détail qui change tout.</h2>
+<p>Explorez un exemple de nettoyage de vitres réalisé par Limpid. Faites glisser le curseur pour comparer les photographies avant et après.</p>
+<a class="lx-proof-link" href="/references/">Découvrir nos réalisations →</a>
+</div>
+<div class="lx-beforeafter" style="--lx-compare:50%">
+<img alt="Vitrage avant nettoyage par Limpid" loading="lazy" src="/assets/vitres-domicile-avant.webp"/>
+<img alt="Le même vitrage après nettoyage par Limpid" class="lx-after" loading="lazy" src="/assets/vitres-domicile-apres.webp">
+<div aria-hidden="true" class="lx-compare-line"></div>
+<div aria-hidden="true" class="lx-compare-knob">‹ ›</div>
+<span class="lx-compare-tag before">Avant</span><span class="lx-compare-tag after">Après</span>
+<input aria-label="Comparer les photographies avant et après l'intervention" max="100" min="0" step="1" type="range" value="50"/>
+</img></div>
+</div>
+</section>
+<section style="padding:34px 0"><div class="wrap large">
+<div class="garantie">
+<h2><svg aria-hidden="true" class="star" viewbox="0 0 24 24"><path d="M12 0c1.2 6.8 4 9.6 12 12-8 2.4-10.8 5.2-12 12-1.2-6.8-4-9.6-12-12 8-2.4 10.8-5.2 12-12z" fill="#4CC9F0"></path></svg> La Garantie Fiabilité Limpid</h2>
+<p>Quatre engagements écrits noir sur blanc dans chaque contrat, parce que la régularité ne devrait jamais être une surprise.</p>
+<div class="g3">
+<div class="item"><strong><svg aria-hidden="true" class="star" viewbox="0 0 24 24"><path d="M12 0c1.2 6.8 4 9.6 12 12-8 2.4-10.8 5.2-12 12-1.2-6.8-4-9.6-12-12 8-2.4 10.8-5.2 12-12z" fill="#4CC9F0"></path></svg> Créneaux adaptés</strong>Tôt le matin, après la fermeture ou en journée creuse : les jours et horaires sont définis avec vous, puis tenus passage après passage.</div>
+<div class="item"><strong><svg aria-hidden="true" class="star" viewbox="0 0 24 24"><path d="M12 0c1.2 6.8 4 9.6 12 12-8 2.4-10.8 5.2-12 12-1.2-6.8-4-9.6-12-12 8-2.4 10.8-5.2 12-12z" fill="#4CC9F0"></path></svg> Organisation claire</strong>Un empêchement ? Vous le savez avant l'heure du passage et nous reprogrammons ensemble. Une intervention non réalisée n'est jamais facturée.</div>
+<div class="item"><strong><svg aria-hidden="true" class="star" viewbox="0 0 24 24"><path d="M12 0c1.2 6.8 4 9.6 12 12-8 2.4-10.8 5.2-12 12-1.2-6.8-4-9.6-12-12 8-2.4 10.8-5.2 12-12z" fill="#4CC9F0"></path></svg> Tarif sans surprise</strong>Le tarif du devis est le tarif facturé. Pas de suppléments découverts en fin de mois.</div>
+<div class="item"><strong><svg aria-hidden="true" class="star" viewbox="0 0 24 24"><path d="M12 0c1.2 6.8 4 9.6 12 12-8 2.4-10.8 5.2-12 12-1.2-6.8-4-9.6-12-12 8-2.4 10.8-5.2 12-12z" fill="#4CC9F0"></path></svg> Interlocuteur unique</strong>Le gérant, en direct. Pas de plateforme, pas de turnover.</div>
+</div>
+</div></div></section>
+<section><div class="wrap">
+<p class="eyebrow">Professionnels</p>
+<h2>Votre métier a ses exigences. Notre entretien s'y adapte.</h2>
+<div class="g3">
+<div class="carte"><h3><svg aria-hidden="true" class="star" viewbox="0 0 24 24"><path d="M12 0c1.2 6.8 4 9.6 12 12-8 2.4-10.8 5.2-12 12-1.2-6.8-4-9.6-12-12 8-2.4 10.8-5.2 12-12z" fill="#4CC9F0"></path></svg> Bureaux &amp; cabinets</h3><p>Sols, sanitaires, surfaces et points de contact, en dehors de vos horaires et à jours fixes.</p><a class="lien" href="/nettoyage-bureaux-epinal/">Nettoyage de bureaux →</a></div>
+<div class="carte"><h3><svg aria-hidden="true" class="star" viewbox="0 0 24 24"><path d="M12 0c1.2 6.8 4 9.6 12 12-8 2.4-10.8 5.2-12 12-1.2-6.8-4-9.6-12-12 8-2.4 10.8-5.2 12-12z" fill="#4CC9F0"></path></svg> Commerces &amp; vitrines</h3><p>Votre vitrine est votre premier vendeur. Passage mensuel, résultat sans trace, tarif adapté à votre vitrine.</p><a class="lien" href="/lavage-vitrines-commerces-epinal/">Lavage de vitrines →</a></div>
+<div class="carte"><h3><svg aria-hidden="true" class="star" viewbox="0 0 24 24"><path d="M12 0c1.2 6.8 4 9.6 12 12-8 2.4-10.8 5.2-12 12-1.2-6.8-4-9.6-12-12 8-2.4 10.8-5.2 12-12z" fill="#4CC9F0"></path></svg> Copropriétés</h3><p>Parties communes entretenues à fréquence contractuelle, attestations fournies d'office aux syndics.</p><a class="lien" href="/nettoyage-copropriete-vosges/">Entretien de copropriétés →</a></div>
+</div>
+<p style="margin-top:18px">Également : <a href="/nettoyage-cabinet-medical-epinal/">cabinets médicaux et de santé</a>, <a href="/nettoyage-canapes-tapis-textiles-vosges/">nettoyage de canapés, tapis et textiles</a>.</p>
+</div></section>
+<section class="glace"><div class="wrap g2">
+<div>
+<p class="eyebrow">Ils nous font confiance</p>
+<h2><span class="note">5,0 ★</span> sur Google</h2>
+<div class="avis"><p>« Nous avons fait appel à Limpid pour le lavage de notre vitrine de magasin de cadeaux personnalisés à Darnieulles, et le résultat est juste parfait. Les vitres sont impeccables, aucune trace, intervention propre et efficace ! Un vrai pro du nettoyage, sérieux et fiable. Nous avons d'ailleurs souscrit à leur formule pour ne plus avoir à nous en soucier. Nous les recommandons chaleureusement. »</p><p class="qui">Un Cadeau Une Histoire, Darnieulles · avis Google</p></div>
+<div class="avis"><p>« Très belle expérience avec Limpid et Clément son gérant. Le travail est rigoureux, les tarifs sont clairs et l'accompagnement pour l'avance immédiate au crédit d'impôt est un vrai plus ! Ravi d'avoir trouvé un prestataire sur qui on peut vraiment compter pour un ménage et un lavage de vitres de grande qualité. »</p><p class="qui">Jean-Christophe A. · avis Google</p></div>
+<p style="margin-top:18px"><a class="btn" href="/references/">Voir nos références et avant/après</a></p>
+</div>
+<figure class="photo"><img alt="Vitrine de commerce nettoyée par Limpid à Darnieulles dans les Vosges" height="1050" loading="lazy" src="/assets/vitrine-boutique-darnieulles.webp" width="1400"/><figcaption>Vitrine entretenue chaque mois à Darnieulles</figcaption></figure>
+</div></section>
+<section><div class="wrap g2">
+<figure class="photo"><img alt="Baies vitrées parfaitement propres après le passage de Limpid" height="1600" loading="lazy" src="/assets/vitres-domicile-apres.webp" width="1200"/></figure>
+<div>
+<p class="eyebrow">Particuliers</p>
+<h2>Ménage et vitres à domicile : −50 % avec le crédit d'impôt</h2>
+<p>Ménage régulier, grand nettoyage, vitres, vérandas : nos prestations à domicile ouvrent droit au crédit d'impôt de 50 %. Avec l'avance immédiate, vous ne payez que la moitié dès la facture.</p>
+<p><a class="btn" href="/credit-impot-menage-vosges/">Comprendre le crédit d'impôt</a> <a class="btn blanc" href="/grand-menage-fin-de-bail-epinal/" style="border:1px solid #C9DCE8">Grand ménage &amp; fin de bail</a></p>
+</div>
+</div></section>
+<section class="glace"><div class="wrap g2">
+<figure class="photo"><img alt="Vitrine de Limpid, 5 rue des Sapins à Darnieulles dans les Vosges" height="1467" loading="lazy" src="/assets/vitrine-limpid-darnieulles.webp" width="1100"/></figure>
+<div>
+<p class="eyebrow">Notre adresse</p>
+<h2>Une adresse, une enseigne, un nom sur la porte</h2>
+<p>Limpid est installée au 5 rue des Sapins, à Darnieulles, derrière la vitrine que vous voyez ici. Cela paraît anodin, mais c'est ce qui compte quand on confie ses clés à quelqu'un : une entreprise qu'on peut situer, et un interlocuteur qui ne change pas, du premier devis à la dernière facture.</p>
+<p>C'est nous qui nous déplaçons. Nous venons voir vos locaux, puis vous recevez votre tarif sous 48 heures. Nous intervenons à Darnieulles, Épinal, Golbey, Uxegney, Chantraine, Thaon-les-Vosges et Chavelot, pour des commerces, des restaurants, des bureaux et des copropriétés, comme pour des particuliers.</p>
+<p><a class="btn" href="/references/">Voir nos références</a></p>
+</div>
+</div></section>
+<section class="glace"><div class="wrap"><h2>Questions fréquentes</h2><details class="faq"><summary>Dans quelles communes intervenez-vous ?</summary><p>Dans un rayon de 15 km autour de Darnieulles, sans frais de déplacement : Épinal, Golbey, Chantraine, Les Forges, Sanchey, Chaumousey, Girancourt, Uxegney, Fomerey, Domèvre-sur-Avière, Chavelot, Thaon-les-Vosges, Igney, Nomexy, Dogneville, Jeuxey, Deyvillers et Dinozé. Pour le lavage de vitres, nous intervenons aussi dans un rayon de 15 km autour d'Épinal : Arches, Archettes, Hadol, Xertigny, Pouxeux, Cheniménil… Votre commune n'y figure pas ? Appelez-nous.</p></details><details class="faq"><summary>Comment obtenir un devis ?</summary><p>Décrivez votre besoin avec notre configurateur en ligne, ou appelez-nous. Nous étudions votre demande et, si nécessaire, nous passons voir sur place : une visite sur place, un tarif sans surprise sous 48h. Le devis est gratuit, la décision vous appartient. Voir <a href="/tarif-nettoyage-epinal/">comment nous établissons votre tarif</a>.</p></details><details class="faq"><summary>Faut-il fournir le matériel ou les produits ?</summary><p>Non. Le matériel et les produits d'entretien sont compris dans nos prestations : vous n'avez rien à fournir.</p></details><details class="faq"><summary>Les particuliers bénéficient-ils du crédit d'impôt ?</summary><p>Oui, pour nos prestations à domicile : l'État prend en charge 50 % du montant, que vous soyez imposable ou non. Avec l'avance immédiate, vous ne réglez que la moitié dès la facture.</p></details></div></section>
+<section><div class="wrap"><div class="cta-final"><h2>Devis gratuit sous 48h</h2><p>Bureaux, commerce, copropriété ou domicile : décrivez votre besoin, nous passons voir, vous recevez un tarif sans surprise sous 48h.</p><p class="cta-config"><b>Notre configurateur en ligne vous guide en quelques clics.</b></p><p><a class="btn blanc" href="/devis/">Configurer mon devis gratuit</a>   <a class="btn tel" href="tel:+33626556569">📞 06 26 55 65 69</a></p></div></div></section>
 </main>
-<footer class="footer"><div class="wrap"><div class="footer-grid"><div><span class="brand">Limpid <svg class="brand-star" viewBox="0 0 24 24"><use href="#spark"/></svg></span><p>Entreprise de nettoyage professionnel et à domicile.<br>5 rue des Sapins, 88390 Darnieulles<br><a href="mailto:bonjour@limpid-nettoyage.fr">bonjour@limpid-nettoyage.fr</a> · <a href="tel:+33626556569">06 26 55 65 69</a></p></div><nav aria-label="Liens utiles"><a href="./references/index.html">Références</a><a href="./devis/index.html">Devis</a><a href="./guides/index.html">Conseils</a><a href="./mentions-legales/index.html">Mentions légales</a><a href="./politique-confidentialite/index.html">Confidentialité</a></nav></div><div class="footer-bottom"><span>© Limpid · Darnieulles, Vosges</span><span>Prototype d'expérience — version de démonstration, non destinée à la production.</span></div></div></footer>
-<div class="mobile-cta" aria-label="Accès rapide"><a href="tel:+33626556569" class="m-tel">Appeler Limpid</a><a href="#demande" class="m-main">Préparer ma demande ↗</a></div>
-</body>
+<footer class="site">
+<div class="wrap g3">
+<div>
+<h3>Limpid</h3>
+<p>Entreprise de nettoyage professionnel<br/>
+<svg aria-hidden="true" class="fico" viewbox="0 0 24 24"><path d="M12 21s-7-5.6-7-11a7 7 0 1 1 14 0c0 5.4-7 11-7 11z"></path><circle cx="12" cy="10" r="2.6"></circle></svg>5 rue des Sapins, 88390 Darnieulles<br/>
+<svg aria-hidden="true" class="fico" viewbox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"></path></svg><a href="tel:+33626556569">06 26 55 65 69</a><br/>
+<svg aria-hidden="true" class="fico" viewbox="0 0 24 24"><rect height="14" rx="2" width="18" x="3" y="5"></rect><path d="m3 7 9 6 9-6"></path></svg><a href="mailto:bonjour@limpid-nettoyage.fr">bonjour@limpid-nettoyage.fr</a></p>
+<p>Note Google : 5,0 ★</p>
+</div>
+<div>
+<h3>Professionnels</h3>
+<p><a href="/nettoyage-bureaux-epinal/">Bureaux &amp; cabinets</a><br/><a href="/nettoyage-cabinet-medical-epinal/">Cabinets médicaux &amp; santé</a><br/><a href="/lavage-vitrines-commerces-epinal/">Vitrines de commerces</a><br/><a href="/nettoyage-copropriete-vosges/">Copropriétés &amp; syndics</a><br/><a href="/nettoyage-canapes-tapis-textiles-vosges/">Canapés, tapis &amp; textiles</a></p>
+</div>
+<div>
+<h3>Zone d'intervention</h3>
+<p>Darnieulles · Épinal · Golbey · Chantraine · Les Forges · Sanchey · Chaumousey · Girancourt · Uxegney · Fomerey · Domèvre-sur-Avière · Chavelot · Thaon-les-Vosges · Igney · Nomexy · Dogneville · Jeuxey · Deyvillers · Dinozé</p>
+<p>Votre commune n'y figure pas ? Dans un rayon de 15 km autour de Darnieulles, nous intervenons sans frais de déplacement : appelez-nous.</p>
+<p>Lavage de vitres : nous intervenons aussi dans un rayon de 15 km autour d'Épinal (Arches, Archettes, Hadol, Xertigny, Pouxeux, Cheniménil…).</p>
+<p><a href="/credit-impot-menage-vosges/">Particuliers &amp; crédit d'impôt</a><br/><a href="/grand-menage-fin-de-bail-epinal/">Grand ménage &amp; fin de bail</a><br/><a href="/references/">Ils nous font confiance</a><br/><a href="/devis/">Configurer mon devis</a><br/><a href="/tarif-nettoyage-epinal/">Comment est établi votre tarif</a><br/><a href="/guides/">Nos guides pratiques</a><br/><a href="/mentions-legales/">Mentions légales</a> · <a href="/politique-confidentialite/">Confidentialité</a></p>
+</div>
+<p class="copy">© 2026 · Limpid · Tous droits réservés. · Site réalisé par <a href="https://vizibili.fr/" rel="noopener" target="_blank">ViZiBiLi</a></p>
+</div>
+</footer>
+<div class="appel-mobile">
+<a aria-label="Appeler Limpid au 06 26 55 65 69" class="tel" href="tel:+33626556569"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"></path></svg><span class="lib">Appeler</span></a>
+<a class="second" href="/devis/">Mon devis gratuit</a>
+</div>
+<script defer="" src="/assets/limpid-experience-v2.js"></script>
+<script defer="" src="/assets/limpid-experience-v3-p1.js"></script>
+<script defer="" src="/assets/limpid-experience-v3-final.js"></script>
+<script defer="" src="/assets/limpid-v4-site.js"></script></body>
 </html>
