@@ -1,0 +1,173 @@
+/* LIMPID EXPERIENCE V3-P3 — Atelier de devis (préproduction)
+   Refonte de composition + UI, avec le DOM métier strictement conservé.
+   Ne jamais sélectionner une étape masquée pour la rendre visible.
+   Priorité au CSS, JS : panneau auxiliaire décoratif seulement. */
+:root{--lxp3-ink:#0B2545;--lxp3-blue:#1A56DB;--lxp3-cyan:#4CC9F0;--lxp3-ice:#EEF6FB;--lxp3-cloud:#F6FAFD;--lxp3-line:#D9E7F1;--lxp3-sh:0 22px 75px rgba(10,44,83,.085)}
+body.lx--config,body.lx--general-devis{background:#f5f9fc!important}
+body.lx--config header.lp,body.lx--general-devis header.site{border-bottom:1px solid #E1ECF4!important;background:rgba(255,255,255,.96)!important;box-shadow:none!important}
+body.lx--config header.lp .in{max-width:1340px}
+body.lx--config main:has(#pc-app:not([hidden])){background:radial-gradient(circle at 8% 20%,rgba(76,201,240,.12),transparent 27%),radial-gradient(circle at 90% 100%,rgba(26,86,219,.06),transparent 26%),#f5f9fc}
+body.lx--config #pc-app[hidden]{display:none!important}
+/* Nouveau plan d'espace à deux zones : le contenu et ses éléments restent dans leur DOM original. */
+body.lx--config #pc-app{display:grid!important;grid-template-columns:minmax(270px,310px) minmax(0,1fr);grid-template-rows:auto auto minmax(0,1fr);column-gap:clamp(22px,3vw,44px);row-gap:0;max-width:1320px!important;margin:0 auto!important;padding:clamp(22px,3vw,44px) clamp(18px,3vw,40px) 120px!important;align-items:start}
+body.lx--config #pc-app>.lx3p3-rail{grid-column:1;grid-row:1 / span 3}
+body.lx--config #pc-app>.lx3p2-context{grid-column:2;grid-row:1}
+body.lx--config #pc-app>#pc-prog{grid-column:2;grid-row:2}
+body.lx--config #pc-app>.pc-carte{grid-column:2;grid-row:3;min-width:0}
+/* Même logique pour le configurateur multi-prestations. */
+body.lx--general-devis #cf{display:grid!important;grid-template-columns:minmax(270px,310px) minmax(0,1fr);column-gap:clamp(22px,3vw,44px);align-items:start;max-width:1320px!important;margin:0 auto!important;padding:clamp(22px,3vw,44px) clamp(18px,3vw,40px) 105px!important}
+body.lx--general-devis #cf>.lx3p3-rail{grid-column:1;grid-row:1 / span 20}
+body.lx--general-devis #cf>:not(.lx3p3-rail){grid-column:2;min-width:0}
+body.lx--general-devis #cf>.cf-etape:not(.on){display:none!important}
+body.lx--general-devis #cf>.cf-etape.on{display:block!important}
+/* Rail éditorial avec photographie originale et vraie hiérarchie, sans faux chiffres. */
+body.lx :is(#pc-app,#cf) .lx3p3-rail{position:sticky;top:96px;align-self:start;overflow:hidden;border-radius:29px;background:#0B2545;color:#fff;box-shadow:0 22px 55px rgba(11,37,69,.17);isolation:isolate}
+body.lx :is(#pc-app,#cf) .lx3p3-rail:before{content:"";position:absolute;top:-92px;right:-99px;width:245px;height:245px;border-radius:50%;border:50px solid rgba(76,201,240,.1);pointer-events:none;z-index:-1}
+body.lx :is(#pc-app,#cf) .lx3p3-railinner{padding:31px 27px 25px}
+body.lx :is(#pc-app,#cf) .lx3p3-mini{display:flex;align-items:center;gap:9px;margin-bottom:28px;color:#9feeff;font-size:11px;font-weight:900;letter-spacing:.17em;text-transform:uppercase}
+body.lx :is(#pc-app,#cf) .lx3p3-dot{height:10px;width:10px;border-radius:50%;background:#4CC9F0;box-shadow:0 0 0 5px rgba(76,201,240,.14)}
+body.lx :is(#pc-app,#cf) .lx3p3-hero{font:900 clamp(1.7rem,2.4vw,2.28rem)/1.12 Nunito,system-ui,sans-serif;letter-spacing:-.053em;margin:0 0 15px;color:#fff;max-width:260px;text-wrap:balance}
+body.lx :is(#pc-app,#cf) .lx3p3-lead{color:#d5e9f5;font-size:.875rem;line-height:1.68;margin:0 0 28px}
+body.lx :is(#pc-app,#cf) .lx3p3-railrule{height:1px;background:rgba(218,238,251,.2);margin:23px 0}
+body.lx :is(#pc-app,#cf) .lx3p3-trailtitle{font-size:11px;font-weight:900;letter-spacing:.13em;color:#8ee2f8;text-transform:uppercase;margin:0 0 16px}
+body.lx :is(#pc-app,#cf) .lx3p3-trail{display:grid;gap:17px;list-style:none;padding:0;margin:0}
+body.lx :is(#pc-app,#cf) .lx3p3-trail li{display:flex;gap:12px;align-items:center;line-height:1.35;font-weight:750;font-size:.88rem;color:#eaf6ff}
+body.lx :is(#pc-app,#cf) .lx3p3-trail b{display:inline-grid;place-items:center;border-radius:11px;background:rgba(255,255,255,.095);border:1px solid rgba(210,240,253,.19);width:34px;height:34px;flex:none;font:850 .76rem Nunito,sans-serif;color:#9ce9ff}
+body.lx :is(#pc-app,#cf) .lx3p3-progresslabel{display:flex;justify-content:space-between;align-items:center;gap:10px;color:#d7eaf7;font-size:.78rem;font-weight:750;margin-bottom:9px}
+body.lx :is(#pc-app,#cf) .lx3p3-progresslabel strong{font-size:1rem;color:#fff}
+body.lx :is(#pc-app,#cf) .lx3p3-meter{height:7px;border-radius:99px;background:rgba(255,255,255,.17);overflow:hidden}
+body.lx :is(#pc-app,#cf) .lx3p3-meter>i{display:block;background:linear-gradient(90deg,#4CC9F0,#e2faff);height:100%;width:0;transition:width .3s}
+body.lx :is(#pc-app,#cf) .lx3p3-visual{height:165px;position:relative;background:#163e6b;overflow:hidden}
+body.lx :is(#pc-app,#cf) .lx3p3-visual img{width:100%;height:100%;display:block;object-fit:cover;filter:saturate(1.06)}
+body.lx :is(#pc-app,#cf) .lx3p3-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(4,23,46,.55),transparent 80%)}
+body.lx :is(#pc-app,#cf) .lx3p3-photochip{position:absolute;z-index:1;left:20px;bottom:15px;color:#fff;font-size:.75rem;line-height:1.35;font-weight:800;max-width:220px}
+body.lx :is(#pc-app,#cf) .lx3p3-helper{margin:15px 0 0;color:#b9d6e8;font-size:.78rem;line-height:1.55}
+/* Remplacer le grand rectangle bleu P2 par un véritable bandeau éditorial discret. */
+body.lx :is(#pc-app,#cf) .lx3p2-context{background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;padding:0 0 15px!important;margin:0 0 14px!important;overflow:visible!important;color:#385879!important}
+body.lx :is(#pc-app,#cf) .lx3p2-context:after{display:none!important}
+body.lx :is(#pc-app,#cf) .lx3p2-kicker{font-size:.73rem!important;color:#1A56DB!important;margin:0 0 8px!important;letter-spacing:.16em!important}
+body.lx :is(#pc-app,#cf) .lx3p2-current{color:#153754!important;font-size:clamp(.95rem,1.5vw,1.15rem)!important;font-weight:850!important}
+body.lx :is(#pc-app,#cf) .lx3p2-subline{color:#54718a!important;font-size:.84rem!important;max-width:780px!important;margin:6px 0 0!important}
+body.lx :is(#pc-app,#cf) .lx3p2-actions{align-items:center}
+body.lx :is(#pc-app,#cf) .lx3p2-guide{box-shadow:none!important;border:1px solid #d5e5ef!important;background:#fff!important;border-radius:99px!important;color:#0B2545!important;min-height:42px!important}
+/* Barre de progression n'est plus un trait perdu. */
+body.lx--config #pc-app>#pc-prog,body.lx--general-devis #cf>.cf-prog{margin:0 0 18px!important;padding:0!important}
+body.lx :is(#pc-app,#cf) .cf-barre{height:6px!important;background:#dfeaf3!important;border-radius:999px!important}
+body.lx :is(#pc-app,#cf) .cf-barre i{background:linear-gradient(90deg,#1A56DB,#4CC9F0)!important}
+/* La vraie zone de travail : grande, ouverte, éditoriale. */
+body.lx--config #pc-app>.pc-carte,body.lx--general-devis #cf>.cf-etape.on{background:#fff!important;border:1px solid #DFEAF3!important;border-radius:28px!important;box-shadow:0 15px 55px rgba(11,37,69,.055)!important;padding:clamp(26px,4vw,54px)!important;min-width:0!important;position:relative;overflow:visible}
+body.lx--config #pc-corps #pc-titre,body.lx--general-devis #cf .cf-etape.on>h2{font:900 clamp(1.95rem,3.05vw,2.95rem)/1.11 Nunito,system-ui,sans-serif!important;letter-spacing:-.055em!important;color:#0B2545!important;margin:1px 0 15px!important;max-width:780px}
+body.lx--config #pc-corps>.cf-sous,body.lx--general-devis #cf .cf-etape.on>.cf-sous{font-size:1rem!important;line-height:1.7!important;color:#52718b!important;margin-bottom:25px!important;max-width:680px}
+body.lx :is(#pc-corps,#cf .cf-etape.on) .cf-champ{font-size:.95rem;color:#0c2c4d;letter-spacing:-.01em}
+body.lx :is(#pc-corps,#cf .cf-etape.on) :is(.cf-champ input,.cf-champ select,.cf-champ textarea){min-height:56px!important;background:#f9fcff!important;border:1.5px solid #d9e7f2!important;border-radius:14px!important;padding:14px 17px!important;box-shadow:inset 0 1px 2px rgba(11,37,69,.02)!important;transition:background .2s,border-color .2s,box-shadow .2s}
+body.lx :is(#pc-corps,#cf .cf-etape.on) :is(.cf-champ input,.cf-champ select,.cf-champ textarea):focus{background:#fff!important;border-color:#1A56DB!important;box-shadow:0 0 0 4px rgba(76,201,240,.15)!important}
+/* Sélecteurs : cartes produits plutôt que de simples boutons en rectangle. */
+body.lx--config #pc-corps .pc-choix{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px!important;margin:15px 0 26px!important}
+body.lx--config #pc-corps .pc-opt,body.lx--general-devis #cf .cf-carte{position:relative;min-height:82px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;text-align:left!important;padding:20px 20px!important;border:1.5px solid #d8e7f2!important;border-radius:18px!important;background:linear-gradient(150deg,#fff,#fafcff)!important;box-shadow:0 4px 16px rgba(11,37,69,.035)!important;font-weight:800!important;color:#0c2c4d!important;transition:box-shadow .2s,transform .2s,border-color .2s,background .2s!important}
+body.lx--config #pc-corps .pc-opt:after{content:"↗";display:grid;place-items:center;border-radius:12px;height:34px;min-width:34px;margin-left:15px;background:#ecf5fc;color:#29639e;font-size:16px;font-weight:750}
+body.lx--config #pc-corps .pc-opt.on,body.lx--general-devis #cf .cf-carte.on{background:linear-gradient(125deg,#eef6ff,#fff)!important;border:2px solid #1A56DB!important;box-shadow:0 12px 28px rgba(26,86,219,.105)!important}
+body.lx--config #pc-corps .pc-opt.on{padding:19.5px 19.5px!important}
+body.lx--config #pc-corps .pc-opt.on:after{content:"✓";background:#1A56DB;color:#fff}
+body.lx--general-devis #cf .cf-carte .ic{display:grid;place-items:center;min-height:53px;min-width:53px;border-radius:16px;background:#eef7fd}
+@media(hover:hover){body.lx--config #pc-corps .pc-opt:hover,body.lx--general-devis #cf .cf-carte:hover{box-shadow:0 13px 30px rgba(11,37,69,.1)!important;transform:translateY(-2px)!important}}
+body.lx :is(#pc-corps,#cf .cf-etape.on) .cf-seg{gap:9px!important}
+body.lx :is(#pc-corps,#cf .cf-etape.on) .cf-seg button{min-height:54px!important;border:1.5px solid #d6e6f1!important;border-radius:13px!important;padding:12px 16px!important}
+/* Aides d'origine : grandes illustrations présentes au moment utile. */
+body.lx :is(#pc-corps,#cf .cf-etape.on) .lmv-inline{margin:26px 0!important;padding:clamp(16px,2.2vw,26px)!important;background:linear-gradient(125deg,#f0f9ff,#fff 72%)!important;border:1px solid #d0e6f5!important;border-radius:23px!important;box-shadow:none!important}
+body.lx :is(#pc-corps,#cf .cf-etape.on) .lmv-inline-head{margin-bottom:18px!important;align-items:center}
+body.lx :is(#pc-corps,#cf .cf-etape.on) .lmv-inline-head strong{font:900 1.08rem/1.3 Nunito,system-ui,sans-serif!important;color:#0B2545!important}
+body.lx :is(#pc-corps,#cf .cf-etape.on) .lmv-inline-head span{font-size:.84rem!important;color:#50728d!important}
+body.lx :is(#pc-corps,#cf .cf-etape.on) .lmv-grid{gap:14px!important}
+body.lx :is(#pc-corps,#cf .cf-etape.on) .lmv-item{border-radius:17px!important;border:1px solid #d8e8f4!important;box-shadow:0 7px 17px rgba(11,37,69,.045)!important}
+body.lx :is(#pc-corps,#cf .cf-etape.on) .lmv-grid .lmv-item img,body.lx :is(#pc-corps,#cf .cf-etape.on) .lmv-grid-compact .lmv-item img{height:clamp(133px,15vw,200px)!important;background:#e8f4fa!important;object-fit:contain!important}
+body.lx :is(#pc-corps,#cf .cf-etape.on) .lmv-item figcaption{padding:14px!important;gap:6px!important}
+body.lx :is(#pc-corps,#cf .cf-etape.on) .lmv-item strong{font-size:.88rem!important;line-height:1.36!important}
+body.lx :is(#pc-corps,#cf .cf-etape.on) .lmv-inline-note{padding:14px 17px!important;border-radius:13px;background:#fff;border:1px solid #e1edf6;font-size:.85rem!important;line-height:1.58!important;margin-top:17px!important}
+body.lx :is(#pc-corps,#cf .cf-etape.on) .lmv-more{border-radius:99px!important;min-height:44px!important;font-size:.8rem!important;padding:10px 16px!important;background:#fff!important}
+/* Quantités et récapitulatifs en blocs lisibles. Les valeurs restent dans les inputs d'origine. */
+body.lx :is(#pc-corps,#cf .cf-etape.on) .cf-compteurs{gap:12px!important;margin:25px 0!important}
+body.lx :is(#pc-corps,#cf .cf-etape.on) .cf-cpt{min-height:105px!important;padding:17px 18px!important;border:1px solid #dce9f4!important;border-radius:18px!important;background:linear-gradient(150deg,#fff,#f8fbfe)!important;gap:10px!important}
+body.lx :is(#pc-corps,#cf .cf-etape.on) .cf-cpt .cf-lib{font-size:.91rem!important;font-weight:800!important;line-height:1.38!important}
+body.lx :is(#pc-corps,#cf .cf-etape.on) .cf-cpt .cf-aide{font-size:.81rem!important}
+body.lx :is(#pc-corps,#cf .cf-etape.on) .cf-pas button{border:1px solid #cde2f1!important;background:#eaf5fd!important;color:#1851a5!important;width:46px!important;height:46px!important;border-radius:14px!important;font-size:1.2rem!important}
+body.lx :is(#pc-corps,#cf .cf-etape.on) .cf-pas input{width:60px!important;height:46px!important;border:1px solid #cde2f1!important;border-radius:12px!important;background:#fff!important;text-align:center}
+body.lx :is(#pc-corps,#cf .cf-etape.on) .cf-bloc,body.lx :is(#pc-corps,#cf .cf-etape.on) .cf-piece,body.lx--config #pc-corps .pc-rub{border:1px solid #dce9f4!important;border-radius:18px!important;background:#fcfeff!important;padding:19px!important;margin-bottom:12px!important}
+body.lx :is(#pc-corps,#cf .cf-etape.on) .cf-recap,body.lx--config #pc-corps .pc-rub{box-shadow:0 6px 19px rgba(11,37,69,.03)!important}
+body.lx :is(#pc-corps,#cf .cf-etape.on) .cf-duree{background:#f0f8ff!important;border-radius:18px!important;padding:19px 21px!important}
+body.lx :is(#pc-corps,#cf .cf-etape.on) .cf-coche{min-height:48px!important;padding:11px 10px!important}
+/* Navigation : palette contrastée et barre d'action flottante sur desktop. */
+body.lx--config #pc-nav:not([hidden]){left:50%!important;right:auto!important;transform:translateX(-50%);bottom:18px!important;width:min(760px,calc(100% - 35px))!important;padding:10px 12px!important;border:1px solid #d6e6f1!important;border-radius:22px!important;box-shadow:0 18px 50px rgba(11,37,69,.20)!important;background:rgba(255,255,255,.97)!important;backdrop-filter:blur(15px)}
+body.lx--config #pc-nav .pc-nav-in{max-width:none!important}
+body.lx--config #pc-nav .btn,body.lx--general-devis #cf-nav .btn{border-radius:13px!important;min-height:54px!important;font-weight:900!important;box-shadow:none!important}
+body.lx--config #pc-nav .btn:not(.sec),body.lx--general-devis #cf-nav .btn:not(.sec){background:#1A56DB!important;color:#fff!important;box-shadow:0 8px 22px rgba(26,86,219,.23)!important}
+body.lx--general-devis #cf>.cf-tete{padding:0 0 14px!important}
+body.lx--general-devis #cf>.cf-tete h1{font:900 clamp(2.1rem,3.3vw,3.2rem)/1.1 Nunito,sans-serif!important;letter-spacing:-.05em!important;color:#0B2545!important}
+body.lx--general-devis #cf>#cf-nav{padding:17px 0!important;display:flex;justify-content:space-between;gap:14px}
+body.lx--general-devis #cf>#cf-nav button{min-height:54px!important}
+/* Avant de démarrer : le formulaire est une véritable expérience de découverte, pas un héros interchangeable. */
+body.lx--config .pc-accueil{background:#f3f9fd!important;color:#0B2545!important;min-height:600px!important;padding:clamp(80px,9vw,135px) max(24px,calc((100vw - 1300px)/2))!important;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;text-align:left!important;position:relative;overflow:hidden;isolation:isolate}
+body.lx--config .pc-accueil:before{content:"";position:absolute;z-index:-1;inset:54px 2.7vw 54px auto;width:45%;border-radius:40px;background:linear-gradient(0deg,rgba(7,30,61,.1),transparent 45%),url('/assets/hero-baies-vitrees-propres.webp') center/cover;box-shadow:0 22px 60px rgba(11,37,69,.12)}
+body.lx--config .pc-accueil:after{content:"";position:absolute;z-index:-2;border-radius:50%;width:520px;height:520px;top:-200px;left:-200px;background:radial-gradient(circle,rgba(76,201,240,.2),transparent 68%)}
+body.lx--config .pc-accueil :is(h1,p,.pc-badge,button){position:relative;z-index:1;margin-left:0!important;text-align:left!important}
+body.lx--config .pc-accueil h1{font:900 clamp(2.8rem,5vw,5.3rem)/1.03 Nunito,sans-serif!important;letter-spacing:-.067em!important;max-width:650px!important;color:#0B2545!important;text-shadow:none!important;margin-bottom:25px!important}
+body.lx--config .pc-accueil>p{max-width:540px!important;color:#42637f!important;font-size:1.06rem!important;line-height:1.73!important}
+body.lx--config .pc-accueil .pc-badge{color:#154e95!important;background:#e5f3fd!important;border:1px solid #c5e4f5!important;padding:9px 15px!important}
+body.lx--config .pc-accueil .btn{display:inline-flex!important;align-items:center;justify-content:center;background:#1A56DB!important;color:#fff!important;border-radius:17px!important;box-shadow:0 15px 35px rgba(26,86,219,.22)!important;min-height:60px!important;padding:17px 28px!important;margin-top:14px!important}
+body.lx--config .pc-accueil :is(.pc-sous-cta,.pc-confiance){font-size:.83rem!important;color:#56758d!important}
+/* Mobile : interface verticale, sans rail de 600px ni photo invasive. */
+@media(max-width:950px){
+ body.lx--config #pc-app,body.lx--general-devis #cf{grid-template-columns:1fr!important;display:block!important;max-width:820px!important;padding:20px 16px 115px!important}
+ body.lx :is(#pc-app,#cf) .lx3p3-rail{position:static!important;top:auto!important;margin:0 0 20px!important;border-radius:22px!important}
+ body.lx :is(#pc-app,#cf) .lx3p3-railinner{padding:23px 22px!important}
+ body.lx :is(#pc-app,#cf) .lx3p3-hero{font-size:1.65rem!important;max-width:none!important;margin:0 0 9px!important}
+ body.lx :is(#pc-app,#cf) .lx3p3-lead{margin:0 0 15px!important;font-size:.84rem!important}
+ body.lx :is(#pc-app,#cf) .lx3p3-trail,body.lx :is(#pc-app,#cf) .lx3p3-visual,body.lx :is(#pc-app,#cf) .lx3p3-railrule{display:none!important}
+ body.lx :is(#pc-app,#cf) .lx3p3-mini{margin-bottom:12px!important}
+ body.lx--config #pc-app>.pc-carte,body.lx--general-devis #cf>.cf-etape.on{padding:clamp(23px,5vw,38px)!important}
+ body.lx--config .pc-accueil{min-height:540px!important;padding:75px 35px!important}
+ body.lx--config .pc-accueil:before{inset:0 0 0 auto!important;width:100%!important;border-radius:0!important;opacity:.15!important;box-shadow:none!important}
+ body.lx--config .pc-accueil h1{font-size:clamp(2.6rem,7vw,4.5rem)!important;max-width:720px!important}
+}
+@media(max-width:580px){
+ body.lx--config .pc-accueil{min-height:520px!important;padding:66px 24px!important}
+ body.lx--config .pc-accueil h1{font-size:clamp(2.25rem,10vw,3.2rem)!important}
+ body.lx--config #pc-app,body.lx--general-devis #cf{padding:16px 13px 115px!important}
+ body.lx--config #pc-app>.pc-carte,body.lx--general-devis #cf>.cf-etape.on{padding:24px 17px!important;border-radius:22px!important}
+ body.lx--config #pc-corps #pc-titre,body.lx--general-devis #cf .cf-etape.on>h2{font-size:clamp(1.85rem,8vw,2.45rem)!important}
+ body.lx--config #pc-corps .pc-choix{grid-template-columns:1fr!important}
+ body.lx :is(#pc-corps,#cf .cf-etape.on) .lmv-grid,body.lx :is(#pc-corps,#cf .cf-etape.on) .lmv-grid-compact{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ body.lx :is(#pc-corps,#cf .cf-etape.on) .lmv-grid .lmv-item img{height:135px!important}
+ body.lx :is(#pc-corps,#cf .cf-etape.on) .lmv-item figcaption{padding:10px!important}
+ body.lx :is(#pc-corps,#cf .cf-etape.on) .cf-cpt{padding:14px!important}
+ body.lx :is(#pc-corps,#cf .cf-etape.on) .cf-pas button{width:43px!important;height:44px!important}
+ body.lx :is(#pc-corps,#cf) .lx3p2-line{gap:8px!important}
+ body.lx :is(#pc-corps,#cf) .lx3p2-context{padding-bottom:12px!important}
+ body.lx--config #pc-nav:not([hidden]){bottom:0!important;width:100%!important;border-radius:19px 19px 0 0!important;padding:10px 13px calc(10px + env(safe-area-inset-bottom))!important}
+}
+@media(prefers-reduced-motion:reduce){body.lx :is(#pc-app,#cf) *,body.lx :is(#pc-app,#cf) *::after{transition:none!important}}
+/* Les attributs hidden du moteur gagnent TOUJOURS sur les propriétés décoratives. */
+body.lx--config #pc-accueil[hidden],body.lx--config #pc-nav[hidden],body.lx--config #pc-app[hidden]{display:none!important}
+body.lx--general-devis #cf .cf-etape[hidden]{display:none!important}
+/* Le viewport mobile ne peut être élargi par les effets photographiques décoratifs. */
+html:has(body.lx--config),html:has(body.lx--general-devis){overflow-x:clip}
+/* Navigation V6.6.0 possède des !important de placement latéral.
+   V3-P3 remplace cette disposition visuelle, sans toucher aux boutons/handlers. */
+body.lx--config #pc-nav:not([hidden]){position:fixed!important;inset:auto auto 16px 50%!important;left:50%!important;right:auto!important;top:auto!important;bottom:16px!important;transform:translateX(-50%)!important;width:min(740px,calc(100vw - 28px))!important;max-width:none!important;height:auto!important;min-height:72px!important;margin:0!important;padding:10px 12px!important;border:1px solid #d4e5f1!important;border-radius:22px!important;background:rgba(255,255,255,.97)!important;box-shadow:0 16px 45px rgba(11,37,69,.2)!important;backdrop-filter:blur(16px)!important;z-index:90!important}
+body.lx--config #pc-nav .pc-nav-in{display:flex!important;align-items:center!important;justify-content:stretch!important;max-width:none!important;gap:12px!important}
+body.lx--config #pc-nav .btn{position:static!important;inset:auto!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;transform:none!important;width:auto!important;max-width:none!important;min-width:0!important;flex:1 1 auto!important;height:53px!important;border-radius:13px!important;margin:0!important;box-shadow:none!important}
+body.lx--config #pc-nav .btn.sec{flex:0 0 120px!important}
+body.lx--general-devis #cf>#cf-nav{position:sticky!important;inset:auto!important;top:auto!important;left:auto!important;right:auto!important;bottom:15px!important;width:100%!important;height:auto!important;min-height:75px!important;margin:10px 0!important;padding:10px 12px!important;display:flex!important;align-items:center!important;justify-content:stretch!important;gap:12px!important;z-index:50!important;background:rgba(255,255,255,.97)!important;border:1px solid #d4e5f1!important;border-radius:18px!important;box-shadow:0 12px 35px rgba(11,37,69,.11)!important;backdrop-filter:blur(14px)!important}
+body.lx--general-devis #cf>#cf-nav .btn{position:static!important;inset:auto!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;transform:none!important;width:auto!important;max-width:none!important;min-width:0!important;flex:1 1 auto!important;height:53px!important;border-radius:13px!important;margin:0!important}
+body.lx--general-devis #cf>#cf-nav .btn.sec{flex:0 0 120px!important}
+body.pc-en-cours main{padding-bottom:125px!important}
+@media(max-width:950px){
+ body.lx :is(#pc-app,#cf) .lx3p3-railinner{padding:18px 22px!important}
+ body.lx :is(#pc-app,#cf) .lx3p3-hero{font-size:1.42rem!important;line-height:1.15!important;margin:0 0 13px!important}
+ body.lx :is(#pc-app,#cf) .lx3p3-lead,body.lx :is(#pc-app,#cf) .lx3p3-trailtitle,body.lx :is(#pc-app,#cf) .lx3p3-helper{display:none!important}
+ body.lx :is(#pc-app,#cf) .lx3p3-mini{font-size:.62rem!important;margin:0 0 9px!important}
+ body.lx--config #pc-nav:not([hidden]){bottom:0!important;left:0!important;transform:none!important;width:100%!important;border-radius:20px 20px 0 0!important;padding:10px 13px calc(10px + env(safe-area-inset-bottom))!important;min-height:75px!important}
+ body.lx--config #pc-nav .btn.sec{flex:0 0 88px!important}
+ body.lx--general-devis #cf>#cf-nav .btn.sec{flex:0 0 88px!important}
+}
+/* Le formulaire multi-prestations garde ses boutons dans l'ordre naturel, après le contenu. */
+body.lx--general-devis #cf>#cf-nav{position:static!important;bottom:auto!important;top:auto!important}
