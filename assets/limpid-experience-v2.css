@@ -1,0 +1,253 @@
+/* LIMPID EXPERIENCE V2 — design layer for the original site.
+   Identité intacte. JS métier, calculs, tracking, URLs et formulaires intacts.
+   Scope: lx-* only. Load AFTER the site's styles. */
+:root{
+  --lx-navy:#0B2545;--lx-blue:#1A56DB;--lx-cyan:#4CC9F0;--lx-ice:#EEF6FB;
+  --lx-paper:#fff;--lx-ink:#0B2545;--lx-muted:#546d85;
+  --lx-line:#d8e8f3;--lx-soft:#f5f9fd;--lx-radius:24px;
+  --lx-shadow:0 18px 54px rgba(11,37,69,.085),0 2px 8px rgba(11,37,69,.035);
+  --lx-shadow-hover:0 24px 65px rgba(11,37,69,.145),0 7px 22px rgba(11,37,69,.06);
+}
+html {scroll-behavior:smooth;scroll-padding-top:85px}
+body.lx {background:#f8fbfe;color:var(--lx-ink);font-feature-settings:"kern" 1;overflow-x:clip;}
+body.lx :is(h1,h2,h3){font-family:'Nunito',system-ui,sans-serif;letter-spacing:-.034em;text-wrap:balance}
+body.lx :is(h1,h2,h3) strong{font-weight:900}
+body.lx :is(p,li){text-wrap:pretty}
+body.lx a {text-underline-offset:3px}
+body.lx :is(button,a,input,textarea,select,summary):focus-visible {outline:3px solid var(--lx-cyan)!important;outline-offset:3px}
+body.lx :is(a,button,summary) { -webkit-tap-highlight-color:transparent; }
+body.lx :is(.btn,.nav .cta, header.lp .tel) {transition:transform .23s cubic-bezier(.2,.8,.25,1),box-shadow .25s,background .25s,border-color .2s,color .2s;}
+body.lx :is(.btn,.nav .cta, header.lp .tel):hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(19,77,184,.23)}
+body.lx :is(.btn,.nav .cta, header.lp .tel):active{transform:translateY(0) scale(.988)}
+body.lx .btn:not(.blanc):not(.clair):not(.tel):not(.sec):not(.second),body.lx .nav .cta{
+  background:linear-gradient(125deg,#1553d8,#2377e8);color:#fff;box-shadow:0 8px 23px rgba(26,86,219,.19);
+}
+body.lx :is(.btn.blanc,.btn.clair){box-shadow:0 8px 24px rgba(11,37,69,.10)}
+body.lx input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]),
+body.lx select,body.lx textarea{transition:border-color .2s,box-shadow .2s,background .2s}
+body.lx input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]):focus,
+body.lx select:focus,body.lx textarea:focus{border-color:var(--lx-blue)!important;box-shadow:0 0 0 4px rgba(76,201,240,.13)!important;background:#fff}
+body.lx input[type="checkbox"],body.lx input[type="radio"],body.lx input[type="range"]{accent-color:var(--lx-blue)}
+body.lx .wrap{max-width:1100px}
+body.lx .wrap.large{max-width:1300px}
+body.lx :is(.eyebrow,.badge){letter-spacing:.12em;text-transform:uppercase;font-size:.71rem;font-weight:900}
+body.lx :is(.eyebrow,.badge):not(.lx-ignore){text-wrap:balance}
+body.lx .eyebrow{color:#116cc6}
+body.lx :is(.glace,section.glace){background:linear-gradient(180deg,#f1f8fe,#f7fbff)}
+body.lx :is(.star,.fico){flex-shrink:0}
+
+/* A single premium branded header for all standard site pages */
+body.lx header.site{background:rgba(255,255,255,.88);border-bottom:1px solid rgba(215,232,242,.92);
+  backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);
+  box-shadow:0 3px 26px rgba(11,37,69,.045)}
+body.lx .nav{max-width:1300px;min-height:78px;gap:25px;padding-inline:clamp(16px,3vw,32px)}
+body.lx .nav .logo img{height:58px;width:auto;max-width:170px;object-fit:contain}
+body.lx .nav a:not(.cta){font-size:.89rem;font-weight:700;border-radius:11px}
+body.lx .nav .cta{padding:12px 21px;border-radius:13px;font-size:.85rem}
+body.lx details.menu summary{font-weight:750;border-radius:12px}
+body.lx details.menu[open]>ul{border:1px solid var(--lx-line);border-radius:17px;box-shadow:var(--lx-shadow-hover);padding:10px;background:rgba(255,255,255,.98)}
+body.lx details.menu[open]>ul a:hover{background:var(--lx-ice)}
+body.lx header.lp{background:rgba(255,255,255,.94);border-color:#e1edf6;backdrop-filter:blur(16px)}
+body.lx header.lp .in{max-width:1160px;padding:12px clamp(18px,4vw,30px)}
+body.lx header.lp .logo img,body.lx header.lp img{object-fit:contain}
+body.lx header.lp .tel{background:var(--lx-ice);color:#0a3b66;border:1px solid #c6e4f1;border-radius:13px}
+body.lx .ariane{max-width:1150px;font-size:.79rem;padding-top:18px}
+body.lx .ariane a{font-weight:700}
+
+/* Hero identity: strong editorial typography, original photography. */
+body.lx .hero:not(.lx-nohero),body.lx .pc-accueil{
+  position:relative;isolation:isolate;overflow:hidden;
+  background-image:linear-gradient(104deg,rgba(5,25,50,.94) 0%,rgba(8,34,65,.86) 37%,rgba(11,37,69,.31) 100%),url('/assets/hero-baies-vitrees-propres.webp');
+  background-position:center,center;background-size:cover;min-height:390px;
+  text-align:left;padding:clamp(64px,8vw,108px) max(24px,calc((100vw - 1140px)/2));color:#fff;
+}
+body.lx .hero::before,body.lx .pc-accueil::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(circle 350px at var(--lx-pointer-x,85%) var(--lx-pointer-y,15%),rgba(76,201,240,.19),transparent 85%);
+}
+body.lx .hero h1,body.lx .pc-accueil h1{font-family:'Nunito',sans-serif;font-size:clamp(2.7rem,5.25vw,5rem);line-height:1.05;
+  letter-spacing:-.055em;font-weight:900;color:#fff;max-width:820px;margin:0 0 24px;text-align:left;text-shadow:0 2px 16px rgba(0,0,0,.09)}
+body.lx .hero p,body.lx .pc-accueil p{font-size:clamp(1rem,1.27vw,1.16rem);line-height:1.75;
+  max-width:650px;margin:0 0 23px;text-align:left;color:#e5f4ff}
+body.lx .hero .actions,body.lx .pc-accueil .actions{justify-content:flex-start;margin-top:24px}
+body.lx .hero .badge,body.lx .pc-accueil .pc-badge{display:inline-block;background:rgba(76,201,240,.15);color:#a5efff;border:1px solid rgba(134,226,251,.4);padding:7px 13px;border-radius:999px;margin-bottom:21px}
+body.lx .hero .reperes{justify-content:flex-start;gap:9px;margin-top:28px;max-width:780px}
+body.lx .hero .reperes li{border-color:rgba(221,247,255,.28);background:rgba(6,33,60,.5);backdrop-filter:blur(8px);padding:9px 14px}
+body.lx .hero .btn,body.lx .pc-accueil .btn{border-radius:14px;padding:14px 22px;min-height:52px}
+body.lx .hero .btn.blanc{background:#fff;color:var(--lx-blue)}
+body.lx .hero .btn.tel{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.35);color:#fff}
+body.lx .pc-accueil .pc-confiance{color:#fff}
+body.lx .pc-accueil .pc-sous-cta{color:#d6eaf9}
+
+/* Public content layout — visual replatforming, content untouched */
+body.lx--editorial main>section:not(.hero):not(.zone-form):not(.rassure),
+body.lx--home main>section:not(.hero):not(.zone-form):not(.rassure),
+body.lx--service main>section:not(.hero):not(.zone-form):not(.rassure){padding-block:clamp(55px,6.25vw,90px)!important}
+body.lx--editorial main>section:not(.hero) h2,
+body.lx--home main>section:not(.hero) h2,
+body.lx--service main>section:not(.hero) h2{
+  font-size:clamp(1.65rem,2.7vw,2.65rem);line-height:1.14;font-weight:900;letter-spacing:-.045em;margin-bottom:18px;
+}
+body.lx :is(.g2,.g3,.liste-guides,.avis-grille){gap:clamp(15px,2.1vw,26px)}
+body.lx :is(.carte,.garantie,.prix,.item,.carte-guide,.avis,.faq,.formule,.astuce,.bandeau-devis){
+  border-radius:var(--lx-radius);border-color:var(--lx-line);
+  box-shadow:var(--lx-shadow);}
+body.lx :is(.carte,.item,.carte-guide,.avis,.formule,.faq){transition:transform .3s cubic-bezier(.18,.65,.25,1),box-shadow .3s,border-color .24s,background .24s}
+@media(hover:hover){
+  body.lx :is(.carte,.item,.carte-guide,.avis,.formule):hover{transform:translateY(-5px);box-shadow:var(--lx-shadow-hover);border-color:#b4dcf2}
+}
+body.lx .garantie{background:linear-gradient(145deg,#fff,#f4faff);border:1px solid #dceaf3;
+  padding:clamp(23px,3.4vw,45px);overflow:hidden;position:relative}
+body.lx .garantie::after{content:"";pointer-events:none;position:absolute;top:-95px;right:-95px;width:260px;height:260px;border-radius:50%;border:36px solid rgba(76,201,240,.08)}
+body.lx .garantie .item{background:#fff;border:1px solid #e3eff7;padding:clamp(16px,2.5vw,24px)}
+body.lx .item strong{font-family:'Nunito',sans-serif;font-weight:900}
+body.lx .photo{border-radius:25px;overflow:hidden;box-shadow:var(--lx-shadow);border:1px solid rgba(204,226,241,.8)}
+body.lx .photo img{width:100%;object-fit:cover;transition:transform .55s ease,filter .35s ease}
+@media(hover:hover){body.lx .photo:hover img{transform:scale(1.035)}}
+body.lx .reperes:not(.hero .reperes) li{background:#eef8ff;border:1px solid #d4eaf8;border-radius:12px;padding:10px 14px}
+body.lx .reperes:not(.hero .reperes) li b{color:#075ba9}
+body.lx .cta-final{background:linear-gradient(118deg,#092744,#144b7b);color:#fff;position:relative;overflow:hidden}
+body.lx .cta-final::before{content:"";pointer-events:none;position:absolute;inset:-90px -140px auto auto;width:350px;height:350px;border-radius:50%;border:65px solid rgba(76,201,240,.08)}
+body.lx .cta-final :is(h2,h3){color:#fff}
+body.lx footer.site,body.lx footer.lp{background:#071d38;color:#c0d5e5}
+body.lx footer.site a,body.lx footer.lp a{color:#f5fbff;text-underline-offset:4px}
+body.lx .appel-mobile{box-shadow:0 -10px 38px rgba(11,37,69,.15)}
+body.lx .appel-mobile a{min-height:52px;display:flex;align-items:center;justify-content:center}
+
+/* Sitewide proof surfaces, editorial lists and articles */
+body.lx--references main>section .photo{border-radius:24px}
+body.lx--references .avis-grille .avis{border:1px solid var(--lx-line);background:#fff;padding:clamp(16px,2vw,24px)}
+body.lx .carte-guide{background:linear-gradient(145deg,#fff,#f9fcff);padding:clamp(17px,2.2vw,26px);border:1px solid #dceaf4}
+body.lx .carte-guide b{font-size:1.08rem;font-weight:900;line-height:1.3}
+body.lx .carte-guide:hover b{color:#0a77d0}
+body.lx .astuce{background:#edf8ff;border-left:4px solid var(--lx-cyan);border-radius:14px;padding:18px 23px;box-shadow:none}
+body.lx .faq{overflow:hidden;border:1px solid #ddebf4;background:#fff}
+body.lx .faq summary{cursor:pointer;transition:color .15s}
+body.lx .faq summary:hover{color:var(--lx-blue)}
+body.lx--editorial main section :is(ul,ol):not(.reperes):not(.etoiles) li{line-height:1.76}
+body.lx--legal main>section{max-width:960px;margin-inline:auto}
+body.lx--legal .hero{min-height:290px;padding-block:70px}
+
+/* High-trust service landing pages */
+body.lx--service .rassure{background:#092744;color:#e6f3ff}
+body.lx--service .rassure .c{background:#0c3156;padding:18px 19px}
+body.lx--service .rassure b{color:#fff}
+body.lx--service .formule,body.lx--service .carte{background:#fff;border:1px solid var(--lx-line)}
+body.lx--service .zone-form{background:linear-gradient(130deg,#08233f,#124772)}
+body.lx--service form.lp{border-radius:25px;box-shadow:0 22px 60px rgba(0,0,0,.13)}
+body.lx--service form.lp .choix label{border-radius:14px}
+
+/* Quote workflows: STYLE ONLY. Never override display, hidden, validation, position, progress JS. */
+body.lx--config,body.lx--general-devis{background:#f5f9fe}
+body.lx--config .pc-accueil{min-height:365px;padding-block:clamp(46px,6vw,86px)}
+body.lx--config .pc-accueil h1{font-size:clamp(2.2rem,4.6vw,4rem)}
+body.lx--config .pc-accueil p{max-width:720px}
+body.lx--config .pc-app{max-width:740px;padding-top:29px}
+body.lx--config :is(.pc-carte,.cf-etape,.pc-opt,.pc-besoin,.pc-guide,.pc-item,.pc-choix button){
+  border-radius:20px;border-color:#d9e8f3;box-shadow:0 12px 38px rgba(11,37,69,.06);
+}
+body.lx--config :is(.pc-carte,.cf-etape){background:#fff;padding:clamp(21px,3vw,32px)}
+body.lx--config :is(.pc-opt,.pc-besoin,.cf-choix label,.cf-seg button){transition:background .2s,border-color .2s,transform .2s,box-shadow .2s}
+@media(hover:hover){body.lx--config :is(.pc-opt,.pc-besoin,.cf-choix label):hover{border-color:#98cdef;box-shadow:0 10px 24px rgba(11,37,69,.085)}}
+body.lx--config .cf-prog{border-color:#e0ecf7}
+body.lx--config :is(.cf-barre,.pc-barre){border-radius:999px;background-color:#dbe9f8}
+body.lx--config .cf-nav,body.lx--general-devis .cf-nav{background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-top-color:#dce9f4}
+body.lx--config .cf-nav .btn,body.lx--general-devis .cf-nav .btn{border-radius:14px}
+body.lx--config :is(.pc-rev,.pc-confiance,.rassure .c){border-radius:16px}
+body.lx--config .pc-plus:not(.rassure):not(.glace){background:#fff}
+body.lx--config .pc-plus.glace{background:#f0f8fe}
+body.lx--config .pc-plus h2{font-size:clamp(1.5rem,2.9vw,2.2rem)}
+body.lx--config header.lp img{max-height:50px}
+body.lx--general-devis main.cf{max-width:840px;padding-block:clamp(28px,4.5vw,64px)}
+body.lx--general-devis .cf-tete{border-radius:25px}
+body.lx--general-devis .cf-etape{border:1px solid #dbe9f4;border-radius:24px;padding:clamp(22px,3vw,36px);box-shadow:var(--lx-shadow)}
+body.lx--general-devis .cf-carte,body.lx--general-devis .cf-recap{border-radius:19px;border-color:#daeaf5}
+body.lx--general-devis .cf-choix label,body.lx--general-devis .cf-seg button{border-radius:15px}
+body.lx--general-devis .cf-choix label:hover{border-color:#8ebef4}
+body.lx--general-devis .cf-zone{background:linear-gradient(140deg,#edf8ff,#f9fcff)}
+body.lx--general-devis .cf-tete h1{font-size:clamp(2.15rem,4.4vw,3.5rem);line-height:1.1;letter-spacing:-.045em}
+body.lx--general-devis :is(.cf-etape h2,.cf-zone h2){font-size:clamp(1.55rem,2.5vw,2.25rem);font-weight:900}
+
+/* Confirmation: no data changes, warm success layout */
+body.lx--thankyou{background:radial-gradient(circle at 18% 18%,#e4f8ff,transparent 42%),#f3f9fe}
+body.lx--thankyou main{padding-block:60px}
+body.lx--thankyou .carte{border-radius:30px;border:1px solid #d7e8f3;padding:clamp(25px,5vw,55px);box-shadow:var(--lx-shadow-hover)}
+body.lx--thankyou .coche{width:78px;height:78px;background:#dff7ec;box-shadow:0 8px 25px rgba(27,155,91,.1)}
+body.lx--thankyou .suite{background:#f1f9fd;border-radius:17px;padding:23px}
+
+/* Additional sitewide, non-invasive interactive moments */
+.lx-page-progress{position:fixed;top:0;left:0;width:0;height:3px;z-index:99999;pointer-events:none;
+ background:linear-gradient(90deg,var(--lx-blue),var(--lx-cyan));box-shadow:0 1px 7px rgba(76,201,240,.4);transition:width .1s linear}
+body.lx .lx-discover{background:linear-gradient(140deg,#f3f9fe,#fff);border-bottom:1px solid #dcebf6;padding:clamp(32px,4.8vw,58px) 20px}
+body.lx .lx-discover-inner{max-width:1140px;margin:auto}
+body.lx .lx-discover-kicker{font-size:.77rem;color:#0a6cb2;font-weight:900;letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px}
+body.lx .lx-discover h2{font-family:'Nunito',sans-serif;font-size:clamp(1.85rem,3vw,2.9rem);margin:0 0 9px;max-width:700px}
+body.lx .lx-discover p{max-width:680px;color:#57718b;margin-bottom:25px}
+body.lx .lx-discover-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+body.lx .lx-discover-card{display:block;text-decoration:none;color:#0b2545;padding:clamp(20px,3.6vw,31px);border-radius:22px;
+ background:#fff;border:1px solid #d7e7f3;box-shadow:var(--lx-shadow);position:relative;overflow:hidden;transition:transform .26s,box-shadow .26s,border-color .26s}
+body.lx .lx-discover-card:before{content:"";position:absolute;top:-75px;right:-65px;width:190px;height:190px;border:35px solid rgba(76,201,240,.1);border-radius:50%;pointer-events:none}
+body.lx .lx-discover-card:hover{transform:translateY(-5px);box-shadow:var(--lx-shadow-hover);border-color:#8ed3ec}
+body.lx .lx-discover-icon{font-size:1.55rem;display:flex;align-items:center;justify-content:center;height:51px;width:51px;background:#e9f7ff;border-radius:14px;margin-bottom:15px}
+body.lx .lx-discover-card b{display:block;font:900 clamp(1.14rem,1.75vw,1.45rem) 'Nunito',sans-serif;margin-bottom:9px;position:relative}
+body.lx .lx-discover-card span:not(.lx-discover-icon){display:block;color:#5b7489;font-size:.93rem;line-height:1.55;max-width:390px}
+body.lx .lx-discover-card em{display:inline-block;margin-top:18px;color:#0a62c0;font:900 .85rem 'Nunito',sans-serif;font-style:normal}
+body.lx .lx-discover-card em::after{content:' →';font-size:1.12rem}
+body.lx .lx-proof{padding:clamp(50px,6.4vw,96px) 20px;background:#fff}
+body.lx .lx-proof-inner{max-width:1140px;margin:auto;display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:clamp(30px,5vw,70px);align-items:center}
+body.lx .lx-proof h2{font-size:clamp(1.75rem,2.85vw,2.7rem);line-height:1.14;margin:8px 0 18px}
+body.lx .lx-proof p{font-size:1rem;color:#54718b;line-height:1.8}
+body.lx .lx-proof-kicker{font-size:.72rem;letter-spacing:.17em;text-transform:uppercase;color:#0b6db6;font-weight:900}
+body.lx .lx-proof .lx-proof-link{display:inline-block;margin-top:15px;color:var(--lx-blue);font-weight:900;text-decoration:none}
+body.lx .lx-beforeafter{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:1.46;box-shadow:var(--lx-shadow-hover);background:#b7d1e1;isolation:isolate}
+body.lx .lx-beforeafter img{position:absolute;inset:0;height:100%;width:100%;object-fit:cover;max-width:none}
+body.lx .lx-after{clip-path:inset(0 0 0 var(--lx-compare,50%));z-index:1}
+body.lx .lx-beforeafter .lx-compare-line{position:absolute;top:0;bottom:0;left:var(--lx-compare,50%);width:3px;z-index:2;background:#fff;box-shadow:0 0 9px rgba(0,0,0,.22);pointer-events:none}
+body.lx .lx-beforeafter .lx-compare-knob{position:absolute;left:var(--lx-compare,50%);top:50%;transform:translate(-50%,-50%);
+ width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:3;color:#0b2545;background:#fff;
+ box-shadow:0 3px 22px rgba(0,0,0,.22);pointer-events:none;font-size:1.2rem;letter-spacing:-.12em}
+body.lx .lx-beforeafter input[type=range]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;z-index:4;touch-action:pan-y}
+body.lx .lx-compare-tag{position:absolute;z-index:2;bottom:13px;border-radius:999px;padding:6px 12px;
+ background:rgba(6,24,47,.79);backdrop-filter:blur(7px);color:#fff;font:800 .78rem 'Nunito',sans-serif;pointer-events:none}
+body.lx .lx-compare-tag.before{left:13px}body.lx .lx-compare-tag.after{right:13px}
+body.lx .lx-reveal{transition:opacity .6s ease,transform .6s cubic-bezier(.15,.75,.25,1)}
+body.lx .lx-reveal.lx-enter{opacity:0;transform:translateY(14px)}
+body.lx .lx-reveal.lx-enter.lx-is-visible{opacity:1;transform:none}
+@media(max-width:900px){
+ body.lx .nav{min-height:67px;padding-inline:16px}
+ body.lx .nav .logo img{height:48px}
+ body.lx .hero,body.lx .pc-accueil{background-image:linear-gradient(105deg,rgba(5,25,50,.87),rgba(11,37,69,.42)),url('/assets/hero-baies-mobile.webp')}
+ body.lx .hero h1,body.lx .pc-accueil h1{font-size:clamp(2.15rem,7vw,3.7rem)}
+ body.lx .lx-proof-inner{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+ body.lx .hero,body.lx .pc-accueil{padding:48px 20px 60px;min-height:auto}
+ body.lx .hero h1,body.lx .pc-accueil h1{font-size:clamp(2.25rem,8.7vw,3.35rem);line-height:1.09;max-width:520px}
+ body.lx .hero p,body.lx .pc-accueil p{font-size:.97rem;line-height:1.65}
+ body.lx .hero .actions,body.lx .pc-accueil .actions{gap:10px}
+ body.lx .hero .btn{width:100%;text-align:center}
+ body.lx .hero .reperes{gap:7px}
+ body.lx .hero .reperes li{padding:7px 9px;font-size:.73rem}
+ body.lx .lx-discover-grid{grid-template-columns:1fr}
+ body.lx .lx-discover-card{padding:22px}
+ body.lx .lx-proof{padding-bottom:65px}
+ body.lx .lx-beforeafter{aspect-ratio:1.12}
+ body.lx .garantie{padding:22px}
+ body.lx .nav .cta{padding:12px}
+ body.lx--editorial main>section:not(.hero),body.lx--home main>section:not(.hero){padding-block:50px!important}
+ body.lx--config :is(.pc-carte,.cf-etape){padding:20px 16px;border-radius:18px}
+ body.lx--general-devis .cf-etape{padding:20px 17px;border-radius:20px}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ body.lx *,body.lx *::before,body.lx *::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+ body.lx .lx-reveal.lx-enter{opacity:1;transform:none}
+}
+/* Mobile menu correction: the original off-canvas menu added a 336px document overflow.
+   Keep the existing burger handlers; replace only the invisible offscreen technique. */
+body.lx :is(.btn,.nav a,details.menu summary,header.lp .tel){font-family:'Nunito',system-ui,sans-serif}
+@media(max-width:820px){
+ body.lx .nav:not(.ouvert)>ul{display:none}
+ body.lx .nav.ouvert>ul{display:flex;visibility:visible;transform:none;animation:lx-menu-enter .24s ease-out both}
+ @keyframes lx-menu-enter{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:none}}
+}

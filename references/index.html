@@ -162,8 +162,9 @@ footer h3{color:#fff;font-size:1rem;margin-bottom:10px}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Limpid","image":"https://limpid-nettoyage.fr/assets/logo-limpid.webp","url":"https://limpid-nettoyage.fr/","telephone":"+33626556569","email":"bonjour@limpid-nettoyage.fr","address":{"@type":"PostalAddress","streetAddress":"5 rue des Sapins","postalCode":"88390","addressLocality":"Darnieulles","addressRegion":"Vosges","addressCountry":"FR"},"geo":{"@type":"GeoCoordinates","latitude":48.1991887,"longitude":6.3539957},"areaServed":["Darnieulles","Épinal","Golbey","Thaon-les-Vosges","Chantraine","Uxegney","Chavelot"],"priceRange":"€€","openingHours":"Mo-Fr 08:30-20:00 Sa 10:00-20:00","aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"12"}}</script>
 <script src="/assets/mesure.js" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://limpid-nettoyage.fr/"},{"@type":"ListItem","position":2,"name":"Références","item":"https://limpid-nettoyage.fr/references/"}]}</script>
+<link rel="stylesheet" href="/assets/limpid-experience-v2.css" />
 </head>
-<body>
+<body class="lx lx--references">
 <header class="site">
  <nav class="nav" aria-label="Navigation principale">
   <a class="logo" href="/" aria-label="Limpid, accueil"><img src="/assets/logo-limpid.webp" alt="Limpid, entreprise de nettoyage dans les Vosges" width="123" height="56" style="height:56px;width:auto"></a>
@@ -187,6 +188,25 @@ footer h3{color:#fff;font-size:1rem;margin-bottom:10px}
  <h1>Ils nous font confiance, et le disent</h1>
  <p><span class="note" style="font-size:1.4rem">5,0 ★</span> sur Google. Voici ce que nos clients constatent, photos réelles à l'appui.</p>
 </div></section>
+
+<section class="lx-proof" aria-label="Notre savoir-faire en images">
+<div class="lx-proof-inner">
+  <div>
+    <span class="lx-proof-kicker">Le travail parle</span>
+    <h2>Le détail qui change tout.</h2>
+    <p>Explorez un exemple de nettoyage de vitres réalisé par Limpid. Faites glisser le curseur pour comparer les photographies avant et après.</p>
+    <a class="lx-proof-link" href="/references/">Découvrir nos réalisations →</a>
+  </div>
+  <div class="lx-beforeafter" style="--lx-compare:50%">
+    <img src="/assets/vitres-domicile-avant.webp" alt="Vitrage avant nettoyage par Limpid" loading="lazy" />
+    <img class="lx-after" src="/assets/vitres-domicile-apres.webp" alt="Le même vitrage après nettoyage par Limpid" loading="lazy" />
+    <div class="lx-compare-line" aria-hidden="true"></div>
+    <div class="lx-compare-knob" aria-hidden="true">‹ ›</div>
+    <span class="lx-compare-tag before">Avant</span><span class="lx-compare-tag after">Après</span>
+    <input aria-label="Comparer les photographies avant et après l'intervention" type="range" min="0" max="100" step="1" value="50" />
+  </div>
+</div>
+</section>
 <section class="glace"><div class="wrap g2">
  <div>
   <h2>Un Cadeau - Une Histoire · Darnieulles</h2>
@@ -272,5 +292,6 @@ footer h3{color:#fff;font-size:1rem;margin-bottom:10px}
  <a class="tel" href="tel:+33626556569" aria-label="Appeler Limpid au 06 26 55 65 69"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span class="lib">Appeler</span></a>
  <a class="second" href="/devis/">Mon devis gratuit</a>
 </div>
+<script defer src="/assets/limpid-experience-v2.js"></script>
 </body>
 </html>
