@@ -22,12 +22,7 @@ function init(){
   var seal=make('div','lx4-hero-seal',p[2]);seal.prepend(make('span',null,'LIMPID / VOSGES'));m.appendChild(seal);
   m.appendChild(make('div','lx4-hero-index',p[3]));hero.appendChild(m);
  }
- // Non-interactive numbered editorial markers; keeps headings exactly unchanged.
- var sections=d.querySelectorAll('main>section:not(.pc-accueil):not(.lx3-hub):not(.lx3-business):not(.zone-form):not(.rassure)');
- var i=0;sections.forEach(function(s){if(s.classList.contains('hero')||s.classList.contains('lx-proof'))return;var h=s.querySelector('h2');if(!h||s.querySelector('.lx4-section-number'))return;
-  var wrapper=h.closest('.wrap')||s; if(!wrapper.contains(h))return;
-  ++i;var tag=make('span','lx4-section-number','EXPERTISE / '+String(i).padStart(2,'0'));tag.setAttribute('aria-hidden','true');h.parentNode.insertBefore(tag,h);
- });
+ // Editorial numbering omitted at user request; headings and native structures remain untouched.
  // A discreet conversion reminder, only after reading the page, no automatic action.
  if(b.classList.contains('lx4--service')||b.classList.contains('lx4--editorial')){
   var target=b.getAttribute('data-lx4-target')||'/devis/';

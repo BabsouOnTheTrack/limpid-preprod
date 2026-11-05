@@ -440,3 +440,116 @@ body.v4-home .orientation-choice{scroll-margin-top:100px}
 /* V4 home hero must start directly below navigation, not inherit V3 section gutters. */
 body.lx.lx4.v4-home.lx4--home main>section.hero-editorial:first-of-type{background:#F8FAFC!important;padding:0!important;margin:0!important;min-height:0!important}
 body.lx.lx4.v4-home.lx4--home main>section.hero-editorial:first-of-type .hero-copy{padding-top:clamp(60px,6vw,100px)!important;padding-bottom:clamp(40px,5vw,72px)!important}
+
+
+/* V4-P1.1 : visual QA / content clarity — 2026-11-05
+   Fixes are strictly presentational; original business fields, IDs and handlers remain unchanged. */
+
+/* 1. Engagements: original blue-navy text palette must be restored on the now-white V4 card. */
+body.lx.v4-site main .garantie {
+ background:#fff!important;color:#304E64!important;
+ border:1px solid #D9E7F0!important;border-radius:20px!important;
+ box-shadow:0 14px 42px rgba(11,37,69,.06)!important;
+}
+body.lx.v4-site main .garantie h2,
+body.lx.v4-site main .garantie h3,
+body.lx.v4-site main .garantie .item strong{color:#0B2545!important}
+body.lx.v4-site main .garantie >p,
+body.lx.v4-site main .garantie .item,
+body.lx.v4-site main .garantie .item p,
+body.lx.v4-site main .garantie .item:not(strong){color:#3A5770!important}
+body.lx.v4-site main .garantie .g3{gap:clamp(14px,1.55vw,24px)!important}
+body.lx.v4-site main .garantie .item{
+ background:#F8FBFE!important;border:1px solid #D8E7F1!important;
+ border-radius:15px!important;min-width:0;
+ padding:clamp(18px,2vw,28px)!important;
+ line-height:1.65!important;
+}
+body.lx.v4-site main .garantie .item strong{line-height:1.38!important;margin-bottom:12px!important}
+body.lx.v4-site main .garantie .item:before{display:none!important}
+body.lx.v4-site main .garantie .star{flex:none}
+
+/* 2. Real secondary CTA: full-size accessible button, not a stray underlined link. */
+body.lx.v4-site .hero-editorial .hero-actions{flex-wrap:wrap;gap:15px!important}
+body.lx.v4-site .hero-editorial .hero-actions .v4-cta{
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ min-height:55px!important;white-space:normal!important;
+}
+body.lx.v4-site .hero-editorial .hero-actions .v4-cta--white{
+ color:#0B2545!important;background:linear-gradient(160deg,#fff,#EAF3FA)!important;
+ border:1px solid #C5DBEB!important;
+ box-shadow:inset 0 1px 0 #fff,0 4px 0 #AFC7D8,0 14px 24px rgba(15,55,88,.14)!important;
+}
+body.lx.v4-site .hero-editorial .hero-actions .v4-cta--white:hover{
+ box-shadow:inset 0 1px 0 #fff,0 7px 0 #AFC7D8,0 20px 30px rgba(15,55,88,.19)!important;
+}
+body.lx.v4-site .hero-editorial .hero-actions .v4-cta--white:active{
+ box-shadow:inset 0 2px 5px rgba(12,42,67,.09),0 1px 0 #AFC7D8!important;
+}
+
+/* 3. General quote: each selection is a three-column grid. Check stays in own slot. */
+body.lx.v4-site.lx--general-devis #f-prestations button.cf-multi{
+ display:grid!important;grid-template-columns:54px minmax(0,1fr) 24px!important;
+ gap:clamp(10px,1.4vw,17px)!important;align-items:center!important;
+ padding:16px 18px!important;min-height:112px!important;
+ text-align:left!important;position:relative!important;
+}
+body.lx.v4-site.lx--general-devis #f-prestations button.cf-multi > .ic{
+ display:grid!important;place-items:center!important;width:54px!important;height:54px!important;
+ border-radius:15px!important;background:#EEF6FB!important;font-size:1.35rem!important;
+}
+body.lx.v4-site.lx--general-devis #f-prestations button.cf-multi > span:nth-child(2){
+ display:block!important;min-width:0!important;max-width:100%!important;
+ overflow-wrap:break-word!important;
+}
+body.lx.v4-site.lx--general-devis #f-prestations button.cf-multi .cf-case{
+ position:relative!important;top:auto!important;right:auto!important;bottom:auto!important;left:auto!important;
+ margin:0!important;align-self:center!important;justify-self:end!important;
+ flex:none!important;width:24px!important;height:24px!important;
+ border-radius:7px!important;box-shadow:none!important;transform:none!important;
+}
+body.lx.v4-site.lx--general-devis #f-prestations button.cf-multi .cf-case:after{
+ left:7px!important;top:2px!important;
+}
+body.lx.v4-site.lx--general-devis #f-prestations button.cf-multi > span:nth-child(2) .d{
+ display:block!important;line-height:1.5!important;overflow-wrap:anywhere!important;
+}
+body.lx.v4-site.lx--general-devis #f-prestations button.cf-multi.on .cf-case{
+ background:#1A56DB!important;border-color:#1A56DB!important;
+}
+
+/* 4. Visual aid frames: no internal overspill. Preserve all original educational assets. */
+body.lx.v4-site :is(.lmv-inline,.lmv-modal) .lmv-item{
+ overflow:hidden!important;min-width:0!important;
+ border:1px solid #D8E7F0!important;border-radius:14px!important;
+ background:#fff!important;box-shadow:none!important;
+}
+body.lx.v4-site :is(.lmv-inline,.lmv-modal) .lmv-item img{
+ display:block!important;width:100%!important;max-width:100%!important;
+ height:clamp(118px,12vw,165px)!important;object-fit:contain!important;object-position:center!important;
+ margin:0!important;padding:8px!important;
+ background:#EFF7FC!important;box-sizing:border-box!important;
+}
+body.lx.v4-site :is(.lmv-inline,.lmv-modal) .lmv-grid{min-width:0!important}
+body.lx.v4-site :is(.lmv-inline,.lmv-modal) .lmv-item figcaption{
+ padding:12px!important;min-width:0!important;line-height:1.48!important;
+}
+
+/* 5. Comfort: prevent overflowing page copy on mobile and preserve touch target size. */
+body.lx.v4-site :is(.garantie,.cf-etape,.lmv-inline,.orientation-answer){max-width:100%;min-width:0}
+body.lx.v4-site .garantie .g3{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+@media(max-width:1200px){body.lx.v4-site .garantie .g3{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:840px){
+ body.lx.v4-site .garantie .g3{grid-template-columns:1fr!important}
+ body.lx.v4-site main .garantie{padding:clamp(22px,5vw,38px)!important}
+}
+@media(max-width:560px){
+ body.lx.v4-site .hero-editorial .hero-actions{display:flex;flex-direction:column;align-items:stretch!important;gap:15px!important;width:100%}
+ body.lx.v4-site .hero-editorial .hero-actions .v4-cta{width:100%!important;max-width:420px!important}
+ body.lx.v4-site.lx--general-devis #f-prestations button.cf-multi{
+  grid-template-columns:44px minmax(0,1fr) 24px!important;gap:10px!important;
+  min-height:92px!important;padding:12px!important;
+ }
+ body.lx.v4-site.lx--general-devis #f-prestations button.cf-multi > .ic{width:44px!important;height:44px!important}
+ body.lx.v4-site :is(.lmv-inline,.lmv-modal) .lmv-item img{height:116px!important;padding:6px!important}
+}
