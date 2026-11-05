@@ -9,7 +9,7 @@
 
   var S = '/assets/guides/';
   var D = {
-    vitres: { nom: 'Vitres et vérandas', items: [
+    vitres: { nom: 'Lavage de vitres', items: [
       ['Fenêtre classique', 'Fenêtre entière : ne la confondez pas avec une baie.', 'vitres-01.webp'],
       ['Petite baie / porte-fenêtre (1 vantail)', 'Une ouverture vitrée simple.', 'vitres-02.webp'],
       ['Baie / porte-fenêtre (2 vantaux)', 'Une ouverture avec deux panneaux.', 'vitres-03.webp'],

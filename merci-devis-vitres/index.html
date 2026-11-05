@@ -37,6 +37,22 @@ footer.lp{background:var(--encre);color:#BFD6E4;padding:24px 0;font-size:.86rem;
 footer.lp a{color:#fff}
 :focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
 </style>
+<style>.coche{position:relative;animation:lv-coche .6s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes lv-coche{0%{transform:scale(0) rotate(-30deg)}100%{transform:none}}
+.lv-confettis-m{position:absolute;left:50%;top:50%;width:0;height:0;pointer-events:none}
+.lv-confettis-m i{position:absolute;width:12px;height:12px;left:-6px;top:-6px;opacity:0;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%234CC9F0" d="M12 0c1.2 6.8 4 9.6 12 12-8 2.4-10.8 5.2-12 12-1.2-6.8-4-9.6-12-12 8-2.4 10.8-5.2 12-12z"/></svg>') center/contain no-repeat;animation:lv-eclat 1.3s cubic-bezier(.2,.7,.4,1) .35s forwards}
+.lv-confettis-m i:nth-child(3n){width:9px;height:9px;filter:hue-rotate(20deg) saturate(1.6)}
+.lv-confettis-m i:nth-child(4n){background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%231A56DB" d="M12 0c1.2 6.8 4 9.6 12 12-8 2.4-10.8 5.2-12 12-1.2-6.8-4-9.6-12-12 8-2.4 10.8-5.2 12-12z"/></svg>')}
+@keyframes lv-eclat{0%{opacity:1;transform:translate(0,0) scale(.4) rotate(0)}70%{opacity:1}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(1) rotate(var(--r))}}
+.suite ol{list-style:none!important;padding:0!important;margin:0;counter-reset:lv-s;position:relative}
+.suite ol li:not(:last-child)::after{content:"";position:absolute;left:19px;top:44px;bottom:-2px;width:3px;border-radius:3px;background:linear-gradient(var(--bleu,#1A56DB),var(--cyan,#4CC9F0));transform-origin:50% 0;animation:lv-trace .5s ease both;animation-delay:inherit}
+@keyframes lv-trace{from{transform:scaleY(0)}to{transform:none}}
+.suite ol li{position:relative;padding:8px 0 14px 56px!important;counter-increment:lv-s;animation:lv-entre .5s ease both}
+.suite ol li:nth-child(1){animation-delay:.7s}.suite ol li:nth-child(2){animation-delay:1s}.suite ol li:nth-child(3){animation-delay:1.3s}.suite ol li:nth-child(4){animation-delay:1.6s}
+.suite ol li::before{content:counter(lv-s)!important;position:absolute;left:0;top:2px;width:41px;height:41px;border-radius:50%;display:grid;place-items:center;background:#fff;border:2.5px solid var(--bleu,#1A56DB);color:var(--bleu,#1A56DB);font-family:'Nunito',sans-serif;font-weight:900;z-index:1}
+.suite ol li:first-child::before{background:var(--bleu,#1A56DB);color:#fff}
+@keyframes lv-entre{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.coche,.lv-confettis-m i,.suite ol li::after,.suite ol li{animation:none!important}.lv-confettis-m{display:none}}</style>
 <script src="/assets/mesure.js" defer></script>
 <script src="/assets/campagne.js" defer></script>
 </head>
@@ -48,7 +64,7 @@ footer.lp a{color:#fff}
 
 <main><div class="wrap">
  <div class="carte">
-  <div class="coche"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12.5 5.2 5.2L20 7"/></svg></div>
+  <div class="coche"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12.5 5.2 5.2L20 7"/></svg><span class="lv-confettis-m" aria-hidden="true"><i style="--x:70px;--y:0px;--r:0deg"></i><i style="--x:89px;--y:37px;--r:53deg"></i><i style="--x:86px;--y:86px;--r:106deg"></i><i style="--x:27px;--y:65px;--r:159deg"></i><i style="--x:0px;--y:96px;--r:212deg"></i><i style="--x:-47px;--y:113px;--r:265deg"></i><i style="--x:-49px;--y:50px;--r:318deg"></i><i style="--x:-89px;--y:37px;--r:371deg"></i><i style="--x:-122px;--y:0px;--r:424deg"></i><i style="--x:-65px;--y:-27px;--r:477deg"></i><i style="--x:-68px;--y:-68px;--r:530deg"></i><i style="--x:-47px;--y:-113px;--r:583deg"></i><i style="--x:0px;--y:-70px;--r:636deg"></i><i style="--x:37px;--y:-89px;--r:689deg"></i><i style="--x:86px;--y:-86px;--r:742deg"></i><i style="--x:65px;--y:-27px;--r:795deg"></i></span></div>
   <h1>Merci, votre demande de devis est transmise</h1>
   <p>Votre demande de devis pour le lavage de vos vitres a bien été transmise. Nous vous recontactons rapidement.</p>
   <div class="suite">
@@ -77,5 +93,6 @@ footer.lp a{color:#fff}
 })();
 </script>
 
+<script>addEventListener("load",function(){var s=document.createElement("script");s.src="/assets/limpid-vivant.js?v=20261105";document.body.appendChild(s)})</script>
 </body>
 </html>
