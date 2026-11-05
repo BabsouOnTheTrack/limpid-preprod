@@ -553,3 +553,87 @@ body.lx.v4-site .garantie .g3{grid-template-columns:repeat(4,minmax(0,1fr))!impo
  body.lx.v4-site.lx--general-devis #f-prestations button.cf-multi > .ic{width:44px!important;height:44px!important}
  body.lx.v4-site :is(.lmv-inline,.lmv-modal) .lmv-item img{height:116px!important;padding:6px!important}
 }
+
+
+/* LIMPID EXPERIENCE V4-P1.2 — shared contrast and visual-fit corrections.
+   Applies only to presentation: no change to submissions, configurator handlers or business calculations.
+   The V3 split-intro stylesheet used white translucent chips against a navy header;
+   V4 B2B uses light editorial headers, so the color system must follow the V4 surface. */
+
+/* Clear and readable reassurance pills on the FIVE light V4 service introductions.
+   Leave the two historic dark hero layouts untouched. */
+body.lx.v4-site.v4-editorial.lx4--split-intro main > section.v4-service-hero:first-of-type ul.reperes {
+  display:flex!important; flex-wrap:wrap!important; justify-content:flex-start!important;
+  align-items:stretch!important; gap:10px!important; width:100%!important;
+  max-width:100%!important; margin:24px 0 0!important; padding:0!important;
+  list-style:none!important; color:#0B2545!important;
+}
+body.lx.v4-site.v4-editorial.lx4--split-intro main > section.v4-service-hero:first-of-type ul.reperes > li {
+  display:inline-flex!important; align-items:center!important; flex-wrap:wrap!important;
+  gap:.28em!important; min-height:40px!important;
+  color:#304C64!important; background:#fff!important;
+  border:1px solid #CFDFEB!important; border-radius:999px!important;
+  padding:9px 14px!important; margin:0!important;
+  font-size:clamp(.80rem,.85vw,.91rem)!important; font-weight:600!important;
+  line-height:1.4!important; letter-spacing:0!important;
+  box-shadow:0 3px 12px rgba(11,37,69,.06)!important;
+  opacity:1!important; text-shadow:none!important; backdrop-filter:none!important;
+}
+body.lx.v4-site.v4-editorial.lx4--split-intro main > section.v4-service-hero:first-of-type ul.reperes > li b,
+body.lx.v4-site.v4-editorial.lx4--split-intro main > section.v4-service-hero:first-of-type ul.reperes > li strong {
+  color:#164BB7!important; font-weight:800!important; opacity:1!important;
+}
+
+/* Consistent photography frame and accessible caption on all site content cards.
+   Never force a crop on before/after source photos or on the original visual guides. */
+body.lx.v4-site main figure.photo {
+  display:flex!important; flex-direction:column!important; min-width:0!important;
+  max-width:100%!important; width:100%!important; margin:0!important;
+  background:#fff!important; border:1px solid #D7E5F0!important;
+  border-radius:18px!important; overflow:hidden!important;
+  box-shadow:0 9px 29px rgba(11,37,69,.09)!important;
+}
+body.lx.v4-site main figure.photo > img {
+  display:block!important; position:static!important; width:100%!important;
+  max-width:100%!important; height:auto!important;
+  margin:0!important; border:0!important;
+  transform:none!important;
+}
+body.lx.v4-site main figure.photo > figcaption {
+  display:block!important; position:static!important; flex:none!important;
+  visibility:visible!important; opacity:1!important;
+  margin:0!important; padding:13px 17px!important;
+  background:#fff!important; color:#28455C!important;
+  border-top:1px solid #E2ECF3!important;
+  font-family:'DM Sans',system-ui,sans-serif!important;
+  font-size:clamp(.86rem,.95vw,.99rem)!important;
+  line-height:1.5!important; font-weight:650!important;
+  text-shadow:none!important; text-align:left!important;
+  overflow-wrap:break-word!important;
+}
+/* Editorial photo captions on V4 hero are distinct from figures and need a readable backing. */
+body.lx.v4-site.v4-editorial :is(main>.hero,main>section.v4-service-hero:first-of-type) .v4-service-photo > span {
+  display:inline-block!important; max-width:calc(100% - 36px)!important;
+  padding:8px 12px!important; border-radius:6px!important;
+  background:rgba(7,29,55,.86)!important; color:#fff!important;
+  text-shadow:none!important; line-height:1.45!important;
+  letter-spacing:.05em!important; white-space:normal!important;
+}
+/* Layout safeguards for the readability fixes. */
+body.lx.v4-site main :is(.g2,.g3) > * {min-width:0}
+body.lx.v4-site main figure.photo img {box-sizing:border-box}
+body.lx.v4-site :is(a.v4-cta,a.btn,button.btn,button.v4-cta):focus-visible {
+  outline:3px solid #0B2545!important; outline-offset:4px!important;
+}
+@media(max-width:600px){
+ body.lx.v4-site.v4-editorial.lx4--split-intro main > section.v4-service-hero:first-of-type ul.reperes {
+  gap:8px!important; margin-top:22px!important;
+ }
+ body.lx.v4-site.v4-editorial.lx4--split-intro main > section.v4-service-hero:first-of-type ul.reperes > li {
+  padding:9px 12px!important; font-size:.84rem!important; min-height:42px!important;
+ }
+ body.lx.v4-site main figure.photo > figcaption{padding:12px 14px!important;font-size:.89rem!important}
+ body.lx.v4-site.v4-editorial :is(main>.hero,main>section.v4-service-hero:first-of-type) .v4-service-photo > span {
+  left:18px!important;bottom:18px!important;
+ }
+}
