@@ -154,156 +154,6 @@ footer h3{color:#fff;font-size:1rem;margin-bottom:10px}
 .appel-mobile a.second{flex:1.8}
 .appel-mobile a svg{width:17px;height:17px;vertical-align:-3px;margin-right:4px}
 </style>
-<style>.rf-sr{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
-.ico{width:1.25em;height:1.25em;flex:none}
-.rf-pastille{display:inline-grid;place-items:center;width:48px;height:48px;border-radius:14px;background:var(--glace);color:var(--bleu);flex:none;transition:transform .35s cubic-bezier(.3,1.6,.5,1),background .25s,color .25s}
-.rf-pastille .ico{width:24px;height:24px}
-.hero.rf-hero{padding:64px 20px 44px}
-.rf-aig{max-width:880px;margin:26px auto 0;background:rgba(255,255,255,.97);border-radius:22px;padding:20px;color:var(--encre);text-align:left;box-shadow:0 24px 60px -24px rgba(0,0,0,.5)}
-.rf-aig-q{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.05rem;margin:0 0 12px;text-align:center;max-width:none}
-.hero .rf-aig p{margin:0 0 12px;font-size:1.05rem;max-width:none}
-.rf-tetes{display:flex;gap:6px;background:var(--glace);border-radius:99px;padding:5px;margin:0 auto 16px;max-width:520px}
-.rf-tetes label{flex:1;text-align:center;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:800;font-size:.98rem;padding:11px 10px;border-radius:99px;color:var(--gris);transition:background .25s,color .25s,box-shadow .25s;display:flex;align-items:center;justify-content:center;gap:8px}
-.rf-tetes label .ico{width:20px;height:20px}
-.rf-o1:checked~* .rf-l1,.rf-o2:checked~* .rf-l2,.rf-o3:checked~* .rf-l3,.rf-o4:checked~* .rf-l4{background:#fff;color:var(--bleu);box-shadow:0 4px 14px -6px rgba(11,37,69,.35)}
-.rf-o1:focus-visible~* .rf-l1,.rf-o2:focus-visible~* .rf-l2,.rf-o3:focus-visible~* .rf-l3,.rf-o4:focus-visible~* .rf-l4{outline:3px solid var(--cyan);outline-offset:2px}
-.rf-p{display:none}
-.rf-o1:checked~* .rf-p1,.rf-o2:checked~* .rf-p2,.rf-o3:checked~* .rf-p3,.rf-o4:checked~* .rf-p4{display:block;animation:rf-entre .4s ease}
-@keyframes rf-entre{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.rf-tuiles{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.rf-tuiles a{display:flex;flex-direction:column;gap:8px;height:100%;padding:14px;border-radius:16px;border:1.5px solid #E3EEF5;text-decoration:none;color:var(--encre);background:#fff;transition:border-color .2s,transform .2s,box-shadow .2s}
-.rf-tuiles a b{font-family:'Nunito',sans-serif;font-weight:800;font-size:.98rem;line-height:1.25}
-.rf-tuiles a small{font-size:.82rem;color:var(--gris);line-height:1.4}
-.rf-tuiles a:hover,.rf-tuiles a:focus-visible{border-color:var(--cyan);transform:translateY(-3px);box-shadow:0 12px 26px -14px rgba(26,86,219,.5)}
-.rf-tuiles a:hover .rf-pastille{background:var(--bleu);color:#fff;transform:rotate(-8deg) scale(1.06)}
-.rf-aig-pied{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 18px;margin-top:16px}
-.rf-aig-pied .btn{display:inline-flex;align-items:center;gap:8px}
-.rf-aig-pied .btn .ico{width:20px;height:20px}
-.rf-lien-tel{color:var(--gris);font-size:.92rem;text-decoration:none}
-.rf-lien-tel b{color:var(--encre)}
-.rf-lien-tel:hover b{color:var(--bleu)}
-.rf-sceau-bloc{background:var(--encre);color:#D9E9F3;border-radius:24px;padding:36px 34px;display:grid;grid-template-columns:200px 1fr;gap:34px;align-items:center;position:relative;overflow:hidden}
-.rf-sceau-bloc::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;left:-150px;top:-120px;background:radial-gradient(circle,rgba(76,201,240,.18),transparent 65%)}
-.rf-sceau{position:relative;width:200px;height:200px}
-.rf-sceau-texte{position:absolute;inset:0;width:100%;height:100%;animation:rf-tourne 30s linear infinite}
-.rf-sceau-texte text{font-family:'Nunito',sans-serif;font-weight:900;font-size:13.4px;letter-spacing:2.6px;fill:var(--cyan)}
-.rf-sceau-coeur{position:absolute;inset:34px;border-radius:50%;background:linear-gradient(150deg,var(--bleu),#0E3A99);display:grid;place-items:center;align-content:center;color:#fff;box-shadow:0 0 0 6px rgba(76,201,240,.18),0 14px 30px rgba(0,0,0,.35)}
-.rf-sceau-coeur .ico{width:30px;height:30px;color:var(--cyan);animation:rf-pulse 2.6s ease-in-out infinite}
-.rf-sceau-coeur b{font-family:'Nunito',sans-serif;font-size:2.4rem;font-weight:900;line-height:1}
-.rf-sceau-coeur small{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#BFE7F7}
-@keyframes rf-tourne{to{transform:rotate(360deg)}}
-@keyframes rf-pulse{50%{transform:scale(1.2) rotate(45deg)}}
-.rf-sceau-contenu{position:relative}
-.rf-sceau-contenu h2{color:#fff;margin-bottom:.35em}
-.rf-engs{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.rf-eng{display:grid;grid-template-columns:44px 1fr;column-gap:12px;align-items:start;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:14px;font-size:.93rem;line-height:1.5;transition:background .25s,border-color .25s,transform .25s}
-.rf-eng:hover{background:rgba(255,255,255,.09);border-color:rgba(76,201,240,.45);transform:translateY(-2px)}
-.rf-eng-ico{grid-row:span 2;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(76,201,240,.16);color:var(--cyan)}
-.rf-eng-ico .ico{width:22px;height:22px}
-.rf-eng strong{color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:1.04rem}
-.rf-cartes{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
-.rf-carte{position:relative;background:#fff;border:1.5px solid #E3EEF5;border-radius:18px;padding:22px;transition:border-color .2s,transform .2s,box-shadow .2s;display:flex;flex-direction:column;gap:10px}
-.rf-carte h3{margin:0}
-.rf-carte p{margin:0}
-.rf-carte .lien{margin-top:auto;font-weight:700;text-decoration:none;display:inline-flex;gap:6px;align-items:center}
-.rf-carte .lien .ico{width:18px;height:18px;transition:transform .2s}
-a.rf-carte{text-decoration:none;color:inherit}
-.rf-carte:hover{border-color:#BFE7F7;transform:translateY(-4px);box-shadow:0 16px 34px -18px rgba(11,37,69,.35)}
-.rf-carte:hover .rf-pastille{background:var(--bleu);color:#fff;transform:rotate(-8deg) scale(1.06)}
-.rf-carte:hover .lien .ico{transform:translateX(4px)}
-.rf-jauge{background:#fff;border:1.5px solid #E3EEF5;border-radius:20px;padding:22px;max-width:460px}
-.rf-jauge-ligne{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center;margin-bottom:12px;font-size:.9rem;font-weight:600}
-.rf-jauge-barre{height:30px;border-radius:99px;background:var(--glace);overflow:hidden;position:relative}
-.rf-jauge-barre i{position:absolute;inset:0;border-radius:99px;background:linear-gradient(90deg,var(--bleu),var(--cyan));transform-origin:0 50%}
-.rf-jauge-barre.moitie i{transform:scaleX(.5);transition:transform 1.2s cubic-bezier(.6,0,.2,1) .4s}
-html.lv .rf-jauge.rv:not(.vu) .rf-jauge-barre.moitie i{transform:scaleX(1)}
-.rf-jauge-barre span{position:absolute;right:12px;z-index:1;top:50%;transform:translateY(-50%);font-family:'Nunito',sans-serif;font-weight:900;font-size:.9rem;color:var(--encre)}
-.rf-jauge-etat{display:flex;align-items:center;gap:8px;margin:4px 0 0 132px;font-size:.88rem;font-weight:800;color:var(--bleu)}.rf-jauge-etat .ico{color:var(--cyan);width:18px;height:18px}
-.rf-jauge-barre.moitie span{right:auto;left:calc(50% - 46px);color:#fff}
-.rf-jauge small{display:block;color:var(--gris);font-size:.8rem;margin-top:6px}
-.rf-zone{background:#fff;border:1.5px solid #E3EEF5;border-radius:20px;padding:16px;position:relative}
-.rf-z-tetes{display:flex;gap:6px;background:var(--glace);border-radius:99px;padding:5px;margin-bottom:8px}
-.rf-z-tetes label{flex:1;text-align:center;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:800;font-size:.88rem;padding:9px;border-radius:99px;color:var(--gris)}
-.rf-z-o1:checked~.rf-z-tetes label[for="rf-z1"],.rf-z-o2:checked~.rf-z-tetes label[for="rf-z2"]{background:#fff;color:var(--bleu);box-shadow:0 4px 14px -6px rgba(11,37,69,.35)}
-.rf-z-o1:focus-visible~.rf-z-tetes label[for="rf-z1"],.rf-z-o2:focus-visible~.rf-z-tetes label[for="rf-z2"]{outline:3px solid var(--cyan)}
-.rf-z-carte{width:100%;height:auto;display:block}
-.rf-z-anneau{fill:rgba(76,201,240,.1);stroke:var(--cyan);stroke-width:2;stroke-dasharray:6 6;transition:opacity .4s}
-.rf-z-rv,.rf-z-v,.rf-z-lv{opacity:0;transition:opacity .4s}
-.rf-z-o2:checked~.rf-z-carte .rf-z-rv,.rf-z-o2:checked~.rf-z-carte .rf-z-v,.rf-z-o2:checked~.rf-z-carte .rf-z-lv{opacity:1}
-.rf-z-a circle{fill:var(--bleu)}
-.rf-z-v circle{fill:var(--cyan);stroke:var(--encre);stroke-width:1}
-.rf-z-centre circle{fill:var(--encre);stroke:var(--cyan);stroke-width:3}
-.rf-zone text{font-family:'Nunito',sans-serif;font-weight:800;font-size:19px;fill:var(--encre)}
-.rf-z-legende{font-size:13px!important;fill:var(--bleu)!important}
-.rf-zone circle{transition:r .2s}
-.rf-zone g:hover circle{r:8}
-.rf-z-nom{paint-order:stroke;stroke:#fff;stroke-width:5px;stroke-linejoin:round}
-.rf-z-note{font-size:.8rem;color:var(--gris);margin:6px 0 0;text-align:center}
-.rf-frise{display:flex;align-items:center;gap:0;margin:16px 0 4px;font-size:.84rem;font-weight:700}
-.rf-frise span{flex:1;text-align:center;padding:8px 6px;border-radius:12px;background:var(--glace);color:var(--gris)}
-.rf-frise span.nous{background:var(--bleu);color:#fff;flex:1.2;box-shadow:0 8px 20px -10px rgba(26,86,219,.7)}
-.rf-frise i{width:22px;height:2px;background:#C9DCE8;flex:none}
-.rf-pieces .rf-tetes{max-width:none;flex-wrap:wrap;border-radius:18px}
-.rf-pieces .rf-tetes label,.rf-situations .rf-tetes label{flex:1 1 140px;border-radius:14px}
-.rf-coche{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px;counter-reset:rf-fait}
-.rf-coche li{position:relative}
-.rf-coche input{position:absolute;opacity:0}
-.rf-coche label{display:flex;gap:12px;align-items:flex-start;padding:13px 14px;border-radius:14px;background:#fff;border:1.5px solid #E3EEF5;cursor:pointer;transition:border-color .2s,background .2s;line-height:1.45;font-size:.95rem}
-.rf-coche label::before{content:"";width:24px;height:24px;flex:none;border-radius:8px;border:2px solid #C9DCE8;background:#fff center/14px no-repeat;transition:background-color .2s,border-color .2s,transform .3s cubic-bezier(.3,1.6,.5,1)}
-.rf-coche input:checked+label{border-color:var(--cyan);background:#F3FBFE}
-.rf-coche input:checked+label::before{background-color:var(--bleu);border-color:var(--bleu);transform:rotate(-8deg) scale(1.08);background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>')}
-.rf-coche input:focus-visible+label{outline:3px solid var(--cyan)}
-.rf-coche input:checked{counter-increment:rf-fait}
-.rf-compteur{display:flex;align-items:center;gap:10px;margin-top:14px;font-weight:700;font-size:.92rem;color:var(--gris)}
-.rf-compteur::before{content:counter(rf-fait);display:grid;place-items:center;min-width:34px;height:34px;padding:0 8px;border-radius:99px;background:var(--bleu);color:#fff;font-family:'Nunito',sans-serif;font-weight:900}
-.rf-p .rf-note{font-size:.9rem;color:var(--gris);margin:12px 0 0}
-.rf-plan{display:grid;grid-template-columns:1.1fr 1fr;gap:22px;align-items:center}
-.rf-plan-svg{width:100%;height:auto;display:block;background:#fff;border:1.5px solid #E3EEF5;border-radius:20px}
-.rf-plan-svg .zone-p{fill:var(--glace);stroke:#C9DCE8;stroke-width:2;transition:fill .25s}
-.rf-plan-svg text{font-family:'Nunito',sans-serif;font-weight:800;font-size:15px;fill:var(--encre)}
-.rf-plan-svg .meuble{fill:#fff;stroke:#C9DCE8;stroke-width:2}
-.rf-plan-svg .ping{fill:var(--cyan);opacity:.9}
-.rf-plan-svg .ping-anim{fill:none;stroke:var(--cyan);stroke-width:2;transform-box:fill-box;transform-origin:center;animation:rf-ping 2.4s ease-out infinite}
-@keyframes rf-ping{0%{transform:scale(.6);opacity:1}100%{transform:scale(2.6);opacity:0}}
-.rf-o1:checked~* .z1,.rf-o2:checked~* .z2,.rf-o3:checked~* .z3,.rf-o4:checked~* .z4{fill:#CFEFFB;stroke:var(--bleu)}
-.rf-plan .rf-tetes{flex-direction:column;border-radius:18px;max-width:none;margin:0 0 12px}
-.rf-plan .rf-tetes label{justify-content:flex-start;border-radius:14px;text-align:left}
-.rf-semaine{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:14px 0}
-.rf-semaine span{display:grid;place-items:center;gap:6px;padding:12px 4px;border-radius:14px;background:var(--glace);font-weight:800;font-family:'Nunito',sans-serif;font-size:.85rem;color:var(--gris)}
-.rf-semaine span::after{content:"";width:12px;height:12px;border-radius:50%;background:#D7E8F4}
-.rf-semaine span.on{background:#fff;border:1.5px solid var(--cyan);color:var(--bleu)}
-.rf-semaine span.on::after{background:var(--bleu);box-shadow:0 0 0 4px rgba(76,201,240,.35)}
-.rf-reco{display:inline-block;margin-left:6px;font-size:.72rem;background:var(--cyan);color:var(--encre);padding:2px 8px;border-radius:99px;vertical-align:2px}
-.rf-cadran{width:100%;max-width:300px;height:auto;display:block;margin:0 auto}
-.rf-cadran .fond{fill:#fff;stroke:#E3EEF5;stroke-width:2}
-.rf-cadran .bureau{fill:none;stroke:#D7E8F4;stroke-width:22}
-.rf-cadran .nous{fill:none;stroke:var(--bleu);stroke-width:22;stroke-linecap:round}
-.rf-cadran .nous2{stroke:var(--cyan)}
-.rf-cadran text{font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;fill:var(--gris)}
-.rf-cadran .centre{font-size:15px;fill:var(--encre)}
-.rf-cadran-leg{display:flex;flex-wrap:wrap;gap:8px 16px;justify-content:center;font-size:.85rem;font-weight:600;margin-top:10px}
-.rf-cadran-leg i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:6px;vertical-align:-1px}
-.rf-facteurs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
-.rf-facteur{background:#fff;border-radius:18px;padding:18px;border:1.5px solid #E3EEF5;display:flex;gap:12px;align-items:flex-start}
-.rf-facteur b{display:block;font-family:'Nunito',sans-serif;font-size:1rem}
-.rf-facteur span{font-size:.88rem;color:var(--gris)}
-.rf-puces{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:10px 0 0;padding:0}
-.rf-puces li{background:#fff;border:1.5px solid #D7E8F4;border-radius:99px;padding:6px 13px;font-size:.86rem;font-weight:600}
-@media(max-width:900px){.rf-tuiles{grid-template-columns:1fr 1fr}.rf-plan{grid-template-columns:1fr}.rf-facteurs{grid-template-columns:1fr}}
-@media(max-width:720px){
-.hero.rf-hero{padding:40px 14px 30px}
-.rf-aig{padding:14px;border-radius:18px;margin-top:18px}
-.rf-tetes label{font-size:.9rem;padding:10px 6px}
-.rf-tuiles a{padding:12px}
-.rf-tuiles a small{display:none}
-.rf-sceau-bloc{grid-template-columns:1fr;padding:26px 18px;gap:18px;text-align:center}
-.rf-sceau{width:150px;height:150px;margin:0 auto}
-.rf-sceau-coeur{inset:26px}.rf-sceau-coeur b{font-size:1.8rem}.rf-sceau-coeur small{font-size:.58rem;letter-spacing:0}.rf-sceau-coeur .ico{width:22px;height:22px}
-.rf-engs{grid-template-columns:1fr;text-align:left}
-.rf-coche{grid-template-columns:1fr}
-.rf-frise{font-size:.76rem}
-}
-@media(prefers-reduced-motion:reduce){.rf-sceau-texte,.rf-sceau-coeur .ico,.rf-plan-svg .ping-anim{animation:none}.rf-p{animation:none!important}.rf-jauge-barre.moitie i{transition:none}}</style>
 <noscript><style>@media(max-width:820px){.nav ul{position:static;height:auto;transform:none;visibility:visible;box-shadow:none;padding:8px 0;width:100%}.burger{display:none}}</style></noscript>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Limpid","image":"https://limpid-nettoyage.fr/assets/logo-limpid.webp","url":"https://limpid-nettoyage.fr/","telephone":"+33626556569","email":"bonjour@limpid-nettoyage.fr","address":{"@type":"PostalAddress","streetAddress":"5 rue des Sapins","postalCode":"88390","addressLocality":"Darnieulles","addressRegion":"Vosges","addressCountry":"FR"},"geo":{"@type":"GeoCoordinates","latitude":48.1991887,"longitude":6.3539957},"areaServed":["Darnieulles","Épinal","Golbey","Thaon-les-Vosges","Chantraine","Uxegney","Chavelot"],"priceRange":"€€","openingHours":"Mo-Fr 08:30-20:00 Sa 10:00-20:00","aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"12"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","serviceType":"Nettoyage de bureaux","description":"Entretien régulier de bureaux et cabinets à Épinal et dans les Vosges","provider":{"@type":"LocalBusiness","name":"Limpid"},"areaServed":"Épinal et Vosges"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Intervenez-vous en dehors des horaires de bureau ?","acceptedAnswer":{"@type":"Answer","text":"Oui, tôt le matin ou après 18h, à jours fixes inscrits au contrat."}},{"@type":"Question","name":"Que se passe-t-il en cas d'imprévu ?","acceptedAnswer":{"@type":"Answer","text":"Le client est prévenu avant l'heure du passage et l'intervention est reprogrammée ; une intervention non réalisée n'est jamais facturée."}},{"@type":"Question","name":"Faut-il un engagement de longue durée ?","acceptedAnswer":{"@type":"Answer","text":"Engagement initial de 3 mois puis reconduction mensuelle, préavis d'un mois."}}]}</script>
 <script src="/assets/mesure.js" defer></script>
@@ -327,115 +177,43 @@ html.lv .rf-jauge.rv:not(.vu) .rf-jauge-barre.moitie i{transform:scaleX(1)}
 <main>
 <nav class="ariane" aria-label="Fil d'Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">Nettoyage de bureaux</li></ol></nav>
 
-<section><div class="wrap g2" style="align-items:center">
- <div>
-  <span class="badge">Bureaux · Cabinets · Professions libérales</span>
-  <h1>Nettoyage de bureaux et locaux professionnels à Épinal</h1>
-  <p>Vous recherchez une <strong>entreprise de nettoyage de bureaux à Épinal</strong>, ou souhaitez remplacer votre prestataire actuel ? Limpid organise l'entretien régulier de bureaux, cabinets et locaux professionnels de moins de 200&nbsp;m² à Épinal, Golbey, Thaon-les-Vosges et dans les communes voisines : sols, sanitaires, postes de travail, corbeilles, points de contact et espace café.</p>
-  <p>Les passages sont prévus à <strong>jours et créneaux convenus</strong>, tôt le matin, après la fermeture ou en journée creuse selon vos contraintes. Vous disposez d'un interlocuteur direct et d'un périmètre de prestation défini avant le début du contrat.</p>
-  <p style="margin:18px 0 20px"><a class="btn" href="/devis/">Décrire mes locaux et demander un devis</a></p>
-  <ul class="reperes" aria-label="Nos repères"><li><b>★ 5,0/5</b> sur Google</li><li>Devis gratuit <b>sous 48h</b></li><li>Matériel et produits <b>fournis</b></li><li><b>15 km</b> autour de Darnieulles</li></ul>
- </div>
- <div>
-  <svg viewBox="0 0 300 300" class="rf-cadran" aria-hidden="true">
-   <circle class="fond" cx="150" cy="150" r="146"/>
-   <path class="bureau" d="M223.5 223.5 A104 104 0 0 1 46.0 150.0"/><path class="nous" d="M254.0 150.0 A104 104 0 0 1 230.8 215.4"/><path class="nous nous2" d="M46.6 139.1 A104 104 0 0 1 67.5 86.7"/>
-   <text x="150" y="19" text-anchor="middle">0h</text><text x="286" y="155" text-anchor="middle">6h</text><text x="150" y="291" text-anchor="middle">12h</text><text x="14" y="155" text-anchor="middle">18h</text>
-   <text class="centre" x="150" y="146" text-anchor="middle">Pendant que</text><text class="centre" x="150" y="166" text-anchor="middle">vous n'êtes pas là</text>
-  </svg>
-  <p class="rf-cadran-leg"><span><i style="background:#D7E8F4"></i>Vos équipes (exemple : 9h à 18h)</span><span><i style="background:var(--bleu)"></i>Tôt le matin</span><span><i style="background:var(--cyan)"></i>Après 18h</span></p>
- </div>
-</div></section>
-
-<section class="glace" style="padding:40px 0"><div class="wrap large">
- <div class="rf-sceau-bloc">
-  <div class="rf-sceau" aria-hidden="true">
-   <svg viewBox="0 0 200 200" class="rf-sceau-texte"><defs><path id="rf-cercle" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href="#rf-cercle">GARANTIE FIABILITÉ · LIMPID · GARANTIE FIABILITÉ · LIMPID ·</textPath></text></svg>
-   <span class="rf-sceau-coeur"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path fill="currentColor" stroke="none" d="M12 0c1.2 6.8 4 9.6 12 12-8 2.4-10.8 5.2-12 12-1.2-6.8-4-9.6-12-12 8-2.4 10.8-5.2 12-12z"/></svg><b>4</b><small>engagements</small></span>
-  </div>
-  <div class="rf-sceau-contenu">
-   <h2>La Garantie Fiabilité Limpid</h2>
-   <p>Quatre engagements écrits noir sur blanc dans chaque contrat, parce que la régularité ne devrait jamais être une surprise.</p>
-   <ul class="rf-engs">
-   <li class="rf-eng" style="--i:0"><span class="rf-eng-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><strong>Créneaux adaptés</strong><span>Tôt le matin, après la fermeture ou en journée creuse : les jours et horaires sont définis avec vous, puis tenus passage après passage.</span></li>
-   <li class="rf-eng" style="--i:1"><span class="rf-eng-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><strong>Organisation claire</strong><span>Un empêchement ? Vous le savez avant l'heure du passage et nous reprogrammons ensemble. Une intervention non réalisée n'est jamais facturée.</span></li>
-   <li class="rf-eng" style="--i:2"><span class="rf-eng-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 6.5A7 7 0 1 0 17 17.5"/><path d="M4 10h9M4 14h9"/></svg></span><strong>Tarif sans surprise</strong><span>Le tarif du devis est le tarif facturé. Pas de suppléments découverts en fin de mois.</span></li>
-   <li class="rf-eng" style="--i:3"><span class="rf-eng-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span><strong>Interlocuteur unique</strong><span>Le gérant, en direct. Pas de plateforme, pas de turnover.</span></li>
-   </ul>
-  </div>
- </div>
-</div></section>
 
 <section><div class="wrap">
- <span class="eyebrow">À chaque passage</span>
- <h2>Ce que nous entretenons, pièce par pièce</h2>
- <p>Choisissez un espace pour voir ce qui y est fait. Le périmètre exact est écrit dans votre contrat avant le premier passage.</p>
- <div class="rf-plan-bloc">
-  <input type="radio" name="rf-plan" id="rf-plan1" class="rf-sr rf-o1" checked><input type="radio" name="rf-plan" id="rf-plan2" class="rf-sr rf-o2"><input type="radio" name="rf-plan" id="rf-plan3" class="rf-sr rf-o3"><input type="radio" name="rf-plan" id="rf-plan4" class="rf-sr rf-o4">
-  <div class="rf-plan">
-   <svg viewBox="0 0 520 360" class="rf-plan-svg" aria-hidden="true">
-   <rect class="zone-p z1" x="20" y="20" width="300" height="200" rx="10"/>
-   <rect class="zone-p z2" x="340" y="20" width="160" height="120" rx="10"/>
-   <rect class="zone-p z3" x="340" y="160" width="160" height="180" rx="10"/>
-   <rect class="zone-p z4" x="20" y="240" width="300" height="100" rx="10"/>
-   <rect class="meuble" x="50" y="60" width="90" height="46" rx="6"/><rect class="meuble" x="170" y="60" width="90" height="46" rx="6"/>
-   <rect class="meuble" x="50" y="140" width="90" height="46" rx="6"/><rect class="meuble" x="170" y="140" width="90" height="46" rx="6"/>
-   <rect class="meuble" x="370" y="70" width="40" height="50" rx="16"/><rect class="meuble" x="430" y="70" width="40" height="50" rx="16"/>
-   <circle class="meuble" cx="420" cy="260" r="34"/><rect class="meuble" x="360" y="180" width="120" height="24" rx="6"/>
-   <rect class="meuble" x="60" y="270" width="110" height="40" rx="8"/>
-   <text x="34" y="44">Postes de travail</text><text x="354" y="44">Sanitaires</text><text x="354" y="330">Espace café</text><text x="200" y="300">Accueil</text>
-   <circle class="ping" cx="300" cy="200" r="6"/><circle class="ping-anim" cx="300" cy="200" r="6"/>
-   <circle class="ping" cx="484" cy="124" r="6"/><circle class="ping-anim" cx="484" cy="124" r="6"/>
-   <circle class="ping" cx="484" cy="324" r="6"/><circle class="ping-anim" cx="484" cy="324" r="6"/>
-   <circle class="ping" cx="300" cy="324" r="6"/><circle class="ping-anim" cx="300" cy="324" r="6"/>
-  </svg>
-   <div><div class="rf-tetes"><label for="rf-plan1" class="rf-l1"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>Postes de travail</label><label for="rf-plan2" class="rf-l2"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 6.7 6 11a6 6 0 0 1-12 0c0-4.3 6-11 6-11Z"/></svg>Sanitaires</label><label for="rf-plan3" class="rf-l3"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5Z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17M8 3v3M12 3v3"/></svg>Espace café</label><label for="rf-plan4" class="rf-l4"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h9a3 3 0 0 0 0-6"/><circle cx="5" cy="12" r="2"/><path d="M5 14v6"/></svg>Accueil et circulations</label></div><div class="rf-ps"><div class="rf-p rf-p1"><ul class="etoiles"><li>Surfaces et postes de travail dépoussiérés</li><li>Corbeilles vidées</li><li>Sols aspirés puis lavés</li></ul></div><div class="rf-p rf-p2"><ul class="etoiles"><li>Sanitaires désinfectés</li><li>Sols lavés</li></ul></div><div class="rf-p rf-p3"><ul class="etoiles"><li>Espace café nettoyé</li><li>Corbeilles vidées</li><li>Points de contact traités</li></ul></div><div class="rf-p rf-p4"><ul class="etoiles"><li>Points de contact traités : poignées, interrupteurs</li><li>Sols aspirés puis lavés</li></ul></div></div></div>
+ <span class="badge">Bureaux · Cabinets · Professions libérales</span>
+ <h1>Nettoyage de bureaux et locaux professionnels à Épinal</h1>
+ <p>Vous recherchez une <strong>entreprise de nettoyage de bureaux à Épinal</strong>, ou souhaitez remplacer votre prestataire actuel ? Limpid organise l'entretien régulier de bureaux, cabinets et locaux professionnels de moins de 200&nbsp;m² à Épinal, Golbey, Thaon-les-Vosges et dans les communes voisines : sols, sanitaires, postes de travail, corbeilles, points de contact et espace café.</p>
+ <p>Les passages sont prévus à <strong>jours et créneaux convenus</strong>, tôt le matin, après la fermeture ou en journée creuse selon vos contraintes. Vous disposez d'un interlocuteur direct et d'un périmètre de prestation défini avant le début du contrat.</p>
+ <p style="margin:18px 0 20px"><a class="btn" href="/devis/">Décrire mes locaux et demander un devis</a></p>
+ <ul class="reperes" aria-label="Nos repères"><li><b>★ 5,0/5</b> sur Google</li><li>Devis gratuit <b>sous 48h</b></li><li>Matériel et produits <b>fournis</b></li><li><b>15 km</b> autour de Darnieulles</li></ul>
+</div></section>
+<section class="glace" style="padding:34px 0"><div class="wrap large">
+<div class="garantie">
+  <h2><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4CC9F0" d="M12 0c1.2 6.8 4 9.6 12 12-8 2.4-10.8 5.2-12 12-1.2-6.8-4-9.6-12-12 8-2.4 10.8-5.2 12-12z"/></svg> La Garantie Fiabilité Limpid</h2>
+  <p>Quatre engagements écrits noir sur blanc dans chaque contrat, parce que la régularité ne devrait jamais être une surprise.</p>
+  <div class="g3">
+    <div class="item"><strong><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4CC9F0" d="M12 0c1.2 6.8 4 9.6 12 12-8 2.4-10.8 5.2-12 12-1.2-6.8-4-9.6-12-12 8-2.4 10.8-5.2 12-12z"/></svg> Créneaux adaptés</strong>Tôt le matin, après la fermeture ou en journée creuse : les jours et horaires sont définis avec vous, puis tenus passage après passage.</div>
+    <div class="item"><strong><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4CC9F0" d="M12 0c1.2 6.8 4 9.6 12 12-8 2.4-10.8 5.2-12 12-1.2-6.8-4-9.6-12-12 8-2.4 10.8-5.2 12-12z"/></svg> Organisation claire</strong>Un empêchement ? Vous le savez avant l'heure du passage et nous reprogrammons ensemble. Une intervention non réalisée n'est jamais facturée.</div>
+    <div class="item"><strong><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4CC9F0" d="M12 0c1.2 6.8 4 9.6 12 12-8 2.4-10.8 5.2-12 12-1.2-6.8-4-9.6-12-12 8-2.4 10.8-5.2 12-12z"/></svg> Tarif sans surprise</strong>Le tarif du devis est le tarif facturé. Pas de suppléments découverts en fin de mois.</div>
+    <div class="item"><strong><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4CC9F0" d="M12 0c1.2 6.8 4 9.6 12 12-8 2.4-10.8 5.2-12 12-1.2-6.8-4-9.6-12-12 8-2.4 10.8-5.2 12-12z"/></svg> Interlocuteur unique</strong>Le gérant, en direct. Pas de plateforme, pas de turnover.</div>
   </div>
- </div>
+</div></div></section>
+<section style="padding:36px 0"><div class="wrap">
+ <h2>Changer de prestataire de nettoyage professionnel à Épinal</h2>
+ <p>Votre nettoyage actuel manque de régularité ou ne correspond plus à vos besoins ? Nous pouvons étudier la <strong>reprise de l'entretien de vos bureaux</strong>, avec une fréquence, des horaires et des tâches adaptés à l'activité de vos équipes.</p>
+ <p>Décrivez vos locaux et votre organisation dans <a href="/devis/">le configurateur de devis Limpid</a>. Un échange permet ensuite de préciser le périmètre et d'établir une proposition adaptée, sans prix annoncé avant le chiffrage.</p>
 </div></section>
-
-<section class="glace" style="padding:44px 0"><div class="wrap g2" style="align-items:center">
- <div>
-  <h2>Changer de prestataire de nettoyage professionnel à Épinal</h2>
-  <p>Votre nettoyage actuel manque de régularité ou ne correspond plus à vos besoins ? Nous pouvons étudier la <strong>reprise de l'entretien de vos bureaux</strong>, avec une fréquence, des horaires et des tâches adaptés à l'activité de vos équipes.</p>
-  <p style="margin-bottom:0">Décrivez vos locaux et votre organisation dans <a href="/devis/">le configurateur de devis Limpid</a>. Un échange permet ensuite de préciser le périmètre et d'établir une proposition adaptée, sans prix annoncé avant le chiffrage.</p>
- </div>
- <ul class="rf-cartes" style="list-style:none;padding:0;margin:0;grid-template-columns:1fr">
-  <li class="rf-carte" style="flex-direction:row;align-items:center"><span class="rf-pastille"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg></span><p><b>Vous décrivez</b> vos locaux et ce qui ne vous convient plus.</p></li>
-  <li class="rf-carte" style="flex-direction:row;align-items:center"><span class="rf-pastille"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><p><b>Nous calons</b> la fréquence et les horaires avec vous.</p></li>
-  <li class="rf-carte" style="flex-direction:row;align-items:center"><span class="rf-pastille"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h12M12 6l6 6-6 6"/><path d="M20 4v16"/></svg></span><p><b>Nous prenons le relais</b> à la date convenue.</p></li>
- </ul>
-</div></section>
-
 <section><div class="wrap g2">
  <div>
   <h2>La formule Confort, notre recommandation</h2>
   <p>Deux passages par semaine pour un local professionnel type : sols aspirés et lavés, sanitaires désinfectés, surfaces dépoussiérées, corbeilles vidées, points de contact traités. Formules Essentiel (1 passage/sem.) et Premium (3 passages/sem. + vitres intérieures mensuelles) disponibles.</p>
-  <div class="rf-formules">
-  <input type="radio" name="rf-f" id="rf-f1" class="rf-sr rf-o1"><input type="radio" name="rf-f" id="rf-f2" class="rf-sr rf-o2" checked><input type="radio" name="rf-f" id="rf-f3" class="rf-sr rf-o3">
-  <div class="rf-tetes"><label for="rf-f1" class="rf-l1">Essentiel</label><label for="rf-f2" class="rf-l2">Confort</label><label for="rf-f3" class="rf-l3">Premium</label></div>
-  <div class="rf-ps"><div class="rf-p rf-p1"><p><b>Essentiel</b> · 1 passage par semaine</p><div class="rf-semaine" aria-hidden="true"><span class="">Lun</span><span class="">Mar</span><span class="on">Mer</span><span class="">Jeu</span><span class="">Ven</span></div></div><div class="rf-p rf-p2"><p><b>Confort</b><span class=rf-reco>notre recommandation</span> · 2 passages par semaine</p><div class="rf-semaine" aria-hidden="true"><span class="on">Lun</span><span class="">Mar</span><span class="">Mer</span><span class="on">Jeu</span><span class="">Ven</span></div></div><div class="rf-p rf-p3"><p><b>Premium</b> · 3 passages par semaine, et les vitres intérieures chaque mois</p><div class="rf-semaine" aria-hidden="true"><span class="on">Lun</span><span class="">Mar</span><span class="on">Mer</span><span class="">Jeu</span><span class="on">Ven</span></div></div></div>
-  <p class="rf-z-note" style="text-align:left">Exemple de planning : les jours sont choisis avec vous.</p>
- </div>
   <div class="prix"><span class="montant">Tarif adapté à vos locaux</span> · selon surface et fréquence de passage<br><span style="font-size:.9rem;color:var(--gris)">Tarif exact établi après une visite sur place. TVA non applicable, art. 293 B du CGI.</span></div>
  </div>
  <div><figure class="photo"><img src="/assets/porte-fenetre-apres.webp" alt="Vitrage et local professionnel impeccables après intervention Limpid" loading="lazy" width="1200" height="1600"><figcaption>La propreté qui se voit, et celle qui se sent.</figcaption></figure></div>
 </div></section>
-
-<section><div class="wrap">
- <span class="eyebrow">Comment ça se passe</span>
- <h2>De votre demande au premier passage</h2>
- <div class="g3" style="grid-template-columns:repeat(auto-fit,minmax(210px,1fr))">
-  <div class="carte"><h3>1. Vous décrivez votre besoin</h3><p>Avec notre configurateur en ligne, en quelques clics : vos locaux, la fréquence souhaitée, vos créneaux.</p></div>
-  <div class="carte"><h3>2. Nous passons voir</h3><p>Une visite sur place pour voir les surfaces, les accès et ce qui compte pour vous.</p></div>
-  <div class="carte"><h3>3. Votre devis sous 48h</h3><p>Un tarif sans surprise, avec le périmètre écrit. Le devis est gratuit, la décision vous appartient.</p></div>
-  <div class="carte"><h3>4. Nous intervenons</h3><p>Aux jours et créneaux convenus, avec le matériel et les produits fournis : vous n'avez rien à fournir.</p></div>
- </div>
-</div></section>
-
 <section class="glace"><div class="wrap"><h2>Questions fréquentes</h2><p>Vous comparez plusieurs prestataires ? Voici <a href="/choisir-entreprise-nettoyage-bureaux/">les points à vérifier avant de signer</a>.</p><details class="faq"><summary>Intervenez-vous en dehors des horaires de bureau ?</summary><p>Oui, c'est notre fonctionnement standard : tôt le matin ou après 18h, à jours fixes convenus au contrat, pour ne jamais gêner votre activité.</p></details><details class="faq"><summary>Que se passe-t-il en cas d'imprévu ?</summary><p>Vous êtes prévenu avant l'heure du passage et l'intervention est reprogrammée avec vous. Une intervention non réalisée n'est jamais facturée.</p></details><details class="faq"><summary>Faut-il un engagement de longue durée ?</summary><p>Non : engagement initial de 3 mois, puis reconduction mensuelle résiliable avec un mois de préavis.</p></details></div></section>
 <section><div class="wrap"><div class="cta-final"><h2>Devis gratuit sous 48h</h2><p>Une visite sur place, un tarif sans surprise sous 48h : le devis est gratuit, la décision vous appartient.</p><p class="cta-config"><b>Notre configurateur en ligne vous guide en quelques clics.</b></p><p><a class="btn blanc" href="/devis/">Demander un devis pour mes bureaux</a> &nbsp; <a class="btn tel" href="tel:+33626556569">📞 06 26 55 65 69</a></p></div></div></section>
 <section style="padding:20px 0 46px"><div class="wrap"><p style="font-size:.9rem;color:var(--gris)">Voir aussi : <a href="/nettoyage-cabinet-medical-epinal/">Cabinets médicaux</a> · <a href="/lavage-vitrines-commerces-epinal/">Vitrines de commerces</a> · <a href="/devis/">Configurer mon devis gratuit</a></p></div></section>
+
 </main>
 <footer class="site">
  <div class="wrap g3">
@@ -465,6 +243,5 @@ html.lv .rf-jauge.rv:not(.vu) .rf-jauge-barre.moitie i{transform:scaleX(1)}
  <a class="tel" href="tel:+33626556569" aria-label="Appeler Limpid au 06 26 55 65 69"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span class="lib">Appeler</span></a>
  <a class="second" href="/devis/">Mon devis gratuit</a>
 </div>
-<script>addEventListener("load",function(){var s=document.createElement("script");s.src="/assets/limpid-vivant.js?v=20261105";document.body.appendChild(s)})</script>
 </body>
 </html>
