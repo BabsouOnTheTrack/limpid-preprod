@@ -15,6 +15,9 @@
 <style>
 
 :root{--bleu:#1A56DB;--encre:#0B2545;--cyan:#4CC9F0;--glace:#EEF6FB;--gris:#5A7184;--vert:#128C4A}
+
+/* LIMPID V6.6.10 : descriptifs plus lisibles, couleurs limitees aux configurateurs */
+#pc-accueil,#pc-app{--gris:#3D5268}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Public Sans',system-ui,sans-serif;color:var(--encre);background:#fff;line-height:1.6;font-size:17px}
@@ -748,7 +751,7 @@ var LIMPID_CONFIG_DEFAUT = {
       creditImpot: true
     },
     vitres: {
-      nom: "Vitres et véranda",
+      nom: "Lavage de vitres",
       inclus: [
         "Vitrages, encadrements et appuis, à l'intérieur comme à l'extérieur",
         "Baies vitrées et portes-fenêtres",
@@ -1492,7 +1495,9 @@ window.LIMPID_PARCOURS = (function () {
     var t = esc(m.texte), en = esc(nom); if (en && t.indexOf(en) >= 0) t = t.replace(en, "<b>" + en + "</b>");
     return '<div class="cf-alerte ' + m.ton + '" id="pc-zone" data-zone="' + cl + '">' + t + '</div>';
   }
-  function rendre() {
+  function rendre(preserverLecture) {
+    /* Saisie locale : garder le point de lecture ; navigation : repositionner sur la nouvelle étape. */
+    var ancienY = preserverLecture ? window.scrollY : null;
     var z = $("pc-corps"), ec = E.ecran, h = "";
     document.body.classList.toggle("pc-en-cours", ec !== "accueil");
     $("pc-accueil").hidden = ec !== "accueil";
@@ -1514,9 +1519,18 @@ window.LIMPID_PARCOURS = (function () {
     nav.hidden = !(x || ec === "rappel" || ec === "recap");
     $("pc-suite").disabled = false;
     $("pc-suite").textContent = E.retourRecap && x ? "Retour au récapitulatif" : (ec === "recap" ? "Envoyer ma demande de devis" : (ec === "rappel" ? "Être rappelé" : "Continuer"));
-    var t = $("pc-titre") || z.querySelector("h2");
-    if (t && E.ecran !== "accueil") { try { t.focus({ preventScroll: true }); } catch (e2) {} }
-    var app = $("pc-app"); if (app && window.scrollY > app.offsetTop + 180) window.scrollTo({ top: Math.max(0, app.offsetTop - 100), behavior: "instant" });
+    if (preserverLecture) {
+      /* Le contenu est reconstruit après un choix : éviter que Safari mobile
+         recale l'écran au titre ou en haut du formulaire. */
+      if (Math.abs(window.scrollY - ancienY) > 1) window.scrollTo(0, ancienY);
+      requestAnimationFrame(function () {
+        if (Math.abs(window.scrollY - ancienY) > 2) window.scrollTo(0, ancienY);
+      });
+    } else {
+      var t = $("pc-titre") || z.querySelector("h2");
+      if (t && E.ecran !== "accueil") { try { t.focus({ preventScroll: true }); } catch (e2) {} }
+      var app = $("pc-app"); if (app && window.scrollY > app.offsetTop + 180) window.scrollTo({ top: Math.max(0, app.offsetTop - 100), behavior: "instant" });
+    }
     if (ec === "adresse") brancherAdresse();
   }
   /* Le bouton Retour du navigateur ramène à l'écran précédent du parcours. */
@@ -1565,7 +1579,7 @@ window.LIMPID_PARCOURS = (function () {
   function poser(k, v) { R[k] = v; sauver(); }
   function majApres(k) {
     var x = ecran(E.ecran);
-    if (x && x.rerendre && x.rerendre.indexOf(k) >= 0) { var pos = document.activeElement && document.activeElement.dataset ? document.activeElement.dataset.k : null; rendre(); if (pos) { var el = document.querySelector('[data-k="' + pos + '"]'); if (el && el.type !== "checkbox") { el.focus(); } } }
+    if (x && x.rerendre && x.rerendre.indexOf(k) >= 0) { var pos = document.activeElement && document.activeElement.dataset ? document.activeElement.dataset.k : null; rendre(true); if (pos) { var el = document.querySelector('[data-k="' + pos + '"]'); if (el && el.type !== "checkbox") { try { el.focus({ preventScroll: true }); } catch (e2) {} } } }
   }
   function brancher() {
     var app = $("pc-app");
@@ -1581,16 +1595,16 @@ window.LIMPID_PARCOURS = (function () {
     });
     app.addEventListener("click", function (e) {
       var b = e.target.closest("button"); if (!b) return;
-      if (b.dataset.choix) { var a = b.dataset.choix.split("|"); poser(a[0], a[1]); majApres(a[0]); rendre(); return; }
+      if (b.dataset.choix) { var a = b.dataset.choix.split("|"); poser(a[0], a[1]); rendre(true); return; }
       if (b.dataset.multi) {
         var m = b.dataset.multi.split("|"), l = R[m[0]] = R[m[0]] || [], i = l.indexOf(m[1]);
-        if (i >= 0) l.splice(i, 1); else l.push(m[1]); sauver(); rendre(); return;
+        if (i >= 0) l.splice(i, 1); else l.push(m[1]); sauver(); rendre(true); return;
       }
-      if (b.dataset.pas) { var k = b.dataset.pas; R[k] = Math.max(0, n(R[k]) + parseFloat(b.dataset.d)); sauver(); rendre(); return; }
+      if (b.dataset.pas) { var k = b.dataset.pas; R[k] = Math.max(0, n(R[k]) + parseFloat(b.dataset.d)); sauver(); rendre(true); return; }
       if (b.dataset.aller) { E.retourRecap = true; ev("config_back", { step: "recap", vers: b.dataset.aller }); aller(b.dataset.aller); return; }
       if (b.id === "pc-envoyer") { envoyer("devis"); return; }
       if (b.id === "pc-renvoyer") { renvoyerAttente(); return; }
-      if (b.dataset.photos) { R.photos = b.dataset.photos; sauver(); rendre(); return; }
+      if (b.dataset.photos) { R.photos = b.dataset.photos; sauver(); rendre(true); return; }
     });
     $("pc-suite").addEventListener("click", suivant);
     $("pc-retour").addEventListener("click", precedent);
@@ -1667,7 +1681,7 @@ window.LIMPID_PARCOURS = (function () {
     R.adresse = x.voie || ""; R.cp = x.cp;
     var t = LimpidMoteur.commune(x.ville, x.cp); R.commune = t ? t.nom : x.ville;
     R.geo = { lat: x.lat, lon: x.lon };
-    fermerSug(); sauver(); rendre(); var inp = $("pc-adresse"); if (inp && !x.voie) inp.focus();
+    fermerSug(); sauver(); rendre(true); var inp = $("pc-adresse"); if (inp && !x.voie) inp.focus();
   }
   function kmDepuisBase(g) {
     var Rt = 6371, r = Math.PI / 180, dLa = (g.lat - BASE_GEO.lat) * r, dLo = (g.lon - BASE_GEO.lon) * r;

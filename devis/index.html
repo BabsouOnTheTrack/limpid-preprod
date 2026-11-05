@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="limpid-stockage" content="0">
 <title>Devis gratuit sous 48h | Limpid, nettoyage à Épinal et Vosges</title>
-<meta name="description" content="Configurez votre devis de nettoyage en quelques étapes : entretien régulier, grand nettoyage, vitres et véranda, canapés et textiles, bureaux. Limpid vous envoie votre devis par e-mail sous 48 h, à Épinal et dans les Vosges.">
+<meta name="description" content="Configurez votre devis de nettoyage en quelques étapes : entretien régulier, grand nettoyage, lavage de vitres, canapés et textiles, bureaux. Limpid vous envoie votre devis par e-mail sous 48 h, à Épinal et dans les Vosges.">
 <link rel="canonical" href="https://limpid-nettoyage.fr/devis/">
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <meta property="og:title" content="Devis gratuit sous 48h | Limpid, nettoyage à Épinal et Vosges">
@@ -20,6 +20,9 @@
 <style>
 
 :root{--bleu:#1A56DB;--encre:#0B2545;--cyan:#4CC9F0;--glace:#EEF6FB;--gris:#5A7184;--blanc:#fff}
+
+/* LIMPID V6.6.10 : descriptifs plus lisibles, couleurs limitees aux configurateurs */
+#cf{--gris:#3D5268}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Public Sans',system-ui,sans-serif;color:var(--encre);background:var(--blanc);line-height:1.65;font-size:17px}
@@ -306,6 +309,26 @@ body[data-tunnel="configurateur"] footer{padding-bottom:90px}
 #cf-attente{margin:0 0 14px}
 .cf-ref{font-size:1rem;margin:8px 0 0}
 
+/* Parcours besoins d'abord, sélections multiples lisibles sans surcharge. */
+@media(min-width:720px){#f-prestations{grid-template-columns:repeat(2,minmax(0,1fr))}}
+#f-prestations .cf-carte{min-width:0;padding-right:45px}
+#f-combi{padding:10px 12px;border-radius:10px;background:#eef6fb;color:#12405b;line-height:1.5}
+#f-note-combi .cf-alerte{margin:7px 0}
+.cf-guidage{margin:0 0 14px;padding:13px 15px;background:#eef6fb;border:1px solid #bdd8ec;border-radius:12px;color:#123b5b;line-height:1.5}
+.cf-guidage b{display:block;font:900 1rem Nunito,sans-serif;color:#0b2545}
+.cf-guidage small{display:block;font-size:.76rem;color:#56758b;margin-top:3px}
+.cf-special-section{background:#fff;border:1px solid #d7e6f1;border-radius:12px;padding:14px;margin:10px 0}
+.cf-special-section h3{font:900 1rem Nunito,sans-serif;color:#0b2545;margin:0 0 5px}
+.cf-special-section .cf-sous{margin:0 0 8px}
+.cf-special-section .pc-choix{display:flex;flex-wrap:wrap;gap:7px}
+.cf-special-section .pc-opt{width:auto;padding:9px 13px;border:1.5px solid #bcd4e9;border-radius:9px;background:#fff;color:#0b2545;font:800 .8rem Nunito,sans-serif;cursor:pointer}
+.cf-special-section .pc-opt.on{background:#1a56db;color:#fff;border-color:#1a56db}
+.cf-special-section .cf-carte{font:inherit}
+.cf-special-section .cf-cpt{margin-bottom:9px}
+.cf-special-section .cf-mention{margin:8px 0;color:#47677f}
+.cf-special-section textarea{width:100%}
+#cf-s3{font-weight:600}
+@media(max-width:530px){.cf-special-section{padding:11px}.cf-special-section .pc-opt{flex:1 1 44%}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Limpid","image":"https://limpid-nettoyage.fr/assets/logo-limpid.webp","url":"https://limpid-nettoyage.fr/","telephone":"+33626556569","email":"bonjour@limpid-nettoyage.fr","address":{"@type":"PostalAddress","streetAddress":"5 rue des Sapins","postalCode":"88390","addressLocality":"Darnieulles","addressRegion":"Vosges","addressCountry":"FR"},"geo":{"@type":"GeoCoordinates","latitude":48.1991887,"longitude":6.3539957},"areaServed":["Darnieulles","Épinal","Golbey","Thaon-les-Vosges","Chantraine","Uxegney","Chavelot"],"priceRange":"€€","openingHours":"Mo-Fr 08:30-20:00 Sa 10:00-20:00","aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"12"}}</script>
 <noscript><style>@media(max-width:820px){.nav ul{position:static;height:auto;transform:none;visibility:visible;box-shadow:none;padding:8px 0;width:100%}.burger{display:none}}</style></noscript>
@@ -338,10 +361,10 @@ body[data-tunnel="configurateur"] footer{padding-bottom:90px}
  </div>
  <div class="cf-prog"><div class="cf-barre" role="progressbar" aria-label="Progression de votre demande"><i id="cf-barre"></i></div><span id="cf-prog-txt" hidden></span></div>
 
- <!-- 1. Localisation -->
- <section class="cf-etape on" data-etape="1" aria-labelledby="cf-t1">
-  <h2 id="cf-t1">Où intervient-on ?</h2>
-  <p class="cf-sous">Dans notre zone d'intervention, le déplacement est compris dans le prix.</p>
+ <!-- Localisation : après la description des prestations -->
+ <section class="cf-etape" data-etape="1" aria-labelledby="cf-t1">
+  <h2 id="cf-t1">Où se déroulera l’intervention ?</h2>
+  <p class="cf-sous">Maintenant que votre besoin est défini, indiquons le lieu d’intervention pour vérifier notre secteur.</p>
   <div class="cf-ac">
    <label class="cf-champ" for="f-adresse">Adresse <small>Commencez à la taper puis choisissez-la dans la liste : le code postal et la commune se remplissent seuls.</small></label>
    <input type="text" id="f-adresse" class="cf-ac-champ" autocomplete="off" placeholder="Ex. : 5 rue des Sapins, Darnieulles" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="f-adresse-sug">
@@ -358,17 +381,17 @@ body[data-tunnel="configurateur"] footer{padding-bottom:90px}
   <div class="cf-erreurs" id="err-1" role="alert"></div>
  </section>
 
- <!-- 2. Type de prestation -->
- <section class="cf-etape" data-etape="2" aria-labelledby="cf-t2">
-  <h2 id="cf-t2">Quelles prestations ?</h2>
+ <!-- Première étape : besoins et prestations -->
+ <section class="cf-etape on" data-etape="2" aria-labelledby="cf-t2">
+  <h2 id="cf-t2">De quoi avez-vous besoin ?</h2>
   <p class="cf-sous">Vous êtes :</p>
   <div class="cf-seg" id="f-profil">
    <button type="button" data-v="particulier" class="on">Un particulier</button>
    <button type="button" data-v="pro">Un professionnel</button>
   </div>
-  <p class="cf-sous" style="margin:-4px 0 10px">Choisissez-en une ou plusieurs : par exemple l'entretien de votre logement et vos vitres.</p>
+  <p class="cf-sous" style="margin:-4px 0 10px">Choisissez toutes les prestations souhaitées. Un seul formulaire suffit, même pour une combinaison de services.</p>
   <div class="cf-choix" id="f-prestations"></div>
-  <p class="cf-combi" id="f-combi" aria-live="polite"></p>
+  <p class="cf-combi" id="f-combi" aria-live="polite">Sélectionnez au moins une prestation pour commencer.</p>
   <div id="f-note-combi"></div>
   <div id="f-zone2" aria-live="polite"></div>
   <div class="cf-erreurs" id="err-2" role="alert"></div>
@@ -376,8 +399,9 @@ body[data-tunnel="configurateur"] footer{padding-bottom:90px}
 
  <!-- 3. Description -->
  <section class="cf-etape" data-etape="3" aria-labelledby="cf-t3">
-  <h2 id="cf-t3">Décrivez ce qu'il y a à nettoyer</h2>
+  <h2 id="cf-t3">Décrivez votre prestation</h2>
   <p class="cf-sous" id="cf-s3">Une estimation, pas un état des lieux : des valeurs approximatives suffisent.</p>
+  <div class="cf-guidage" id="cf-guidage-3" aria-live="polite"></div>
   <div id="f-description"></div>
   <div class="cf-duree" id="d3"></div>
   <div class="cf-erreurs" id="err-3" role="alert"></div>
@@ -387,6 +411,7 @@ body[data-tunnel="configurateur"] footer{padding-bottom:90px}
  <section class="cf-etape" data-etape="4" aria-labelledby="cf-t4">
   <h2 id="cf-t4">Ce qui est compris</h2>
   <p class="cf-sous" id="cf-s4">Les tâches habituelles sont cochées. Décochez ce que vous ne souhaitez pas, ajoutez une option si besoin.</p>
+  <div class="cf-guidage" id="cf-guidage-4"></div>
   <div id="f-taches"></div>
   <div class="cf-duree" id="d4"></div>
   <div class="cf-erreurs" id="err-4" role="alert"></div>
@@ -395,6 +420,7 @@ body[data-tunnel="configurateur"] footer{padding-bottom:90px}
  <!-- 5. Fréquence et durée -->
  <section class="cf-etape" data-etape="5" aria-labelledby="cf-t5">
   <h2 id="cf-t5">Fréquence et durée</h2>
+  <div class="cf-guidage" id="cf-guidage-5"></div>
   <div id="f-frequence"></div>
   <p class="cf-sous" style="margin-top:6px">Comment voulez-vous calculer la durée ?</p>
   <div class="cf-choix deux" id="f-mode">
@@ -665,7 +691,7 @@ var LIMPID_CONFIG_DEFAUT = {
       creditImpot: true
     },
     vitres: {
-      nom: "Vitres et véranda",
+      nom: "Lavage de vitres",
       inclus: [
         "Vitrages, encadrements et appuis, à l'intérieur comme à l'extérieur",
         "Baies vitrées et portes-fenêtres",
@@ -736,7 +762,7 @@ var LIMPID_CONFIG_DEFAUT = {
     }
   },
   textes: {
-    intro: "Décrivez votre besoin en quelques étapes. Limpid vous envoie ensuite votre devis par e-mail, sous 48 h.",
+    intro: "Choisissez vos besoins, seuls ou combinés. Décrivez ensuite les lieux : Limpid vous adresse un devis adapté par e-mail sous 48 h.",
     estimation: "Durée indicative, à confirmer par Limpid. Elle ne constitue pas un engagement de durée.",
     prixParEmail: "Le prix vous est communiqué avec votre devis, par e-mail : il tient compte de votre logement, de la fréquence et du déplacement, sans frais cachés.",
     creditImpot: "Les prestations à domicile des particuliers peuvent ouvrir droit à un crédit d'impôt de 50 %, sous réserve des conditions légales. Avec l'avance immédiate, lorsqu'elle est activée et applicable, vous ne réglez que le reste à charge au moment du paiement, au lieu d'avancer la totalité. Votre devis précisera le reste à charge estimé.",
@@ -1011,6 +1037,7 @@ var LimpidMoteur = (function () {
 
 /* @@MOTEUR-FIN@@ */
 </script>
+<script src="/assets/limpid-parcours-vitres.js"></script>
 <script>
 /* ================= Limpid · configurateur public =================
    Aucun prix n'est calculé ici : le prix est établi par Limpid et envoyé
@@ -1067,12 +1094,12 @@ var LimpidMoteur = (function () {
     return "LMP-G-" + String(d.getFullYear()).slice(2) + p(d.getMonth() + 1) + p(d.getDate()) + "-" + h.toUpperCase();
   }
 
-  /* groupe : deux offres d'un même groupe ne se combinent pas */
+  /* Prestations indépendantes : un grand nettoyage ponctuel peut préparer un entretien régulier ultérieur. */
   var OFFRES = [
     { id: "regulier", type: "menage", ic: "🏠", lib: "Entretien régulier du logement", court: "Entretien régulier", d: "Chaque semaine ou tous les 15 jours.", profils: ["particulier"], groupe: "logement" },
     { id: "grand", type: "grand", ic: "✨", lib: "Grand nettoyage", court: "Grand nettoyage", d: "Fin de bail, emménagement, nettoyage de printemps.", profils: ["particulier"], groupe: "logement" },
     { id: "bureaux", type: "bureaux", ic: "🏢", lib: "Entretien de bureaux et locaux", court: "Entretien des locaux", d: "Bureaux, cabinets et commerces.", profils: ["pro"] },
-    { id: "vitres", type: "vitres", ic: "🪟", lib: "Vitres et véranda", court: "Vitres et véranda", d: "Fenêtres, baies vitrées, véranda, vitrines.", profils: ["particulier", "pro"] },
+    { id: "vitres", type: "vitres", ic: "🪟", lib: "Lavage de vitres", court: "Lavage de vitres", d: "Fenêtres, baies vitrées, véranda, vitrines.", profils: ["particulier", "pro"] },
     { id: "textile", type: "textile", ic: "🛋️", lib: "Canapés, tapis et textiles", court: "Textiles", d: "Canapés, fauteuils, matelas, tapis, moquette.", profils: ["particulier", "pro"] }
   ];
   var FREQUENCES = {
@@ -1092,7 +1119,7 @@ var LimpidMoteur = (function () {
       niveau: 1, acces: "plainpied", encombrement: "normal", verandaOn: false, v660Comptage: "ouvertures", v660Cotes: "int_ext" };
   }
   function etatVide() {
-    return { etape: 1, cp: "", commune: "", adresse: "", profil: "particulier", offres: [], ss: {}, mode: "auto", heures: {}, priorites: {},
+    return { etape: 2, serviceIndex: 0, cp: "", commune: "", adresse: "", profil: "particulier", offres: [], ss: {}, mode: "auto", heures: {}, priorites: {},
       photos: "", contact: {}, geo: null, debut: false, envoye: false, id: "" };
   }
   var E = etatVide();
@@ -1107,6 +1134,52 @@ var LimpidMoteur = (function () {
   function offre(id) { for (var i = 0; i < OFFRES.length; i++) if (OFFRES[i].id === id) return OFFRES[i]; return null; }
   function choisies() { return OFFRES.filter(function (o) { return E.offres.indexOf(o.id) >= 0; }); }
   function aVitres() { return E.offres.indexOf("vitres") >= 0; }
+  function serviceActif() { return E.offres[Math.min(E.serviceIndex||0,Math.max(0,E.offres.length-1))]||""; }
+  function offresDeCetteEtape() { var o=offre(serviceActif()); return o?[o]:[]; }
+  function tachesVitresReelles() { return window.LIMPID_PARCOURS && window.LIMPID_PARCOURS.service==='vitres'; }
+  function questionsVitres(id) {
+    var s=S(id);
+    if(!s.v667){
+      var el=s.elements||{},r={types:[],cotes:s.v660Cotes==='interieur'?'int':s.v660Cotes==='exterieur'?'ext':'int_ext',
+        f1:n(s.v660F1),f2:n(s.v660F2),fVelux:0,baiesP:n(el.baiesP),baies:n(el.baies),baiesG:n(el.baiesG),
+        verandaM2:n(el.verandaM2),frequence:s.frequence||'',logement:'',accessible:'',quand:''};
+      if(r.f1+r.f2+r.fVelux)r.types.push('fenetres');
+      if(r.baiesP+r.baies+r.baiesG)r.types.push('baies');
+      if(r.verandaM2)r.types.push('veranda');
+      s.v667=r;
+    }
+    if(E.profil==='pro'){ s.v667.logement='autre'; s.v667.logementTxt='Local professionnel'; }
+    return s.v667;
+  }
+  function ecransVitres(ids) {
+    return tachesVitresReelles()?window.LIMPID_PARCOURS.ecrans().filter(function(e){return ids.indexOf(e.id)>=0;}):[];
+  }
+  function vitresSpecialHtml(ids) {
+    var R=questionsVitres('vitres');
+    if(!tachesVitresReelles())return '<div class="cf-alerte ambre">Le configurateur Vitres est indisponible. Réessayez sans envoyer la demande.</div>';
+    return ecransVitres(ids).filter(function(e){return !e.si||e.si(R);}).map(function(e){
+      if(E.profil==='pro'&&e.id==='logement')return '<div class="cf-special-section"><h3>Accès aux vitrages du local</h3>'+
+        '<p class="cf-sous">Une échelle ou une perche sera-t-elle nécessaire ?</p><div class="pc-choix">'+
+        [['non','Non, tout est accessible'],['oui','Oui, certains vitrages sont en hauteur']].map(function(x){
+          return '<button type="button" class="pc-opt'+(R.accessible===x[0]?' on':'')+'" data-choix="accessible|'+x[0]+'">'+x[1]+'</button>';
+        }).join('')+'</div></div>';
+      return '<div class="cf-special-section"><h3>'+esc(e.titre)+'</h3>'+(e.sous?'<p class="cf-sous">'+esc(e.sous)+'</p>':'')+e.rendre(R)+'</div>';
+    }).join('');
+  }
+  function validerVitres(ids){
+    if(!tachesVitresReelles())return 'Le configurateur Vitres n’est pas chargé.';
+    var R=questionsVitres('vitres');
+    for(var e of ecransVitres(ids))if((!e.si||e.si(R))&&e.valider){var msg=e.valider(R);if(msg)return msg;}
+    return '';
+  }
+  function guidage(et){
+    if(et<3||et>5)return;
+    var z=$('cf-guidage-'+et),o=offre(serviceActif());if(!z||!o)return;
+    var id=E.offres.indexOf(o.id)+1;
+    z.innerHTML='<b>Prestation '+id+' sur '+E.offres.length+' : '+esc(o.lib)+'</b>'+
+      '<small>Complétez cette prestation jusqu’au bout. '+(id<E.offres.length?'Nous passerons ensuite automatiquement à '+esc(offre(E.offres[id]).lib)+'.':'Ensuite, nous vérifierons le lieu et le récapitulatif.')+'</small>';
+  }
+  function deuxPhasesLogement() { return E.offres.indexOf("regulier") >= 0 && E.offres.indexOf("grand") >= 0; }
   function PP(id) { var o = offre(id); return o ? cfg().prestations[o.type] : null; }
   function S(id) { if (!E.ss[id]) E.ss[id] = saisieVide(); return E.ss[id]; }
   function duree(min) {
@@ -1127,6 +1200,12 @@ var LimpidMoteur = (function () {
     var o = offre(id); if (!o) return { type: "" };
     var s = JSON.parse(JSON.stringify(S(id)));
     s.type = o.type;
+    if(id==='vitres'&&tachesVitresReelles()) {
+      var R=questionsVitres(id),normalized=window.LIMPID_PARCOURS.saisie(R);
+      normalized.niveau=parseInt(s.niveau,10)||1;
+      normalized.travaux=!!s.travaux;
+      return normalized;
+    }
     if (FREQUENCES[id]) { if (!s.frequence) s.frequence = FREQUENCES[id][0][0]; } else s.frequence = "0";
     s.niveau = parseInt(s.niveau, 10) || 1;
     if (o.type === "menage") {
@@ -1159,6 +1238,7 @@ var LimpidMoteur = (function () {
     if(!of) return null;
     var detail=r.v660Comptage==="ouvertures", cotes=detail?(map[r.v660Cotes]||""):"";
     var f=detail?{unBattant:n(r.v660F1),deuxBattants:n(r.v660F2),velux:0}:null;
+    if(of.type==="vitres"&&tachesVitresReelles()) return window.LIMPID_PARCOURS.qualification(questionsVitres(id));
     if(of.type==="vitres") return {comptage:detail?"ouvertures":"faces",fenetres:f,cotes:cotes,faces:(s.elements||{}).faces||0};
     if(of.type==="menage"&&!aVitres()&&((s.options||{}).opt_fenetres||0)+((s.options||{}).opt_baies||0)+((s.options||{}).opt_baies_p||0)+((s.options||{}).opt_baies_g||0)>0)
       return {vitrerieOption:{comptage:detail?"ouvertures":"faces",fenetres:f,cotes:cotes,faces:(s.options||{}).opt_fenetres||0,
@@ -1181,7 +1261,7 @@ var LimpidMoteur = (function () {
     if (ok === l.length) return "prioritaire";
     return ok ? "partielle" : (E.offres.length ? "etendue" : (LimpidMoteur.zoneDe(c, "vitres") === "prioritaire" ? "vitres" : "etendue"));
   }
-  /* Message de zone affiché dès l'étape 1 (avant le choix des prestations), puis à l'étape 2 selon les prestations choisies. */
+  /* Secteur vérifié après le choix des prestations et avant le récapitulatif. */
   function alerteZone() {
     var c = communeChoisie(), cl = LimpidMoteur.classeZone(c, E.cp, E.geo), nom = c ? c.nom : E.commune, m;
     if (E.offres.length && (cl === "tout" || cl === "vitres" || cl === "proche")) {
@@ -1293,22 +1373,24 @@ var LimpidMoteur = (function () {
       var on = E.offres.indexOf(o.id) >= 0;
       return '<button type="button" class="cf-carte cf-multi' + (on ? " on" : "") + '" data-v="' + o.id + '" aria-pressed="' + on + '"><span class="ic">' + o.ic + '</span><span><b>' + esc(o.lib) + '</b><span class="d">' + esc(o.d) + '</span></span><span class="cf-case" aria-hidden="true"></span></button>';
     }).join("");
-    $("f-combi").textContent = E.offres.length ? (E.offres.length + (E.offres.length > 1 ? " prestations choisies." : " prestation choisie. Vous pouvez en ajouter une autre.")) : "";
+    $("f-combi").textContent = E.offres.length
+      ? "Votre demande : " + choisies().map(function(o){return o.court;}).join(" + ") + "."
+      : "Sélectionnez au moins une prestation pour commencer.";
+    var notes=[];
+    if (deuxPhasesLogement()) notes.push("Grand nettoyage ponctuel, puis entretien régulier : deux interventions distinctes, chacune avec sa durée. Le devis sera vérifié pour ne pas facturer deux fois la remise en état initiale.");
+    if (aVitres() && (E.offres.indexOf("regulier")>=0 || E.offres.indexOf("grand")>=0)) notes.push("La vitrerie est décrite une seule fois dans Lavage de vitres : elle n'est pas ajoutée une deuxième fois dans les options du ménage.");
+    $("f-note-combi").innerHTML = notes.map(function(x){return '<div class="cf-alerte bleu">'+esc(x)+'</div>';}).join("");
     var z2 = $("f-zone2"); if (z2) { var a = E.offres.length && E.commune && /^\d{5}$/.test(E.cp) ? alerteZone() : ""; z2.innerHTML = /cf-alerte vert/.test(a) ? "" : a; }
   }
   function basculerOffre(id) {
     var o = offre(id), i = E.offres.indexOf(id), note = "";
     if (i >= 0) E.offres.splice(i, 1);
     else {
-      if (o.groupe) E.offres = E.offres.filter(function (x) {
-        var autre = offre(x);
-        if (autre.groupe === o.groupe) { note = "L'entretien régulier et le grand nettoyage ne se cumulent pas : le premier passage d'un entretien régulier remet déjà le logement à niveau."; return false; }
-        return true;
-      });
       E.offres.push(id);
       E.offres.sort(function (a, b) { return OFFRES.indexOf(offre(a)) - OFFRES.indexOf(offre(b)); });
     }
-    $("err-2").textContent = ""; $("f-note-combi").innerHTML = note ? '<div class="cf-alerte bleu">' + esc(note) + "</div>" : "";
+    $("err-2").textContent = "";
+    if(E.serviceIndex>=E.offres.length)E.serviceIndex=0;
     sauver(); rendrePrestations();
   }
 
@@ -1345,8 +1427,8 @@ var LimpidMoteur = (function () {
 
   /* ---------- Étape 3 : description ---------- */
   function rendreDescription() {
-    var z = $("f-description"), h = "", plusieurs = E.offres.length > 1;
-    choisies().forEach(function (o) {
+    var z = $("f-description"), h = "", plusieurs = false;
+    offresDeCetteEtape().forEach(function (o) {
       var id = o.id, t = o.type, P = cfg().prestations[t], x = "";
       if (t === "menage" || t === "grand") {
         x += nombre(id + ".surface", "Surface du logement (m²)", "", "80");
@@ -1373,17 +1455,8 @@ var LimpidMoteur = (function () {
           x += coche(id + ".animaux", "Présence d'animaux") + coche(id + ".fumeur", "Logement fumeur");
         }
       } else if (t === "vitres") {
-        x += '<div class="cf-compteurs">';
-        P.elements.forEach(function (e) {
-          if (e.id === 'faces' && (S(id).v660Comptage === 'ouvertures' || !n((S(id).elements || {}).faces))) {
-            x += '<p class="cf-mention">Comptez les fenêtres, pas les faces : conversion automatique dans votre devis.</p>';
-            x += compteur(id + '.v660F1','Fenêtres à 1 battant','Une fenêtre complète',1);
-            x += compteur(id + '.v660F2','Fenêtres à 2 battants','Une fenêtre complète',1);
-            x += choix(id + '.v660Cotes','Côtés à nettoyer',[['int_ext','Intérieur + extérieur'],['interieur','Intérieur seulement'],['exterieur','Extérieur seulement']]);
-          } else x += compteur(id + '.elements.' + e.id, e.lib, e.aide || '', e.surface ? 5 : 1);
-        });
-        x += '</div>' + choix(id + ".niveau", "État des vitres", NIVEAUX);
-        x += coche(id + ".hauteur", "Vitrages en hauteur", "Accessibles seulement à l'échelle ou à la perche : nous vérifions la sécurité avant de chiffrer.");
+        x += vitresSpecialHtml(['quoi','fenetres','baies','veranda','particulier','cotes','logement']);
+        x += '<div class="cf-alerte bleu">Limpid utilisera les quantités et le type d’accès déclarés pour établir votre devis. Les rails, les volets et les contraintes particulières seront confirmés avant toute tarification.</div>';
       } else if (t === "textile") {
         x += '<div class="cf-compteurs">';
         P.elements.forEach(function (e) { x += compteur(id + ".elements." + e.id, e.lib, e.aide || "", 1); });
@@ -1403,8 +1476,8 @@ var LimpidMoteur = (function () {
 
   /* ---------- Étape 4 : tâches et options ---------- */
   function rendreTaches() {
-    var z = $("f-taches"), h = "", plusieurs = E.offres.length > 1;
-    choisies().forEach(function (o) {
+    var z = $("f-taches"), h = "", plusieurs = false;
+    offresDeCetteEtape().forEach(function (o) {
       var id = o.id, P = cfg().prestations[o.type], s = saisie(id), x = "";
       if (o.type === "menage" || o.type === "grand") {
         x += '<div class="cf-piece"><h3>' + esc(P.communes.lib) + '</h3>' + P.communes.taches.map(function (t) { return tache(id, t, false); }).join("") + '</div>';
@@ -1450,15 +1523,17 @@ var LimpidMoteur = (function () {
   /* ---------- Étape 5 : fréquence, durée, priorités ---------- */
   function rendreDuree() {
     var h = "";
-    choisies().forEach(function (o) {
+    offresDeCetteEtape().forEach(function (o) {
       var f = FREQUENCES[o.id];
+      if(o.id==='vitres')return;
       if (f && !f.some(function (x) { return x[0] === S(o.id).frequence; })) { S(o.id).frequence = f[0][0]; sauver(); }
     });
-    var avecFreq = choisies().filter(function (o) { return FREQUENCES[o.id]; });
+    var avecFreq = offresDeCetteEtape().filter(function (o) { return FREQUENCES[o.id]&&o.id!=='vitres'; });
     avecFreq.forEach(function (o) {
       var q = o.id === "regulier" ? "à quel rythme ?" : "à quelle fréquence ?";
       h += choix(o.id + ".frequence", E.offres.length > 1 ? o.court + " : " + q : q.charAt(0).toUpperCase() + q.slice(1), FREQUENCES[o.id]);
     });
+    if(serviceActif()==='vitres')h=vitresSpecialHtml(['quand']);
     $("f-frequence").innerHTML = h;
     document.querySelectorAll("#f-mode .cf-carte").forEach(function (b) { b.classList.toggle("on", b.dataset.v === E.mode); });
     majComparaison();
@@ -1474,7 +1549,7 @@ var LimpidMoteur = (function () {
   }
   function majComparaison() {
     var T = cfg().textes, h = "";
-    choisies().forEach(function (o) {
+    offresDeCetteEtape().forEach(function (o) {
       var id = o.id, est = estimation(id), x = "", titre = E.offres.length > 1 ? '<h3>' + esc(o.court) + '</h3>' : "";
       if (E.mode === "manuel") {
         x += '<label class="cf-champ">Heures souhaitées' + (parPassage(id) ? " par intervention" : "") +
@@ -1493,13 +1568,14 @@ var LimpidMoteur = (function () {
       } else {
         x += '<div class="cf-duree"><b>' + (est.minutes ? duree(est.minutes) : "à préciser") + '</b><span>' + (parPassage(id) ? "par intervention. " : "") + esc(T.estimation) + '</span></div>';
       }
-      if (id === "regulier" && est.minutes) x += '<div class="cf-alerte bleu">Le premier passage, plus long, remet le logement à niveau : environ ' + duree(est.minutes * (1 + (cfg().premierPassage || 0) / 100)) + ' pour l\'ensemble du périmètre. Votre devis le précisera.</div>';
+      if (id === "regulier" && est.minutes && !deuxPhasesLogement()) x += '<div class="cf-alerte bleu">Le premier passage, plus long, remet le logement à niveau : environ ' + duree(est.minutes * (1 + (cfg().premierPassage || 0) / 100)) + ' pour l\'ensemble du périmètre. Votre devis le précisera.</div>';
+      if (id === "regulier" && deuxPhasesLogement()) x += '<div class="cf-alerte bleu">L’entretien régulier suit le grand nettoyage ponctuel. La durée indiquée est celle d’un passage récurrent ; les deux phases seront chiffrées distinctement.</div>';
       h += '<div class="cf-piece">' + titre + x + '</div>';
     });
     $("f-comparaison").innerHTML = h;
   }
   function majDureesEtapes() {
-    var l = choisies().map(function (o) { var m = estimation(o.id).minutes; return m ? { o: o, m: m } : null; }).filter(Boolean);
+    var l = offresDeCetteEtape().map(function (o) { var m = estimation(o.id).minutes; return m ? { o: o, m: m } : null; }).filter(Boolean);
     var txt = "";
     if (l.length === 1) txt = '<b>' + duree(l[0].m) + '</b><span>estimées' + (parPassage(l[0].o.id) ? " par intervention" : "") + '. ' + esc(cfg().textes.estimation) + '</span>';
     else if (l.length > 1) txt = '<span class="cf-duree-l">' + l.map(function (x) { return esc(x.o.court) + ' : <b>' + duree(x.m) + '</b>' + (parPassage(x.o.id) ? " par intervention" : ""); }).join("<br>") + '</span><span>' + esc(cfg().textes.estimation) + '</span>';
@@ -1515,6 +1591,8 @@ var LimpidMoteur = (function () {
     return r;
   }
   function libFrequence(id) {
+    if(id==='vitres'&&tachesVitresReelles()){var R=questionsVitres(id),list=[['0','Une seule fois'],['2','Deux fois par an'],['4','Chaque trimestre'],['12','Chaque mois'],['1','Une fois par an']];
+      var x=list.find(function(l){return l[0]===R.frequence;});return x?x[1]:'À préciser';}
     var f = FREQUENCES[id]; if (!f) return "Une intervention";
     var x = f.filter(function (y) { return y[0] === saisie(id).frequence; })[0];
     return x ? x[1] : "";
@@ -1524,9 +1602,18 @@ var LimpidMoteur = (function () {
     var L = [];
     L.push("Profil : " + (E.profil === "pro" ? "professionnel" : "particulier"));
     L.push("Adresse : " + [E.adresse, E.cp, E.commune].filter(Boolean).join(" "));
+    if (deuxPhasesLogement()) L.push("Organisation : grand nettoyage ponctuel puis entretien régulier. Interventions, temps et fréquences distincts ; vérification des recouvrements lors du devis.");
     choisies().forEach(function (o) {
       var id = o.id, s = saisie(id), est = estimation(id), p = LimpidMoteur.perimetre(s);
       L.push("", "■ " + o.lib.toUpperCase());
+      if(id==='vitres'&&tachesVitresReelles()){var q=window.LIMPID_PARCOURS.qualification(questionsVitres(id));
+        L.push('Fenêtres : '+q.fenetres.unBattant+' à 1 battant, '+q.fenetres.deuxBattants+' à 2 battants, '+q.fenetres.velux+' petits Velux (2 faces depuis l’intérieur)');
+        L.push('Baies : '+q.baies.petites+' petites, '+q.baies.standard+' standard, '+q.baies.grandes+' grandes');
+        L.push('Véranda : '+q.veranda.m2+' m² ; côtés : '+q.cotes+' ; accès hauteur : '+q.accessible+' ; intervention : '+q.quandLib);
+        if(q.autre)L.push('Autre surface : '+q.autre);
+        if(q.fenetres.dimensions)L.push('Dimensions fenêtres : '+q.fenetres.dimensions);
+        if(q.baies.dimensions)L.push('Dimensions baies : '+q.baies.dimensions);
+      }
       L.push("Fréquence : " + libFrequence(id));
       L.push("Durée estimée par Limpid : " + (est.minutes ? duree(est.minutes) : "non estimée"));
       if (heuresChoisies(id)) L.push("Durée choisie par le client : " + duree(heuresChoisies(id) * 60) + (est.minutes && heuresChoisies(id) * 60 < est.minutes - 1 ? " (inférieure à l'estimation)" : ""));
@@ -1547,9 +1634,16 @@ var LimpidMoteur = (function () {
     var T = cfg().textes, h = "<dl>";
     h += "<dt>Adresse</dt><dd>" + esc([E.adresse, [E.cp, E.commune].filter(Boolean).join(" ")].filter(Boolean).join(", ")) + "</dd></dl>";
     var ci = false;
+    if (E.offres.length > 1) h += '<div class="cf-alerte bleu"><b>Votre demande combinée</b> : ' + E.offres.length + ' prestations dans une seule demande. Chaque prestation conserve son périmètre, sa durée et sa fréquence.</div>';
+    if (deuxPhasesLogement()) h += '<div class="cf-alerte bleu">Le grand nettoyage est ponctuel. L’entretien régulier est prévu ensuite : les deux phases seront contrôlées pour éviter une double facturation du démarrage.</div>';
     choisies().forEach(function (o) {
       var id = o.id, s = saisie(id), est = estimation(id), P = PP(id), p = LimpidMoteur.perimetre(s), x = "<dl>";
       x += "<dt>Fréquence</dt><dd>" + esc(libFrequence(id)) + "</dd>";
+      if(id==='vitres'&&tachesVitresReelles()){var q=window.LIMPID_PARCOURS.qualification(questionsVitres(id));
+        x += "<dt>Fenêtres</dt><dd>"+q.fenetres.unBattant+" à 1 battant, "+q.fenetres.deuxBattants+" à 2 battants, "+q.fenetres.velux+" Velux</dd>";
+        x += "<dt>Baies</dt><dd>"+q.baies.petites+" petites, "+q.baies.standard+" standard, "+q.baies.grandes+" grandes</dd>";
+        x += "<dt>Faces fenêtres</dt><dd>"+s.elements.faces+" faces, Velux compris</dd>";
+      }
       x += "<dt>Durée</dt><dd>" + (heuresChoisies(id) ? duree(heuresChoisies(id) * 60) + " (votre choix)" : (est.minutes ? duree(est.minutes) + " (estimée)" : "à préciser")) + "</dd></dl>";
       x += "<h4>Compris</h4><ul>" + p.inclus.map(function (y) { return "<li>" + (y.piece ? "<b>" + esc(y.piece) + "</b> : " : "") + esc(y.taches.join(", ")) + "</li>"; }).join("") + "</ul>";
       if (p.options.length) x += "<h4>Éléments et options</h4><ul>" + p.options.map(function (y) { return "<li>" + esc(y) + "</li>"; }).join("") + "</ul>";
@@ -1568,7 +1662,14 @@ var LimpidMoteur = (function () {
   }
 
   /* ---------- Navigation ---------- */
-  var ETAPES = [1, 2, 3, 4, 5, 6, 7];
+  function parcoursEtapes(){
+    var l=[{et:2,i:0}];
+    E.offres.forEach(function(o,i){l.push({et:3,i:i},{et:4,i:i},{et:5,i:i});});
+    l.push({et:1,i:0},{et:6,i:0},{et:7,i:0});return l;
+  }
+  function positionEtape(){
+    var l=parcoursEtapes();return l.findIndex(function(x){return x.et===E.etape&&(x.et<3||x.et>5||x.i===(E.serviceIndex||0));});
+  }
   function valider(et) {
     var err = "";
     if (et === 1) {
@@ -1578,18 +1679,20 @@ var LimpidMoteur = (function () {
     } else if (et === 2) {
       if (!E.offres.length) err = "Choisissez au moins une prestation.";
     } else if (et === 3 || et === 4) {
-      choisies().some(function (o) {
+      offresDeCetteEtape().some(function (o) {
         var id = o.id, s = S(id), pre = E.offres.length > 1 ? o.court + " : " : "";
+        if(o.id==='vitres'&&et===3){err=validerVitres(['quoi','fenetres','baies','veranda','particulier','cotes','logement']);return !!err;}
         if (et === 3) {
-          if (!estimation(id).minutes) err = pre + ((o.type === "menage" || o.type === "grand") ? "indiquez la surface et au moins une pièce." : "indiquez au moins un élément à nettoyer.");
+          if (!estimation(id).minutes && !(id==='vitres'&&questionsVitres(id).types.indexOf('autre')>=0)) err = pre + ((o.type === "menage" || o.type === "grand") ? "indiquez la surface et au moins une pièce." : "indiquez au moins un élément à nettoyer.");
           else if (o.type === "menage" && s.perimetre !== "complet" && !n(s.surfacePart)) err = pre + "indiquez la surface de la partie à entretenir.";
           else if (o.type === "grand" && s.verandaOn && !aVitres() && !n((s.elements || {}).veranda)) err = pre + "indiquez la surface de la véranda.";
         } else if (o.type === "menage" && s.verandaOn && !aVitres() && !n((s.options || {}).opt_veranda)) err = pre + "indiquez la surface de la véranda.";
         if (err) err = err.charAt(0).toUpperCase() + err.slice(1);
         return !!err;
       });
-    } else if (et === 5 && E.mode === "manuel") {
-      choisies().some(function (o) { if (!(n(E.heures[o.id]) >= 0.5)) { err = "Indiquez la durée souhaitée" + (E.offres.length > 1 ? " pour : " + o.court : "") + ", en heures."; return true; } return false; });
+    } else if (et === 5) {
+      if(serviceActif()==='vitres')err=validerVitres(['quand']);
+      if(!err&&E.mode === "manuel")offresDeCetteEtape().some(function (o) { if (!(n(E.heures[o.id]) >= 0.5)) { err = "Indiquez la durée souhaitée" + (E.offres.length > 1 ? " pour : " + o.court : "") + ", en heures."; return true; } return false; });
     }
     var z = $("err-" + et); if (z) z.textContent = err;
     /* Le message d'erreur est amené à l'écran : la barre de boutons du bas ne doit pas le cacher. */
@@ -1597,15 +1700,16 @@ var LimpidMoteur = (function () {
     return !err;
   }
   function voirErreur(z) { try { if (z && z.scrollIntoView) z.scrollIntoView({ behavior: "smooth", block: "center" }); } catch (e) {} }
-  function aller(et) {
-    E.etape = et; sauver();
+  function aller(et,index) {
+    E.etape = et; if(index!==undefined)E.serviceIndex=index; sauver();
     document.querySelectorAll(".cf-etape").forEach(function (s) { s.classList.toggle("on", String(s.dataset.etape) === String(et)); });
-    var i = ETAPES.indexOf(et), rang = et === 8 ? ETAPES.length : i + 1;
-    $("cf-barre").style.width = Math.round(rang / ETAPES.length * 100) + "%";
+    var steps=parcoursEtapes(),i=positionEtape(),rang=et===8?steps.length:i+1;
+    $("cf-barre").style.width = Math.round(rang / steps.length * 100) + "%";
     /* Barre de progression seule : pas de compteur d'étapes */
     /* Les deux boutons restent toujours à la même place ; à la première étape, Retour est simplement inactif. */
     $("b-retour").disabled = !(i > 0 && et !== 8);
-    $("b-suite").textContent = et === 7 ? "Recevoir mon devis" : (et === 6 ? "C'est bien ça, continuer" : "Continuer");
+    var next=steps[i+1],change=next&&et===5&&next.et===3;
+    $("b-suite").textContent = et===7?"Recevoir mon devis":et===6?"C'est bien ça, continuer":change?"Passer à "+offre(E.offres[next.i]).court:"Continuer";
     $("cf-nav").style.display = et === 8 ? "none" : "block";
     rendreEtape(et);
     if (et === 6) ev("configurateur_recapitulatif", { prestation: listeOffres() });
@@ -1615,6 +1719,7 @@ var LimpidMoteur = (function () {
   function rendreEtape(et) {
     if (et === 1) rendreLocalisation();
     if (et === 2) rendrePrestations();
+    if(et>=3&&et<=5)guidage(et);
     if (et === 3) { rendreDescription(); majDureesEtapes(); }
     if (et === 4) { rendreTaches(); majDureesEtapes(); }
     if (et === 5) rendreDuree();
@@ -1638,11 +1743,11 @@ var LimpidMoteur = (function () {
   }
   function suivant() {
     if (E.etape === 7) { envoyer({ preventDefault: function () {} }); return; }
-    var i = ETAPES.indexOf(E.etape);
+    var i=positionEtape(),steps=parcoursEtapes();
     if (!valider(E.etape)) return;
-    if (i < ETAPES.length - 1) { ev("configurateur_etape", { etape: E.etape, prestation: listeOffres() }); ev("config_step_complete", { step: NOM_ETAPE[E.etape] }); aller(ETAPES[i + 1]); }
+    if (i < steps.length - 1) { ev("configurateur_etape", { etape: E.etape, prestation: listeOffres() }); ev("config_step_complete", { step: NOM_ETAPE[E.etape] }); aller(steps[i+1].et,steps[i+1].i); }
   }
-  function precedent() { var i = ETAPES.indexOf(E.etape); if (i > 0) { ev("config_back", { step: NOM_ETAPE[E.etape] }); aller(ETAPES[i - 1]); } }
+  function precedent() { var i=positionEtape(),steps=parcoursEtapes(); if (i > 0) { ev("config_back", { step: NOM_ETAPE[E.etape] }); aller(steps[i-1].et,steps[i-1].i); } }
 
   /* ---------- Saisie : un seul gestionnaire pour tous les champs ---------- */
   function majChamp(el) {
@@ -1669,16 +1774,32 @@ var LimpidMoteur = (function () {
       E.heures[el.dataset.heures] = el.value;
     }
     sauver();
-    if (rerendre) { if (E.etape === 3) rendreDescription(); if (E.etape === 4) rendreTaches(); }
+    if (rerendre) conserverLecture(function () { if (E.etape === 3) rendreDescription(); if (E.etape === 4) rendreTaches(); });
     majDureesEtapes();
     if (E.etape === 5 && !el.dataset.heures && !el.dataset.prio) majComparaison();
     if (E.etape === 5 && el.dataset.heures) majComparaisonGardantFocus(el);
+  }
+  function conserverLecture(action) {
+    var ancienY = window.scrollY;
+    action();
+    if (Math.abs(window.scrollY - ancienY) > 1) window.scrollTo(0, ancienY);
+    requestAnimationFrame(function () {
+      if (Math.abs(window.scrollY - ancienY) > 2) window.scrollTo(0, ancienY);
+    });
   }
   function majComparaisonGardantFocus(el) {
     var id = el.dataset.heures, pos = el.selectionStart;
     majComparaison();
     var nv = document.querySelector('[data-heures="' + id + '"]');
-    if (nv) { nv.focus(); try { nv.setSelectionRange(pos, pos); } catch (e) {} }
+    if (nv) { try { nv.focus({ preventScroll: true }); nv.setSelectionRange(pos, pos); } catch (e) {} }
+  }
+  function actionVitres(btn){
+    var R=questionsVitres('vitres');
+    if(btn.dataset.pas){var k=btn.dataset.pas;R[k]=Math.max(0,n(R[k])+(Number(btn.dataset.d)||0));}
+    else if(btn.dataset.choix){var p=btn.dataset.choix.split('|');R[p[0]]=p[1];}
+    else if(btn.dataset.multi){var p=btn.dataset.multi.split('|');if(!Array.isArray(R[p[0]]))R[p[0]]=[];
+      var i=R[p[0]].indexOf(p[1]);if(i>=0)R[p[0]].splice(i,1);else R[p[0]].push(p[1]);}
+    sauver();conserverLecture(function () { if(E.etape===3){rendreDescription();majDureesEtapes();}else if(E.etape===5)rendreDuree(); });
   }
   function brancher() {
     var root = $("cf");
@@ -1688,16 +1809,25 @@ var LimpidMoteur = (function () {
       if (t.id === "f-commune-txt") { E.commune = t.value.trim(); sauver(); rendreLocalisation(); return; }
       if (t.id === "f-adresse") { E.adresse = t.value; E.geo = null; debuter(); sauver(); suggererAdresse(t.value); return; }
       if (t.closest("#f-form")) return;
+      if(t.dataset.k&&serviceActif()==='vitres'&&(E.etape===3||E.etape===5)){
+        questionsVitres('vitres')[t.dataset.k]=t.type==='number'?Math.max(0,Number(t.value)||0):t.value;
+        sauver();majDureesEtapes();if(E.etape===5)majComparaison();return;
+      }
       if (t.dataset.path || t.dataset.heures) { if (t.type !== "checkbox" && t.tagName !== "SELECT") majChamp(t); }
     });
     root.addEventListener("change", function (e) {
       var t = e.target;
       if (t.id === "f-commune-sel") { E.autre = t.value === "__autre"; E.commune = E.autre ? "" : t.value; sauver(); rendreLocalisation(); if (t.value === "__autre") $("f-commune-txt").focus(); return; }
       if (t.closest("#f-form")) return;
+      if(t.dataset.k&&serviceActif()==='vitres'&&(E.etape===3||E.etape===5)){
+        questionsVitres('vitres')[t.dataset.k]=t.type==='number'?Math.max(0,Number(t.value)||0):t.value;
+        sauver();return;
+      }
       if (t.tagName === "SELECT" || t.type === "checkbox") majChamp(t);
     });
     root.addEventListener("click", function (e) {
       var b = e.target.closest("button"); if (!b) return;
+      if(serviceActif()==='vitres'&&(E.etape===3||E.etape===5)&&b.closest('.cf-special-section')&&(b.dataset.choix||b.dataset.multi||b.dataset.pas)){actionVitres(b);return;}
       if (b.dataset.pas) {
         var inp = b.parentNode.querySelector("input"), d = parseFloat(b.dataset.d);
         inp.value = Math.max(0, (parseFloat(inp.value) || 0) + d); majChamp(inp); return;
@@ -1899,19 +2029,20 @@ var LimpidMoteur = (function () {
 
   /* ---------- Démarrage ---------- */
   function demarrer() {
-    $("cf-intro").textContent = cfg().textes.intro;
+    $("cf-intro").textContent = "Choisissez vos besoins, seuls ou combinés. Décrivez ensuite votre intervention : Limpid vous répond par e-mail sous 48 h.";
     bandeauTest("cf-test");
     E.offres = (E.offres || []).filter(function (id) { return offre(id); });
-    if (E.etape === 8) E.etape = 1;
+    if (E.etape === 8) E.etape = 2;
     brancher();
     majBandeau();
     window.addEventListener("online", function () { var A = lireLS(CLE_ATTENTE, null); if (A && A.service === SERVICE) renvoyerAttente(); });
-    aller(ETAPES.indexOf(E.etape) >= 0 ? E.etape : 1);
+    var steps=parcoursEtapes(),present=steps.some(function(x){return x.et===E.etape&&(E.etape<3||E.etape>5||x.i===(E.serviceIndex||0));});
+    aller(present?E.etape:2,E.serviceIndex||0);
     /* Réglages publiés depuis l'outil gérant : ils remplacent ceux d'origine. */
     try {
       fetch("/assets/configurateur.json", { cache: "no-cache" })
         .then(function (r) { return r.ok ? r.json() : null; })
-        .then(function (o) { if (o && o.prestations) { LimpidMoteur.charger(o); $("cf-intro").textContent = cfg().textes.intro; rendreEtape(E.etape); } })
+        .then(function (o) { if (o && o.prestations) { LimpidMoteur.charger(o); rendreEtape(E.etape); } })
         .catch(function () {});
     } catch (e) {}
   }
