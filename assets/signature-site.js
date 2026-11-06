@@ -1,7 +1,7 @@
 /* SIGNATURE preproduction safety gate. Remove only during an explicit validated production transition. */
 (function(){'use strict';
 var stage=document.querySelector('.signature-preview-banner'); if(!stage)return;
-if(stage.querySelector('strong'))stage.querySelector('strong').textContent='PRÉPRODUCTION SIGNATURE V1.4';
+if(stage.querySelector('strong'))stage.querySelector('strong').textContent='PRÉPRODUCTION SIGNATURE — TEST';
 // A receipt from the local test server is NEVER a receipt from the Limpid CRM.
 if(location.hostname==='127.0.0.1'){
  try{var lastLab=sessionStorage.getItem('limpid_last_local_lab');

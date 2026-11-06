@@ -247,3 +247,55 @@ body.signature-site .site-header .primary-nav :is(a,summary):focus-visible{outli
  body.signature-site .site-header .nav-panel-title{margin-bottom:0}
 }
 @media(max-width:950px){body.signature-site .site-header .primary-nav{max-height:calc(100dvh - 106px);overflow-y:auto;overscroll-behavior:contain}}
+
+
+/* SIGNATURE V1.6 — five consistent premium navigation controls, no text-only leftovers */
+body.signature-site .site-header .primary-nav > a.nav-category,
+body.signature-site .site-header .primary-nav > a.nav-editorial,
+body.signature-site .site-header .nav-services > summary{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  gap:9px!important;min-height:46px!important;padding:10px clamp(10px,1vw,15px)!important;
+  color:#153958!important;background:#F3F8FC!important;border:1px solid #D9E8F1!important;
+  border-radius:13px!important;box-shadow:0 2px 0 rgba(11,37,69,.03)!important;
+  font-weight:750!important;white-space:nowrap;text-decoration:none!important;
+  transition:background-color .2s ease,border-color .2s ease,box-shadow .2s ease,color .2s ease!important;
+}
+body.signature-site .site-header .primary-nav > a.nav-editorial{background:#F8FBFE!important}
+body.signature-site .site-header .primary-nav > a.nav-category:hover,
+body.signature-site .site-header .primary-nav > a.nav-editorial:hover,
+body.signature-site .site-header .nav-services > summary:hover,
+body.signature-site .site-header .nav-services[open] > summary,
+body.signature-site .site-header .primary-nav > a[aria-current="page"]{
+  color:#1253BB!important;background:#E6F2FF!important;border-color:#B7D6EA!important;
+  box-shadow:0 4px 14px rgba(26,86,219,.08)!important;
+}
+body.signature-site .site-header .primary-nav :is(a.nav-category,a.nav-editorial,.nav-services > summary) > img{
+ width:18px!important;height:18px!important;min-width:18px!important;object-fit:contain;opacity:.78;
+ transition:filter .2s ease,opacity .2s ease;filter:grayscale(1)
+}
+body.signature-site .site-header .primary-nav :is(a.nav-category,a.nav-editorial,.nav-services > summary):hover > img,
+body.signature-site .site-header .nav-services[open] > summary > img,
+body.signature-site .site-header .primary-nav a[aria-current="page"] > img{
+ filter:none;opacity:1
+}
+body.signature-site .site-header .nav-services-panel{box-sizing:border-box}
+@media(max-width:1160px) and (min-width:951px){
+ body.signature-site .site-header .primary-nav{gap:4px!important}
+ body.signature-site .site-header .primary-nav > a.nav-category,
+ body.signature-site .site-header .primary-nav > a.nav-editorial,
+ body.signature-site .site-header .nav-services > summary{padding:8px 9px!important;gap:5px!important;font-size:.73rem!important}
+ body.signature-site .site-header .primary-nav :is(a.nav-category,a.nav-editorial,.nav-services > summary) > img{width:15px!important;height:15px!important;min-width:15px!important}
+}
+@media(max-width:950px){
+ body.signature-site .site-header .primary-nav > a.nav-category,
+ body.signature-site .site-header .primary-nav > a.nav-editorial,
+ body.signature-site .site-header .nav-services > summary{
+   justify-content:flex-start!important;min-height:49px!important;width:100%;padding:12px 15px!important;
+   font-size:.91rem!important
+ }
+ body.signature-site .site-header .nav-services > summary:after{margin-left:auto}
+}
+@media(prefers-reduced-motion:reduce){
+ body.signature-site .site-header .primary-nav :is(a.nav-category,a.nav-editorial,.nav-services > summary),
+ body.signature-site .site-header .primary-nav :is(a.nav-category,a.nav-editorial,.nav-services > summary) > img{transition:none!important}
+}

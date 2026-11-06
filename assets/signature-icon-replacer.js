@@ -1,8 +1,8 @@
 /* SIGNATURE UI iconography: visual conversion only, preserves original text nodes as visually hidden.
    Zero changes to input IDs, data-* options, model values, calculation or form fields. */
 (function(){'use strict';
-var map={'🏠':'home','🏡':'home','🏢':'office','🛋':'sofa','🛍':'commerce','🩺':'medical','🔑':'key','🪟':'window','🚪':'sliding','🌿':'veranda','✏':'note','📞':'phone','✨':'sparkle','🧹':'surface','🧽':'surface','🏬':'commerce','🪑':'sofa','📅':'calendar'};
-var pat=/(🏠|🏡|🏢|🛋️?|🛍️?|🩺|🔑|🪟|🚪|🌿|✏️?|📞|✨|🧹|🧽|🏬|🪑|📅)/g;
+var map={'🏠':'home','🏡':'home','🏢':'office','🛋':'sofa','🛍':'commerce','🩺':'medical','🔑':'key','🪟':'window','🚪':'sliding','🌿':'veranda','✏':'note','📞':'phone','✨':'sparkle','🧹':'surface','🧽':'surface','🏬':'commerce','🪑':'sofa','📅':'calendar','➕':'plus','⏱':'clock','✍':'note','✅':'check'};
+var pat=/(🏠|🏡|🏢|🛋️?|🛍️?|🩺|🔑|🪟|🚪|🌿|✏️?|📞|✨|🧹|🧽|🏬|🪑|📅|➕|⏱️?|✍️?|✅)/g;
 function skip(el){return !!(el && el.closest('script,style,textarea,option,.sig-render-icon,.sig-original-emoji,[contenteditable="true"]'))}
 function decorate(node){if(node.nodeType===3){if(skip(node.parentElement))return;var t=node.nodeValue;pat.lastIndex=0;if(!pat.test(t))return;pat.lastIndex=0;var frag=document.createDocumentFragment(),i=0,m;
  while((m=pat.exec(t))){if(m.index>i)frag.appendChild(document.createTextNode(t.slice(i,m.index)));var raw=m[0],k=map[raw.replace(/\uFE0F/g,'')];if(k){var wrap=document.createElement('span');wrap.className='sig-render-icon';wrap.setAttribute('aria-hidden','true');var img=document.createElement('img');img.src='/assets/icons/'+k+'.svg';img.alt='';wrap.appendChild(img);frag.appendChild(wrap);var hidden=document.createElement('span');hidden.className='sig-original-emoji';hidden.textContent=raw;frag.appendChild(hidden);}else frag.appendChild(document.createTextNode(raw));i=pat.lastIndex;}if(i<t.length)frag.appendChild(document.createTextNode(t.slice(i)));node.parentNode.replaceChild(frag,node);
