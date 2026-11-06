@@ -248,3 +248,75 @@ body.signature-config-live :is(#pc-app,#cf) .lx3p3-rail .lx3p3-trailtitle,
 body.signature-config-live :is(#pc-app,#cf) .lx3p3-rail .lx3p3-mini span{color:#A7EAFF!important}
 body.signature-config-live :is(#pc-app,#cf) .lx3p3-rail .lx3p3-helper{color:#C4DCEB!important}
 body.signature-config-live :is(#pc-app,#cf) .lx3p3-rail .lx3p3-progresslabel strong{color:#FFFFFF!important}
+
+/* SIGNATURE V1.8 — icônes et cartes de configurateurs moins monotones, plus premium. */
+body.signature-config-live :is(#pc-corps,#cf) .cf-choix > button.cf-carte:has(> .ic):nth-child(4n+1) > .ic .sig-render-icon{
+  background:linear-gradient(135deg,#ECF8FF,#E2F1FF)!important;border-color:#BBDCF6!important;
+}
+body.signature-config-live :is(#pc-corps,#cf) .cf-choix > button.cf-carte:has(> .ic):nth-child(4n+2) > .ic .sig-render-icon{
+  background:linear-gradient(135deg,#F3FBFE,#EAF7FD)!important;border-color:#CAE5F2!important;
+}
+body.signature-config-live :is(#pc-corps,#cf) .cf-choix > button.cf-carte:has(> .ic):nth-child(4n+3) > .ic .sig-render-icon{
+  background:linear-gradient(135deg,#F0F6FF,#E7EEFF)!important;border-color:#CCD9F6!important;
+}
+body.signature-config-live :is(#pc-corps,#cf) .cf-choix > button.cf-carte:has(> .ic):nth-child(4n+4) > .ic .sig-render-icon{
+  background:linear-gradient(135deg,#F7FBFD,#EDF7FB)!important;border-color:#D5E6EF!important;
+}
+body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic) > .ic .sig-render-icon{
+  box-shadow:0 8px 18px rgba(11,37,69,.05)!important;
+}
+body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic) > .ic .sig-render-icon img{
+  opacity:.92!important;
+}
+body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic) > span:not(.ic):not(.cf-case) > span.d,
+body.signature-config-live :is(#pc-app,#cf) :is(p,li,.cf-sous,.cf-mention,.cf-aide,.cf-ligne,.cf-champ small,.cf-carte .d,.cf-carte span.d,.pc-sous,.pc-aide,.pc-mention){
+  color:#35546B!important;
+}
+body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic){
+  box-shadow:0 8px 20px rgba(11,37,69,.04)!important;
+}
+body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic):hover,
+body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic):focus-visible{
+  border-color:#71BDE9!important;
+  box-shadow:0 12px 28px rgba(26,86,219,.08)!important;
+}
+body.signature-config-live :is(#pc-corps,#cf) button.pc-opt{
+  background:linear-gradient(145deg,#FFFFFF,#F2F8FC)!important;
+}
+body.signature-config-live :is(#pc-corps,#cf) button.pc-opt:nth-child(2n){
+  background:linear-gradient(145deg,#FAFDFF,#EEF6FB)!important;
+}
+body.signature-config-live :is(#pc-corps,#cf) button.pc-opt.on{
+  background:linear-gradient(145deg,#E7F2FF,#F4F9FF)!important;
+}
+
+
+/* SIGNATURE V1.9 — un accès Accueil visible aussi pendant la configuration, sans toucher aux moteurs. */
+body.signature-config-live header.lp .in{gap:12px!important}
+body.signature-config-live header.lp .sig-config-home{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  gap:7px!important;padding:9px 14px!important;
+  min-height:42px!important;border:1px solid #D7E5EF!important;
+  border-radius:12px!important;background:linear-gradient(180deg,#fff,#F4F9FD)!important;
+  color:#183B56!important;text-decoration:none!important;
+  font:750 .82rem/1.2 'DM Sans',system-ui,sans-serif!important;
+  box-shadow:0 3px 0 #E2EDF5!important;
+}
+body.signature-config-live header.lp .sig-config-home img{
+  width:19px!important;height:19px!important;object-fit:contain!important;
+}
+body.signature-config-live header.lp .sig-config-home:hover,
+body.signature-config-live header.lp .sig-config-home:focus-visible{
+  border-color:#A8CBE5!important;background:#EAF5FF!important;color:#1A56DB!important;
+}
+body.signature-config-live header.site .sig-config-home{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  min-height:38px!important;padding:9px 12px!important;
+  border-radius:10px!important;border:1px solid #D6E5EE!important;
+  background:#F4F9FD!important;color:#153C59!important;text-decoration:none!important;
+  font-weight:800!important;
+}
+body.signature-config-live header.site .sig-config-home:hover{background:#E9F4FF!important;border-color:#A8CCEB!important}
+@media(max-width:560px){
+  body.signature-config-live header.lp .sig-config-home{margin-left:auto!important;font-size:.8rem!important;padding:9px 11px!important}
+}

@@ -392,3 +392,227 @@ body.signature-site .signature-preview-banner{color:#35546B!important}
  body.signature-site .sig-service-hero h1{font-size:clamp(2.4rem,9vw,3.8rem)!important}
  body.signature-site :is(.hero-text>p,.sig-service-text>p){font-size:1rem!important;line-height:1.72!important}
 }
+
+/* SIGNATURE V1.8 — lisibilité du crédit d'impôt, respiration des CTA, icônes plus vivantes */
+body.signature-site .sig-intro-followup .ci-note,
+body.signature-site .sig-intro-followup .fiscal,
+body.signature-site .signature-source-body .ci,
+body.signature-site .signature-source-body .ci-note{
+  color:#1D4E33!important;
+  background:linear-gradient(135deg,#F3FBF6 0%,#E7F6ED 100%)!important;
+  border:1px solid #B7DECA!important;
+  border-radius:18px!important;
+  padding:16px 18px!important;
+  box-shadow:0 10px 24px rgba(18,140,74,.07)!important;
+}
+body.signature-site .sig-intro-followup .ci-note a,
+body.signature-site .signature-source-body .ci-note a,
+body.signature-site .signature-source-body .ci a{color:#16613B!important;font-weight:800!important}
+body.signature-site .signature-source-body .ci h3{color:#0F5F35!important}
+body.signature-site .signature-source-body .ci .av{color:#5E7A69!important}
+body.signature-site .signature-source-body .ci .ap{color:#128C4A!important}
+body.signature-site .signature-source-body .ci .cond,
+body.signature-site .sig-intro-followup .ci-note{font-size:.92rem!important;line-height:1.72!important}
+
+body.signature-site .sig-service-hero .btn-group,
+body.signature-site .sig-preserved-actions,
+body.signature-site .signature-source-body .pc-lp-cta,
+body.signature-site .signature-source-body .bandeau-devis{
+  margin-bottom:18px!important;
+}
+body.signature-site .sig-intro-followup .container{gap:14px!important}
+body.signature-site .sig-preserved-actions + p,
+body.signature-site .sig-preserved-actions + .ssbtn,
+body.signature-site .sig-service-hero .btn-group + p,
+body.signature-site .sig-service-hero .btn-group + .ssbtn,
+body.signature-site .signature-source-body .pc-lp-cta + p,
+body.signature-site .signature-source-body .bandeau-devis p + a.btn{
+  margin-top:8px!important;
+}
+body.signature-site .sig-service-hero .btn,
+body.signature-site .sig-preserved-actions a,
+body.signature-site .signature-source-body a.btn,
+body.signature-site .feature-tile .tile-link,
+body.signature-site .sig-home-link,
+body.signature-site .sig-chip{
+  min-height:50px!important;
+}
+body.signature-site .btn.btn-primary,
+body.signature-site .signature-source-body .cta-final a.btn{
+  box-shadow:inset 0 1px rgba(255,255,255,.55),0 6px 0 #10378D,0 18px 30px rgba(26,86,219,.18)!important;
+}
+
+/* Icônes : plus vivantes, toujours premium et cohérentes avec Limpid. */
+body.signature-site .sig-service-hero .label .star,
+body.signature-site .foot-brand .star,
+body.signature-site .step-block img,
+body.signature-site #need-icon,
+body.signature-site .need-context-inner > img,
+body.signature-site .reference-copy .star,
+body.signature-site .proof-copy .star,
+body.signature-site .sig-config-entry .sig-config-star{
+  width:36px!important;height:36px!important;padding:8px!important;
+  border-radius:12px!important;border:1px solid #CFE1EC!important;
+  background:linear-gradient(135deg,#F4FAFE,#E8F6FD)!important;
+  box-shadow:0 8px 18px rgba(76,201,240,.12)!important;
+  filter:brightness(.96) saturate(1.08)!important;
+}
+body.signature-site .sig-service-hero .label .star,
+body.signature-site .foot-brand .star,
+body.signature-site .sig-config-entry .sig-config-star{
+  width:34px!important;height:34px!important;
+}
+body.signature-site .step-block,
+body.signature-site .need-context-inner{
+  border-radius:20px!important;
+}
+body.signature-site .step-block img{margin-bottom:16px!important}
+body.signature-site .need-context-inner > img{margin-bottom:14px!important}
+body.signature-site .sig-intro-followup ul.reperes li{
+  background:linear-gradient(135deg,#FFFFFF 0%,#F4FAFE 100%)!important;
+  border-color:#C8DEEB!important;
+  box-shadow:0 6px 16px rgba(11,37,69,.04)!important;
+}
+body.signature-site .signature-source-body .reperes li{
+  background:linear-gradient(135deg,#FFFFFF 0%,#F2F9FD 100%)!important;
+  border-color:#CFE2EE!important;
+}
+
+@media(max-width:650px){
+  body.signature-site .sig-intro-followup .ci-note,
+  body.signature-site .signature-source-body .ci,
+  body.signature-site .signature-source-body .ci-note{padding:14px 15px!important}
+  body.signature-site .sig-service-hero .btn-group,
+  body.signature-site .sig-preserved-actions,
+  body.signature-site .signature-source-body .pc-lp-cta,
+  body.signature-site .signature-source-body .bandeau-devis{margin-bottom:14px!important}
+}
+
+
+/* SIGNATURE V1.9 — unified premium navigation; one coherent control family, refined accent colors.
+   Accueil restored in every shared header. No arrows or noisy button rainbow. */
+body.signature-site .site-header{z-index:120!important;background:#fff!important;border-bottom:1px solid #E0EAF2!important}
+body.signature-site .site-header .nav-wrap{max-width:1510px!important;gap:clamp(12px,1.6vw,25px)!important;min-height:82px!important}
+body.signature-site .site-header .brand{flex-shrink:0!important}
+body.signature-site .site-header .brand img{width:118px!important;max-height:65px!important}
+body.signature-site .site-header .brand small{color:#536D83!important}
+body.signature-site .site-header .primary-nav{
+  display:flex;align-items:center;gap:3px!important;
+  margin-left:auto!important;padding:5px!important;
+  background:linear-gradient(180deg,#FBFDFF 0%,#F6FAFD 100%)!important;
+  border:1px solid #DCE8F0!important;border-radius:17px!important;
+  box-shadow:inset 0 1px rgba(255,255,255,.95),0 3px 12px rgba(11,37,69,.025)!important;
+}
+body.signature-site .site-header .primary-nav > a.nav-home,
+body.signature-site .site-header .primary-nav > a.nav-category,
+body.signature-site .site-header .primary-nav > a.nav-editorial,
+body.signature-site .site-header .nav-services > summary{
+  --nav-accent:#315673;
+  --nav-chip:#E8F1F7;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  gap:8px!important;min-height:45px!important;
+  padding:7px clamp(8px,.7vw,12px)!important;
+  font-family:'DM Sans',system-ui,sans-serif!important;font-size:clamp(.73rem,.78vw,.81rem)!important;
+  font-weight:750!important;line-height:1.2!important;letter-spacing:-.012em!important;
+  color:#153653!important;background:transparent!important;
+  border:1px solid transparent!important;border-radius:11px!important;
+  box-shadow:none!important;text-decoration:none!important;white-space:nowrap!important;
+  transition:background-color .18s ease,box-shadow .18s ease,border-color .18s ease,color .18s ease!important;
+}
+body.signature-site .site-header .primary-nav > a.nav-home{--nav-accent:#315A78;--nav-chip:#E9F1F8}
+body.signature-site .site-header .primary-nav > a.nav-pro{--nav-accent:#0B3C71;--nav-chip:#DFECF8}
+body.signature-site .site-header .primary-nav > a.nav-part{--nav-accent:#09678A;--nav-chip:#E0F5FA}
+body.signature-site .site-header .nav-services-main > summary{--nav-accent:#1959B1;--nav-chip:#E5EFFF}
+body.signature-site .site-header .primary-nav > a.nav-ref{--nav-accent:#375E86;--nav-chip:#E9F1FB}
+body.signature-site .site-header .primary-nav > a.nav-guides{--nav-accent:#355A70;--nav-chip:#E9F3F7}
+body.signature-site .site-header .primary-nav :is(a.nav-home,a.nav-category,a.nav-editorial,.nav-services > summary) > img{
+  width:30px!important;min-width:30px!important;height:30px!important;
+  padding:6px!important;object-fit:contain!important;
+  border-radius:9px!important;background:var(--nav-chip)!important;
+  border:1px solid rgba(11,37,69,.045)!important;
+  opacity:1!important;filter:none!important;
+  transition:transform .18s ease,background .18s ease!important;
+}
+body.signature-site .site-header .primary-nav > a.nav-pro > img{filter:none!important;opacity:1!important}
+body.signature-site .site-header .primary-nav :is(a.nav-home,a.nav-category,a.nav-editorial,.nav-services > summary):hover,
+body.signature-site .site-header .nav-services[open] > summary,
+body.signature-site .site-header .primary-nav > a[aria-current="page"]{
+  background:#FFFFFF!important;
+  border-color:#DDE8F1!important;
+  color:#0B2545!important;
+  box-shadow:0 5px 14px rgba(11,37,69,.07),inset 0 -2px var(--nav-accent)!important;
+}
+body.signature-site .site-header .primary-nav :is(a.nav-home,a.nav-category,a.nav-editorial,.nav-services > summary):hover > img,
+body.signature-site .site-header .nav-services[open] > summary > img,
+body.signature-site .site-header .primary-nav > a[aria-current="page"] > img{
+  transform:translateY(-1px)!important;filter:none!important;opacity:1!important;
+}
+body.signature-site .site-header .nav-services > summary:after{
+  content:'+'!important;color:#1A56DB!important;
+  margin-left:0!important;font-size:.91rem!important;line-height:1!important;
+}
+body.signature-site .site-header .nav-services[open] > summary:after{content:'−'!important}
+body.signature-site .site-header .primary-nav :is(a,summary):focus-visible{
+  outline:3px solid #2A68DA!important;outline-offset:3px!important;
+}
+body.signature-site .site-header .header-cta{
+  flex:0 0 auto!important;min-height:51px!important;
+  padding:14px clamp(13px,1.2vw,20px)!important;
+  font-size:clamp(.75rem,.85vw,.86rem)!important;
+  border-radius:12px!important;
+  white-space:nowrap!important;
+  box-shadow:inset 0 1px rgba(255,255,255,.45),0 4px 0 #113C97,0 13px 24px rgba(26,86,219,.13)!important;
+}
+body.signature-site .site-header .nav-services-panel{z-index:150!important}
+body.signature-site .site-header .nav-services-panel a{
+  border-radius:10px!important;min-height:46px!important;
+  padding:11px 13px!important;
+  color:#173C58!important;font-size:.82rem!important;
+}
+body.signature-site .site-header .nav-services-panel a:hover{
+  background:#EDF6FF!important;color:#124C9B!important;
+}
+@media(max-width:1330px){
+  body.signature-site .site-header .nav-wrap{position:relative!important}
+  body.signature-site .site-header .mobile-menu{display:inline-flex!important;margin-left:auto!important}
+  body.signature-site .site-header .primary-nav{
+    display:none!important;position:absolute!important;top:calc(100% + 1px)!important;
+    left:0!important;right:0!important;z-index:160!important;
+    flex-direction:column!important;align-items:stretch!important;gap:6px!important;
+    margin:0!important;padding:15px!important;max-height:calc(100dvh - 110px)!important;
+    overflow-y:auto!important;overscroll-behavior:contain!important;
+    background:#FFFFFF!important;border:1px solid #D7E5EF!important;
+    border-radius:0 0 19px 19px!important;
+    box-shadow:0 25px 52px rgba(11,37,69,.14)!important;
+  }
+  body.signature-site .site-header .primary-nav.open,
+  body.signature-site .site-header .primary-nav.is-open{display:flex!important}
+  body.signature-site .site-header .primary-nav > a.nav-home,
+  body.signature-site .site-header .primary-nav > a.nav-category,
+  body.signature-site .site-header .primary-nav > a.nav-editorial,
+  body.signature-site .site-header .nav-services > summary{
+    width:100%!important;justify-content:flex-start!important;
+    min-height:48px!important;font-size:.92rem!important;
+    padding:9px 12px!important;
+  }
+  body.signature-site .site-header .nav-services{width:100%!important}
+  body.signature-site .site-header .nav-services > summary:after{margin-left:auto!important}
+  body.signature-site .site-header .nav-services-panel{
+    position:static!important;transform:none!important;width:100%!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    box-shadow:none!important;border-radius:13px!important;
+    padding:9px!important;margin-top:6px!important;
+  }
+  body.signature-site .site-header .header-cta{display:inline-flex!important;align-items:center!important}
+}
+@media(max-width:720px){
+  body.signature-site .site-header .header-cta{display:none!important}
+  body.signature-site .site-header .primary-nav{left:0!important;right:0!important}
+}
+@media(max-width:525px){
+  body.signature-site .site-header .nav-services-panel{grid-template-columns:1fr!important}
+}
+@media(prefers-reduced-motion:reduce){
+  body.signature-site .site-header .primary-nav :is(a.nav-home,a.nav-category,a.nav-editorial,.nav-services > summary),
+  body.signature-site .site-header .primary-nav :is(a.nav-home,a.nav-category,a.nav-editorial,.nav-services > summary) > img{transition:none!important}
+}
