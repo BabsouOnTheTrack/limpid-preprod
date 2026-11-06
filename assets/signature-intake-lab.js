@@ -94,5 +94,5 @@ function capture(form){
  return {reference:data.id,photos:meta.length,statut:last.statut};
 }
 // Test hooks are RAM-only; in production the server confirms successful ingestion and file attachment.
-window.LimpidIntakeLab={capture:capture,read:function(){return last;},selectedCount:function(){return selected.length;},schema:'limpid.site-dossier.v1'};
+window.LimpidIntakeLab={capture:capture,read:function(){return last;},files:function(){return selected.map(function(x){return x.file;});},markLabReceipt:function(ref){inform('Réception confirmée dans le laboratoire local (aucun envoi CRM)',ref);announce(selected.length+' photo(s) enregistrée(s) sur cet ordinateur de test.');},selectedCount:function(){return selected.length;},schema:'limpid.site-dossier.v1'};
 })();
