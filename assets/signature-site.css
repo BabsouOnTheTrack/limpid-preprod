@@ -616,3 +616,118 @@ body.signature-site .site-header .nav-services-panel a:hover{
   body.signature-site .site-header .primary-nav :is(a.nav-home,a.nav-category,a.nav-editorial,.nav-services > summary),
   body.signature-site .site-header .primary-nav :is(a.nav-home,a.nav-category,a.nav-editorial,.nav-services > summary) > img{transition:none!important}
 }
+
+
+/* SIGNATURE V1.11 — engagements & benefit cards rebuilt as one design system */
+body.signature-site .garantie.sg-guarantee{
+  background:linear-gradient(145deg,#ffffff 0%,#F5FAFE 100%)!important;
+  border:1px solid #D1E2ED!important;border-radius:27px!important;
+  padding:clamp(24px,3.6vw,50px)!important;
+  box-shadow:0 24px 60px rgba(10,41,74,.075)!important;
+  overflow:hidden!important;
+}
+body.signature-site .garantie.sg-guarantee .sg-guarantee-heading{
+  display:flex!important;align-items:center!important;gap:18px!important;justify-content:space-between!important;
+  padding:0 0 clamp(18px,2.8vw,28px)!important;margin:0!important;
+}
+body.signature-site .garantie.sg-guarantee .sg-guarantee-heading h2{
+  flex:1;min-width:0;max-width:840px;margin:0!important;
+  font:800 clamp(1.7rem,2.9vw,3rem)/1.13 var(--signature-display,Manrope),sans-serif!important;
+  letter-spacing:-.052em!important;color:#0B2545!important;
+}
+body.signature-site .garantie.sg-guarantee .sg-guarantee-label{
+  display:inline-flex!important;align-items:center!important;gap:9px!important;flex:none;
+  padding:9px 13px!important;border-radius:999px!important;
+  background:#E9F5FC!important;border:1px solid #B9DFF2!important;
+  font:800 .73rem/1.3 var(--signature-body,'DM Sans'),sans-serif!important;
+  color:#174C76!important;letter-spacing:.035em!important;white-space:nowrap;
+}
+body.signature-site .garantie.sg-guarantee .sg-guarantee-label img{
+  display:block!important;width:17px!important;height:17px!important;
+}
+body.signature-site .garantie.sg-guarantee .sg-guarantee-grid{
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:16px!important;margin:0!important;padding:0!important;align-items:stretch!important;
+}
+body.signature-site .garantie.sg-guarantee .sg-engagement-card{
+  display:flex!important;flex-direction:column!important;gap:13px!important;
+  min-width:0!important;height:100%!important;min-height:146px!important;
+  padding:clamp(18px,2vw,24px)!important;background:#fff!important;
+  border:1px solid #D5E4EE!important;border-radius:19px!important;
+  box-shadow:0 9px 26px rgba(11,37,69,.045)!important;position:relative;
+}
+body.signature-site .garantie.sg-guarantee .sg-engagement-card:nth-child(2){background:#F8FBFE!important}
+body.signature-site .garantie.sg-guarantee .sg-engagement-card:nth-child(3){background:#F9FCFE!important}
+body.signature-site .garantie.sg-guarantee .sg-engagement-card .sg-engagement-top{
+  display:flex!important;align-items:center!important;gap:12px!important;min-width:0!important;
+}
+body.signature-site .garantie.sg-guarantee .sg-engagement-card .sg-engagement-icon{
+  display:inline-grid!important;place-items:center!important;flex:0 0 45px!important;
+  width:45px!important;height:45px!important;border-radius:14px!important;
+  border:1px solid #C5E2F0!important;
+  background:linear-gradient(135deg,#E7F6FF,#DDF1FA)!important;
+}
+body.signature-site .garantie.sg-guarantee .sg-engagement-card:nth-child(2) .sg-engagement-icon{background:linear-gradient(135deg,#EBF3FF,#DFEBFD)!important;border-color:#CBDBF5!important}
+body.signature-site .garantie.sg-guarantee .sg-engagement-card:nth-child(3) .sg-engagement-icon{background:linear-gradient(135deg,#EAF8FC,#E1F5F7)!important;border-color:#C1E2EB!important}
+body.signature-site .garantie.sg-guarantee .sg-engagement-card:nth-child(4) .sg-engagement-icon{background:linear-gradient(135deg,#EDF5FC,#E2F0FB)!important;border-color:#C8DEEC!important}
+body.signature-site .garantie.sg-guarantee .sg-engagement-icon img{
+  display:block!important;width:24px!important;height:24px!important;opacity:1!important;filter:none!important;
+}
+body.signature-site .garantie.sg-guarantee .sg-engagement-card .sg-engagement-top h3{
+  display:block!important;margin:0!important;font:800 clamp(.98rem,1.1vw,1.1rem)/1.37 var(--signature-body,'DM Sans'),sans-serif!important;
+  letter-spacing:-.015em!important;color:#0B2545!important;
+}
+body.signature-site .garantie.sg-guarantee .sg-engagement-card p{
+  display:block!important;margin:0!important;color:#36556B!important;
+  font:500 clamp(.86rem,1vw,.94rem)/1.68 var(--signature-body,'DM Sans'),sans-serif!important;
+}
+
+/* The same compact, separate benefit cards across marketing pages. */
+body.signature-site .signature-source-body .rassure.sg-benefits,
+body.signature-site main > .rassure.sg-benefits{
+  padding:clamp(24px,3.6vw,46px) max(18px,calc((100vw - 1210px)/2))!important;
+  background:linear-gradient(135deg,#F0F7FC,#EAF4FA)!important;
+  border:0!important;overflow:visible!important;margin:0!important;
+}
+body.signature-site .rassure.sg-benefits .sg-benefits-grid{
+  display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:14px!important;background:transparent!important;max-width:1210px!important;
+  padding:0!important;margin:auto!important;align-items:stretch!important;
+}
+body.signature-site .rassure.sg-benefits .sg-benefit-card{
+  display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:12px!important;
+  width:auto!important;min-width:0!important;min-height:161px!important;
+  padding:20px!important;border-radius:18px!important;
+  background:linear-gradient(150deg,#0F3155,#0B2545)!important;
+  border:1px solid #244B72!important;
+  box-shadow:0 13px 28px rgba(11,37,69,.12)!important;
+}
+body.signature-site .rassure.sg-benefits .sg-benefit-icon{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  flex:0 0 41px!important;width:41px!important;height:41px!important;border-radius:13px!important;
+  background:#E5F5FC!important;border:1px solid #A4DCF3!important;
+}
+body.signature-site .rassure.sg-benefits .sg-benefit-icon img{
+  display:block!important;width:22px!important;height:22px!important;opacity:1!important;filter:none!important;
+}
+body.signature-site .rassure.sg-benefits .sg-benefit-copy{
+  display:flex!important;flex-direction:column!important;gap:6px!important;min-width:0!important;
+}
+body.signature-site .rassure.sg-benefits .sg-benefit-card b{
+  display:block!important;font:800 .92rem/1.35 var(--signature-body,'DM Sans'),sans-serif!important;
+  color:#FFFFFF!important;letter-spacing:-.01em!important;margin:0!important;
+}
+body.signature-site .rassure.sg-benefits .sg-benefit-desc{
+  display:block!important;font:500 .83rem/1.52 var(--signature-body,'DM Sans'),sans-serif!important;
+  color:#DAEBF7!important;
+}
+@media(max-width:1020px){
+  body.signature-site .rassure.sg-benefits .sg-benefits-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:650px){
+  body.signature-site .garantie.sg-guarantee .sg-guarantee-heading{flex-direction:column!important;align-items:flex-start!important;gap:13px!important}
+  body.signature-site .garantie.sg-guarantee .sg-guarantee-grid{grid-template-columns:1fr!important;gap:11px!important}
+  body.signature-site .garantie.sg-guarantee .sg-engagement-card{min-height:0!important}
+  body.signature-site .rassure.sg-benefits .sg-benefits-grid{grid-template-columns:1fr!important;gap:11px!important}
+  body.signature-site .rassure.sg-benefits .sg-benefit-card{min-height:0!important;flex-direction:row!important;align-items:center!important;gap:14px!important;padding:17px!important}
+}
