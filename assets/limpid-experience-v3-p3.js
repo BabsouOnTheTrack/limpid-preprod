@@ -12,7 +12,7 @@ function init(){
  var p=setups[kind]||setups.general;
  var aside=node('aside','lx3p3-rail');aside.setAttribute('aria-label','Informations sur votre parcours');
  var inr=node('div','lx3p3-railinner');aside.appendChild(inr);
- var brand=node('div','lx3p3-mini');brand.appendChild(node('span','lx3p3-dot'));brand.appendChild(node('span',null,'LIMPID EXPERIENCE'));inr.appendChild(brand);
+ var brand=node('div','lx3p3-mini');brand.appendChild(node('span','lx3p3-dot'));brand.appendChild(node('span',null,'LIMPID'));inr.appendChild(brand);
  inr.appendChild(node('p','lx3p3-hero',p[1]));inr.appendChild(node('p','lx3p3-lead',p[2]));
  inr.appendChild(node('div','lx3p3-railrule'));
  inr.appendChild(node('p','lx3p3-trailtitle','Votre parcours, simplement'));
