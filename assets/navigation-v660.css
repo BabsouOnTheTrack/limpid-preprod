@@ -1,0 +1,22 @@
+/* LIMPID V6.6.0 : navigation latérale sur grand écran, dans le flux sur petits écrans. */
+#pc-nav[hidden],#cf-nav[hidden]{display:none!important}
+@media(max-width:1199px){
+  .pc-nav-fixe,.cf-nav{position:relative!important;inset:auto!important;left:auto!important;right:auto!important;bottom:auto!important;top:auto!important;max-width:760px;margin:0 auto 22px!important;background:#fff!important;padding:12px 16px!important;box-shadow:none!important;border:0!important;z-index:1!important}
+  .pc-nav-in,.cf-nav-in{max-width:100%;gap:8px}
+  .pc-nav-in .btn,.cf-nav .btn{height:54px;min-width:0}
+  body.pc-en-cours main,body.pc-en-cours footer.lp{padding-bottom:0!important}
+  body[data-tunnel="configurateur"] .cf,body[data-tunnel="configurateur"] footer{padding-bottom:32px!important}
+}
+@media(min-width:1200px){
+  .pc-nav-fixe,.cf-nav{position:static!important;inset:auto!important;left:auto!important;right:auto!important;bottom:auto!important;top:auto!important;height:0!important;margin:0!important;padding:0!important;border:0!important;box-shadow:none!important;background:transparent!important;z-index:70!important}
+  .pc-nav-in,.cf-nav-in{max-width:none!important;display:contents!important}
+  .pc-nav-in .btn,.cf-nav .btn{position:fixed!important;top:50%!important;transform:translateY(-50%);width:145px!important;min-width:0!important;max-width:145px!important;height:58px!important;flex:none!important;z-index:70!important;box-shadow:0 4px 14px rgba(11,37,69,.12);white-space:normal}
+  #pc-retour{left:calc(50% - 510px)!important}
+  #pc-suite{right:calc(50% - 510px)!important}
+  #b-retour{left:calc(50% - 560px)!important}
+  #b-suite{right:calc(50% - 560px)!important}
+  .pc-app{min-height:calc(100vh - 160px)}
+  body.pc-en-cours main,body.pc-en-cours footer.lp{padding-bottom:0!important}
+  body[data-tunnel="configurateur"] .cf,body[data-tunnel="configurateur"] footer{padding-bottom:32px!important}
+}
+@media(prefers-reduced-motion:reduce){.pc-nav-in .btn,.cf-nav .btn{transition:none!important}}
