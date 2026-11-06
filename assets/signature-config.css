@@ -110,3 +110,141 @@ body.signature-config-live.lx--config #pc-corps button.pc-opt.on::after{
  border-radius:11px;height:32px;min-width:32px;margin-left:12px;
  background:#1A56DB!important;color:#fff!important;font-size:15px;
 }
+
+
+/* SIGNATURE V1.7 | HARMONISATION DES QUATRE CONFIGURATEURS
+   Correctif purement visuel : les données, identifiants et scripts métier restent intacts.
+   La disposition existante justify-content:space-between provoquait une séparation
+   artificielle entre icône, libellé et case à cocher. */
+body.signature-config-live{--gris:#3B5970;--signature-muted:#385771;--signature-soft:#F5FAFD;--signature-cobalt:#1A56DB;}
+body.signature-config-live,
+body.signature-config-live :is(#pc-app,#cf){font-family:'DM Sans',system-ui,sans-serif!important;color:#12304D!important}
+body.signature-config-live :is(#pc-app,#cf) :is(h1,h2,h3,h4){font-family:'Manrope','DM Sans',sans-serif!important;letter-spacing:-.038em!important;line-height:1.22!important;font-weight:800!important;color:#0B2545!important}
+body.signature-config-live :is(#pc-app,#cf) :is(p,li,.cf-sous,.cf-mention,.cf-aide,.cf-ligne,.cf-champ small,.cf-carte .d,.cf-carte span.d,.pc-sous,.pc-aide,.pc-mention){color:#385770!important;line-height:1.6!important}
+body.signature-config-live :is(#pc-app,#cf) :is(.cf-champ,label,.cf-lib,.pc-libelle){color:#193B57!important;font-weight:650!important}
+body.signature-config-live :is(#pc-app,#cf) .cf-champ small{font-weight:500!important;font-size:.86rem!important}
+body.signature-config-live :is(#pc-app,#cf) :is(input,select,textarea){color:#12304D!important;border-color:#B8D2E3!important;background:#fff!important;box-shadow:0 1px 0 rgba(11,37,69,.025)}
+body.signature-config-live :is(#pc-app,#cf) :is(input,select,textarea):focus-visible{outline:3px solid rgba(26,86,219,.28)!important;border-color:#1A56DB!important;outline-offset:1px!important}
+
+/* Grille stable dans les cartes illustrées : icône | texte | sélection (si multiple). */
+body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic){
+ display:grid!important;grid-template-columns:54px minmax(0,1fr)!important;
+ align-items:center!important;justify-content:normal!important;justify-items:stretch!important;
+ column-gap:15px!important;row-gap:4px!important;
+ text-align:left!important;width:100%!important;min-height:84px!important;
+ padding:15px 18px!important;border-radius:16px!important;
+ border:1.5px solid #CFE1EE!important;
+ background:linear-gradient(110deg,#F8FBFE 0%,#fff 64%)!important;
+ box-shadow:0 5px 18px rgba(11,37,69,.035)!important;
+ color:#0B2545!important;overflow:visible!important;transform:none!important;
+ transition:background .16s,border-color .16s,box-shadow .16s!important
+}
+body.signature-config-live :is(#pc-corps,#cf) button.cf-carte.cf-multi:has(> .ic){
+ grid-template-columns:54px minmax(0,1fr) 26px!important;padding-right:18px!important
+}
+body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic) > .ic{
+ grid-column:1!important;grid-row:1!important;width:54px!important;min-width:54px!important;
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ margin:0!important;padding:0!important;position:static!important;background:none!important
+}
+body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic) > .ic .sig-render-icon{
+ width:50px!important;height:50px!important;margin:0!important;border-radius:13px!important;
+ background:#EAF4FB!important;border-color:#CFE1EE!important
+}
+body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic) > .ic .sig-render-icon img{
+ width:27px!important;height:27px!important;filter:none!important;opacity:.84!important
+}
+body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic) > span:not(.ic):not(.cf-case){
+ grid-column:2!important;grid-row:1!important;display:block!important;min-width:0!important;
+ max-width:100%!important;text-align:left!important;margin:0!important;
+ justify-self:stretch!important;align-self:center!important
+}
+body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic) > span:not(.ic):not(.cf-case) > b{
+ font-family:'DM Sans',system-ui,sans-serif!important;font-size:.98rem!important;font-weight:800!important;
+ color:#0B2545!important;line-height:1.38!important;letter-spacing:-.013em!important;display:block!important
+}
+body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic) > span:not(.ic):not(.cf-case) > span.d{
+ font-family:'DM Sans',system-ui,sans-serif!important;font-size:.87rem!important;font-weight:500!important;
+ color:#3A5870!important;line-height:1.5!important;margin-top:4px!important;display:block!important
+}
+body.signature-config-live :is(#pc-corps,#cf) button.cf-carte.cf-multi > .cf-case{
+ grid-column:3!important;grid-row:1!important;position:relative!important;
+ right:auto!important;top:auto!important;left:auto!important;bottom:auto!important;
+ margin:0!important;align-self:center!important;justify-self:center!important;
+ height:25px!important;width:25px!important;flex:none!important;
+ border:2px solid #ACC7D9!important;border-radius:8px!important;background:#fff!important;
+ box-shadow:0 1px 3px rgba(11,37,69,.045)!important
+}
+body.signature-config-live :is(#pc-corps,#cf) button.cf-carte.cf-multi.on > .cf-case{
+ border-color:#1A56DB!important;background:#1A56DB!important
+}
+body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic):hover,
+body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic):focus-visible{
+ border-color:#77BEE9!important;background:linear-gradient(115deg,#ECF7FF,#fff 70%)!important;
+ box-shadow:0 8px 22px rgba(26,86,219,.075)!important;transform:none!important
+}
+body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic):is(.on,[aria-pressed="true"]){
+ border:2px solid #1A56DB!important;background:linear-gradient(115deg,#E7F2FF,#F9FCFF 75%)!important;
+ box-shadow:0 0 0 1px rgba(26,86,219,.08),0 10px 22px rgba(26,86,219,.07)!important;
+ padding:14.5px 17.5px!important
+}
+body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic):is(.on,[aria-pressed="true"]) .sig-render-icon{
+ background:#D9EBFF!important;border-color:#7FAFEA!important;box-shadow:none!important
+}
+body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic):is(.on,[aria-pressed="true"]) .sig-render-icon img{
+ opacity:1!important;filter:invert(31%) sepia(100%) saturate(1600%) hue-rotate(207deg) brightness(.95)!important
+}
+/* Un rythme très légèrement différencié sans couleurs criardes. */
+body.signature-config-live :is(#pc-corps,#cf) .cf-choix > button.cf-carte:has(> .ic):nth-child(2n) {
+ background:linear-gradient(112deg,#F4FAFF,#fff 71%)!important
+}
+body.signature-config-live :is(#pc-corps,#cf) .cf-choix > button.cf-carte:has(> .ic):nth-child(2n):is(.on,[aria-pressed="true"]){
+ background:linear-gradient(115deg,#E7F2FF,#F9FCFF 75%)!important
+}
+/* Boutons simples : texte équilibré, hauteur juste, indication active sans flèche. */
+body.signature-config-live :is(#pc-corps,#cf) button.pc-opt{
+ min-height:62px!important;padding:14px 18px!important;
+ font-family:'DM Sans',system-ui,sans-serif!important;font-size:.94rem!important;
+ font-weight:750!important;letter-spacing:-.01em!important;
+ justify-content:center!important;text-align:center!important;
+ border:1.5px solid #CCDFEB!important;border-radius:14px!important;
+ background:linear-gradient(145deg,#FAFDFF,#F4F9FD)!important;color:#143450!important;
+ box-shadow:0 3px 9px rgba(11,37,69,.035)!important;transform:none!important
+}
+body.signature-config-live :is(#pc-corps,#cf) button.pc-opt:hover,
+body.signature-config-live :is(#pc-corps,#cf) button.pc-opt:focus-visible{
+ background:#EAF5FD!important;border-color:#7FBDE8!important;transform:none!important;
+ box-shadow:0 5px 18px rgba(26,86,219,.075)!important
+}
+body.signature-config-live :is(#pc-corps,#cf) button.pc-opt.on{
+ background:#E6F1FF!important;border:2px solid #1A56DB!important;color:#114AA8!important;
+ box-shadow:inset 0 0 0 1px rgba(26,86,219,.035),0 6px 15px rgba(26,86,219,.07)!important
+}
+/* Les commandes Retour/Continuer gardent leur fonction et leur assise, sans occulter les choix. */
+body.signature-config-live :is(#pc-app,#cf) :is(.pc-carte,.cf-recap,.cf-bloc,.cf-choix){min-width:0}
+body.signature-config-live :is(#pc-app,#cf) .cf-choix{gap:11px!important}
+@media(max-width:650px){
+ body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic){grid-template-columns:45px minmax(0,1fr)!important;column-gap:11px!important;min-height:78px!important;padding:13px!important}
+ body.signature-config-live :is(#pc-corps,#cf) button.cf-carte.cf-multi:has(> .ic){grid-template-columns:45px minmax(0,1fr) 23px!important;padding-right:12px!important}
+ body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic) > .ic{width:45px!important;min-width:45px!important}
+ body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic) > .ic .sig-render-icon{width:43px!important;height:43px!important;border-radius:11px!important}
+ body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic) > .ic .sig-render-icon img{width:23px!important;height:23px!important}
+ body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic) > span:not(.ic):not(.cf-case) > b{font-size:.9rem!important}
+ body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic) > span:not(.ic):not(.cf-case) > span.d{font-size:.81rem!important}
+ body.signature-config-live :is(#pc-corps,#cf) button.cf-carte.cf-multi > .cf-case{width:22px!important;height:22px!important;border-radius:6px!important}
+ body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic):is(.on,[aria-pressed="true"]){padding:12.5px!important}
+ body.signature-config-live :is(#pc-corps,#cf) button.pc-opt{min-height:56px!important;padding:12px!important;font-size:.89rem!important}
+}
+@media(prefers-reduced-motion:reduce){
+ body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic),
+ body.signature-config-live :is(#pc-corps,#cf) button.pc-opt{transition:none!important}
+}
+
+/* V1.7 rail contrast correction: secondary ink colors must NEVER bleed onto navy panels. */
+body.signature-config-live :is(#pc-app,#cf) .lx3p3-rail :is(p,li,span){color:#DEECF6!important}
+body.signature-config-live :is(#pc-app,#cf) .lx3p3-rail .lx3p3-hero{color:#FFFFFF!important;font-weight:800!important}
+body.signature-config-live :is(#pc-app,#cf) .lx3p3-rail .lx3p3-lead{color:#DFECF7!important}
+body.signature-config-live :is(#pc-app,#cf) .lx3p3-rail .lx3p3-trailtitle,
+body.signature-config-live :is(#pc-app,#cf) .lx3p3-rail .lx3p3-mini span{color:#A7EAFF!important}
+body.signature-config-live :is(#pc-app,#cf) .lx3p3-rail .lx3p3-helper{color:#C4DCEB!important}
+body.signature-config-live :is(#pc-app,#cf) .lx3p3-rail .lx3p3-progresslabel strong{color:#FFFFFF!important}

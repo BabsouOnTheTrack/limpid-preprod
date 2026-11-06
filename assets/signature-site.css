@@ -336,3 +336,59 @@ body.signature-site .site-header .primary-nav .nav-services-panel a:hover{backgr
 }
 body.signature-site .sig-service-photo figure.photo figcaption,
 body.signature-site .signature-source-body figure.photo figcaption{display:none!important}
+
+
+/* SIGNATURE V1.7 | TYPOGRAPHIE & CONTRASTES TRANSVERSAUX
+   Site éditorial : titres Manrope, textes DM Sans ; contraste renforcé sans toucher aux pages métier. */
+body.signature-site{--sigtext:#2F4E65;--body:#38576F;--signature-muted:#3D5D75;
+  font-family:'DM Sans',system-ui,sans-serif!important;color:#0B2545!important}
+body.signature-site :is(h1,h2,h3,h4){
+  font-family:'Manrope',system-ui,sans-serif!important;letter-spacing:-.047em!important;
+  line-height:1.13!important;font-weight:800!important
+}
+body.signature-site :is(.hero-text>p,.sig-service-text>p,.sec-head p,.feature-tile p,.wide-service p,.proof-copy p,.sig-intro-followup p){
+  color:#33536B!important;line-height:1.76!important;font-weight:450!important
+}
+body.signature-site :is(.hero-subline,.feature-tile .tile-link,.sig-chip,.sig-home-link){
+  color:#36566F;font-family:'DM Sans',system-ui,sans-serif!important
+}
+body.signature-site .hero-text h1{
+  font-size:clamp(3rem,6.1vw,6.1rem)!important;letter-spacing:-.055em!important;
+  line-height:1.065!important;font-weight:800!important
+}
+body.signature-site .sig-service-hero h1{
+  font-size:clamp(2.7rem,4.2vw,4.85rem)!important;letter-spacing:-.052em!important;
+  line-height:1.105!important
+}
+body.signature-site .signature-source-body :is(p,li,small){color:#3A5870!important}
+body.signature-site .signature-source-body :is(.cta-final,.zone-form) :is(p,li,small),
+body.signature-site .signature-source-body .cta-final :is(h2,h3,strong){color:#F2FAFF!important}
+body.signature-site .signature-source-body .garantie .item{color:#37546D!important}
+body.signature-site .sig-home-source .garantie .item{color:#37546D!important}
+body.signature-site .sig-home-source :is(p,li){color:#38566D!important}
+body.signature-site .sig-service-hero .label{color:#1854B8!important}
+body.signature-site :is(.btn,.tile-link,.sig-chip,.sig-home-link){
+  font-family:'DM Sans',system-ui,sans-serif!important;letter-spacing:-.012em!important
+}
+body.signature-site .feature-tile .tile-link,
+body.signature-site .signature-source-body .sig-preserved-actions a{
+  min-height:46px;font-size:.88rem;line-height:1.35;padding:12px 18px;
+  font-weight:750;box-shadow:0 3px 0 rgba(11,37,69,.09),0 10px 18px rgba(11,37,69,.045)
+}
+body.signature-site .feature-tile:not(.feature-dark){background:linear-gradient(135deg,#F0F7FC,#F7FBFE)}
+body.signature-site .feature-tile.feature-dark{background:linear-gradient(140deg,#0B2545,#11375D)}
+body.signature-site .feature-tile.feature-dark p{color:#E0EDF7!important}
+body.signature-site .feature-tile.feature-dark .tile-link{background:#fff;color:#0B2545}
+body.signature-site .sig-home-source .garantie .item,
+body.signature-site .signature-source-body :is(.carte,.item,.avis){box-shadow:0 10px 30px rgba(11,37,69,.04)!important}
+body.signature-site .signature-source-body .garantie .item strong,
+body.signature-site .sig-home-source .garantie .item strong{font-family:'DM Sans',system-ui,sans-serif!important;letter-spacing:-.012em}
+body.signature-site .signature-source-body .faq summary{color:#0B2545!important}
+body.signature-site .navy-band p{color:#E0EEF7!important}
+body.signature-site .footer p{color:#E2EEF6!important}
+body.signature-site .signature-preview-banner{color:#35546B!important}
+@media(max-width:650px){
+ body.signature-site .hero-text h1{font-size:clamp(2.7rem,10vw,4.3rem)!important;line-height:1.09!important}
+ body.signature-site .sig-service-hero h1{font-size:clamp(2.4rem,9vw,3.8rem)!important}
+ body.signature-site :is(.hero-text>p,.sig-service-text>p){font-size:1rem!important;line-height:1.72!important}
+}
