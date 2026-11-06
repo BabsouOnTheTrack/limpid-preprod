@@ -52,19 +52,19 @@ body.signature-config-live :is(#pc-app,#cf) .sig-render-icon{
  transition:background-color .18s ease,border-color .18s ease,box-shadow .18s ease!important;
 }
 body.signature-config-live :is(#pc-app,#cf) .sig-render-icon img{
- filter:grayscale(1) opacity(.72);transition:filter .18s ease!important;
+ filter:none!important;opacity:1!important;transition:opacity .18s ease!important;
 }
 body.signature-config-live :is(#pc-app,#cf) :is(.cf-carte,.pc-carte,.cf-option,.pc-option,.pc-opt,.cf-multi,button,label):is(:hover,:focus-visible,:focus-within) .sig-render-icon{
  background:#E6F6FD!important;border-color:#96D9F5!important;box-shadow:0 0 0 2px rgba(76,201,240,.12)!important;
 }
 body.signature-config-live :is(#pc-app,#cf) :is(.cf-carte,.pc-carte,.cf-option,.pc-option,.pc-opt,.cf-multi,button,label):is(:hover,:focus-visible,:focus-within) .sig-render-icon img{
- filter:invert(31%) sepia(79%) saturate(2000%) hue-rotate(204deg) brightness(92%) contrast(100%)!important;
+ filter:none!important;
 }
 body.signature-config-live :is(#pc-app,#cf) :is(.cf-carte.on,.cf-carte[aria-pressed="true"],.pc-carte.on,.pc-carte.selected,.pc-option.on,.pc-option.selected,.pc-opt.on,.cf-option.on,.cf-multi.on,.selected,[aria-pressed="true"],label:has(input:checked)) .sig-render-icon{
  background:#DCEBFF!important;border-color:#1A56DB!important;box-shadow:0 0 0 2px rgba(26,86,219,.14)!important;
 }
 body.signature-config-live :is(#pc-app,#cf) :is(.cf-carte.on,.cf-carte[aria-pressed="true"],.pc-carte.on,.pc-carte.selected,.pc-option.on,.pc-option.selected,.pc-opt.on,.cf-option.on,.cf-multi.on,.selected,[aria-pressed="true"],label:has(input:checked)) .sig-render-icon img{
- filter:invert(28%) sepia(97%) saturate(1800%) hue-rotate(213deg) brightness(95%) contrast(100%)!important;
+ filter:none!important;
 }
 /* Keyboard focus must be legible without moving the cards. */
 body.signature-config-live :is(#pc-app,#cf) :is(button,[role="button"],input):focus-visible{
@@ -152,7 +152,7 @@ body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic) > .ic .
  background:#EAF4FB!important;border-color:#CFE1EE!important
 }
 body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic) > .ic .sig-render-icon img{
- width:27px!important;height:27px!important;filter:none!important;opacity:.84!important
+ width:27px!important;height:27px!important;filter:none!important;opacity:1!important
 }
 body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic) > span:not(.ic):not(.cf-case){
  grid-column:2!important;grid-row:1!important;display:block!important;min-width:0!important;
@@ -191,17 +191,13 @@ body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic):is(.on,
 body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic):is(.on,[aria-pressed="true"]) .sig-render-icon{
  background:#D9EBFF!important;border-color:#7FAFEA!important;box-shadow:none!important
 }
+/* Corrected in V1.12: a missing CSS brace previously made the styles of
+   button.pc-opt apply to IMG elements inside SELECTED cards. */
 body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic):is(.on,[aria-pressed="true"]) .sig-render-icon img{
- opacity:1!important;filter:invert(31%) sepia(100%) saturate(1600%) hue-rotate(207deg) brightness(.95)!important
+ opacity:1!important;filter:none!important;padding:0!important;
+ background:transparent!important;border:0!important;box-shadow:none!important;
+ width:29px!important;height:29px!important;object-fit:contain!important
 }
-/* Un rythme très légèrement différencié sans couleurs criardes. */
-body.signature-config-live :is(#pc-corps,#cf) .cf-choix > button.cf-carte:has(> .ic):nth-child(2n) {
- background:linear-gradient(112deg,#F4FAFF,#fff 71%)!important
-}
-body.signature-config-live :is(#pc-corps,#cf) .cf-choix > button.cf-carte:has(> .ic):nth-child(2n):is(.on,[aria-pressed="true"]){
- background:linear-gradient(115deg,#E7F2FF,#F9FCFF 75%)!important
-}
-/* Boutons simples : texte équilibré, hauteur juste, indication active sans flèche. */
 body.signature-config-live :is(#pc-corps,#cf) button.pc-opt{
  min-height:62px!important;padding:14px 18px!important;
  font-family:'DM Sans',system-ui,sans-serif!important;font-size:.94rem!important;
@@ -266,7 +262,7 @@ body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic) > .ic .
   box-shadow:0 8px 18px rgba(11,37,69,.05)!important;
 }
 body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic) > .ic .sig-render-icon img{
-  opacity:.92!important;
+  opacity:1!important;
 }
 body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic) > span:not(.ic):not(.cf-case) > span.d,
 body.signature-config-live :is(#pc-app,#cf) :is(p,li,.cf-sous,.cf-mention,.cf-aide,.cf-ligne,.cf-champ small,.cf-carte .d,.cf-carte span.d,.pc-sous,.pc-aide,.pc-mention){
@@ -457,3 +453,48 @@ body.signature-config-live main .rassure.sg-benefits .sg-benefit-card .sg-benefi
    min-height:0!important;flex-direction:row!important;align-items:center!important;gap:14px!important;padding:17px!important
  }
 }
+
+
+/* SIGNATURE V1.12 — PICTOGRAMMES PREMIUM. Color is embedded in the SVG source,
+   so it is visible at rest and does not rely on CSS filters or emoji rendering. */
+body.signature-config-live :is(#pc-app,#cf) .sig-render-icon,
+body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic) > .ic .sig-render-icon{
+ background:linear-gradient(145deg,#E7F4FF 0%,#F4FBFE 100%)!important;
+ border:1.5px solid #B6D8EC!important;
+ box-shadow:0 6px 16px rgba(26,86,219,.065),inset 0 1px 0 rgba(255,255,255,.8)!important;
+ opacity:1!important;
+}
+body.signature-config-live :is(#pc-app,#cf) .sig-render-icon img,
+body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic) > .ic .sig-render-icon img{
+ filter:none!important;opacity:1!important;
+}
+body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic) > .ic .sig-render-icon img{
+ width:29px!important;height:29px!important;
+}
+body.signature-config-live :is(#pc-app,#cf) :is(.cf-carte,.pc-carte,.cf-option,.pc-option,.pc-opt,.cf-multi,button,label):is(:hover,:focus-visible,:focus-within) .sig-render-icon,
+body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic):is(:hover,:focus-visible) > .ic .sig-render-icon{
+ background:linear-gradient(145deg,#DDF4FF,#E9F6FF)!important;
+ border-color:#69BDE7!important;
+ box-shadow:0 0 0 2px rgba(76,201,240,.16),0 9px 20px rgba(26,86,219,.09)!important;
+}
+body.signature-config-live :is(#pc-app,#cf) :is(.cf-carte.on,.cf-carte[aria-pressed="true"],.pc-carte.on,.pc-carte.selected,.pc-option.on,.pc-option.selected,.pc-opt.on,.cf-option.on,.cf-multi.on,.selected,[aria-pressed="true"],label:has(input:checked)) .sig-render-icon,
+body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic):is(.on,[aria-pressed="true"]) > .ic .sig-render-icon{
+ background:linear-gradient(140deg,#CFEBFF,#E3F1FF)!important;
+ border-color:#1A56DB!important;
+ box-shadow:0 0 0 2px rgba(26,86,219,.13),0 10px 21px rgba(26,86,219,.1)!important;
+}
+/* The pictograms are stronger but still quiet; the actual selection is
+   conveyed by the blue card border and the native checked state. */
+body.signature-config-live :is(#pc-app,#cf) :is(.cf-carte,.pc-carte,.cf-option,.pc-option,.pc-opt) .sig-render-icon{
+ flex-shrink:0!important;
+}
+@media(max-width:650px){
+ body.signature-config-live :is(#pc-corps,#cf) button.cf-carte:has(> .ic) > .ic .sig-render-icon img{
+  width:25px!important;height:25px!important;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ body.signature-config-live :is(#pc-app,#cf) .sig-render-icon{transition:none!important}
+}
+
+body.signature-config-live :is(#pc-app,#cf) .sig-render-icon img{padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important;object-fit:contain!important}
