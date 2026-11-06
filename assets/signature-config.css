@@ -96,3 +96,17 @@ body.signature-config-live.lx--general-devis #cf>#cf-nav .btn.sec{flex:0 0 105px
  body.signature-config-live.pc-en-cours main{padding-bottom:110px!important}
 }
 @media(prefers-reduced-motion:reduce){body.signature-config-live :is(#pc-app,#cf) .sig-render-icon,body.signature-config-live :is(#pc-app,#cf) .sig-render-icon img{transition:none!important}}
+
+
+/* SIGNATURE V1.6.1 — Les choix sont des boutons de sélection, pas des liens sortants.
+   Neutralisation de la flèche ↗ ajoutée par l'ancienne V3 dans .pc-opt::after.
+   Une coche n'apparaît que sur un choix actif ; bordure et fond assurent aussi l'état sélectionné.
+   Ne change aucun contrôle, identifiant, valeur ou script métier. */
+body.signature-config-live.lx--config #pc-corps button.pc-opt:not(.on)::after{
+ content:none!important;display:none!important;
+}
+body.signature-config-live.lx--config #pc-corps button.pc-opt.on::after{
+ content:"✓"!important;display:grid!important;place-items:center;
+ border-radius:11px;height:32px;min-width:32px;margin-left:12px;
+ background:#1A56DB!important;color:#fff!important;font-size:15px;
+}
