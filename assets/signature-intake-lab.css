@@ -1,0 +1,17 @@
+/* SIGNATURE — Photo pack preproduction; zero network upload. */
+.signature-pj{margin:20px 0 16px;padding:22px;border:1px solid #D5E3EE;border-radius:20px;background:#F8FBFE;box-shadow:0 10px 30px rgba(11,37,69,.04);color:#0B2545}
+.signature-pj strong{display:block;font-size:1.05rem;font-weight:800;line-height:1.35}
+.signature-pj p{color:#4D677B;line-height:1.6;font-size:.88rem;margin:6px 0 12px}
+.signature-pj input[type=file]{width:100%;padding:12px;min-height:48px;border-radius:11px;border:1px solid #BFD3E4;background:#fff;color:#163759;font-size:.9rem}
+.signature-pj input[type=file]:focus-visible,.signature-pj button:focus-visible{outline:3px solid #4CC9F0;outline-offset:3px}
+.signature-pj ul{list-style:none;display:flex;flex-wrap:wrap;gap:12px;margin:16px 0 0;padding:0}
+.signature-pj li{position:relative;background:#fff;border:1px solid #D4E1EC;border-radius:12px;overflow:hidden;width:128px;flex-shrink:0}
+.signature-pj li img{display:block;width:128px;height:84px;object-fit:cover}
+.signature-pj li span{font-size:.7rem;display:block;padding:6px 26px 7px 8px;color:#34566E;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.signature-pj li button{position:absolute;bottom:5px;right:5px;border:0;border-radius:8px;padding:3px 7px;background:#0B2545;color:#fff;font-weight:700;cursor:pointer}
+.signature-pj .signature-pj-status{font-size:.76rem;color:#47647A;margin-top:10px}
+.signature-intake-indicator{position:fixed;z-index:99999;bottom:16px;left:50%;transform:translateX(-50%);max-width:min(90vw,480px);background:#0B2545;color:#fff;border:1px solid #4CC9F0;box-shadow:0 15px 50px #09274455;border-radius:12px;padding:16px 22px;font-size:.86rem}
+.signature-intake-indicator strong{display:block;color:#fff;font-size:.95rem}
+.signature-intake-indicator p{margin:6px 0;color:#E1EDF7}
+.signature-intake-indicator button{border:1px solid #7ED7F1;border-radius:9px;background:#fff;color:#0B2545;font-weight:800;cursor:pointer;padding:6px 12px}
+@media(max-width:600px){.signature-pj{padding:15px}.signature-pj li{width:104px}.signature-pj li img{width:104px;height:72px}}

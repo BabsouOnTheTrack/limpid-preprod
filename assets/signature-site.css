@@ -174,3 +174,35 @@ body.signature-site .signature-source-body .lx-compare-tag{position:absolute;z-i
 body.signature-site .signature-source-body .lx-compare-tag.before{left:13px}
 body.signature-site .signature-source-body .lx-compare-tag.after{right:13px}
 @media(max-width:850px){body.signature-site .signature-source-body .lx-proof-inner{grid-template-columns:1fr}}
+
+
+/* SIGNATURE V1.2 — one structured path per acquisition/service page. */
+body.signature-site .sig-service-photo::after{content:none!important;display:none!important}
+body.signature-site .sig-service-photo figcaption{display:none!important}
+body.signature-site .sig-home-source .garantie h2{margin-bottom:22px!important}
+body.signature-site .signature-source-body .garantie h2{margin-bottom:27px!important}
+body.signature-site .signature-source-body .sig-config-entry{
+  background:linear-gradient(125deg,#081E3B,#103A64)!important;
+  color:#fff!important;padding:clamp(65px,7vw,105px) 20px!important;
+  text-align:center!important
+}
+body.signature-site .signature-source-body .sig-config-entry .sig-config-entry-inner{max-width:880px!important;margin:0 auto!important}
+body.signature-site .signature-source-body .sig-config-entry .sig-config-star{width:35px;height:35px;display:block;margin:0 auto 17px}
+body.signature-site .signature-source-body .sig-config-entry h2{
+ color:#fff!important;max-width:800px;margin:0 auto 25px!important;
+ font:800 clamp(2.15rem,4vw,4.25rem)/1.1 var(--signature-display),sans-serif!important;
+ letter-spacing:-.055em
+}
+body.signature-site .signature-source-body .sig-config-entry p{max-width:690px;color:#DCECF8!important;line-height:1.75;margin:0 auto 32px;font-size:1.04rem}
+body.signature-site .signature-source-body .sig-config-entry a.sig-config-action{
+ display:inline-flex;align-items:center;justify-content:center;min-height:58px;
+ padding:17px 28px;color:#fff!important;background:linear-gradient(#3777FA,#1455D3)!important;
+ border:1px solid #80A9FF;border-radius:12px;text-decoration:none!important;font-weight:850;
+ box-shadow:0 5px 0 #092F80,0 19px 32px rgba(0,0,0,.22);
+ transition:transform .2s,box-shadow .2s
+}
+body.signature-site .signature-source-body .sig-config-entry a.sig-config-action:hover{transform:translateY(-2px)}
+body.signature-site .signature-source-body .sig-config-entry .sig-config-small{color:#B5D2E4!important;font-size:.82rem;margin:20px auto 0}
+body.signature-site .sig-preserved-actions .btn{font-weight:800!important}
+@media(max-width:560px){body.signature-site .signature-source-body .sig-config-entry a.sig-config-action{width:100%}}
+@media(prefers-reduced-motion:reduce){body.signature-site .signature-source-body .sig-config-entry a.sig-config-action{transition:none!important}}

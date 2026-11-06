@@ -2,12 +2,12 @@
 (function(){'use strict';
 var stage=document.querySelector('.signature-preview-banner'); if(!stage)return;
 // Existing business scripts stay unchanged. This gate is limited to form/network submits in preview.
-document.addEventListener('submit',function(e){e.preventDefault();e.stopImmediatePropagation();window.alert('Préproduction SIGNATURE : cette demande n’a pas été envoyée. Les envois seront testés lors de la recette technique.');},true);
+document.addEventListener('submit',function(e){if(e.target&&e.target.id==='f-form')return;e.preventDefault();e.stopImmediatePropagation();window.alert('Préproduction SIGNATURE : cette demande n’a pas été envoyée. Les envois seront testés lors de la recette technique.');},true);
 if(typeof window.fetch==='function'){
  var previousFetch=window.fetch.bind(window);
  window.fetch=function(resource,init){
   var u=typeof resource==='string'?resource:(resource&&resource.url)||'';
-  if(/api\.web3forms\.com|script\.google\.com\/macros\//i.test(u))return Promise.resolve(new Response(JSON.stringify({success:false,message:'Préproduction : envoi désactivé'}),{status:403,headers:{'Content-Type':'application/json'}}));
+  if(/api\.web3forms\.com|script\.google\.com\/macros\//i.test(u)){if(window.LimpidIntakeLab&&init&&init.body instanceof FormData){window.LimpidIntakeLab.capture(init.body);}return Promise.resolve(new Response(JSON.stringify({success:false,message:'Préproduction : envoi désactivé'}),{status:403,headers:{'Content-Type':'application/json'}}));}
   return previousFetch(resource,init);
  };
 }
