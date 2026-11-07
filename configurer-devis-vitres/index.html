@@ -1378,12 +1378,12 @@ window.LIMPID_PARCOURS = (function () {
     var vis = visibles().map(function (x) { return x.id; }), i = vis.indexOf(E.ecran);
     aller(i > 0 ? vis[i - 1] : "accueil");
   }
-  function demarrer(sauterBesoin) {
+  function demarrer(sauterBesoin, entreeDirecte) {
     if (!E.id || dejaEnvoye(E.id)) E.id = nouvelId();
     if (!E.debut) { E.debut = true; ev("config_start", {}); }
     var v = visibles();
-    if (sauterBesoin && v[0].id === "besoin" && v[1]) { R.besoin = "ici"; sauver(); aller(v[1].id); return; }
-    aller(v[0].id);
+    if (sauterBesoin && v[0].id === "besoin" && v[1]) { R.besoin = "ici"; sauver(); aller(v[1].id, false, !!entreeDirecte); return; }
+    aller(v[0].id, false, !!entreeDirecte);
   }
 
   /* ---------- Saisie générique : data-k (valeur), data-choix (un seul), data-multi (plusieurs) ---------- */
@@ -1689,6 +1689,17 @@ window.LIMPID_PARCOURS = (function () {
     if (E.ecran !== "accueil" && E.ecran !== "fin" && E.ecran !== "recap" && !visibles().some(function (x) { return x.id === E.ecran; })) E.ecran = "accueil";
     try { history.replaceState({ pc: E.ecran }, "", location.pathname + location.search + (E.ecran === "accueil" ? "" : "#" + E.ecran)); } catch (e) {}
     rendre(); majBandeau();
+    /* SIGNATURE V1.15 : entrée native dans les questions.
+       Aucune dépendance à un script externe pour passer la landing.
+       La présentation reste accessible seulement avec ?presentation=1.
+       Le premier écran remplace l’entrée d’historique : Retour navigateur
+       ne ramène pas à une page de lancement inutile. */
+    var presentationDemandee = false;
+    try { presentationDemandee = new URLSearchParams(location.search).get("presentation") === "1"; } catch (e) {}
+    if (E.ecran === "accueil" && !presentationDemandee) {
+      demarrer(false, true);
+      try { history.replaceState({ pc: E.ecran }, "", location.pathname + location.search + "#" + E.ecran); } catch (e) {}
+    }
     try {
       fetch("/assets/configurateur.json", { cache: "no-cache" }).then(function (r) { return r.ok ? r.json() : null; })
         .then(function (o) { if (o && o.prestations) LimpidMoteur.charger(o); }).catch(function () {});
@@ -1705,5 +1716,5 @@ window.LIMPID_PARCOURS = (function () {
 <script defer="" src="/assets/limpid-experience-v3-p2.js"></script>
 <script defer="" src="/assets/limpid-experience-v3-p3.js"></script>
 <script defer="" src="/assets/limpid-experience-v3-final.js"></script>
-<script defer="" src="/assets/limpid-v4-site.js"></script><script defer="" src="/assets/signature-icon-replacer.js"></script><script defer="" src="/assets/signature-site.js"></script><script src="/assets/signature-intake-lab.js"></script><script defer src="/assets/signature-faststart.js"></script></body>
+<script defer="" src="/assets/limpid-v4-site.js"></script><script defer="" src="/assets/signature-icon-replacer.js"></script><script defer="" src="/assets/signature-site.js"></script><script src="/assets/signature-intake-lab.js"></script></body>
 </html>
