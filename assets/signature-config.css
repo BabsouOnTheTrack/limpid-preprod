@@ -537,3 +537,16 @@ body.signature-config-live .pc-ci .liens{display:flex!important;gap:14px!importa
  body.signature-config-live .pc-ci .liens .btn{width:100%!important;min-height:53px!important}
  body.signature-config-live .pc-ci .liens a:not(.btn){padding:7px 1px!important;color:#14558F!important}
 }
+
+
+/* SIGNATURE V1.16 — neutralise le contour de focus artificiel autour des titres
+   programmatiquement focalisés par les configurateurs. Le focus DOM reste actif
+   pour les aides techniques, et les vrais contrôles conservent leur :focus-visible. */
+body.signature-config-live #pc-app #pc-corps #pc-titre:focus,
+body.signature-config-live #pc-app #pc-corps #pc-titre:focus-visible,
+body.signature-config-live #cf .cf-etape h2[tabindex="-1"]:focus,
+body.signature-config-live #cf .cf-etape h2[tabindex="-1"]:focus-visible {
+  outline: none !important;
+  outline-offset: 0 !important;
+  box-shadow: none !important;
+}
