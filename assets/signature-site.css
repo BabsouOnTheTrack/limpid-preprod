@@ -856,3 +856,74 @@ body.signature-site :is(.feature-dark,.reference-dark,.navy-band) :is(p,small,.l
   body.signature-site .sig-link-collection a.sig-link-pill{width:100%!important;justify-content:flex-start!important}
   body.signature-site .navy-band{padding:56px 0!important}
 }
+
+/* LIMPID SIGNATURE V1.14 — simulateur pédagogique en page ménage, sans toucher au moteur métier */
+body.signature-site .signature-source-body .ci.sig-tax-sim{
+ padding:clamp(22px,2.5vw,36px)!important;
+ border:1px solid #B8DCC9!important;border-radius:22px!important;
+ background:linear-gradient(160deg,#F4FBF6,#EAF7F0)!important;
+ box-shadow:0 18px 42px rgba(11,69,45,.07)!important;
+ display:flex;flex-direction:column;gap:14px;color:#123C2C!important;max-width:100%;min-width:0;
+}
+body.signature-site .signature-source-body .ci.sig-tax-sim :is(p,h3){margin:0!important;}
+body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-kicker{
+ color:#216445!important;font-weight:850!important;font-size:.76rem!important;text-transform:uppercase;
+ letter-spacing:.09em;line-height:1.5!important;
+}
+body.signature-site .signature-source-body .ci.sig-tax-sim h3{
+ font:800 clamp(1.35rem,2.0vw,1.85rem)/1.2 'Manrope',system-ui,sans-serif!important;
+ letter-spacing:-.04em!important;color:#0D4C32!important;
+}
+body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-intro{
+ font-size:clamp(.94rem,1.05vw,1.04rem)!important;color:#2C5442!important;line-height:1.6!important;
+}
+body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-switch{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;background:#DDEFE4;
+ padding:6px;border-radius:15px;border:1px solid #B9D8C4;min-width:0;
+}
+body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-choice{
+ font:750 .87rem/1.32 'DM Sans',system-ui,sans-serif!important;
+ border:1px solid transparent;border-radius:11px;padding:11px 8px;cursor:pointer;
+ min-width:0;min-height:50px;background:transparent;color:#1F5A3B;box-shadow:none;
+ white-space:normal;overflow-wrap:break-word;transition:background .16s,border-color .16s,box-shadow .16s;
+}
+body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-choice[aria-pressed="true"]{
+ background:#fff;border-color:#9BCFAF;color:#0D5335;box-shadow:0 5px 16px rgba(12,89,58,.10);
+}
+body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-choice:hover{border-color:#8AC4A7;}
+body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-choice:focus-visible{outline:3px solid #1A56DB;outline-offset:2px}
+body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-result{
+ padding:18px;border:1px solid #CCE3D4;border-radius:15px;background:#fff;display:grid;gap:14px;min-width:0;
+}
+body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-result-head{
+ display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+ font:600 .86rem/1.4 'DM Sans',system-ui,sans-serif;color:#315C48;
+}
+body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-result-head strong{
+ font-weight:850;color:#125F3B;font-size:1.08rem;
+}
+body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-track{
+ display:grid;grid-template-columns:100% 0%;min-height:53px;overflow:hidden;border-radius:13px;
+ border:1px solid #B4D8C3;background:#E6F4EB;
+}
+body.signature-site .signature-source-body .ci.sig-tax-sim[data-mode="advance"] .sig-tax-track{grid-template-columns:50% 50%;}
+body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-track span{
+ display:flex;align-items:center;justify-content:center;text-align:center;font:850 .83rem/1.32 'DM Sans',system-ui,sans-serif;
+ min-width:0;padding:10px 4px;white-space:normal;
+}
+body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-paid{background:linear-gradient(125deg,#166A49,#13874F);color:#fff;}
+body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-credit{background:#D4F0DC;color:#145C37;}
+body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-explanation{font-size:.92rem!important;line-height:1.65!important;color:#244F3A!important;}
+body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-condition{font-size:.79rem!important;line-height:1.6!important;color:#375F4A!important;}
+body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-cta{align-self:flex-start;margin-top:3px!important;max-width:100%;}
+@media(max-width:690px){
+ body.signature-site .signature-source-body .ci.sig-tax-sim{padding:19px!important;gap:12px;}
+ body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-switch{grid-template-columns:1fr;gap:6px;}
+ body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-choice{min-height:46px;padding:10px;}
+ body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-result{padding:13px;}
+ body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-result-head strong{font-size:1.02rem;}
+ body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-cta{width:100%;justify-content:center;}
+}
+@media(prefers-reduced-motion:reduce){body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-choice{transition:none;}}
+
+body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-credit[hidden]{display:none!important}
