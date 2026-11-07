@@ -572,7 +572,7 @@ body.signature-site .site-header .nav-services-panel a{
 body.signature-site .site-header .nav-services-panel a:hover{
   background:#EDF6FF!important;color:#124C9B!important;
 }
-@media(max-width:1330px){
+@media(max-width:1399px){
   body.signature-site .site-header .nav-wrap{position:relative!important}
   body.signature-site .site-header .mobile-menu{display:inline-flex!important;margin-left:auto!important}
   body.signature-site .site-header .primary-nav{
@@ -1087,3 +1087,130 @@ body.signature-site .footer .foot-brand{
 }
 body.signature-site .footer .foot-brand strong{font-weight:850!important}
 @media(max-width:560px){body.signature-site .footer .foot-brand{font-size:19px!important}}
+
+
+/* SIGNATURE V1.18 — navigation sans chevauchement et pied de page historique rétabli. */
+/* Les entrées de navigation ne doivent JAMAIS rétrécir sous leur largeur utile. */
+@media(min-width:1400px){
+ body.signature-site .site-header .nav-wrap{gap:clamp(12px,1.25vw,18px)!important}
+ body.signature-site .site-header .brand{flex:0 0 auto!important}
+ body.signature-site .site-header .primary-nav{
+   flex:0 0 auto!important;min-width:max-content!important;
+   margin-left:auto!important;gap:2px!important;padding:4px!important;
+ }
+ body.signature-site .site-header .primary-nav > a.nav-home,
+ body.signature-site .site-header .primary-nav > a.nav-category,
+ body.signature-site .site-header .primary-nav > a.nav-editorial,
+ body.signature-site .site-header .nav-services > summary{
+   flex:0 0 auto!important;min-width:max-content!important;
+   font-size:12px!important;gap:5px!important;padding:6px 6px!important;
+   white-space:nowrap!important;
+ }
+ body.signature-site .site-header .primary-nav :is(a.nav-home,a.nav-category,a.nav-editorial,.nav-services > summary) > img{
+   width:25px!important;min-width:25px!important;height:25px!important;padding:4px!important;
+ }
+ body.signature-site .site-header .header-cta{flex:0 0 auto!important;font-size:12px!important;padding:12px 12px!important}
+ body.signature-site .site-header .brand img{width:111px!important}
+ body.signature-site .site-header .brand small.limpid-brand-descriptor{
+   font-size:9px!important;padding-left:9px!important;gap:1px!important;
+ }
+}
+body.signature-site .footer .footer-inner{row-gap:26px!important}
+@media(min-width:901px){
+ body.signature-site .footer .footer-links{
+  display:grid!important;grid-template-columns:repeat(3,minmax(max-content,1fr))!important;
+  gap:14px 18px!important;justify-content:stretch!important;align-items:center!important;
+ }
+}
+
+body.signature-site .footer .foot-brand{
+ display:flex!important;align-items:center!important;gap:0!important;
+ font-family:var(--signature-display)!important;
+}
+body.signature-site footer .sig-footer-line{
+ display:inline-flex!important;align-items:center!important;gap:8px!important;flex-wrap:wrap!important;
+ color:#F4FBFF!important;font:800 clamp(18px,1.48vw,24px)/1.3 var(--signature-display)!important;
+ letter-spacing:-.035em!important;
+}
+body.signature-site footer .sig-footer-logo-frame{
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ padding:5px 10px 4px!important;border-radius:12px!important;
+ background:linear-gradient(145deg,#fff,#E9F6FF)!important;
+ border:1px solid #B6D8ED!important;
+ box-shadow:0 4px 13px rgba(0,0,0,.12)!important;
+ vertical-align:middle!important;
+}
+body.signature-site footer .sig-footer-logo{
+ width:96px!important;max-width:96px!important;height:auto!important;
+ max-height:39px!important;display:block!important;object-fit:contain!important;
+}
+body.signature-site footer .sig-footer-dot{color:#64CEEC!important;margin-left:-8px!important}
+body.signature-site footer .sig-footer-claim{
+ margin-bottom:16px!important;color:#F4FBFF!important;
+}
+body.signature-site footer .sig-footer-legal{
+ display:flex!important;gap:10px 26px!important;justify-content:space-between!important;
+ align-items:center!important;flex-wrap:wrap!important;
+ margin-top:31px!important;padding-top:20px!important;
+ border-top:1px solid rgba(207,231,244,.2)!important;
+ color:#C8DCE9!important;font:500 12px/1.6 var(--signature-body)!important;
+ letter-spacing:0!important;
+}
+body.signature-site footer .sig-footer-legal a{
+ color:#9EE4FA!important;font-weight:800!important;text-decoration:none!important;
+ border-bottom:1px solid rgba(158,228,250,.54)!important;
+}
+body.signature-site footer .sig-footer-legal a:hover,
+body.signature-site footer .sig-footer-legal a:focus-visible{color:#FFFFFF!important;border-color:#FFFFFF!important}
+body.signature-site footer .sig-footer-legal-config{grid-column:1/-1!important}
+@media(max-width:720px){
+ body.signature-site footer .sig-footer-line{font-size:19px!important;gap:7px!important}
+ body.signature-site footer .sig-footer-logo{width:81px!important;max-width:81px!important}
+ body.signature-site footer .sig-footer-legal{justify-content:flex-start!important;gap:8px 18px!important;font-size:11.5px!important}
+}
+
+/* SIGNATURE V1.19 — medaillon rond du logo officiel au pied de page.
+   Les mentions legales, le credit ViZiBiLi et le calcul automatique de l'annee
+   restent intacts. Le medaillon ne remplace pas le logo dans les autres zones. */
+body.signature-site footer .sig-footer-logo-frame{
+  box-sizing:border-box!important;
+  flex:0 0 92px!important;
+  width:92px!important;
+  height:92px!important;
+  min-width:92px!important;
+  min-height:92px!important;
+  padding:12px!important;
+  border-radius:50%!important;
+  border:1px solid #B9E4F4!important;
+  background:radial-gradient(circle at 30% 22%,#FFFFFF 4%,#F6FCFF 56%,#E7F5FB 100%)!important;
+  box-shadow:0 8px 25px rgba(0,0,0,.17),inset 0 0 0 3px rgba(255,255,255,.87)!important;
+  overflow:hidden!important;
+  vertical-align:middle!important;
+}
+body.signature-site footer .sig-footer-logo{
+  box-sizing:border-box!important;
+  display:block!important;
+  width:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  height:auto!important;
+  object-fit:contain!important;
+  filter:none!important;
+}
+body.signature-site footer .sig-footer-line{
+  gap:12px!important;
+  align-items:center!important;
+}
+body.signature-site footer .sig-footer-dot{
+  margin-left:-8px!important;
+}
+@media(max-width:720px){
+  body.signature-site footer .sig-footer-logo-frame{
+    flex:0 0 78px!important;
+    width:78px!important;height:78px!important;
+    min-width:78px!important;min-height:78px!important;
+    padding:9px!important;
+  }
+  body.signature-site footer .sig-footer-line{gap:9px!important}
+  body.signature-site footer .sig-footer-dot{margin-left:-7px!important}
+}

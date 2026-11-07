@@ -561,3 +561,57 @@ body.signature-config-live .sig-footer-claim{
 body.signature-config-live .sig-footer-claim strong{color:#72D8F8!important;font-weight:850!important}
 body.signature-config-live footer.site .sig-footer-devis{grid-column:1 / -1!important}
 body.signature-config-live footer.lp .sig-footer-config{color:#E7F5FF!important}
+
+
+/* SIGNATURE V1.18 — slogan avec logo officiel & mentions pérennes sur les configurateurs. */
+body.signature-config-live footer .sig-footer-line{
+ display:inline-flex!important;align-items:center!important;gap:8px!important;flex-wrap:wrap!important;
+ color:#F1FAFF!important;font:800 clamp(18px,1.6vw,23px)/1.3 'Manrope','DM Sans',system-ui,sans-serif!important;
+ letter-spacing:-.03em!important;
+}
+body.signature-config-live footer .sig-footer-logo-frame{
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ padding:5px 10px!important;border-radius:11px!important;background:linear-gradient(145deg,#fff,#ECF7FF)!important;
+ box-shadow:0 4px 15px rgba(0,0,0,.12)!important;
+}
+body.signature-config-live footer .sig-footer-logo{
+ display:block!important;width:96px!important;height:auto!important;max-height:42px!important;object-fit:contain!important;
+}
+body.signature-config-live footer .sig-footer-dot{color:#66D3F3!important;margin-left:-8px!important}
+body.signature-config-live footer .sig-footer-legal{
+ display:flex!important;justify-content:space-between!important;align-items:center!important;flex-wrap:wrap!important;
+ gap:8px 22px!important;border-top:1px solid rgba(207,231,244,.24)!important;
+ margin-top:24px!important;padding-top:17px!important;
+ font:500 12px/1.6 'DM Sans',system-ui,sans-serif!important;color:#D2E3ED!important;
+}
+body.signature-config-live footer .sig-footer-legal a{color:#9CE4F8!important;font-weight:800!important;text-decoration:none!important}
+body.signature-config-live footer.site .sig-footer-legal{grid-column:1/-1!important}
+@media(max-width:640px){body.signature-config-live footer .sig-footer-line{font-size:19px!important}}
+
+/* SIGNATURE V1.19 — meme medaillon Limpid dans le footer des configurateurs. */
+body.signature-config-live footer .sig-footer-logo-frame{
+  box-sizing:border-box!important;
+  flex:0 0 92px!important;
+  width:92px!important;height:92px!important;
+  min-width:92px!important;min-height:92px!important;
+  padding:12px!important;
+  border-radius:50%!important;
+  background:radial-gradient(circle at 30% 22%,#fff 4%,#F6FCFF 56%,#E7F5FB 100%)!important;
+  border:1px solid #B9E4F4!important;
+  box-shadow:0 8px 25px rgba(0,0,0,.17),inset 0 0 0 3px rgba(255,255,255,.87)!important;
+  overflow:hidden!important;
+}
+body.signature-config-live footer .sig-footer-logo{
+  display:block!important;width:100%!important;max-width:100%!important;
+  height:auto!important;max-height:100%!important;object-fit:contain!important;filter:none!important;
+}
+body.signature-config-live footer .sig-footer-line{gap:12px!important;align-items:center!important}
+body.signature-config-live footer .sig-footer-dot{margin-left:-8px!important}
+@media(max-width:720px){
+  body.signature-config-live footer .sig-footer-logo-frame{
+    flex:0 0 78px!important;width:78px!important;height:78px!important;
+    min-width:78px!important;min-height:78px!important;padding:9px!important;
+  }
+  body.signature-config-live footer .sig-footer-line{gap:9px!important}
+  body.signature-config-live footer .sig-footer-dot{margin-left:-7px!important}
+}
