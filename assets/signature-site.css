@@ -927,3 +927,163 @@ body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-cta{align-se
 @media(prefers-reduced-motion:reduce){body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-choice{transition:none;}}
 
 body.signature-site .signature-source-body .ci.sig-tax-sim .sig-tax-credit[hidden]{display:none!important}
+
+
+/* SIGNATURE V1.17 — système harmonisé de liens éditoriaux.
+   Corrige les anciens liens V4 non stylés, les recommandations adjacentes et les liens contextuels.
+   La distinction fonctionnelle (liens de navigation / boutons de devis) reste intacte. */
+
+/* Composant universel des groupes d'articles / services associés */
+body.signature-site .signature-source-body .v4-link-row,
+body.signature-site .signature-source-body .sig-link-collection,
+body.signature-site .sig-intro-followup .sig-link-collection{
+ display:flex!important;flex-wrap:wrap!important;align-items:center!important;
+ column-gap:12px!important;row-gap:11px!important;
+ margin:18px 0 24px!important;padding:0!important;
+ min-width:0!important;
+}
+body.signature-site .signature-source-body .v4-link-row > .v4-link-label,
+body.signature-site .signature-source-body .sig-link-collection > .sig-link-heading,
+body.signature-site .sig-intro-followup .sig-link-collection > .sig-link-heading{
+ display:block!important;flex:0 0 100%!important;width:100%!important;
+ font:800 .86rem/1.5 var(--signature-body)!important;
+ color:#31566F!important;letter-spacing:.02em!important;margin:0 0 1px!important;
+}
+body.signature-site .signature-source-body .v4-link-row > a.v4-link-chip,
+body.signature-site .signature-source-body .sig-link-collection > a.sig-link-pill,
+body.signature-site .sig-intro-followup .sig-link-collection > a.sig-link-pill{
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ flex:0 1 auto!important;min-height:47px!important;max-width:100%!important;
+ padding:11px 16px!important;margin:0!important;
+ border:1px solid #BAD6E9!important;border-radius:12px!important;
+ background:linear-gradient(135deg,#FFFFFF 0%,#EDF7FE 100%)!important;
+ color:#164570!important;text-decoration:none!important;
+ box-shadow:0 3px 0 #DCEAF3,0 10px 24px rgba(11,37,69,.045)!important;
+ font:800 .88rem/1.4 var(--signature-body)!important;
+ text-align:center!important;white-space:normal!important;
+ transform:none!important;transition:background-color .18s,border-color .18s,color .18s,box-shadow .18s!important;
+}
+body.signature-site .signature-source-body .v4-link-row > a.v4-link-chip:hover,
+body.signature-site .signature-source-body .sig-link-collection > a.sig-link-pill:hover,
+body.signature-site .sig-intro-followup .sig-link-collection > a.sig-link-pill:hover{
+ background:#E3F2FE!important;color:#114C9D!important;border-color:#74B8E3!important;
+ box-shadow:0 5px 0 #DCEAF3,0 13px 26px rgba(26,86,219,.10)!important;
+ transform:translateY(-1px)!important;
+}
+body.signature-site .signature-source-body .v4-link-row > a.v4-link-chip:focus-visible,
+body.signature-site .signature-source-body .sig-link-collection > a.sig-link-pill:focus-visible{
+ outline:3px solid #1A56DB!important;outline-offset:4px!important;
+}
+
+/* Lien à l'intérieur d'une phrase : mise en valeur éditoriale discrète et non un faux CTA */
+body.signature-site .signature-source-body :is(p,li,td) a:not([class]):not(.btn),
+body.signature-site .sig-intro-followup :is(p,li) a:not([class]):not(.btn){
+ display:inline!important;font:inherit!important;font-weight:800!important;
+ color:#1453A2!important;text-decoration:none!important;
+ padding:.07em .28em .11em!important;margin:0 .02em!important;
+ border:0!important;border-radius:5px!important;
+ background:#EAF4FD!important;
+ box-shadow:inset 0 -1px 0 #9DC9E9!important;
+ -webkit-box-decoration-break:clone;box-decoration-break:clone;
+ transition:color .18s,background-color .18s!important;
+}
+body.signature-site .signature-source-body :is(p,li,td) a:not([class]):hover,
+body.signature-site .sig-intro-followup :is(p,li) a:not([class]):hover{
+ background:#DDEEFF!important;color:#0B4390!important;box-shadow:inset 0 -2px 0 #5BA5DC!important;
+}
+body.signature-site .signature-source-body :is(p,li,td) a:not([class]):focus-visible,
+body.signature-site .sig-intro-followup :is(p,li) a:not([class]):focus-visible{
+ outline:3px solid #1A56DB!important;outline-offset:2px!important;
+}
+/* Sources : citations regroupées, lisibles et distinguées des boutons commerciaux */
+body.signature-site .signature-source-body p.sources{line-height:2.2!important;margin-top:22px!important}
+body.signature-site .signature-source-body p.sources a:not([class]){
+ display:inline-block!important;max-width:100%!important;line-height:1.45!important;
+ padding:8px 11px!important;margin:3px 4px!important;vertical-align:middle!important;
+ border:1px solid #D0E3EF!important;border-radius:10px!important;
+ background:#F3F8FC!important;box-shadow:none!important;
+}
+/* Question/réponse : mêmes familles de caractères que le reste du site */
+body.signature-site .signature-source-body :is(details.faq,details.faq summary){
+ font-family:var(--signature-body)!important;
+}
+body.signature-site .signature-source-body details.faq summary{
+ font-size:1rem!important;font-weight:800!important;line-height:1.5!important;
+ letter-spacing:-.01em!important;
+}
+@media(max-width:600px){
+ body.signature-site .signature-source-body .v4-link-row,
+ body.signature-site .signature-source-body .sig-link-collection,
+ body.signature-site .sig-intro-followup .sig-link-collection{gap:9px!important;margin:14px 0 23px!important}
+ body.signature-site .signature-source-body .v4-link-row > a.v4-link-chip,
+ body.signature-site .signature-source-body .sig-link-collection > a.sig-link-pill,
+ body.signature-site .sig-intro-followup .sig-link-collection > a.sig-link-pill{
+  min-height:46px!important;padding:10px 14px!important;font-size:.85rem!important;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ body.signature-site .signature-source-body :is(.v4-link-row,.sig-link-collection) a,
+ body.signature-site .signature-source-body :is(p,li,td) a:not([class]){transition:none!important;transform:none!important}
+}
+
+
+/* SIGNATURE V1.17 — positionnement Limpid et slogan officiel */
+body.signature-site .site-header .brand{gap:11px!important;min-width:0!important}
+body.signature-site .site-header .brand small.limpid-brand-descriptor{
+ display:flex!important;flex-direction:column!important;gap:2px!important;
+ flex:none!important;max-width:225px!important;
+ font:800 clamp(.55rem,.66vw,.64rem)/1.35 var(--signature-body)!important;
+ letter-spacing:.015em!important;text-transform:none!important;
+ color:#47657A!important;border-left:1px solid #C9DCE9!important;
+ padding-left:13px!important;white-space:nowrap!important;
+}
+body.signature-site .site-header .brand small.limpid-brand-descriptor > span:first-child{
+ color:#153A5A!important;font-weight:850!important;
+}
+body.signature-site .site-header .brand small.limpid-brand-descriptor > span:last-child{
+ color:#516D83!important;font-weight:700!important;
+}
+body.signature-site .footer .foot-brand{
+ font:800 clamp(1.13rem,1.55vw,1.55rem)/1.35 var(--signature-display)!important;
+ letter-spacing:-.035em!important;align-items:center!important;gap:14px!important;
+}
+body.signature-site .footer .foot-brand .sig-footer-claim{color:#E9F6FC!important}
+body.signature-site .footer .foot-brand .sig-footer-claim strong{color:#72D8F8!important;font-weight:850!important}
+body.signature-site .footer .foot-brand .star{width:30px!important;height:30px!important;flex:none!important;object-fit:contain!important}
+/* Do not crowd the branding: collapse to the existing accessible mobile menu earlier. */
+@media(max-width:1380px) and (min-width:1121px){
+ body.signature-site .site-header .brand small.limpid-brand-descriptor{max-width:195px!important;font-size:.55rem!important;letter-spacing:0!important;padding-left:9px!important}
+ body.signature-site .site-header .brand img{width:110px!important}
+}
+@media(max-width:1120px) and (min-width:961px){
+ body.signature-site .site-header .brand small.limpid-brand-descriptor{display:none!important}
+}
+@media(max-width:560px){
+ body.signature-site .site-header .brand small.limpid-brand-descriptor{display:none!important}
+ body.signature-site .footer .foot-brand{font-size:1.16rem!important}
+}
+
+/* SIGNATURE V1.17 — confirmation/footer historiques : même signature */
+body.signature-site footer.lp .sig-footer-config,
+body.signature-site footer.site .sig-footer-devis{
+ display:block!important;margin:0 0 18px!important;
+ font:800 clamp(1.15rem,1.7vw,1.5rem)/1.35 var(--signature-display)!important;
+ letter-spacing:-.03em!important;color:#EAF7FF!important
+}
+body.signature-site footer.lp .sig-footer-config strong,
+body.signature-site footer.site .sig-footer-devis strong{color:#72D8F8!important}
+
+/* Taille typographique explicite : évite toute neutralisation du raccourci CSS font. */
+body.signature-site .site-header .brand small.limpid-brand-descriptor{
+ font-family:var(--signature-body)!important;
+ font-size:9.5px!important;font-weight:750!important;
+ line-height:1.45!important;letter-spacing:.005em!important;
+ max-width:none!important;width:auto!important;white-space:nowrap!important;
+}
+body.signature-site .site-header .brand small.limpid-brand-descriptor span:first-child{font-weight:800!important}
+body.signature-site .footer .foot-brand{
+ font-family:var(--signature-display)!important;font-size:clamp(19px,1.55vw,24px)!important;
+ font-weight:800!important;line-height:1.3!important;letter-spacing:-.035em!important;
+}
+body.signature-site .footer .foot-brand strong{font-weight:850!important}
+@media(max-width:560px){body.signature-site .footer .foot-brand{font-size:19px!important}}

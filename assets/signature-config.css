@@ -550,3 +550,14 @@ body.signature-config-live #cf .cf-etape h2[tabindex="-1"]:focus-visible {
   outline-offset: 0 !important;
   box-shadow: none !important;
 }
+
+
+/* SIGNATURE V1.17 — slogan officiel également sur les quatre configurateurs */
+body.signature-config-live .sig-footer-claim{
+ display:block!important;margin:0 0 15px!important;
+ font:800 clamp(1.15rem,1.7vw,1.5rem)/1.3 'Manrope','DM Sans',system-ui,sans-serif!important;
+ letter-spacing:-.035em!important;color:#E7F5FF!important;
+}
+body.signature-config-live .sig-footer-claim strong{color:#72D8F8!important;font-weight:850!important}
+body.signature-config-live footer.site .sig-footer-devis{grid-column:1 / -1!important}
+body.signature-config-live footer.lp .sig-footer-config{color:#E7F5FF!important}
