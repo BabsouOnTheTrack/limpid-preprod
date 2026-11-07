@@ -207,7 +207,6 @@ body[data-tunnel="configurateur"] footer{padding-bottom:90px}
 .cf-duree-l{display:block;width:100%;font-size:.92rem!important;color:var(--encre)!important;line-height:1.6}
 .cf-duree-l b{font-size:1rem}
 .cf-recap h4{font-size:.92rem;margin:10px 0 4px}
-.cf-photos-l{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
 .btn.wa{background:#16A34A}
 .btn.sec{background:#fff;color:var(--bleu);border:2px solid #CFE0F7}
 .cf-zone{max-width:760px;margin:0 auto;padding:0 16px 40px;color:var(--gris);font-size:.93rem}
@@ -267,8 +266,6 @@ body[data-tunnel="configurateur"] footer{padding-bottom:90px}
 .pc-ref{font-size:1rem}
 .pc-test{background:#7A1A1A;color:#fff;text-align:center;font-weight:700;font-size:.85rem;padding:6px}
 .pc-attente{max-width:640px;margin:12px auto 0;padding:0 16px}
-.pc-rappel-lien{text-align:center;margin:14px 0 0;font-size:.92rem}
-.pc-rappel-lien button{background:none;border:none;color:var(--bleu);font:inherit;font-weight:700;text-decoration:underline;cursor:pointer}
 .pc-nav-fixe{position:fixed;left:0;right:0;bottom:0;z-index:70;background:#fff;border-top:1px solid #E3EEF5;box-shadow:0 -4px 18px rgba(11,37,69,.08);padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
 .pc-nav-in{display:flex;gap:10px;max-width:640px;margin:0 auto}
 /* Hauteur fixe : un libellé long (« Envoyer ma demande de devis ») ne déplace pas les boutons */
@@ -290,13 +287,13 @@ body.pc-en-cours .appel-mobile{display:none}
 <link href="/assets/limpid-experience-v3-p2.css" rel="stylesheet">
 <link href="/assets/limpid-experience-v3-p3.css" rel="stylesheet">
 <link href="/assets/limpid-experience-v3-final.css" rel="stylesheet"/>
-</link></link><link href="/assets/limpid-v4-studio.css" rel="stylesheet"/><link href="/assets/signature-config.css" rel="stylesheet"/><link href="/assets/signature-intake-lab.css" rel="stylesheet"/></head>
+</link></link><link href="/assets/limpid-v4-studio.css" rel="stylesheet"/><link href="/assets/signature-config.css" rel="stylesheet"/></head>
 <body class="lx lx--config lx4 lx4--config v4-site v4-config signature-config-live" data-lx4-family="professionnels" data-lx4-target="/devis/" data-tunnel="b2b"><div class="signature-preview-banner" role="note"><strong>PRÉPRODUCTION SIGNATURE V1</strong><span>Site de test · Les envois de demandes sont volontairement désactivés</span></div>
 <div class="pc-test" hidden="" id="pc-test">MODE TEST : demande marquée [TEST], aucune conversion publicitaire</div>
 <header class="lp">
 <div class="in">
 <a aria-label="Accueil Limpid" class="logo" href="/"><img alt="Limpid, entreprise de nettoyage dans les Vosges" height="44" src="/assets/logo-limpid.webp" width="160"/></a>
-<a class="sig-config-home" href="/"><img alt="" aria-hidden="true" src="/assets/icons/compass.svg"/>Accueil</a> <a class="tel" href="tel:+33626556569">06 26 55 65 69</a>
+<a class="sig-config-home" href="/"><img alt="" aria-hidden="true" src="/assets/icons/compass.svg"/>Accueil</a>
 </div>
 </header>
 <main>
@@ -339,7 +336,6 @@ body.pc-en-cours .appel-mobile{display:none}
 </div>
 <div class="sig-footer-legal sig-footer-legal-config"><span>© <span data-limpid-year>2026</span> · Limpid · Tous droits réservés.</span><span>Site réalisé par <a href="https://vizibili.fr/" target="_blank" rel="noopener noreferrer">ViZiBiLi</a></span></div></footer>
 <nav aria-label="Contact rapide" class="appel-mobile">
-<a href="tel:+33626556569">📞 Appeler</a>
 <a class="second" data-pc-demarrer="barre_mobile" href="#">Configurer ma demande</a>
 </nav>
 <script>
@@ -592,9 +588,9 @@ var LIMPID_CONFIG_DEFAUT = {
     prixParEmail: "Le prix vous est communiqué avec votre devis, par e-mail : il tient compte de votre logement, de la fréquence et du déplacement, sans frais cachés.",
     creditImpot: "Les prestations à domicile des particuliers peuvent ouvrir droit à un crédit d'impôt de 50 %, sous réserve des conditions légales. Avec l'avance immédiate, lorsqu'elle est activée et applicable, vous ne réglez que le reste à charge au moment du paiement, au lieu d'avancer la totalité. Votre devis précisera le reste à charge estimé.",
     dureeInsuffisante: "La durée choisie semble courte pour tout le périmètre demandé. Indiquez vos priorités : Limpid confirmera avec vous ce qui peut être fait dans ce temps.",
-    validationManuelle: "Cette demande nécessite un échange avec Limpid avant chiffrage : nous vous rappelons pour la préciser.",
-    confirmation: "Votre demande est bien arrivée. Limpid vous envoie votre devis par e-mail sous 48 h, et vous appelle si un point reste à préciser.",
-    erreurEnvoi: "L'envoi n'a pas abouti. Votre configuration est conservée : réessayez, ou appelez-nous au 06 26 55 65 69."
+    validationManuelle: "Certains éléments seront vérifiés avant chiffrage. Si une précision est nécessaire, Limpid vous contactera par e-mail.",
+    confirmation: "Votre demande est bien arrivée. Limpid étudie les éléments saisis et vous répond par e-mail sous 48 h, après vérification si nécessaire.",
+    erreurEnvoi: "L'envoi n'a pas abouti. Votre configuration est conservée : réessayez depuis cette page."
   },
   communes: [{"nom": "Darnieulles", "cp": "88390", "vol": 0.0, "kmAR": 4, "minAR": 10, "verifie": false, "volEp": 7.9, "insee": "88126"}, {"nom": "Uxegney", "cp": "88390", "vol": 1.7, "kmAR": 4, "minAR": 10, "verifie": false, "volEp": 6.3, "insee": "88483"}, {"nom": "Fomerey", "cp": "88390", "vol": 2.5, "kmAR": 6, "minAR": 15, "verifie": false, "volEp": 9.6, "insee": "88174"}, {"nom": "Domèvre-sur-Avière", "cp": "88390", "vol": 2.9, "kmAR": 8, "minAR": 15, "verifie": false, "volEp": 6.6, "insee": "88142"}, {"nom": "Sanchey", "cp": "88390", "vol": 2.9, "kmAR": 8, "minAR": 15, "verifie": false, "volEp": 6.6, "insee": "88439"}, {"nom": "Chaumousey", "cp": "88390", "vol": 3.0, "kmAR": 8, "minAR": 15, "verifie": false, "volEp": 8.6, "insee": "88098"}, {"nom": "Gigney", "cp": "88390", "vol": 3.6, "kmAR": 9, "minAR": 15, "verifie": false, "volEp": 10.3, "insee": "88200"}, {"nom": "Les Forges", "cp": "88390", "vol": 3.7, "kmAR": 10, "minAR": 15, "verifie": false, "volEp": 4.6, "insee": "88178"}, {"nom": "Bocquegney", "cp": "88270", "vol": 3.8, "kmAR": 10, "minAR": 15, "verifie": false, "volEp": 11.7, "insee": "88063"}, {"nom": "Hennecourt", "cp": "88270", "vol": 4.8, "kmAR": 12, "minAR": 20, "verifie": false, "volEp": 12.7, "insee": "88237"}, {"nom": "Gorhey", "cp": "88270", "vol": 4.9, "kmAR": 13, "minAR": 20, "verifie": false, "volEp": 12.5, "insee": "88210"}, {"nom": "Mazeley", "cp": "88150", "vol": 4.9, "kmAR": 13, "minAR": 20, "verifie": false, "volEp": 11.1, "insee": "88294"}, {"nom": "Girancourt", "cp": "88390", "vol": 5.0, "kmAR": 13, "minAR": 20, "verifie": false, "volEp": 10.4, "insee": "88201"}, {"nom": "Damas-et-Bettegney", "cp": "88270", "vol": 6.6, "kmAR": 17, "minAR": 25, "verifie": false, "volEp": 14.5, "insee": "88122"}, {"nom": "Renauvoid", "cp": "88390", "vol": 6.7, "kmAR": 17, "minAR": 25, "verifie": false, "volEp": 6.1, "insee": "88388"}, {"nom": "Golbey", "cp": "88190", "vol": 6.8, "kmAR": 18, "minAR": 25, "verifie": false, "volEp": 2.5, "insee": "88209"}, {"nom": "Dommartin-aux-Bois", "cp": "88390", "vol": 7.0, "kmAR": 18, "minAR": 25, "verifie": false, "volEp": 13.1, "insee": "88147"}, {"nom": "Bouxières-aux-Bois", "cp": "88270", "vol": 7.6, "kmAR": 20, "minAR": 30, "verifie": false, "volEp": 14.0, "insee": "88069"}, {"nom": "Chantraine", "cp": "88000", "vol": 7.6, "kmAR": 20, "minAR": 30, "verifie": false, "volEp": 0.9, "insee": "88087"}, {"nom": "Chavelot", "cp": "88150", "vol": 7.7, "kmAR": 20, "minAR": 30, "verifie": false, "volEp": 6.6, "insee": "88099"}, {"nom": "Circourt", "cp": "88270", "vol": 7.7, "kmAR": 20, "minAR": 30, "verifie": false, "volEp": 15.0, "insee": "88103"}, {"nom": "Thaon-les-Vosges", "cp": "88150", "vol": 7.7, "kmAR": 20, "minAR": 30, "verifie": false, "volEp": 8.7, "insee": "88465"}, {"nom": "Épinal", "cp": "88000", "vol": 7.9, "kmAR": 21, "minAR": 30, "verifie": false, "volEp": 0.0, "insee": "88160"}, {"nom": "Dogneville", "cp": "88000", "vol": 8.6, "kmAR": 22, "minAR": 30, "verifie": false, "volEp": 5.4, "insee": "88136"}, {"nom": "Madonne-et-Lamerey", "cp": "88270", "vol": 8.9, "kmAR": 23, "minAR": 30, "verifie": false, "volEp": 16.9, "insee": "88281"}, {"nom": "Igney", "cp": "88150", "vol": 9.0, "kmAR": 23, "minAR": 30, "verifie": false, "volEp": 11.6, "insee": "88247"}, {"nom": "Harol", "cp": "88270", "vol": 9.1, "kmAR": 24, "minAR": 30, "verifie": false, "volEp": 15.2, "insee": "88233"}, {"nom": "Saint-Vallier", "cp": "88270", "vol": 9.3, "kmAR": 24, "minAR": 30, "verifie": false, "volEp": 15.3, "insee": "88437"}, {"nom": "Dompaire", "cp": "88270", "vol": 9.4, "kmAR": 24, "minAR": 35, "verifie": false, "volEp": 17.4, "insee": "88151"}, {"nom": "Frizon", "cp": "88440", "vol": 9.6, "kmAR": 25, "minAR": 35, "verifie": false, "volEp": 13.8, "insee": "88190"}, {"nom": "Derbamont", "cp": "88270", "vol": 9.7, "kmAR": 25, "minAR": 35, "verifie": false, "volEp": 17.0, "insee": "88129"}, {"nom": "Bouzemont", "cp": "88270", "vol": 10.0, "kmAR": 26, "minAR": 35, "verifie": false, "volEp": 17.8, "insee": "88071"}, {"nom": "Jeuxey", "cp": "88000", "vol": 10.3, "kmAR": 27, "minAR": 35, "verifie": false, "volEp": 4.0, "insee": "88253"}, {"nom": "Ville-sur-Illon", "cp": "88270", "vol": 10.6, "kmAR": 28, "minAR": 35, "verifie": false, "volEp": 17.8, "insee": "88508"}, {"nom": "Regney", "cp": "88450", "vol": 10.7, "kmAR": 28, "minAR": 35, "verifie": false, "volEp": 16.7, "insee": "88378"}, {"nom": "Madegney", "cp": "88450", "vol": 11.0, "kmAR": 29, "minAR": 35, "verifie": false, "volEp": 17.4, "insee": "88280"}, {"nom": "Vaxoncourt", "cp": "88330", "vol": 11.3, "kmAR": 29, "minAR": 40, "verifie": false, "volEp": 13.3, "insee": "88497"}, {"nom": "Dinozé", "cp": "88000", "vol": 11.5, "kmAR": 30, "minAR": 40, "verifie": false, "volEp": 4.3, "insee": "88134"}, {"nom": "Uriménil", "cp": "88220", "vol": 11.5, "kmAR": 30, "minAR": 40, "verifie": false, "volEp": 9.0, "insee": "88481"}, {"nom": "Bettegney-Saint-Brice", "cp": "88450", "vol": 11.6, "kmAR": 30, "minAR": 40, "verifie": false, "volEp": 17.4, "insee": "88055"}, {"nom": "Bazegney", "cp": "88270", "vol": 11.7, "kmAR": 30, "minAR": 40, "verifie": false, "volEp": 19.4, "insee": "88041"}, {"nom": "Les Ableuvenettes", "cp": "88270", "vol": 12.1, "kmAR": 31, "minAR": 40, "verifie": false, "volEp": 19.6, "insee": "88001"}, {"nom": "Charmois-l'Orgueilleux", "cp": "88270", "vol": 12.2, "kmAR": 32, "minAR": 40, "verifie": false, "volEp": 15.5, "insee": "88092"}, {"nom": "Nomexy", "cp": "88440", "vol": 12.2, "kmAR": 32, "minAR": 40, "verifie": false, "volEp": 15.5, "insee": "88327"}, {"nom": "Vaubexy", "cp": "88500", "vol": 12.2, "kmAR": 32, "minAR": 40, "verifie": false, "volEp": 19.6, "insee": "88494"}, {"nom": "Deyvillers", "cp": "88000", "vol": 12.3, "kmAR": 32, "minAR": 40, "verifie": false, "volEp": 5.5, "insee": "88132"}, {"nom": "Dounoux", "cp": "88220", "vol": 12.4, "kmAR": 32, "minAR": 40, "verifie": false, "volEp": 7.6, "insee": "88157"}, {"nom": "Longchamp", "cp": "88000", "vol": 12.5, "kmAR": 32, "minAR": 40, "verifie": false, "volEp": 7.2, "insee": "88273"}, {"nom": "Uzemain", "cp": "88220", "vol": 12.5, "kmAR": 32, "minAR": 40, "verifie": false, "volEp": 12.4, "insee": "88484"}, {"nom": "Pallegney", "cp": "88330", "vol": 12.6, "kmAR": 33, "minAR": 40, "verifie": false, "volEp": 13.1, "insee": "88342"}, {"nom": "Dignonville", "cp": "88000", "vol": 12.7, "kmAR": 33, "minAR": 40, "verifie": false, "volEp": 8.7, "insee": "88133"}, {"nom": "Bayecourt", "cp": "88150", "vol": 12.9, "kmAR": 34, "minAR": 45, "verifie": false, "volEp": 10.6, "insee": "88040"}, {"nom": "Châtel-sur-Moselle", "cp": "88330", "vol": 13.0, "kmAR": 34, "minAR": 45, "verifie": false, "volEp": 15.8, "insee": "88094"}, {"nom": "Domèvre-sur-Durbion", "cp": "88330", "vol": 13.0, "kmAR": 34, "minAR": 45, "verifie": false, "volEp": 12.1, "insee": "88143"}, {"nom": "Gugney-aux-Aulx", "cp": "88450", "vol": 13.1, "kmAR": 34, "minAR": 45, "verifie": false, "volEp": 19.6, "insee": "88223"}, {"nom": "Pierrefitte", "cp": "88270", "vol": 13.3, "kmAR": 35, "minAR": 45, "verifie": false, "volEp": 20.3, "insee": "88347"}, {"nom": "Racécourt", "cp": "88270", "vol": 13.3, "kmAR": 35, "minAR": 45, "verifie": false, "volEp": 21.2, "insee": "88365"}, {"nom": "Gelvécourt-et-Adompt", "cp": "88270", "vol": 13.7, "kmAR": 36, "minAR": 45, "verifie": false, "volEp": 21.4, "insee": "88192"}, {"nom": "Zincourt", "cp": "88330", "vol": 13.9, "kmAR": 36, "minAR": 45, "verifie": false, "volEp": 14.9, "insee": "88532"}, {"nom": "Villoncourt", "cp": "88150", "vol": 14.0, "kmAR": 36, "minAR": 45, "verifie": false, "volEp": 10.8, "insee": "88509"}, {"nom": "Begnécourt", "cp": "88270", "vol": 14.1, "kmAR": 37, "minAR": 45, "verifie": false, "volEp": 21.9, "insee": "88047"}, {"nom": "Jorxey", "cp": "88500", "vol": 14.2, "kmAR": 37, "minAR": 45, "verifie": false, "volEp": 21.2, "insee": "88254"}, {"nom": "Rapey", "cp": "88130", "vol": 14.5, "kmAR": 38, "minAR": 45, "verifie": false, "volEp": 21.1, "insee": "88374"}, {"nom": "Évaux-et-Ménil", "cp": "88450", "vol": 14.5, "kmAR": 38, "minAR": 45, "verifie": false, "volEp": 20.1, "insee": "88166"}, {"nom": "Varmonzey", "cp": "88450", "vol": 14.6, "kmAR": 38, "minAR": 45, "verifie": false, "volEp": 20.5, "insee": "88493"}, {"nom": "Légéville-et-Bonfays", "cp": "88270", "vol": 14.7, "kmAR": 38, "minAR": 50, "verifie": false, "volEp": 22.2, "insee": "88264"}, {"nom": "Vaudéville", "cp": "88000", "vol": 14.7, "kmAR": 38, "minAR": 50, "verifie": false, "volEp": 9.1, "insee": "88495"}, {"nom": "Ahéville", "cp": "88500", "vol": 14.9, "kmAR": 39, "minAR": 50, "verifie": false, "volEp": 22.6, "insee": "88002"}, {"nom": "Escles", "cp": "88260", "vol": 14.9, "kmAR": 39, "minAR": 50, "verifie": false, "volEp": 20.8, "insee": "88161"}, {"nom": "Sercœur", "cp": "88600", "vol": 14.9, "kmAR": 39, "minAR": 50, "verifie": false, "volEp": 10.7, "insee": "88454"}, {"nom": "Velotte-et-Tatignécourt", "cp": "88270", "vol": 14.9, "kmAR": 39, "minAR": 50, "verifie": false, "volEp": 22.8, "insee": "88499"}, {"nom": "Hagécourt", "cp": "88270", "vol": 15.0, "kmAR": 39, "minAR": 50, "verifie": false, "volEp": 22.9, "insee": "88226"}, {"nom": "Hadol", "cp": "88220", "vol": 15.4, "kmAR": 40, "minAR": 50, "verifie": false, "volEp": 9.6, "insee": "88225"}, {"nom": "Maroncourt", "cp": "88270", "vol": 15.4, "kmAR": 40, "minAR": 50, "verifie": false, "volEp": 23.3, "insee": "88288"}, {"nom": "Bainville-aux-Saules", "cp": "88270", "vol": 15.7, "kmAR": 41, "minAR": 50, "verifie": false, "volEp": 23.4, "insee": "88030"}, {"nom": "Vincey", "cp": "88450", "vol": 15.8, "kmAR": 41, "minAR": 50, "verifie": false, "volEp": 20.4, "insee": "88513"}, {"nom": "Lerrain", "cp": "88260", "vol": 15.9, "kmAR": 41, "minAR": 50, "verifie": false, "volEp": 22.5, "insee": "88267"}, {"nom": "Archettes", "cp": "88380", "vol": 16.0, "kmAR": 42, "minAR": 50, "verifie": false, "volEp": 8.4, "insee": "88012"}, {"nom": "Arches", "cp": "88380", "vol": 16.1, "kmAR": 42, "minAR": 50, "verifie": false, "volEp": 8.6, "insee": "88011"}, {"nom": "Hadigny-les-Verrières", "cp": "88330", "vol": 16.1, "kmAR": 42, "minAR": 50, "verifie": false, "volEp": 16.5, "insee": "88224"}, {"nom": "Portieux", "cp": "88330", "vol": 16.1, "kmAR": 42, "minAR": 50, "verifie": false, "volEp": 20.3, "insee": "88355"}, {"nom": "Ubexy", "cp": "88130", "vol": 16.1, "kmAR": 42, "minAR": 50, "verifie": false, "volEp": 22.1, "insee": "88480"}, {"nom": "Valleroy-aux-Saules", "cp": "88270", "vol": 16.1, "kmAR": 42, "minAR": 50, "verifie": false, "volEp": 24.1, "insee": "88489"}, {"nom": "Avillers", "cp": "88500", "vol": 16.3, "kmAR": 42, "minAR": 50, "verifie": false, "volEp": 23.5, "insee": "88023"}, {"nom": "Pont-lès-Bonfays", "cp": "88260", "vol": 16.4, "kmAR": 43, "minAR": 50, "verifie": false, "volEp": 23.5, "insee": "88353"}, {"nom": "Vroville", "cp": "88500", "vol": 16.4, "kmAR": 43, "minAR": 50, "verifie": false, "volEp": 24.1, "insee": "88525"}, {"nom": "Aydoilles", "cp": "88600", "vol": 16.6, "kmAR": 43, "minAR": 55, "verifie": false, "volEp": 9.9, "insee": "88026"}, {"nom": "Brantigny", "cp": "88130", "vol": 16.9, "kmAR": 44, "minAR": 55, "verifie": false, "volEp": 22.7, "insee": "88073"}, {"nom": "Frénois", "cp": "88270", "vol": 16.9, "kmAR": 44, "minAR": 55, "verifie": false, "volEp": 24.4, "insee": "88187"}, {"nom": "Dompierre", "cp": "88600", "vol": 17.0, "kmAR": 44, "minAR": 55, "verifie": false, "volEp": 12.2, "insee": "88152"}, {"nom": "Badménil-aux-Bois", "cp": "88330", "vol": 17.1, "kmAR": 44, "minAR": 55, "verifie": false, "volEp": 15.1, "insee": "88027"}, {"nom": "Hymont", "cp": "88500", "vol": 17.1, "kmAR": 44, "minAR": 55, "verifie": false, "volEp": 25.0, "insee": "88246"}, {"nom": "Bouxurulles", "cp": "88130", "vol": 17.3, "kmAR": 45, "minAR": 55, "verifie": false, "volEp": 23.8, "insee": "88070"}, {"nom": "La Baffe", "cp": "88460", "vol": 17.3, "kmAR": 45, "minAR": 55, "verifie": false, "volEp": 9.4, "insee": "88028"}, {"nom": "Villers", "cp": "88500", "vol": 17.3, "kmAR": 45, "minAR": 55, "verifie": false, "volEp": 24.8, "insee": "88507"}, {"nom": "Vioménil", "cp": "88260", "vol": 17.3, "kmAR": 45, "minAR": 55, "verifie": false, "volEp": 22.1, "insee": "88515"}, {"nom": "Les Vallois", "cp": "88260", "vol": 17.5, "kmAR": 46, "minAR": 55, "verifie": false, "volEp": 24.4, "insee": "88491"}, {"nom": "Moriville", "cp": "88330", "vol": 17.5, "kmAR": 46, "minAR": 55, "verifie": false, "volEp": 19.1, "insee": "88313"}, {"nom": "Madecourt", "cp": "88270", "vol": 17.6, "kmAR": 46, "minAR": 55, "verifie": false, "volEp": 25.5, "insee": "88279"}, {"nom": "La Haye", "cp": "88240", "vol": 17.7, "kmAR": 46, "minAR": 55, "verifie": false, "volEp": 20.8, "insee": "88236"}, {"nom": "Xertigny", "cp": "88220", "vol": 17.7, "kmAR": 46, "minAR": 55, "verifie": false, "volEp": 15.0, "insee": "88530"}, {"nom": "Fontenay", "cp": "88600", "vol": 17.9, "kmAR": 47, "minAR": 55, "verifie": false, "volEp": 11.4, "insee": "88175"}, {"nom": "Langley", "cp": "88130", "vol": 17.9, "kmAR": 47, "minAR": 55, "verifie": false, "volEp": 22.4, "insee": "88260"}, {"nom": "La Chapelle-aux-Bois", "cp": "88240", "vol": 18.1, "kmAR": 47, "minAR": 55, "verifie": false, "volEp": 17.7, "insee": "88088"}, {"nom": "Rancourt", "cp": "88270", "vol": 18.1, "kmAR": 47, "minAR": 55, "verifie": false, "volEp": 25.9, "insee": "88370"}, {"nom": "Rugney", "cp": "88130", "vol": 18.1, "kmAR": 47, "minAR": 55, "verifie": false, "volEp": 24.1, "insee": "88406"}, {"nom": "Charmois-devant-Bruyères", "cp": "88460", "vol": 18.4, "kmAR": 48, "minAR": 60, "verifie": false, "volEp": 10.6, "insee": "88091"}, {"nom": "Mattaincourt", "cp": "88500", "vol": 18.5, "kmAR": 48, "minAR": 60, "verifie": false, "volEp": 26.3, "insee": "88292"}, {"nom": "Sans-Vallois", "cp": "88260", "vol": 18.5, "kmAR": 48, "minAR": 60, "verifie": false, "volEp": 25.6, "insee": "88441"}, {"nom": "Padoux", "cp": "88700", "vol": 18.6, "kmAR": 48, "minAR": 60, "verifie": false, "volEp": 14.6, "insee": "88340"}, {"nom": "Valfroicourt", "cp": "88270", "vol": 18.8, "kmAR": 49, "minAR": 60, "verifie": false, "volEp": 26.4, "insee": "88488"}, {"nom": "Essegney", "cp": "88130", "vol": 18.9, "kmAR": 49, "minAR": 60, "verifie": false, "volEp": 23.6, "insee": "88163"}, {"nom": "Grandrupt-de-Bains", "cp": "88240", "vol": 19.1, "kmAR": 50, "minAR": 60, "verifie": false, "volEp": 23.1, "insee": "88214"}, {"nom": "Jarménil", "cp": "88550", "vol": 19.1, "kmAR": 50, "minAR": 60, "verifie": false, "volEp": 11.4, "insee": "88250"}, {"nom": "Les Voivres", "cp": "88240", "vol": 19.1, "kmAR": 50, "minAR": 60, "verifie": false, "volEp": 19.7, "insee": "88520"}, {"nom": "Pouxeux", "cp": "88550", "vol": 19.1, "kmAR": 50, "minAR": 60, "verifie": false, "volEp": 11.5, "insee": "88358"}, {"nom": "Bazoilles-et-Ménil", "cp": "88500", "vol": 19.2, "kmAR": 50, "minAR": 60, "verifie": false, "volEp": 27.2, "insee": "88043"}, {"nom": "Girecourt-sur-Durbion", "cp": "88600", "vol": 19.4, "kmAR": 50, "minAR": 60, "verifie": false, "volEp": 13.7, "insee": "88203"}, {"nom": "Jésonville", "cp": "88260", "vol": 19.4, "kmAR": 50, "minAR": 60, "verifie": false, "volEp": 25.7, "insee": "88252"}, {"nom": "Méménil", "cp": "88600", "vol": 19.5, "kmAR": 51, "minAR": 60, "verifie": false, "volEp": 12.9, "insee": "88297"}, {"nom": "Gircourt-lès-Viéville", "cp": "88500", "vol": 19.6, "kmAR": 51, "minAR": 60, "verifie": false, "volEp": 26.5, "insee": "88202"}, {"nom": "Mirecourt", "cp": "88500", "vol": 19.6, "kmAR": 51, "minAR": 60, "verifie": false, "volEp": 27.3, "insee": "88304"}, {"nom": "Savigny", "cp": "88130", "vol": 19.6, "kmAR": 51, "minAR": 60, "verifie": false, "volEp": 26.1, "insee": "88449"}, {"nom": "Charmes", "cp": "88130", "vol": 19.7, "kmAR": 51, "minAR": 60, "verifie": false, "volEp": 24.8, "insee": "88090"}, {"nom": "Florémont", "cp": "88130", "vol": 19.7, "kmAR": 51, "minAR": 60, "verifie": false, "volEp": 25.5, "insee": "88173"}, {"nom": "Cheniménil", "cp": "88460", "vol": 20.0, "kmAR": 52, "minAR": 65, "verifie": false, "volEp": 12.1, "insee": "88101"}, {"nom": "Dommartin-lès-Vallois", "cp": "88260", "vol": 20.1, "kmAR": 52, "minAR": 65, "verifie": false, "volEp": 27.1, "insee": "88149"}, {"nom": "Rehaincourt", "cp": "88330", "vol": 20.2, "kmAR": 53, "minAR": 65, "verifie": false, "volEp": 20.9, "insee": "88379"}, {"nom": "Le Roulier", "cp": "88460", "vol": 20.3, "kmAR": 53, "minAR": 65, "verifie": false, "volEp": 12.5, "insee": "88399"}, {"nom": "Mazirot", "cp": "88500", "vol": 20.3, "kmAR": 53, "minAR": 65, "verifie": false, "volEp": 27.8, "insee": "88295"}, {"nom": "Raon-aux-Bois", "cp": "88220", "vol": 20.3, "kmAR": 53, "minAR": 65, "verifie": false, "volEp": 14.2, "insee": "88371"}, {"nom": "Rozerotte", "cp": "88500", "vol": 20.4, "kmAR": 53, "minAR": 65, "verifie": false, "volEp": 28.3, "insee": "88403"}, {"nom": "Docelles", "cp": "88460", "vol": 20.8, "kmAR": 54, "minAR": 65, "verifie": false, "volEp": 12.9, "insee": "88135"}, {"nom": "Chauffecourt", "cp": "88500", "vol": 20.9, "kmAR": 54, "minAR": 65, "verifie": false, "volEp": 28.2, "insee": "88097"}, {"nom": "Gugnécourt", "cp": "88600", "vol": 20.9, "kmAR": 54, "minAR": 65, "verifie": false, "volEp": 14.9, "insee": "88222"}, {"nom": "Viménil", "cp": "88600", "vol": 21.2, "kmAR": 55, "minAR": 65, "verifie": false, "volEp": 14.6, "insee": "88512"}, {"nom": "Poussay", "cp": "88500", "vol": 21.4, "kmAR": 56, "minAR": 65, "verifie": false, "volEp": 29.0, "insee": "88357"}, {"nom": "Destord", "cp": "88600", "vol": 21.6, "kmAR": 56, "minAR": 65, "verifie": false, "volEp": 16.6, "insee": "88130"}, {"nom": "Domèvre-sous-Montfort", "cp": "88500", "vol": 21.6, "kmAR": 56, "minAR": 65, "verifie": false, "volEp": 29.5, "insee": "88144"}, {"nom": "Saint-Genest", "cp": "88700", "vol": 21.6, "kmAR": 56, "minAR": 65, "verifie": false, "volEp": 20.7, "insee": "88416"}, {"nom": "Bettoncourt", "cp": "88500", "vol": 21.7, "kmAR": 56, "minAR": 65, "verifie": false, "volEp": 28.8, "insee": "88056"}, {"nom": "Dombasle-devant-Darney", "cp": "88260", "vol": 21.7, "kmAR": 56, "minAR": 65, "verifie": false, "volEp": 28.2, "insee": "88138"}, {"nom": "Gruey-lès-Surance", "cp": "88240", "vol": 21.7, "kmAR": 56, "minAR": 65, "verifie": false, "volEp": 24.9, "insee": "88221"}, {"nom": "Bellefontaine", "cp": "88370", "vol": 21.8, "kmAR": 57, "minAR": 70, "verifie": false, "volEp": 18.0, "insee": "88048"}, {"nom": "Bult", "cp": "88700", "vol": 21.8, "kmAR": 57, "minAR": 70, "verifie": false, "volEp": 17.6, "insee": "88080"}, {"nom": "Esley", "cp": "88260", "vol": 21.8, "kmAR": 57, "minAR": 70, "verifie": false, "volEp": 29.0, "insee": "88162"}, {"nom": "Avrainville", "cp": "88130", "vol": 22.0, "kmAR": 57, "minAR": 70, "verifie": false, "volEp": 28.3, "insee": "88024"}, {"nom": "Moyemont", "cp": "88700", "vol": 22.0, "kmAR": 57, "minAR": 70, "verifie": false, "volEp": 20.6, "insee": "88318"}, {"nom": "Senonges", "cp": "88260", "vol": 22.1, "kmAR": 57, "minAR": 70, "verifie": false, "volEp": 28.9, "insee": "88452"}, {"nom": "Nonzeville", "cp": "88600", "vol": 22.2, "kmAR": 58, "minAR": 70, "verifie": false, "volEp": 16.8, "insee": "88331"}, {"nom": "Ortoncourt", "cp": "88700", "vol": 22.3, "kmAR": 58, "minAR": 70, "verifie": false, "volEp": 21.9, "insee": "88338"}, {"nom": "Ramecourt", "cp": "88500", "vol": 22.3, "kmAR": 58, "minAR": 70, "verifie": false, "volEp": 30.0, "insee": "88368"}, {"nom": "Remoncourt", "cp": "88800", "vol": 22.4, "kmAR": 58, "minAR": 70, "verifie": false, "volEp": 30.2, "insee": "88385"}, {"nom": "Ambacourt", "cp": "88500", "vol": 22.5, "kmAR": 58, "minAR": 70, "verifie": false, "volEp": 29.8, "insee": "88006"}, {"nom": "Belrupt", "cp": "88260", "vol": 22.6, "kmAR": 59, "minAR": 70, "verifie": false, "volEp": 28.2, "insee": "88052"}, {"nom": "Vomécourt-sur-Madon", "cp": "88500", "vol": 22.7, "kmAR": 59, "minAR": 70, "verifie": false, "volEp": 29.6, "insee": "88522"}, {"nom": "Deycimont", "cp": "88600", "vol": 22.8, "kmAR": 59, "minAR": 70, "verifie": false, "volEp": 15.0, "insee": "88131"}, {"nom": "Éloyes", "cp": "88510", "vol": 22.8, "kmAR": 59, "minAR": 70, "verifie": false, "volEp": 15.1, "insee": "88158"}, {"nom": "La Vôge-les-Bains", "cp": "88240", "vol": 22.9, "kmAR": 60, "minAR": 70, "verifie": false, "volEp": 23.8, "insee": "88029"}, {"nom": "Thiraucourt", "cp": "88500", "vol": 22.9, "kmAR": 60, "minAR": 70, "verifie": false, "volEp": 30.8, "insee": "88469"}, {"nom": "Estrennes", "cp": "88500", "vol": 23.1, "kmAR": 60, "minAR": 70, "verifie": false, "volEp": 31.1, "insee": "88164"}, {"nom": "Vomécourt", "cp": "88700", "vol": 23.1, "kmAR": 60, "minAR": 70, "verifie": false, "volEp": 19.2, "insee": "88521"}, {"nom": "Xaronval", "cp": "88130", "vol": 23.1, "kmAR": 60, "minAR": 70, "verifie": false, "volEp": 29.7, "insee": "88529"}, {"nom": "Domvallier", "cp": "88500", "vol": 23.2, "kmAR": 60, "minAR": 70, "verifie": false, "volEp": 31.0, "insee": "88155"}, {"nom": "Socourt", "cp": "88130", "vol": 23.2, "kmAR": 60, "minAR": 70, "verifie": false, "volEp": 28.7, "insee": "88458"}, {"nom": "Damas-aux-Bois", "cp": "88330", "vol": 23.3, "kmAR": 61, "minAR": 70, "verifie": false, "volEp": 24.7, "insee": "88121"}, {"nom": "Pierrepont-sur-l'Arentèle", "cp": "88600", "vol": 23.3, "kmAR": 61, "minAR": 70, "verifie": false, "volEp": 17.7, "insee": "88348"}, {"nom": "Hennezel", "cp": "88260", "vol": 23.4, "kmAR": 61, "minAR": 70, "verifie": false, "volEp": 28.0, "insee": "88238"}, {"nom": "Hergugney", "cp": "88130", "vol": 23.6, "kmAR": 61, "minAR": 75, "verifie": false, "volEp": 29.9, "insee": "88239"}, {"nom": "Remicourt", "cp": "88500", "vol": 23.6, "kmAR": 61, "minAR": 75, "verifie": false, "volEp": 31.5, "insee": "88382"}, {"nom": "Haillainville", "cp": "88330", "vol": 23.7, "kmAR": 62, "minAR": 75, "verifie": false, "volEp": 24.4, "insee": "88228"}, {"nom": "La Neuveville-devant-Lépanges", "cp": "88600", "vol": 23.7, "kmAR": 62, "minAR": 75, "verifie": false, "volEp": 15.9, "insee": "88322"}, {"nom": "Xamontarupt", "cp": "88460", "vol": 23.7, "kmAR": 62, "minAR": 75, "verifie": false, "volEp": 15.7, "insee": "88528"}, {"nom": "Chamagne", "cp": "88130", "vol": 23.8, "kmAR": 62, "minAR": 75, "verifie": false, "volEp": 28.8, "insee": "88084"}, {"nom": "Lépanges-sur-Vologne", "cp": "88600", "vol": 23.8, "kmAR": 62, "minAR": 75, "verifie": false, "volEp": 16.2, "insee": "88266"}, {"nom": "Pont-sur-Madon", "cp": "88500", "vol": 23.8, "kmAR": 62, "minAR": 75, "verifie": false, "volEp": 30.8, "insee": "88354"}, {"nom": "Fauconcourt", "cp": "88700", "vol": 23.9, "kmAR": 62, "minAR": 75, "verifie": false, "volEp": 22.9, "insee": "88168"}, {"nom": "Grandvillers", "cp": "88600", "vol": 24.0, "kmAR": 62, "minAR": 75, "verifie": false, "volEp": 17.6, "insee": "88216"}, {"nom": "Puzieux", "cp": "88500", "vol": 24.0, "kmAR": 62, "minAR": 75, "verifie": false, "volEp": 31.6, "insee": "88364"}, {"nom": "Saint-Nabord", "cp": "88200", "vol": 24.0, "kmAR": 62, "minAR": 75, "verifie": false, "volEp": 17.1, "insee": "88429"}, {"nom": "Fays", "cp": "88600", "vol": 24.2, "kmAR": 63, "minAR": 75, "verifie": false, "volEp": 16.8, "insee": "88169"}, {"nom": "Monthureux-le-Sec", "cp": "88800", "vol": 24.2, "kmAR": 63, "minAR": 75, "verifie": false, "volEp": 31.5, "insee": "88309"}, {"nom": "Saint-Rémy-aux-Bois", "cp": "54290", "vol": 24.3, "kmAR": 63, "minAR": 75, "verifie": false, "volEp": 27.1, "insee": "54487"}, {"nom": "Battexey", "cp": "88130", "vol": 24.5, "kmAR": 64, "minAR": 75, "verifie": false, "volEp": 31.0, "insee": "88038"}, {"nom": "Bonvillet", "cp": "88260", "vol": 24.5, "kmAR": 64, "minAR": 75, "verifie": false, "volEp": 30.5, "insee": "88065"}, {"nom": "La Neuveville-sous-Montfort", "cp": "88800", "vol": 24.6, "kmAR": 64, "minAR": 75, "verifie": false, "volEp": 32.4, "insee": "88325"}, {"nom": "Offroicourt", "cp": "88500", "vol": 24.6, "kmAR": 64, "minAR": 75, "verifie": false, "volEp": 32.5, "insee": "88335"}, {"nom": "Faucompierre", "cp": "88460", "vol": 24.8, "kmAR": 64, "minAR": 75, "verifie": false, "volEp": 16.9, "insee": "88167"}, {"nom": "Romont", "cp": "88700", "vol": 24.8, "kmAR": 64, "minAR": 75, "verifie": false, "volEp": 22.6, "insee": "88395"}, {"nom": "Sainte-Hélène", "cp": "88700", "vol": 24.8, "kmAR": 64, "minAR": 75, "verifie": false, "volEp": 19.9, "insee": "88418"}]
 };
@@ -708,7 +704,7 @@ var LimpidMoteur = (function () {
     if (classe === "vitres" || classe === "proche")
       return { ton: "ambre", texte: n + " est un peu au-delà de notre zone d'intervention. Vous pouvez décrire votre besoin : Limpid vous dira avec votre devis si l'intervention est possible." };
     if (classe === "hors")
-      return { ton: "rouge", texte: n + " est en dehors de notre zone d'intervention : 15 km autour de Darnieulles, et autour d'Épinal pour le lavage de vitres. Nous ne pourrons probablement pas intervenir. Une question ? Appelez-nous au 06 26 55 65 69." };
+      return { ton: "rouge", texte: n + " est en dehors de notre zone d'intervention : 15 km autour de Darnieulles, et autour d'Épinal pour le lavage de vitres. Nous ne pourrons probablement pas intervenir. Vous pouvez poursuivre pour transmettre les informations à étudier." };
     return { ton: "ambre", texte: "Nous ne trouvons pas " + n + " dans notre liste de communes. Indiquez votre adresse complète : nous vérifierons la distance." };
   }
   function communesDuCP(cp) { return (C.communes || []).filter(function (c) { return c.cp === String(cp || "").trim(); }); }
@@ -1059,7 +1055,7 @@ window.LIMPID_PARCOURS = (function () {
       { id: "adresse", titre: "Où se trouvent les locaux ?",
         rendre: function (R) { return C.blocAdresse(R); }, valider: C.validerAdresse },
 
-      { id: "contact", titre: "L'entreprise et votre contact", sous: "Pour vous envoyer la proposition, et vous joindre si un point reste à préciser.",
+      { id: "contact", titre: "L'entreprise et votre contact", sous: "Pour recevoir votre proposition commerciale par e-mail.",
         rendre: function (R) {
           return C.champContact("entreprise", "Nom de l'entreprise", "text", "organization", R) + C.champContact("nom", "Interlocuteur, nom et prénom", "text", "name", R) +
             C.champContact("tel", "Téléphone", "tel", "tel", R) + C.champContact("email", "E-mail", "email", "email", R) +
@@ -1211,8 +1207,7 @@ window.LIMPID_PARCOURS = (function () {
     var o = null; (AIG ? AIG.autres : []).forEach(function (x) { if (x.id === id) o = x; }); if (!o) return false;
     var lieu = R.cp && R.commune && /^\d{5}$/.test(String(R.cp));
     var etat = { etape: lieu ? 2 : 1, cp: R.cp || "", commune: R.commune || "", adresse: R.adresse || "", geo: R.geo || null,
-      profil: o.profil || CFG.profil || "particulier", offres: o.offres.slice(), ss: {}, mode: "auto", heures: {}, priorites: {}, photos: "",
-      contact: { "f-nom": R.nom || "", "f-email": R.email || "", "f-tel": R.tel || "", "f-entreprise": R.entreprise || "" },
+      profil: o.profil || CFG.profil || "particulier", offres: o.offres.slice(), ss: {}, mode: "auto", heures: {}, priorites: {},       contact: { "f-nom": R.nom || "", "f-email": R.email || "", "f-tel": R.tel || "", "f-entreprise": R.entreprise || "" },
       debut: true, envoye: false, id: "", depuisParcours: CFG.service };
     ev("config_switch", { vers: id, depuis: E.ecran });
     try { sessionStorage.setItem("limpid_cf_v2", JSON.stringify(etat)); } catch (e) {}
@@ -1246,14 +1241,13 @@ window.LIMPID_PARCOURS = (function () {
     var x = ecran(ec);
     if (x) h = '<h2 tabindex="-1" id="pc-titre">' + esc(x.titre) + '</h2>' + (x.sous ? '<p class="cf-sous">' + x.sous + '</p>' : '') + x.rendre(R) + (ec === "adresse" ? zoneAdresse() : "") + '<div class="cf-erreurs" id="pc-err" role="alert"></div>' + (AIG && ec !== "besoin" ? '<p class="pc-filet">Votre besoin est différent ? <button type="button" class="pc-lien" data-pc-besoin>Changer de prestation</button></p>' : "");
     else if (ec === "recap") h = rendreRecap();
-    else if (ec === "rappel") h = rendreRappel();
     else if (ec === "fin") h = rendreFin();
     z.innerHTML = h;
     /* Les deux boutons gardent la même place à chaque écran, récapitulatif compris. */
     var nav = $("pc-nav");
-    nav.hidden = !(x || ec === "rappel" || ec === "recap");
+    nav.hidden = !(x || ec === "recap");
     $("pc-suite").disabled = false;
-    $("pc-suite").textContent = E.retourRecap && x ? "Retour au récapitulatif" : (ec === "recap" ? "Envoyer ma demande de devis" : (ec === "rappel" ? "Être rappelé" : "Continuer"));
+    $("pc-suite").textContent = E.retourRecap && x ? "Retour au récapitulatif" : (ec === "recap" ? "Envoyer ma demande de devis" : "Continuer");
     if (preserverLecture) {
       /* Le contenu est reconstruit après un choix : éviter que Safari mobile
          recale l'écran au titre ou en haut du formulaire. */
@@ -1270,18 +1264,18 @@ window.LIMPID_PARCOURS = (function () {
   }
   /* Le bouton Retour du navigateur ramène à l'écran précédent du parcours. */
   function aller(id, sansVue, depuisHistorique) {
+    if (id === "rappel") id = "accueil"; // Ancienne URL ou session ; formulaire de rappel retiré.
     E.ecran = id; sauver(); rendre();
     if (!depuisHistorique) { try { history.pushState({ pc: id }, "", location.pathname + location.search + "#" + (id === "accueil" ? "" : id)); } catch (e) {} }
     if (!sansVue) {
       var vis = visibles().map(function (x) { return x.id; }), i = vis.indexOf(id);
       if (i >= 0) ev("config_step_view", { step: id, step_index: i + 1 });
-      else if (id === "recap" || id === "rappel") ev("config_step_view", { step: id });
+      else if (id === "recap") ev("config_step_view", { step: id });
     }
   }
   function valider() {
     var x = ecran(E.ecran), err = "";
     if (x && x.valider) err = x.valider(R) || "";
-    if (E.ecran === "rappel") err = validerRappel();
     var z = $("pc-err"); if (z) { z.textContent = err; if (err && z.scrollIntoView) try { z.scrollIntoView({ behavior: "smooth", block: "center" }); } catch (e2) {} }
     if (err) ev("config_error", { step: E.ecran, raison: "validation" });
     return !err;
@@ -1289,7 +1283,6 @@ window.LIMPID_PARCOURS = (function () {
   function suivant() {
     if (E.ecran === "recap") { envoyer("devis"); return; }
     if (!valider()) return;
-    if (E.ecran === "rappel") { envoyer("rappel"); return; }
     ev("config_step_complete", { step: E.ecran });
     if (E.retourRecap) { E.retourRecap = false; aller("recap"); return; }
     var vis = visibles().map(function (x) { return x.id; }), i = vis.indexOf(E.ecran);
@@ -1297,7 +1290,6 @@ window.LIMPID_PARCOURS = (function () {
   }
   function precedent() {
     ev("config_back", { step: E.ecran });
-    if (E.ecran === "rappel") { aller(E.avantRappel || "accueil"); return; }
     if (E.retourRecap) { E.retourRecap = false; aller("recap"); return; }
     var vis = visibles().map(function (x) { return x.id; }), i = vis.indexOf(E.ecran);
     aller(i > 0 ? vis[i - 1] : "accueil");
@@ -1339,7 +1331,6 @@ window.LIMPID_PARCOURS = (function () {
       if (b.dataset.aller) { E.retourRecap = true; ev("config_back", { step: "recap", vers: b.dataset.aller }); aller(b.dataset.aller); return; }
       if (b.id === "pc-envoyer") { envoyer("devis"); return; }
       if (b.id === "pc-renvoyer") { renvoyerAttente(); return; }
-      if (b.dataset.photos) { R.photos = b.dataset.photos; sauver(); rendre(true); return; }
     });
     $("pc-suite").addEventListener("click", suivant);
     $("pc-retour").addEventListener("click", precedent);
@@ -1360,8 +1351,6 @@ window.LIMPID_PARCOURS = (function () {
     });
     window.limpidLpEvenement = function (nom, p) { if (/^lp_/.test(nom)) ev(nom, p); };
     document.querySelectorAll("[data-lp-cta]").forEach(function (b) { b.addEventListener("click", function () { ev("lp_cta_click", { emplacement: b.getAttribute("data-lp-cta") }); }); });
-    document.querySelectorAll("[data-pc-rappel]").forEach(function (b) { b.addEventListener("click", function (e) {
-      e.preventDefault(); if (!E.id || dejaEnvoye(E.id)) E.id = nouvelId(); E.avantRappel = E.ecran === "rappel" ? E.avantRappel : E.ecran; aller("rappel"); }); });
     window.addEventListener("popstate", function (e) {
       var cible = (e.state && e.state.pc) || "accueil";
       /* Une demande envoyée ne se rouvre pas par le bouton Retour : la confirmation reste affichée. */
@@ -1444,39 +1433,13 @@ window.LIMPID_PARCOURS = (function () {
     return h;
   }
 
-  /* ---------- Rappel : la demande courte ---------- */
-  function rendreRappel() {
-    return '<h2 tabindex="-1" id="pc-titre">Je préfère être rappelé</h2><p class="cf-sous">Laissez votre numéro : Limpid vous rappelle pour faire le point sur vos vitres.</p>' +
-      '<label class="cf-champ">Nom et prénom<input type="text" data-k="rp_nom" autocomplete="name" value="' + esc(R.rp_nom || R.nom || "") + '"></label>' +
-      '<label class="cf-champ">Téléphone<input type="tel" data-k="rp_tel" autocomplete="tel" inputmode="tel" value="' + esc(R.rp_tel || R.tel || "") + '"></label>' +
-      '<label class="cf-champ">Commune<input type="text" data-k="rp_commune" autocomplete="address-level2" value="' + esc(R.rp_commune || R.commune || "") + '"></label>' +
-      '<p class="cf-sous" style="margin:0 0 6px">Quand vous joindre ?</p><div class="pc-choix">' +
-      [["matin", "Le matin"], ["midi", "Entre midi et deux"], ["aprem", "L'après-midi"], ["soir", "En fin de journée"], ["indiff", "Peu importe"]].map(function (o) {
-        return '<button type="button" class="pc-opt' + (R.rp_creneau === o[0] ? " on" : "") + '" data-choix="rp_creneau|' + o[0] + '">' + o[1] + '</button>'; }).join("") + '</div>' +
-      '<label class="cf-champ">Un mot sur votre besoin <small>Facultatif.</small><textarea data-k="rp_message" rows="2">' + esc(R.rp_message || "") + '</textarea></label>' +
-      '<div class="cf-erreurs" id="pc-err" role="alert"></div><div id="pc-etat-envoi"></div>' +
-      '<p class="cf-rgpd">Votre numéro sert uniquement à vous rappeler pour cette demande. <a href="/politique-confidentialite/">Politique de confidentialité</a></p>';
-  }
-  function validerRappel() {
-    if (String(R.rp_nom || "").trim().length < 2) return "Indiquez votre nom.";
-    if (String(R.rp_tel || "").replace(/\D/g, "").length < 10) return "Indiquez un numéro de téléphone complet.";
-    if (String(R.rp_commune || "").trim().length < 2) return "Indiquez votre commune.";
-    return "";
-  }
 
   /* ---------- Confirmation ---------- */
   function rendreFin() {
-    var f = E.fin || {}, h = '<div class="cf-fin"><div class="ok">✅</div><h2 tabindex="-1" id="pc-titre">' + (f.type === "rappel" ? "Demande de rappel enregistrée" : "Demande enregistrée") + '</h2>';
+    var f = E.fin || {}, h = '<div class="cf-fin"><div class="ok">✅</div><h2 tabindex="-1" id="pc-titre">' + "Demande enregistrée" + '</h2>';
     h += '<p class="pc-ref">Référence <b>' + esc(f.id || "") + '</b></p>';
-    h += f.type === "rappel" ? '<p>Limpid vous rappelle au numéro indiqué pour faire le point sur votre besoin.</p>'
-      : '<p>' + esc(CFG.texteRassure || "Votre demande sera étudiée par Limpid. Nous vous contacterons si une précision ou une visite est nécessaire avant de vous transmettre un devis personnalisé.") + '</p>';
+    h += '<p>' + esc(CFG.texteRassure || "Votre demande sera étudiée par Limpid. Nous vous contacterons si une précision ou une visite est nécessaire avant de vous transmettre un devis personnalisé.") + '</p>';
     if (f.deja) h += '<div class="cf-alerte bleu">Cette demande avait déjà été envoyée : elle n\'a pas été transmise une seconde fois.</div>';
-    if (f.photos) {
-      var ref = "Photos pour ma demande " + (f.id || "") + (f.nom ? ", " + f.nom : "");
-      h += '<div class="cf-alerte bleu"><b>Vos photos</b> : envoyez-les maintenant, elles seront rattachées à votre demande grâce à sa référence.</div>' +
-        '<p class="cf-photos-l"><a class="btn wa" href="https://wa.me/33626556569?text=' + encodeURIComponent(ref) + '" target="_blank" rel="noopener">Envoyer par WhatsApp</a> ' +
-        '<a class="btn sec" href="mailto:' + MAIL + '?subject=' + encodeURIComponent(ref) + '&body=' + encodeURIComponent("Bonjour,\nvoici les photos pour ma demande " + (f.id || "") + ".\n\n(joignez vos photos avant d'envoyer)") + '">Envoyer par e-mail</a></p>';
-    }
     h += '<p style="margin-top:14px"><a class="btn sec" href="' + esc(CFG.retour || "/") + '">Retour au site</a></p></div>';
     return h;
   }
@@ -1484,21 +1447,14 @@ window.LIMPID_PARCOURS = (function () {
   /* ---------- Envoi : un identifiant = une demande = un seul lead ---------- */
   var enCours = false;
   function construire(type) {
+    type = "devis";
     var camp = {}; try { camp = JSON.parse(sessionStorage.getItem("limpid_campagne") || "{}"); } catch (e) {}
     var demande = { v: 2, id: E.id, parcours: CFG.service, type: type, date: new Date().toISOString(), test: TEST, configVersion: LimpidMoteur.config().version,
       attribution: camp };
     var champs = [], sujet;
-    if (type === "rappel") {
-      demande.client = { profil: "particulier", nom: String(R.rp_nom || "").trim(), tel: String(R.rp_tel || "").trim(), commune: String(R.rp_commune || "").trim(), message: String(R.rp_message || "").trim() };
-      demande.rappel = { creneau: R.rp_creneau || "indiff" };
-      demande.demandes = [];
-      sujet = "[RAPPEL " + CFG.libCourt.toUpperCase() + "] " + demande.client.commune + " · " + E.id;
-      champs.push(["type_demande", "Rappel demandé"], ["nom", demande.client.nom], ["telephone", demande.client.tel], ["commune", demande.client.commune],
-        ["creneau", { matin: "Le matin", midi: "Entre midi et deux", aprem: "L'après-midi", soir: "En fin de journée", indiff: "Peu importe" }[demande.rappel.creneau]], ["message", demande.client.message]);
-    } else {
-      var ac2 = CFG.aCompleter(R, zoneTexte());
+    var ac2 = CFG.aCompleter(R, zoneTexte());
       demande.client = { profil: CFG.profil || "particulier", nom: String(R.nom || "").trim(), entreprise: String(R.entreprise || "").trim(), tel: String(R.tel || "").trim(), email: String(R.email || "").trim(),
-        adresse: String(R.adresse || "").trim(), cp: R.cp || "", commune: R.commune || "", geo: R.geo || null, message: String(R.message || "").trim(), photos: R.photos === "oui" };
+        adresse: String(R.adresse || "").trim(), cp: R.cp || "", commune: R.commune || "", geo: R.geo || null, message: String(R.message || "").trim(), photos: false };
       /* Résumé lisible, affiché tel quel par l'outil gérant à l'import */
       demande.resume = CFG.recap(R).map(function (x) { return x.titre + " : " + x.lignes.filter(Boolean).join(" · "); });
       demande.qualification = CFG.qualification(R);
@@ -1511,19 +1467,19 @@ window.LIMPID_PARCOURS = (function () {
       if (demande.client.entreprise) champs.push(["entreprise", demande.client.entreprise]);
       champs.push(["telephone", demande.client.tel],
         ["email", demande.client.email], ["adresse", [demande.client.adresse, demande.client.cp, demande.client.commune].filter(Boolean).join(" ")], ["zone", zoneTexte()],
-        ["photos", R.photos === "oui" ? "oui, à venir par WhatsApp ou e-mail avec la référence" : "non"], ["fiche", CFG.fiche(R, ac2)], ["message", demande.client.message]);
-    }
+        ["fiche", CFG.fiche(R, ac2)], ["message", demande.client.message]);
     if (TEST) sujet = "[TEST] " + sujet;
     var base = [["access_key", CLE_WEB3], ["subject", sujet], ["from_name", "Nouvelle demande du site"], ["reference", E.id], ["service", CFG.service], ["botcheck", ""]];
     if (demande.client.email) base.push(["replyto", demande.client.email]);
     var tracage = $("pc-tracage"), fd0 = tracage ? new FormData(tracage) : null, extras = [];
     if (fd0) fd0.forEach(function (v, k) { extras.push([k, String(v)]); });
     var tout = base.concat(champs, extras, [["code_import", LimpidMoteur.coder(demande)]]);
-    return { id: E.id, type: type, entrees: tout, photos: R.photos === "oui", nom: demande.client.nom, test: TEST };
+    return { id: E.id, type: type, entrees: tout, nom: demande.client.nom, test: TEST };
   }
   function envoyer(type) {
+    type = "devis"; // Aucun type rappel depuis SIGNATURE V1.19.2.
     if (enCours) return;
-    if (type === "devis" && !CFG.pret(R)) { $("pc-err").textContent = "Une information manque : vérifiez les rubriques ci-dessus."; return; }
+    if (!CFG.pret(R)) { $("pc-err").textContent = "Une information manque : vérifiez les rubriques ci-dessus."; return; }
     var deja = lireLS(CLE_DEMANDES, {})[E.id];
     if (deja && deja.statut === "envoye") { terminer({ id: E.id, type: type, deja: true }); return; }
     transmettre(construire(type), false);
@@ -1540,6 +1496,29 @@ window.LIMPID_PARCOURS = (function () {
     } catch (e) {}
   }
   function transmettre(paquet, depuisAttente) {
+    // Pont privé réservé au serveur loopback de LAB : jamais de Web3Forms ni de conversion.
+    if (window.LimpidLabBridge && window.LimpidLabBridge.enabled) {
+      if (enCours) return;
+      enCours = true;
+      var bLab = document.getElementById('pc-suite') || document.getElementById('b-suite');
+      var lLab = bLab ? bLab.textContent : '';
+      if (bLab) { bLab.disabled = true; bLab.textContent = 'Enregistrement local…'; }
+      window.LimpidLabBridge.submit(paquet).then(function(receipt) {
+        var Dlab = lireLS(CLE_DEMANDES, {});
+        Dlab[paquet.id] = { statut: 'envoye', t: Date.now(), service: (typeof CFG !== 'undefined' ? CFG.service : SERVICE), laboratoire: true };
+        ecrireLS(CLE_DEMANDES, Dlab);
+        var Alab = lireLS(CLE_ATTENTE, null);
+        if (Alab && Alab.id === paquet.id) { try { localStorage.removeItem(CLE_ATTENTE); } catch(e){} }
+        window.LimpidLabBridge.markReceipt(receipt.reference);
+        terminer({ id: paquet.id, type: paquet.type, nom: paquet.nom });
+      }).catch(function(error) {
+        echec(paquet, String(error && error.message || error));
+      }).finally(function() {
+        enCours = false;
+        if (bLab) { bLab.disabled = false; bLab.textContent = lLab || 'Envoyer ma demande de devis'; }
+      });
+      return;
+    }
     if (enCours) return; enCours = true;
     stocker(paquet);
     var b = $("pc-suite"), lib = b ? b.textContent : "";
@@ -1555,7 +1534,7 @@ window.LIMPID_PARCOURS = (function () {
           var D2 = lireLS(CLE_DEMANDES, {}); D2[paquet.id] = { statut: "envoye", t: Date.now(), service: CFG.service }; ecrireLS(CLE_DEMANDES, D2);
           var A = lireLS(CLE_ATTENTE, null); if (A && A.id === paquet.id) { try { localStorage.removeItem(CLE_ATTENTE); } catch (e) {} }
           convertir(paquet);
-          terminer({ id: paquet.id, type: paquet.type, photos: paquet.photos, nom: paquet.nom });
+          terminer({ id: paquet.id, type: paquet.type, nom: paquet.nom });
         } else echec(paquet, (x.j && x.j.message) || "refus");
       })
       .catch(function (e) { echec(paquet, String(e && e.message || e)); })
@@ -1576,7 +1555,7 @@ window.LIMPID_PARCOURS = (function () {
     ecrireLS(CLE_ATTENTE, { id: paquet.id, t: Date.now(), paquet: paquet, service: CFG.service });
     ev("config_error", { step: E.ecran, raison: "envoi" });
     var z = $("pc-etat-envoi");
-    if (z) z.innerHTML = '<div class="cf-alerte rouge" role="alert">L\'envoi n\'a pas abouti. Votre demande est conservée sur cet appareil : réessayez dans un instant, ou appelez-nous au <a href="tel:+33626556569">' + TEL + '</a>.</div>';
+    if (z) z.innerHTML = '<div class="cf-alerte rouge" role="alert">L\'envoi n\'a pas abouti. Votre demande est conservée sur cet appareil : réessayez depuis cette page.</div>';
   }
   function renvoyerAttente(auto) {
     var A = lireLS(CLE_ATTENTE, null); if (!A || !A.paquet) return;
@@ -1640,5 +1619,5 @@ window.LIMPID_PARCOURS = (function () {
 <script defer="" src="/assets/limpid-experience-v3-p2.js"></script>
 <script defer="" src="/assets/limpid-experience-v3-p3.js"></script>
 <script defer="" src="/assets/limpid-experience-v3-final.js"></script>
-<script defer="" src="/assets/limpid-v4-site.js"></script><script defer="" src="/assets/signature-icon-replacer.js"></script><script defer="" src="/assets/signature-site.js"></script><script src="/assets/signature-intake-lab.js"></script><script defer src="/assets/limpid-footer-year.js"></script></body>
+<script defer="" src="/assets/limpid-v4-site.js"></script><script defer="" src="/assets/signature-icon-replacer.js"></script><script defer="" src="/assets/signature-site.js"></script><script defer src="/assets/limpid-footer-year.js"></script></body>
 </html>

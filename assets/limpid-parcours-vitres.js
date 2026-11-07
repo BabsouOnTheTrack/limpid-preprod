@@ -148,13 +148,11 @@ window.LIMPID_PARCOURS = (function () {
           return "";
         } },
 
-      { id: "contact", titre: "Vos coordonnées", sous: "Pour vous envoyer votre devis, et vous joindre si un point reste à préciser.",
+      { id: "contact", titre: "Vos coordonnées", sous: "Pour recevoir la réponse à votre demande de devis par e-mail.",
         rendre: function (R) {
           return '<label class="cf-champ">Nom et prénom<input type="text" data-k="nom" autocomplete="name" value="' + esc(R.nom || "") + '"></label>' +
             '<label class="cf-champ">Téléphone<input type="tel" data-k="tel" autocomplete="tel" inputmode="tel" value="' + esc(R.tel || "") + '"></label>' +
             '<label class="cf-champ">E-mail<input type="email" data-k="email" autocomplete="email" inputmode="email" value="' + esc(R.email || "") + '"></label>' +
-            '<div class="cf-champ">Joindre des photos ? <small>Facultatif : elles rendent votre devis plus précis. Vous pourrez nous les envoyer juste après votre demande : deux modes d\'envoi rapide vous seront proposés.</small>' +
-            '<div class="cf-seg" style="margin:8px 0 0"><button type="button" class="' + (R.photos === "oui" ? "on" : "") + '" data-photos="oui">Oui, après ma demande</button><button type="button" class="' + (R.photos === "non" ? "on" : "") + '" data-photos="non">Non</button></div></div>' +
             txt("message", "Informations complémentaires", "Facultatif : état des vitres, contraintes d'horaires, présence d'animaux…", R, "", true);
         },
         valider: function (R) {
@@ -189,7 +187,7 @@ window.LIMPID_PARCOURS = (function () {
       { titre: "Logement et accès", ecran: "logement", lignes: [logementTxt(R), R.accessible === "oui" ? "Certaines vitres demandent une échelle ou une perche" : "Toutes les vitres sont à portée de main"] },
       { titre: "Fréquence et date souhaitée", ecran: "quand", lignes: [lib(FREQ, R.frequence), "Première intervention : " + quandTxt(R)] },
       { titre: "Adresse", ecran: "adresse", lignes: [[R.adresse, [R.cp, R.commune].filter(Boolean).join(" ")].filter(Boolean).join(", ")] },
-      { titre: "Coordonnées", ecran: "contact", lignes: [R.nom || "", [R.tel, R.email].filter(Boolean).join(" · "), "Photos : " + (R.photos === "oui" ? "oui, après la demande" : "non")].concat(R.message ? ["« " + R.message + " »"] : []) }
+      { titre: "Coordonnées", ecran: "contact", lignes: [R.nom || "", [R.tel, R.email].filter(Boolean).join(" · ")].concat(R.message ? ["« " + R.message + " »"] : []) }
     ];
   }
   function visiblePremier(R) { return has(R, "types", "fenetres") ? "fenetres" : has(R, "types", "baies") ? "baies" : has(R, "types", "veranda") ? "veranda" : "particulier"; }

@@ -6,13 +6,15 @@ function init(){
  var host=document.body.classList.contains('lx--config')?document.getElementById('pc-app'):document.body.classList.contains('lx--general-devis')?document.getElementById('cf'):null;
  if(!host||host.querySelector('.lx3p3-rail'))return;
  var kind=document.body.getAttribute('data-tunnel')||'general';
- var setups={vitres:['VITRES & VITRAGES','Des vitrages bien identifiés. Un devis plus juste.','Décrivez vos ouvertures grâce aux exemples visuels, puis vérifiez votre demande.','/assets/vitres-domicile-apres.webp'],menage:['ENTRETIEN DU DOMICILE','Votre intérieur. Votre rythme.','Précisez vos espaces et vos priorités ; chaque choix reste modifiable.','/assets/remise-en-etat-apres.webp'],bureaux:['ENTRETIEN PROFESSIONNEL','Des locaux qui travaillent aussi bien que vous.','Décrivez vos espaces, les contraintes et le rythme souhaité.','/assets/vitrine-boutique-darnieulles.webp'],general:['DEVIS MULTI-PRESTATIONS','Les bons besoins. Les bonnes précisions.','Rassemblez plusieurs prestations dans une demande cohérente.','/assets/hero-baies-vitrees-propres.webp']};
+ var setups={vitres:['NETTOYAGE DE VITRES','Des vitrages bien identifiés. Un devis plus juste.','Décrivez vos ouvertures grâce aux exemples visuels, puis vérifiez votre demande.','/assets/vitres-domicile-apres.webp'],menage:['MÉNAGE À DOMICILE','Votre intérieur. Votre rythme.','Précisez vos espaces et vos priorités ; chaque choix reste modifiable.','/assets/remise-en-etat-apres.webp'],bureaux:['LOCAUX PROFESSIONNELS','Des locaux qui travaillent aussi bien que vous.','Décrivez vos espaces, les contraintes et le rythme souhaité.','/assets/vitrine-boutique-darnieulles.webp'],general:['DEVIS MULTI-PRESTATIONS','Les bons besoins. Les bonnes précisions.','Rassemblez plusieurs prestations dans une demande cohérente.','/assets/hero-baies-vitrees-propres.webp']};
  // Le tunnel "locaux professionnels" a un attribut interne qui peut varier selon les exports.
+ if(kind==='b2b'||kind==='professionnels')kind='bureaux';
+ if(kind==='configurateur')kind='general';
  if(!setups[kind]&&document.body.classList.contains('lx--config'))kind='bureaux';
  var p=setups[kind]||setups.general;
  var aside=node('aside','lx3p3-rail');aside.setAttribute('aria-label','Informations sur votre parcours');
  var inr=node('div','lx3p3-railinner');aside.appendChild(inr);
- var brand=node('div','lx3p3-mini');brand.appendChild(node('span','lx3p3-dot'));brand.appendChild(node('span',null,'LIMPID'));inr.appendChild(brand);
+ var brand=node('div','lx3p3-mini');brand.appendChild(node('span','lx3p3-dot'));var serviceLabel=node('span','lx3p3-service-label',p[0]);brand.appendChild(serviceLabel);inr.appendChild(brand);
  inr.appendChild(node('p','lx3p3-hero',p[1]));inr.appendChild(node('p','lx3p3-lead',p[2]));
  inr.appendChild(node('div','lx3p3-railrule'));
  inr.appendChild(node('p','lx3p3-trailtitle','Votre parcours, simplement'));
@@ -23,6 +25,19 @@ function init(){
  inr.appendChild(node('p','lx3p3-helper','La demande reste à vérifier et à confirmer par Limpid avant tout engagement.'));
  var visual=node('div','lx3p3-visual'),photo=node('img');photo.src=p[3];photo.alt='';photo.loading='lazy';visual.appendChild(photo);visual.appendChild(node('span','lx3p3-photochip',p[0]));aside.appendChild(visual);
  host.insertBefore(aside,host.firstChild);
+ // Sur le configurateur général, le repère suit les prestations effectivement sélectionnées.
+ // Aucune dépendance aux variables internes du moteur : lecture seule du DOM existant.
+ if(kind==='general'){
+   var choices=document.getElementById('f-prestations');
+   var labelFor={regulier:'MÉNAGE À DOMICILE',grand:'MÉNAGE À DOMICILE',vitres:'NETTOYAGE DE VITRES',bureaux:'LOCAUX PROFESSIONNELS',textile:'TEXTILES D’AMEUBLEMENT'};
+   function refreshLabel(){
+     if(!choices)return;
+     var selected=Array.prototype.map.call(choices.querySelectorAll('button[data-v][aria-pressed="true"]'),function(b){return labelFor[b.dataset.v];}).filter(Boolean);
+     var unique=Array.from(new Set(selected));
+     serviceLabel.textContent=unique.length===1?unique[0]:(unique.length>1?'DEVIS MULTI-PRESTATIONS':'CHOISISSEZ VOTRE PRESTATION');
+   }
+   if(choices){new MutationObserver(refreshLabel).observe(choices,{childList:true,subtree:true,attributes:true,attributeFilter:['aria-pressed']});refreshLabel();}
+ }
  var prog=document.getElementById('pc-barre')||host.querySelector('.cf-prog .cf-barre i');
  var scheduled=false;function sync(){scheduled=false;if(!prog)return;var n=parseFloat(prog.style.width);if(!Number.isFinite(n))return;n=Math.max(0,Math.min(100,n));bar.style.width=n+'%';val.textContent=Math.round(n)+' %';}
  function schedule(){if(scheduled)return;scheduled=true;requestAnimationFrame(sync);}

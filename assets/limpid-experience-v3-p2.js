@@ -33,8 +33,7 @@
     'Votre véranda':'Indiquez la surface au sol ; les vitrages de la véranda ne doivent pas être comptés une seconde fois.',
     'Quelles faces faut-il nettoyer ?':'La sélection intérieur / extérieur ne change pas le nombre d’ouvertures déclaré.',
     'Que souhaitez-vous ?':'Les quantités demandées portent sur les éléments entiers ; les faces techniques restent calculées par le moteur Limpid.',
-    'Vérifiez votre demande':'Vous pouvez revenir sur chaque rubrique pour la modifier avant de transmettre votre demande.',
-    'Je préfère être rappelé':'Une prise de contact, sans prestation ni créneau automatiquement validé.'
+    'Vérifiez votre demande':'Vous pouvez revenir sur chaque rubrique pour la modifier avant de transmettre votre demande.'
   };
   function initSpec(){
     var app=id('pc-app'),prog=id('pc-prog'),corps=id('pc-corps');
