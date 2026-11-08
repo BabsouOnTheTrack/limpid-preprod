@@ -26,6 +26,8 @@ jobs:
         run: node --test .github/tests/staging-guardrails.test.cjs
       - name: Verify staging D1 SQL idempotence offline (no HTTP)
         run: python3 .github/tests/staging-d1-sql-contract.py
+      - name: Test non-deployed production-intake prototype (in-memory only)
+        run: node --test .github/tests/prod-receiver-draft.test.mjs
 
   live-preview-readonly:
     # Cloudflare preview deploys independently of GitHub Actions: retry until the branch URL reflects this revision.
