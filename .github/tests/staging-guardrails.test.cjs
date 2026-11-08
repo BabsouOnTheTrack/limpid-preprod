@@ -210,3 +210,10 @@ test('26 redirections historiques 301 : sources uniques et destinations présent
    assert.ok(fs.existsSync(path.join(root,local)),'Cible absente : '+to);
  }
 });
+
+test('Le guidage contextuel passe au message final après confirmation sur 4 parcours',()=>{
+  const s=read('assets/limpid-experience-v3-p2.js');
+  assert.ok(s.includes("if(title==='Demande enregistrée')"));
+  assert.ok(s.includes("ui.sub.textContent=n==='8'?"));
+  assert.ok(s.includes('Dossier fictif enregistré en préproduction. Aucun devis ni e-mail client n’est envoyé.'));
+});

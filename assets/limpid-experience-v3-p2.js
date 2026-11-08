@@ -44,6 +44,11 @@
     function sync(){pending=false;var t=corps.querySelector('#pc-titre');var title=t&&t.textContent.trim();
       if(!title){ui.current.textContent='Votre demande, étape par étape';ui.sub.textContent='Les informations affichées sont indicatives tant que Limpid n’a pas confirmé votre demande.';ui.guide.hidden=true;return;}
       ui.current.textContent=title;
+      if(title==='Demande enregistrée'){
+        ui.sub.textContent='Dossier fictif enregistré en préproduction. Aucun devis ni e-mail client n’est envoyé.';
+        ui.guide.hidden=true;
+        return;
+      }
       ui.sub.textContent=preciseHints[title]||'Répondez simplement selon votre situation. Les informations pourront être relues avant l’envoi.';
       ui.guide.hidden=!corps.querySelector('.lmv-inline .lmv-more');
     }
@@ -59,7 +64,7 @@
       var title=active&&active.querySelector('h2');
       ui.current.textContent=title?title.textContent.trim():'Votre devis de nettoyage';
       var n=active&&active.getAttribute('data-etape');
-      ui.sub.textContent=n==='3'?'Les éléments sont comptés selon les unités de chaque prestation. Consultez les exemples pour éviter les confusions.':n==='6'?'Relisez le périmètre, les quantités et la fréquence avant d’envoyer votre demande.':'Vous pouvez combiner plusieurs prestations et vérifier les rubriques avant l’envoi.';
+      ui.sub.textContent=n==='8'?'Dossier fictif enregistré en préproduction. Aucun devis ni e-mail client n’est envoyé.':n==='3'?'Les éléments sont comptés selon les unités de chaque prestation. Consultez les exemples pour éviter les confusions.':n==='6'?'Relisez le périmètre, les quantités et la fréquence avant d’envoyer votre demande.':'Vous pouvez combiner plusieurs prestations et vérifier les rubriques avant l’envoi.';
       ui.guide.hidden=!(active&&active.querySelector('.lmv-inline .lmv-more'));
     }
     function schedule(){if(pending)return;pending=true;requestAnimationFrame(sync);}
