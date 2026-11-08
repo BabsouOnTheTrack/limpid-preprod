@@ -615,3 +615,46 @@ body.signature-config-live footer .sig-footer-dot{margin-left:-8px!important}
   body.signature-config-live footer .sig-footer-line{gap:9px!important}
   body.signature-config-live footer .sig-footer-dot{margin-left:-7px!important}
 }
+
+/* SIGNATURE V1.27 — récapitulatif développé, sans changement du moteur métier */
+body.signature-config-live .sig-recap-detail{
+  margin:20px 0 16px;padding:clamp(15px,2.5vw,24px);
+  border:1px solid #C8E0F1;border-radius:18px;background:#F8FBFE;
+  color:#254660;line-height:1.65;overflow-wrap:anywhere;
+}
+body.signature-config-live .sig-recap-detail-title{
+  font:800 clamp(1.13rem,1.6vw,1.36rem)/1.3 "Manrope",sans-serif!important;
+  color:#0B2545!important;margin:0 0 16px!important;letter-spacing:-.025em;
+}
+body.signature-config-live .sig-recap-detail h4{
+  margin:16px 0 7px!important;color:#0B2545!important;
+  font-size:.94rem!important;font-weight:800!important;
+}
+body.signature-config-live .sig-recap-list{padding-left:22px!important;margin:4px 0 12px!important;}
+body.signature-config-live .sig-recap-list li{margin:4px 0;line-height:1.65;font-size:.9rem;color:#335670}
+body.signature-config-live .sig-recap-list strong{color:#153A5A!important}
+body.signature-config-live .sig-recap-note{color:#536E83}
+body.signature-config-live .sig-recap-duration{
+  display:flex;gap:10px 24px;align-items:center;flex-wrap:wrap;
+  background:#EEF6FB;border:1px solid #D5E8F4;border-radius:12px;padding:10px 14px;
+  font-size:.91rem;
+}
+body.signature-config-live .sig-recap-duration strong{color:#0B2545}
+body.signature-config-live .sig-recap-exclusions{
+  margin:18px 0 14px;padding:14px;border:1px solid #D1E5F0;border-radius:13px;background:#EDF6FC;
+}
+body.signature-config-live .sig-recap-exclusions h4{margin:0 0 8px!important}
+body.signature-config-live .sig-recap-tax,
+body.signature-config-live .sig-recap-price{
+  margin:15px 0 0;padding:12px 15px;border-radius:11px;
+  font-size:.89rem;line-height:1.65;
+}
+body.signature-config-live .sig-recap-tax{background:#E7F5ED;color:#245D46}
+body.signature-config-live .sig-recap-price{background:#EDF5FD;color:#254660}
+body.signature-config-live .sig-recap-disclaimer{
+  margin:10px 0 0;color:#55758A;font-size:.78rem;line-height:1.5;
+}
+@media(max-width:600px){
+  body.signature-config-live .sig-recap-detail{padding:15px}
+  body.signature-config-live .sig-recap-list{padding-left:19px!important}
+}

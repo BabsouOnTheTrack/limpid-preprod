@@ -287,7 +287,7 @@ body.pc-en-cours .appel-mobile{display:none}
 <link href="/assets/limpid-experience-v3-p2.css" rel="stylesheet">
 <link href="/assets/limpid-experience-v3-p3.css" rel="stylesheet">
 <link href="/assets/limpid-experience-v3-final.css" rel="stylesheet"/>
-</link></link><link href="/assets/limpid-v4-studio.css" rel="stylesheet"/><link href="/assets/signature-config.css" rel="stylesheet"/></head>
+</link></link><link href="/assets/limpid-v4-studio.css" rel="stylesheet"/><link href="/assets/signature-config.css" rel="stylesheet"/><script src="/assets/signature-recap-detail.js"></script></head>
 <body class="lx lx--config lx4 lx4--config v4-site v4-config signature-config-live" data-lx4-family="professionnels" data-lx4-target="/devis/" data-tunnel="b2b"><div class="signature-preview-banner" role="note"><strong>PRÉPRODUCTION SIGNATURE V1.26</strong><span>Envois fictifs uniquement en mode TEST · Aucun devis ni e-mail client</span></div>
 <div class="pc-test" hidden="" id="pc-test">MODE TEST : demande marquée [TEST], aucune conversion publicitaire</div>
 <header class="lp">
@@ -1425,6 +1425,10 @@ window.LIMPID_PARCOURS = (function () {
       h += '<div class="pc-rub"><div class="pc-rub-t"><b>' + esc(s.titre) + '</b><button type="button" class="pc-modif" data-aller="' + s.ecran + '">Modifier</button></div>' +
         s.lignes.map(function (l) { return '<div class="pc-l">' + esc(l) + '</div>'; }).join("") + '</div>';
     });
+    if (window.LimpidSignatureRecap) {
+      var scopeSaisie = CFG.saisie(R);
+      h += window.LimpidSignatureRecap.render(LimpidMoteur.perimetre(scopeSaisie), LimpidMoteur.estimer(scopeSaisie), CFG.service, TEST);
+    }
     var ac2 = CFG.aCompleter(R, zoneTexte()).map(function (x) { return x.client; }).filter(Boolean);
     if (ac2.length) h += '<div class="cf-alerte bleu">Certains points seront précisés avec vous avant l\'établissement du devis : ' + esc(ac2.join(", ")) + '.</div>';
     h += '<div class="cf-erreurs" id="pc-err" role="alert"></div><div id="pc-etat-envoi"></div>';
