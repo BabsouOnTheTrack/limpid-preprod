@@ -8,6 +8,21 @@ const target=path.join(process.cwd(),'mobile-preview-artifacts');
 const chrome=[process.env.CHROME_PATH,'/usr/bin/google-chrome','/usr/bin/google-chrome-stable','/usr/bin/chromium','/opt/google/chrome/chrome'].find(x=>x&&fs.existsSync(x));
 if(!chrome)throw new Error('Chrome unavailable');
 (async()=>{
+ /* A GitHub job may start before Cloudflare has published the latest branch assets.
+    Wait for this exact CSS revision; otherwise old CSS can yield a false layout failure. */
+ let published=false;
+ for(let attempt=0;attempt<15;attempt++){
+   try{
+     const r=await fetch('https://'+HOST+'/assets/signature-site.css?verify=brand-v127-compact-'+attempt,{
+       cache:'no-store',signal:AbortSignal.timeout(10000)
+     });
+     if(r.ok&&(await r.text()).includes('@media(min-width:801px) and (max-width:1249px)')){
+       published=true;break;
+     }
+   }catch(e){}
+   await new Promise(resolve=>setTimeout(resolve,5000));
+ }
+ if(!published)throw new Error('Preview CSS revision not yet published: retry after Cloudflare deployment');
  const browser=await chromium.launch({executablePath:chrome,headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});
  const report=[];
  fs.mkdirSync(target,{recursive:true});
