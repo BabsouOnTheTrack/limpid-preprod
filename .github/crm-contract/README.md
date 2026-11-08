@@ -38,3 +38,15 @@ Elle respecte :
 Le code est **un contrat simulé et non un connecteur opérationnel**. Le tableur de production n'a pas été modifié. Aucun envoi ou acquittement n'a été effectué. La reconnaissance du tableur central n'est pas une certification du projet Apps Script.
 
 **Statut : NO-GO production.**
+
+## Projet Apps Script vu dans l'interface (captures du propriétaire, 08/11/2026)
+
+Les captures du projet **« LIMPID - CRM V6 »** montrent une arborescence Apps Script native. Parmi les modules visibles :
+- `Code.gs`, `Devis.html`, `Index.html`, `appsscript.json` ;
+- `Limpid_V571_Synchronisation.gs`, `Limpid_V592_IntegrationCRM.gs` ;
+- `Limpid_V612_RegistreDevis.gs`, `Limpid_V672_Dispatch.gs`, `Limpid_V670_Calendrier.gs` ;
+- autres modules de configuration, d'analyse économique et de suivi de terrain.
+
+Cette observation confirme l'existence d'un projet Apps Script **côté utilisateur**. Elle ne certifie ni l'ID du projet, ni son déploiement actif, ni son rattachement exact au tableur central V6, ni les fonctions internes (les captures n'affichent pas leur code). Il faudra consulter sur une copie, en lecture seule, les fonctions d'import `LIMPID1` de `Devis.html`, `Code.gs`, `Limpid_V592_IntegrationCRM.gs` et le registre des devis, sans modifier la version de production.
+
+Les fichiers de la branche `limpid-preprod` restent des **adaptateurs candidats**, pas des modules à installer dans Apps Script sans revue.
