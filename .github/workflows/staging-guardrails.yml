@@ -60,7 +60,7 @@ jobs:
       - name: Use preinstalled Chrome with Playwright Core
         run: npm install --no-save --no-package-lock playwright-core@1.58.2
       - name: Read-only mobile browser inspection on four Preview routes
-        run: node .github/tests/staging-mobile-smoke.cjs && node .github/tests/staging-mobile-finish.cjs
+        run: node .github/tests/staging-mobile-smoke.cjs && node .github/tests/staging-mobile-finish.cjs && node .github/tests/staging-header-smoke.cjs
       - name: Upload four mobile previews and audit summary
         if: always()
         uses: actions/upload-artifact@v4
