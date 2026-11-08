@@ -1699,7 +1699,9 @@ var LimpidMoteur = (function () {
     $("b-retour").disabled = !(i > 0 && et !== 8);
     var next=steps[i+1],change=next&&et===5&&next.et===3;
     $("b-suite").textContent = et===7?"Recevoir mon devis":et===6?"C'est bien ça, continuer":change?"Passer à "+offre(E.offres[next.i]).court:"Continuer";
-    $("cf-nav").style.display = et === 8 ? "none" : "block";
+    var navFin = $("cf-nav"); navFin.hidden = et === 8;
+    if (et === 8) navFin.style.setProperty("display", "none", "important");
+    else navFin.style.removeProperty("display");
     rendreEtape(et);
     if (et === 6) ev("configurateur_recapitulatif", { prestation: listeOffres() });
     if (et !== 8) ev("config_step_view", { step: NOM_ETAPE[et] || String(et) });
@@ -1720,7 +1722,7 @@ var LimpidMoteur = (function () {
     if (et === 8) rendreConfirmation();
   }
   function rendreConfirmation() {
-    $("cf-confirmation").textContent = cfg().textes.confirmation;
+    $("cf-confirmation").textContent = "Dossier fictif enregistré dans Cloudflare STAGING. Aucun e-mail client ni devis n’est envoyé. Aucune conversion publicitaire n’est déclenchée.";
     var zr = $("cf-ref"); if (zr) { zr.hidden = !E.ref; zr.innerHTML = E.ref ? 'Référence de votre demande : <b>' + esc(E.ref) + '</b>' : ""; }
   }
   function suivant() {

@@ -1428,7 +1428,7 @@ window.LIMPID_PARCOURS = (function () {
     var ac2 = CFG.aCompleter(R, zoneTexte()).map(function (x) { return x.client; }).filter(Boolean);
     if (ac2.length) h += '<div class="cf-alerte bleu">Certains points seront précisés avec vous avant l\'établissement du devis : ' + esc(ac2.join(", ")) + '.</div>';
     h += '<div class="cf-erreurs" id="pc-err" role="alert"></div><div id="pc-etat-envoi"></div>';
-    h += '<p class="pc-rassure">' + esc(CFG.texteRassure || "Votre demande sera étudiée par Limpid. Nous vous contacterons si une précision ou une visite est nécessaire avant de vous transmettre un devis personnalisé.") + '</p>';
+    h += '<p class="pc-rassure">' + (TEST ? "Préproduction : seuls les dossiers fictifs sont reçus. Aucun contact client ni devis n’est envoyé." : esc(CFG.texteRassure || "Votre demande sera étudiée par Limpid. Nous vous contacterons si une précision ou une visite est nécessaire avant de vous transmettre un devis personnalisé.")) + '</p>';
     h += '<p class="cf-rgpd">Aucun démarchage : vos informations servent uniquement à établir et suivre votre devis. Elles ne sont ni revendues ni transmises à des outils de mesure d\'audience. <a href="/politique-confidentialite/">Politique de confidentialité</a></p>';
     return h;
   }
@@ -1438,7 +1438,7 @@ window.LIMPID_PARCOURS = (function () {
   function rendreFin() {
     var f = E.fin || {}, h = '<div class="cf-fin"><div class="ok">✅</div><h2 tabindex="-1" id="pc-titre">' + "Demande enregistrée" + '</h2>';
     h += '<p class="pc-ref">Référence <b>' + esc(f.id || "") + '</b></p>';
-    h += '<p>' + esc(CFG.texteRassure || "Votre demande sera étudiée par Limpid. Nous vous contacterons si une précision ou une visite est nécessaire avant de vous transmettre un devis personnalisé.") + '</p>';
+    h += '<p>' + (TEST ? "Dossier fictif enregistré dans Cloudflare STAGING. Aucun e-mail client ni devis n’est envoyé. Aucune conversion publicitaire n’est déclenchée." : esc(CFG.texteRassure || "Votre demande sera étudiée par Limpid. Nous vous contacterons si une précision ou une visite est nécessaire avant de vous transmettre un devis personnalisé.")) + '</p>';
     if (f.deja) h += '<div class="cf-alerte bleu">Cette demande avait déjà été envoyée : elle n\'a pas été transmise une seconde fois.</div>';
     h += '<p style="margin-top:14px"><a class="btn sec" href="' + esc(CFG.retour || "/") + '">Retour au site</a></p></div>';
     return h;
