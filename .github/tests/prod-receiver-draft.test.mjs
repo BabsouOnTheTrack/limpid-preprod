@@ -107,7 +107,7 @@ test('Production receiver rejects staging packets, forged origins and photos',as
  for(const p of [
  payload(code({test:true})),
  payload(code({client:{nom:'Personne Exemple',email:'x@example.invalid',tel:'0600000000',photos:false}})),
- payload(code({client:{nom:'Personne Exemple',email:'client@example.org',tel:'0600000000',photos:true}})),
+ payload(code({client:{nom:'Personne Exemple',email:'client@example.org',tel:'0600000000',photos:'data:image/jpeg;base64,bad'}})),
  {...payload(),service:'menage'},
  ]){
   const result=await worker.fetch(post(p),e);
@@ -170,4 +170,96 @@ test('Malformed/oversized inputs fail before DB writes',async()=>{
  const huge=post({...payload(),code:'X'.repeat(60001)});
  assert.equal((await worker.fetch(huge,e)).status,413);
  assert.equal(e.DB.rows.size,0);
+});
+
+test('Devis général without telephone is accepted (email remains required)',async()=>{
+ const e=env();
+ const data=code({id:'LMP-G-20261108-FAKE111',parcours:'general',
+   client:{nom:'Personne Exemple',email:'client@example.org',tel:'',photos:false}});
+ const r=await json(await worker.fetch(post({ref:'LMP-G-20261108-FAKE111',service:'general',code:data},'valid-general-1'),e));
+ assert.equal(r.status,201);assert.equal(r.statut,'enregistre');
+ assert.equal(e.DB.rows.size,1);
+ const noMail=code({id:'LMP-G-20261108-FAKE112',parcours:'general',
+   client:{nom:'Personne Exemple',email:'',tel:'',photos:false}});
+ const fail=await json(await worker.fetch(post({ref:'LMP-G-20261108-FAKE112',service:'general',code:noMail},'valid-general-2'),e));
+ assert.equal(fail.status,422);assert.equal(fail.error,'EMAIL_REQUIRED');
+});
+
+test('Three specialist callbacks with no email and no prestations reach D1/outbox and ACK',async()=>{
+ for(const [service,letter]of [['menage','M'],['vitres','V'],['b2b','B']]){
+   const e=env();
+   const ref='LMP-'+letter+'-20261108-CALL001';
+   const c=code({id:ref,parcours:service,type:'rappel',
+     client:{profil:'particulier',nom:'Personne Exemple',tel:'0600000000',
+       commune:'Darnieulles',message:'Veuillez me rappeler'},
+     rappel:{creneau:'aprem'},demandes:[]});
+   const r=await json(await worker.fetch(post({ref,service,code:c},'valid-call-'+service),e));
+   assert.equal(r.status,201,service);assert.equal(r.statut,'enregistre');
+   const inbox=await json(await worker.fetch(admin('/admin/outbox'),e));
+   assert.equal(inbox.enveloppes.length,1);
+   assert.equal(inbox.enveloppes[0].type,'rappel');
+   assert.equal(inbox.enveloppes[0].photosAEnvoyer,false);
+   assert.equal(inbox.enveloppes[0].codeImport,c);
+   const ack=await json(await worker.fetch(admin('/admin/ack',{
+     method:'POST',body:{ref,sha256:await hash(c)}}),e));
+   assert.equal(ack.statut,'acquitte');
+   assert.equal((await json(await worker.fetch(admin('/admin/outbox'),e))).enveloppes.length,0);
+ }
+});
+
+test('Callback rejects missing phone, invalid timeslot, prestations, and the general service',async()=>{
+ const e=env(),ref='LMP-M-20261108-CALL002';
+ const base={id:ref,parcours:'menage',type:'rappel',
+   client:{nom:'Personne Exemple',tel:'0600000000',commune:'Epinal'},
+   rappel:{creneau:'indiff'},demandes:[]};
+ const variants=[
+  {...base,client:{...base.client,tel:''}},
+  {...base,rappel:{creneau:'demain'}},
+  {...base,demandes:[{offre:'menage'}]},
+  {...base,parcours:'general'}
+ ];
+ for(const [i,v]of variants.entries()){
+   const svc=v.parcours;
+   const r=await json(await worker.fetch(post({ref,service:svc,code:code(v)},'valid-bad-call-'+i),e));
+   assert.equal(r.status,422,'case '+i);
+ }
+ assert.equal(e.DB.rows.size,0);
+});
+
+test('Boolean photos-to-send-later is metadata; no binary, image URL, or file upload allowed',async()=>{
+ const e=env(),ref='LMP-V-20261108-PHOTO01';
+ const c=code({id:ref,client:{nom:'Personne Exemple',email:'client@example.org',tel:'',
+   photos:true}});
+ const r=await json(await worker.fetch(post({ref,service:'vitres',code:c},'valid-photo-1'),e));
+ assert.equal(r.status,201);
+ const inbox=await json(await worker.fetch(admin('/admin/outbox'),e));
+ assert.equal(inbox.enveloppes[0].type,'devis');
+ assert.equal(inbox.enveloppes[0].photosAEnvoyer,true);
+ assert.equal(inbox.enveloppes[0].photos,false);
+ for(const [i,variant]of [
+  {id:'LMP-V-20261108-PHOTO02',client:{nom:'Personne Exemple',email:'client@example.org',tel:'',photos:{name:'x.jpg'}}},
+  {id:'LMP-V-20261108-PHOTO03',images:['https://example.com/x.jpg']},
+  {id:'LMP-V-20261108-PHOTO04',client:{nom:'Personne Exemple',email:'client@example.org',tel:'',photos:'data:image/jpeg;base64,...'}},
+  {id:'LMP-V-20261108-PHOTO05',demandes:[{offre:'vitres',attachments:[{filename:'x.jpg'}]}]}
+ ].entries()){
+   const x=code(variant),p={ref:variant.id,service:'vitres',code:x};
+   const response=await json(await worker.fetch(post(p,'valid-photo-bad-'+i),e));
+   assert.equal(response.status,422,'case '+i);
+ }
+ assert.equal(e.DB.rows.size,1);
+});
+
+test('V0.2 accepted types and deferred-photo flags survive duplicate ref after ACK',async()=>{
+ const e=env(),ref='LMP-G-20261108-PHOTO06';
+ const c=code({id:ref,parcours:'general',
+   client:{nom:'Personne Exemple',email:'client@example.org',tel:'',photos:true}});
+ const first=await json(await worker.fetch(post({ref,service:'general',code:c},'valid-one'),e));
+ assert.equal(first.statut,'enregistre');
+ const ack=await json(await worker.fetch(admin('/admin/ack',{
+   method:'POST',body:{ref,sha256:await hash(c)}}),e));
+ assert.equal(ack.statut,'acquitte');
+ const replay=await json(await worker.fetch(post({ref,service:'general',code:c},'valid-two'),e));
+ assert.equal(replay.statut,'deja_enregistre');
+ assert.equal(e.DB.rows.size,1);
+ assert.equal((await json(await worker.fetch(admin('/admin/outbox'),e))).enveloppes.length,0);
 });

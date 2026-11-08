@@ -1,5 +1,5 @@
 /**
- * LIMPID — Production Intake PROTOTYPE V0.1 (NON DÉPLOYÉ)
+ * LIMPID — Production Intake PROTOTYPE V0.2 (NON DÉPLOYÉ)
  * File stored inside .github/ to stay excluded by .assetsignore.
  * NO Wrangler production config, NO live site, NO CRM integration.
  * Never copy STAGING secrets, DB or site keys to production.
@@ -7,6 +7,7 @@
 const REF=/^LMP-[A-Z0-9-]{8,50}$/;
 const SHA=/^[a-f0-9]{64}$/;
 const SERVICES=new Set(['menage','vitres','b2b','general']);
+const RAPPEL_CRENEAUX=new Set(['matin','midi','aprem','soir','indiff']);
 const MAX_CODE=49000, MAX_BODY=60000;
 const ORIGIN='https://limpid-nettoyage.fr';
 const HOST='limpid-nettoyage.fr';
@@ -45,7 +46,8 @@ function banPhotos(value,parent='',depth=0){
     if(new Set(['photo','photos','photographies','image','images','image_base64','images_base64',
       'piece_jointe','pieces_jointes','attachments','attachment','fichier','fichiers','files',
       'file','uploads','photo_urls','photo_url']).has(name)){
-      if(!(parent==='client'&&name==='photos'&&child===false))throw Error('PHOTOS_NOT_SUPPORTED');
+      /* A boolean here means "photos will be sent separately", never an upload. */
+      if(!(parent==='client'&&name==='photos'&&typeof child==='boolean'))throw Error('PHOTOS_NOT_SUPPORTED');
     }else banPhotos(child,name,depth+1);
   }
 }
@@ -57,20 +59,39 @@ function decode(code){
     const raw=atob(code.slice(8)),bytes=Uint8Array.from(raw,x=>x.charCodeAt(0));
     document=JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes));
   }catch{throw Error('LIMPID1_DECODE');}
-  if(!document||Array.isArray(document)||document.v!==2||document.type!=='devis'||
-     document.test!==false||document.rappel||!REF.test(document.id||''))throw Error('DOSSIER_INVALID');
+  if(!document||Array.isArray(document)||document.v!==2||
+     !['devis','rappel'].includes(document.type)||document.test!==false||
+     !REF.test(document.id||''))throw Error('DOSSIER_INVALID');
   if(!SERVICES.has(document.parcours))throw Error('SERVICE_INVALID');
+  if(document.type==='rappel'&&document.parcours==='general')throw Error('RAPPEL_SERVICE_INVALID');
   const c=document.client;
   if(!c||typeof c!=='object'||Array.isArray(c)||typeof c.nom!=='string'||
-    c.nom.trim().length<2||c.nom.length>180||typeof c.email!=='string'||
-    c.email.length>254||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.email)||
-    c.email.toLowerCase().endsWith('.invalid')||
-    typeof c.tel!=='string'||c.tel.length>30||!(/^[+()\d.\s-]{8,30}$/.test(c.tel)))
-    throw Error('CONTACT_INVALID');
-  if(!Array.isArray(document.demandes)||document.demandes.length<1||document.demandes.length>8||
-      document.demandes.some(v=>!v||typeof v.offre!=='string'||!v.offre.trim()||v.offre.length>120))
-    throw Error('PRESTATIONS_INVALID');
-  banPhotos(document);
+     c.nom.trim().length<2||c.nom.length>180)throw Error('CONTACT_INVALID');
+  const hasEmail=typeof c.email==='string'&&c.email.length>0;
+  if(document.type==='devis'&&!hasEmail)throw Error('EMAIL_REQUIRED');
+  if(c.email!==undefined&&typeof c.email!=='string')throw Error('EMAIL_INVALID');
+  if(hasEmail&&(c.email.length>254||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.email)||
+     c.email.toLowerCase().endsWith('.invalid')))throw Error('EMAIL_INVALID');
+  if(typeof c.tel!=='string'||c.tel.length>30)throw Error('PHONE_INVALID');
+  const phone=c.tel.trim();
+  if((document.type==='rappel'||phone.length>0)&&!(/^[+()\d.\s-]{8,30}$/.test(phone)))
+    throw Error('PHONE_INVALID');
+
+  if(!Array.isArray(document.demandes))throw Error('PRESTATIONS_INVALID');
+  if(document.type==='rappel'){
+    /* The actual three specialist forms send demandes:[] and no email. */
+    if(document.demandes.length!==0)throw Error('RAPPEL_MUST_BE_EMPTY');
+    if(!document.rappel||Array.isArray(document.rappel)||
+       typeof document.rappel!=='object'||!RAPPEL_CRENEAUX.has(document.rappel.creneau))
+      throw Error('RAPPEL_INVALID');
+    if(c.photos!==undefined)throw Error('RAPPEL_PHOTOS_INVALID');
+  }else{
+    if(document.rappel!==undefined)throw Error('DEVIS_RAPPEL_UNEXPECTED');
+    if(document.demandes.length<1||document.demandes.length>8||
+       document.demandes.some(v=>!v||typeof v.offre!=='string'||!v.offre.trim()||v.offre.length>120))
+      throw Error('PRESTATIONS_INVALID');
+  }
+  banPhotos(document); // Only client.photos:boolean; no file, URL or binary accepted
   return document;
 }
 async function verifyToken(request,env){
@@ -134,10 +155,16 @@ async function outbox(request,env){
   try{
     const rows=await env.DB.prepare('SELECT ref,service,sha256,code,created_at FROM demandes WHERE etat=? ORDER BY created_at LIMIT 25')
       .bind('nouveau').all();
-    return output({schema:'limpid.site-inbox.v1',enveloppes:(rows.results||[]).map(row=>({
-      schema:'limpid.site-dossier.v2',reference:row.ref,service:row.service,
-      sha256:row.sha256,codeImport:row.code,photos:false,
-      statut:'A_IMPORTER',destination:'CRM_PRODUCTION'}))});
+    return output({schema:'limpid.site-inbox.v1',enveloppes:(rows.results||[]).map(row=>{
+      const parsed=decode(row.code);
+      return {
+        schema:'limpid.site-dossier.v2',reference:row.ref,service:row.service,
+        type:parsed.type,sha256:row.sha256,codeImport:row.code,
+        photos:false, /* no files or photo URLs are transmitted */
+        photosAEnvoyer:parsed.type==='devis'&&parsed.client.photos===true,
+        statut:'A_IMPORTER',destination:'CRM_PRODUCTION'
+      };
+    })});
   }catch{return fail('OUTBOX_FAILED',503);}
 }
 async function ack(request,env){
