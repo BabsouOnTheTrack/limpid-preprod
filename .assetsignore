@@ -1,0 +1,26 @@
+# Worker Preview : ne publier que les ressources du site en tant qu'assets.
+# Conserver les fichiers techniques et sauvegardes hors des URLs publiques.
+.git
+.github
+**/.git
+**/.github
+node_modules
+**/node_modules
+wrangler.jsonc
+wrangler.toml
+wrangler.json
+package.json
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+.env
+.env.*
+**/.env
+**/.env.*
+*.log
+*.zip
+*.bak
+*.tmp
+_redirects
+_worker.js
+.DS_Store
