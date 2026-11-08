@@ -21,6 +21,5 @@ yarn.lock
 *.zip
 *.bak
 *.tmp
-_redirects
 _worker.js
 .DS_Store
