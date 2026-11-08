@@ -192,3 +192,21 @@ test('Bandeau des 4 configurateurs : seuls les dossiers fictifs sont annoncés',
    assert.ok(!s.includes('Les envois de demandes sont volontairement désactivés'),p);
  });
 });
+
+test('26 redirections historiques 301 : sources uniques et destinations présentes',()=>{
+ const lines=read('_redirects').split(/\r?\n/).map(s=>s.trim()).filter(s=>s && !s.startsWith('#'));
+ assert.equal(lines.length,26);
+ const seen=new Set();
+ for(const line of lines){
+   const parts=line.split(/\s+/);
+   assert.equal(parts.length,3,line);
+   const [from,to,status]=parts;
+   assert.equal(status,'301',line);
+   assert.ok(!seen.has(from),'Redirection source dupliquée : '+from);
+   seen.add(from);
+   assert.ok(from.startsWith('/')&&to.startsWith('/'),line);
+   const relative=to.slice(1);
+   const local=to==='/'?'index.html':path.posix.join(relative,'index.html');
+   assert.ok(fs.existsSync(path.join(root,local)),'Cible absente : '+to);
+ }
+});
