@@ -184,3 +184,11 @@ test('Devis général : en mode test, bandeau et intro n’annoncent aucun déla
  assert.ok(s.includes('nom: "Ménage à domicile"')); // libellé de la prestation choisie conservé
  assert.ok(s.includes('Limpid vous répond par e-mail sous 48 h.')); // mode métier préservé
 });
+
+test('Bandeau des 4 configurateurs : seuls les dossiers fictifs sont annoncés',()=>{
+ pages.forEach(p=>{
+   const s=read(p);
+   assert.ok(s.includes('Envois fictifs uniquement en mode TEST · Aucun devis ni e-mail client'),p);
+   assert.ok(!s.includes('Les envois de demandes sont volontairement désactivés'),p);
+ });
+});
