@@ -44,7 +44,7 @@ Le code est **un contrat simulé et non un connecteur opérationnel**. Le tableu
 Les captures du projet **« LIMPID - CRM V6 »** montrent une arborescence Apps Script native. Parmi les modules visibles :
 - `Code.gs`, `Devis.html`, `Index.html`, `appsscript.json` ;
 - `Limpid_V571_Synchronisation.gs`, `Limpid_V592_IntegrationCRM.gs` ;
-- `Limpid_V612_RegistreDevis.gs`, `Limpid_V672_Dispatch.gs`, `Limpid_V670_Calendrier.gs` ;
+- `Limpid_V6712_RegistreDevis.gs`, `Limpid_V672_Dispatch.gs`, `Limpid_V670_Calendrier.gs` ;
 - autres modules de configuration, d'analyse économique et de suivi de terrain.
 
 Cette observation confirme l'existence d'un projet Apps Script **côté utilisateur**. Elle ne certifie ni l'ID du projet, ni son déploiement actif, ni son rattachement exact au tableur central V6, ni les fonctions internes (les captures n'affichent pas leur code). Il faudra consulter sur une copie, en lecture seule, les fonctions d'import `LIMPID1` de `Devis.html`, `Code.gs`, `Limpid_V592_IntegrationCRM.gs` et le registre des devis, sans modifier la version de production.
