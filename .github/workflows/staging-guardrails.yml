@@ -1,0 +1,26 @@
+name: Limpid Staging Guardrails
+on:
+  push:
+    branches: [limpid-signature-v126-lab-integration]
+  pull_request:
+    paths:
+      - "assets/**"
+      - "devis/**"
+      - "configurer-devis-*/**"
+      - "wrangler.jsonc"
+      - ".assetsignore"
+      - "_redirects"
+      - ".github/tests/**"
+      - ".github/workflows/staging-guardrails.yml"
+permissions:
+  contents: read
+jobs:
+  static-and-isolation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Verify staging analytics isolation and 4 intake contracts
+        run: node --test .github/tests/staging-guardrails.test.cjs

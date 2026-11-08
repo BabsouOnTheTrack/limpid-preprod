@@ -7,6 +7,12 @@
    Choix conservé 6 mois, modifiable à tout moment via limpidCookies(). */
 (function () {
   "use strict";
+
+  /* Preview LIMPID : ni GA4, ni conversions, ni file d'événements.
+     Restriction par NOM DE WORKER : ne touche jamais au Worker public limpid-site. */
+  if (/(?:^|-)limpid-preprod\.cabochondreams\.workers\.dev$/i.test(String(window.location.hostname || ""))) {
+    return;
+  }
   var ID = "G-SQSB6Y6THZ";
   var CLE = "limpid_consent";
   var DUREE = 182 * 24 * 60 * 60 * 1000; /* 6 mois */
