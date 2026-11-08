@@ -69,3 +69,31 @@ jobs:
           path: mobile-preview-artifacts/
           if-no-files-found: warn
           retention-days: 7
+
+  continuity-source-snapshot:
+    # Single on-push archive on the isolated PR branch; never checks out production.
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Archive exact tracked GitHub tree and SHA
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p limpid-continuity-source
+          git archive --format=zip --output=limpid-continuity-source/LIMPID_SIGNATURE_V127_GITHUB_SOURCE_FIGEE.zip HEAD
+          printf 'repository=BabsouOnTheTrack/limpid-preprod\nbranch=limpid-signature-v126-lab-integration\nsha=%s\n' "$GITHUB_SHA" > limpid-continuity-source/REVISION_GIT.txt
+          sha256sum limpid-continuity-source/LIMPID_SIGNATURE_V127_GITHUB_SOURCE_FIGEE.zip > limpid-continuity-source/SOURCE_SHA256.txt
+          test -s limpid-continuity-source/LIMPID_SIGNATURE_V127_GITHUB_SOURCE_FIGEE.zip
+      - name: Publish private source archive for the owner
+        uses: actions/upload-artifact@v4
+        with:
+          name: LIMPID_V127_GITHUB_SOURCE_REPRISE
+          path: limpid-continuity-source/
+          if-no-files-found: error
+          retention-days: 30
