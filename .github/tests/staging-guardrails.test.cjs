@@ -106,3 +106,73 @@ test('Configuration Cloudflare : Preview isolée et redirections conservées',()
  assert.ok(!ignore.includes('_redirects'));
  assert.ok(read('_redirects').includes(' 301'));
 });
+
+function bridgeCase(host=PREVIEW, reply=null) {
+ const calls=[];
+ const win={location:{hostname:host},turnstile:{render:(node,opts)=>{opts.callback('turnstile-test-token');return 'widget-1';},remove:()=>{}}};
+ const fake={remove:()=>{},querySelector:()=>({addEventListener:()=>{}})};
+ const doc={createElement:()=>Object.assign({},fake),body:{appendChild:()=>{}}};
+ const location={protocol:'https:',hostname:host};
+ const ctx=vm.createContext({
+   window:win,document:doc,location,console,Date,JSON,TextDecoder,Uint8Array,atob,
+   setTimeout,clearTimeout,fetch:async (uri,options)=>{
+     calls.push({uri,options});
+     if (reply==='NETWORK') throw new TypeError('Failed to fetch');
+     const ref=JSON.parse(options.body).ref;
+     return {status:reply?.status??201,json:async()=>reply?.body??{ok:true,reference:ref,statut:'enregistre_lab',mode:'TEST_ISOLE'}};
+   }
+ });
+ vm.runInContext(read('assets/signature-lab-v126-bridge.js'),ctx,{filename:'bridge.js',timeout:1000});
+ function packet(overrides={}) {
+   const d={v:2,type:'devis',test:true,id:'LMP-V-TEST-12345678',parcours:'vitres',
+      client:{nom:'Client Fictif',email:'qa@example.invalid',tel:'0600000000'},
+      demandes:[{offre:'Lavage de vitres'}],...overrides};
+   const code='LIMPID1.'+Buffer.from(JSON.stringify(d),'utf8').toString('base64');
+   return {id:d.id,test:true,entrees:[['code_import',code]]};
+ }
+ return {send:win.LimpidLabV126.send,calls,packet,window:win};
+}
+
+test('Bridge: un dossier fictif avec ACK 201 est confirmé, sans identifiants réels',async()=>{
+ const b=bridgeCase();
+ const result=await b.send(b.packet(),'vitres',true);
+ assert.equal(result.ok,true);
+ assert.equal(result.reference,'LMP-V-TEST-12345678');
+ assert.equal(b.calls.length,1);
+ assert.equal(b.calls[0].options.method,'POST');
+ assert.equal(b.calls[0].options.credentials,'omit');
+ assert.equal(b.calls[0].options.headers['X-Limpid-Turnstile'],'turnstile-test-token');
+ assert.equal(b.calls[0].options.redirect,'error');
+});
+
+test('Bridge: autre domaine, hors-test et identité réelle refusés avant tout POST',async()=>{
+ const foreign=bridgeCase('limpid-nettoyage.fr');
+ await assert.rejects(foreign.send(foreign.packet(),'vitres',true),/préproduction autorisée/);
+ assert.equal(foreign.calls.length,0);
+ const staging=bridgeCase();
+ await assert.rejects(staging.send(staging.packet(),'vitres',false),/mode test/);
+ await assert.rejects(staging.send(staging.packet({client:{nom:'Personne Réelle',email:'real@example.com',tel:'0611111111'}}),'vitres',true),/exclusivement/);
+ assert.equal(staging.calls.length,0);
+});
+
+test('Bridge: photo et fichier interdits rejetés avant tout POST',async()=>{
+ const b=bridgeCase();
+ await assert.rejects(b.send(b.packet({photos:[{name:'test.jpg'}]}),'vitres',true),/photographies/);
+ assert.equal(b.calls.length,0);
+});
+
+test('Bridge: 201 sur mauvaise référence ou réponse D1 non confirmée = échec',async()=>{
+ const b=bridgeCase(PREVIEW,{status:201,body:{ok:true,reference:'LMP-V-OTHER',statut:'enregistre_lab',mode:'TEST_ISOLE'}});
+ await assert.rejects(b.send(b.packet(),'vitres',true),/Enregistrement non confirmé/);
+ assert.equal(b.calls.length,1);
+ const c=bridgeCase(PREVIEW,{status:409,body:{ok:false,error:'REFERENCE_CONFLICT'}});
+ await assert.rejects(c.send(c.packet(),'vitres',true),/REFERENCE_CONFLICT/);
+ assert.equal(c.calls.length,1);
+});
+
+test('Bridge: échec réseau ne fabrique pas de succès et déverrouille le prochain essai',async()=>{
+ const b=bridgeCase(PREVIEW,'NETWORK');
+ await assert.rejects(b.send(b.packet(),'vitres',true),/Failed to fetch/);
+ await assert.rejects(b.send(b.packet(),'vitres',true),/Failed to fetch/);
+ assert.equal(b.calls.length,2);
+});
