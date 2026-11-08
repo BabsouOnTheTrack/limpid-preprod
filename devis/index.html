@@ -2009,7 +2009,13 @@ var LimpidMoteur = (function () {
 
   /* ---------- Démarrage ---------- */
   function demarrer() {
-    $("cf-intro").textContent = "Choisissez vos besoins, seuls ou combinés. Décrivez ensuite votre intervention : Limpid vous répond par e-mail sous 48 h.";
+    $("cf-intro").textContent = TEST
+      ? "Choisissez vos besoins, seuls ou combinés. Ceci est un essai fictif : aucun devis ni e-mail client ne sera envoyé."
+      : "Choisissez vos besoins, seuls ou combinés. Décrivez ensuite votre intervention : Limpid vous répond par e-mail sous 48 h.";
+    if (TEST) {
+      var badgeDevis = document.querySelector(".cf-tete .badge");
+      if (badgeDevis) badgeDevis.textContent = "PRÉPRODUCTION · DEMANDE FICTIVE";
+    }
     bandeauTest("cf-test");
     E.offres = (E.offres || []).filter(function (id) { return offre(id); });
     if (E.etape === 8) E.etape = 2;

@@ -176,3 +176,11 @@ test('Bridge: échec réseau ne fabrique pas de succès et déverrouille le proc
  await assert.rejects(b.send(b.packet(),'vitres',true),/Failed to fetch/);
  assert.equal(b.calls.length,2);
 });
+
+test('Devis général : en mode test, bandeau et intro n’annoncent aucun délai de devis',()=>{
+ const s=read('devis/index.html');
+ assert.ok(s.includes('badgeDevis.textContent = "PRÉPRODUCTION · DEMANDE FICTIVE"'));
+ assert.ok(s.includes('Ceci est un essai fictif : aucun devis ni e-mail client ne sera envoyé.'));
+ assert.ok(s.includes('nom: "Ménage à domicile"')); // libellé de la prestation choisie conservé
+ assert.ok(s.includes('Limpid vous répond par e-mail sous 48 h.')); // mode métier préservé
+});
