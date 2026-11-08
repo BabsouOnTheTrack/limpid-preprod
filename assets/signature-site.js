@@ -2,6 +2,7 @@
 (function(){'use strict';
 var stage=document.querySelector('.signature-preview-banner'); if(!stage)return;
 if(stage.querySelector('strong'))stage.querySelector('strong').textContent='PRÉPRODUCTION SIGNATURE — TEST';
+var note=stage.querySelector('span');if(note)note.textContent='Demandes fictives uniquement en mode TEST · Aucun devis ni e-mail client';
 // A receipt from the local test server is NEVER a receipt from the Limpid CRM.
 if(location.hostname==='127.0.0.1'){
  try{var lastLab=sessionStorage.getItem('limpid_last_local_lab');

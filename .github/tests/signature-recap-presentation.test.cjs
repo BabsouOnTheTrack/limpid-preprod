@@ -40,6 +40,7 @@ test('Libellé de marque : taille au moins 11 px sur grand écran sans modifier 
  assert.ok(css.includes('min-width:1600px'));
  assert.ok(css.includes('font-size:12px!important'));
  assert.ok(css.includes('min-width:1450px'));
+ assert.ok(css.includes('min-width:801px'));
  assert.ok(css.includes('font-size:11px!important'));
  assert.ok(!read('assets/signature-recap-detail.js').includes('fetch('));
 });
