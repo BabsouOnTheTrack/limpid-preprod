@@ -1,0 +1,129 @@
+<!-- LIMPID V6.14 — UI Site Inbox LAB / copie uniquement. À INSÉRER juste avant </body> de Index.html de COPIE. -->
+<style id="limpid-v614-inbox-style">
+  #limpid-v614-launch { white-space:nowrap; }
+  #limpid-v614-launch .ux11-label { color:inherit; }
+  #limpid-v614-overlay[hidden] { display:none!important; }
+  #limpid-v614-overlay { position:fixed; inset:0; z-index:2147481000; background:rgba(8,28,52,.58); display:flex; align-items:center; justify-content:center; padding:16px; box-sizing:border-box; font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+  #limpid-v614-overlay *, #limpid-v614-overlay *::before, #limpid-v614-overlay *::after { box-sizing:border-box; }
+  #limpid-v614-modal { width:min(1060px,100%); max-height:min(830px,calc(100vh - 32px)); display:flex; flex-direction:column; border-radius:20px; overflow:hidden; color:#0b2545; box-shadow:0 30px 100px rgba(3,25,51,.32); background:#f4f8fd; }
+  #limpid-v614-head { display:flex; align-items:center; justify-content:space-between; gap:18px; padding:22px 26px; background:#0b2545; color:#fff; }
+  #limpid-v614-head h2 { margin:0; font-size:clamp(20px,2.1vw,26px); line-height:1.2; font-weight:750; color:#fff; }
+  #limpid-v614-head p { margin:7px 0 0; color:#c8dcef; font-size:13px; }
+  #limpid-v614-head button { width:37px; height:37px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.24); border-radius:11px; font-size:21px; color:#fff; cursor:pointer; flex:0 0 auto; }
+  #limpid-v614-body { overflow:auto; padding:23px 26px 28px; }
+  #limpid-v614-note { font-size:12px; color:#546d85; margin:0 0 17px; }
+  #limpid-v614-stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-bottom:16px; }
+  .limpid-v614-stat { padding:14px 16px; border:1px solid #dce7f3; background:#fff; border-radius:14px; }
+  .limpid-v614-stat strong { display:block; font-size:26px; color:#0b2545; line-height:1.15; }
+  .limpid-v614-stat span { display:block; font-size:12px; color:#59728c; margin-top:3px; }
+  #limpid-v614-controls { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:16px; }
+  #limpid-v614-controls input, #limpid-v614-controls select { border:1px solid #cedced; border-radius:10px; padding:11px 12px; font:inherit; font-size:13px; color:#0b2545; background:#fff; min-height:43px; }
+  #limpid-v614-controls input { min-width:170px; flex:2 1 200px; }
+  #limpid-v614-controls select { flex:1 1 140px; }
+  #limpid-v614-controls button { background:#1a56db; color:#fff; border:0; border-radius:10px; padding:10px 16px; cursor:pointer; font-weight:650; }
+  #limpid-v614-controls button:disabled { opacity:.56; cursor:wait; }
+  #limpid-v614-list { display:grid; gap:10px; }
+  .limpid-v614-card { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(90px,.75fr) minmax(0,1fr) auto; gap:14px; align-items:center; border:1px solid #dbe7f4; border-radius:13px; background:#fff; padding:15px; }
+  .limpid-v614-ref { min-width:0; overflow-wrap:anywhere; color:#0b2545; font-size:13px; font-weight:720; }
+  .limpid-v614-meta { margin-top:5px; color:#607a92; font-size:12px; }
+  .limpid-v614-pill { display:inline-flex; align-items:center; gap:4px; background:#eaf1ff; border:1px solid #cfddf8; color:#1646b3; border-radius:999px; padding:6px 9px; font-weight:650; font-size:11px; white-space:nowrap; }
+  .limpid-v614-state { font-size:11px; font-weight:620; color:#356b77; overflow-wrap:anywhere; }
+  .limpid-v614-go { font:inherit; font-size:12px; border:1px solid #d1dfeb; border-radius:9px; color:#75889a; background:#f5f7fb; padding:9px 11px; cursor:not-allowed; white-space:nowrap; }
+  #limpid-v614-message { min-height:22px; font-size:12px; color:#547087; margin-top:12px; }
+  #limpid-v614-foot { display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; padding-top:13px; }
+  #limpid-v614-foot a { color:#1a56db; font-size:13px; font-weight:600; text-decoration:underline; }
+  #limpid-v614-foot span { color:#6a8194; font-size:12px; }
+  #limpid-v614-launch { border-radius:12px; border:1px solid #93b9ef; background:#eef6fb; color:#0b2545; cursor:pointer; font-size:12px; font-weight:700; }
+  #limpid-v614-launch:focus-visible, #limpid-v614-overlay button:focus-visible, #limpid-v614-overlay input:focus-visible, #limpid-v614-overlay select:focus-visible { outline:3px solid #4cc9f0; outline-offset:2px; }
+  @media(max-width:760px) {
+    #limpid-v614-head { padding:17px 18px; }
+    #limpid-v614-body { padding:15px; }
+    #limpid-v614-modal { max-height:calc(100vh - 24px); border-radius:14px; }
+    #limpid-v614-stats { gap:7px; }
+    .limpid-v614-stat { padding:10px; }
+    .limpid-v614-stat strong { font-size:21px; }
+    .limpid-v614-card { grid-template-columns:1fr auto; gap:10px; }
+    .limpid-v614-card .limpid-v614-state { grid-column:1/2; }
+    .limpid-v614-card .limpid-v614-go { grid-column:2/3; grid-row:2; }
+  }
+</style>
+<script id="limpid-v614-inbox-script">
+(function(){
+  'use strict';
+  if(window.LimpidInboxUILAB)return;
+  var demo=[
+    {reference:'LMP-M-261108-FICTIF001',parcours:'menage',type:'devis',photosAEnvoyer:false,etat:'A_QUALIFIER_TEST'},
+    {reference:'LMP-V-261108-FICTIF002',parcours:'vitres',type:'devis',photosAEnvoyer:true,etat:'A_QUALIFIER_TEST'},
+    {reference:'LMP-B-261108-FICTIF003',parcours:'b2b',type:'devis',photosAEnvoyer:false,etat:'A_QUALIFIER_TEST'},
+    {reference:'LMP-G-261108-FICTIF004',parcours:'general',type:'devis',photosAEnvoyer:false,etat:'A_QUALIFIER_TEST'},
+    {reference:'LMP-M-261108-FICTIF005',parcours:'menage',type:'rappel',photosAEnvoyer:false,etat:'A_QUALIFIER_TEST'}
+  ];
+  var data=[],loaded=false,fetching=false,isDemo=false,previousFocus=null;
+  var service={menage:'Ménage',vitres:'Vitres',b2b:'Locaux professionnels',general:'Multi-prestations'};
+  function E(tag,cls,txt){var el=document.createElement(tag); if(cls)el.className=cls; if(txt!==undefined)el.textContent=txt;return el;}
+  function Q(id){return document.getElementById(id);}
+  function msg(t){Q('limpid-v614-message').textContent=t;}
+  function ready(){
+    if(Q('limpid-v614-overlay'))return;
+    var nav=document.querySelector('nav.onglets');
+    var launch=E('button','','');launch.id='limpid-v614-launch';launch.type='button';launch.setAttribute('aria-label','Ouvrir les demandes du site en laboratoire');
+    var label=E('span','ux11-label','Demandes site');launch.appendChild(label);
+    if(nav){var anchor=nav.querySelector('[data-section="devis-int"]');if(anchor)anchor.insertAdjacentElement('afterend',launch);else nav.appendChild(launch);}
+    else {launch.style.cssText='position:fixed;bottom:18px;right:18px;z-index:2000;padding:12px';document.body.appendChild(launch);}
+    var overlay=E('div');overlay.id='limpid-v614-overlay';overlay.hidden=true;
+    var modal=E('section');modal.id='limpid-v614-modal';modal.setAttribute('role','dialog');modal.setAttribute('aria-modal','true');modal.setAttribute('aria-labelledby','limpid-v614-title');
+    var head=E('header');head.id='limpid-v614-head';
+    var headerText=E('div');var h=E('h2','','Demandes du site');h.id='limpid-v614-title';headerText.appendChild(h);headerText.appendChild(E('p','','Boîte de réception du laboratoire · consultation uniquement'));
+    var close=E('button','','×');close.type='button';close.setAttribute('aria-label','Fermer le panneau');close.onclick=fermer;head.appendChild(headerText);head.appendChild(close);
+    var body=E('div');body.id='limpid-v614-body';
+    var note=E('p','','Lecture seule · aucune création de prospect, aucun devis et aucun acquittement serveur.');note.id='limpid-v614-note';body.appendChild(note);
+    var stats=E('div');stats.id='limpid-v614-stats';['Demandes reçues','Devis','Rappels'].forEach(function(label,i){var box=E('div','limpid-v614-stat');var strong=E('strong','','—');strong.id='limpid-v614-count-'+i;box.appendChild(strong);box.appendChild(E('span','',label));stats.appendChild(box);});body.appendChild(stats);
+    var controls=E('div');controls.id='limpid-v614-controls';
+    var search=E('input');search.id='limpid-v614-search';search.type='search';search.placeholder='Référence de demande';search.setAttribute('aria-label','Rechercher une référence');search.addEventListener('input',render);controls.appendChild(search);
+    var types=E('select');types.id='limpid-v614-type';types.setAttribute('aria-label','Filtrer par type');[['','Tous les types'],['devis','Devis'],['rappel','Rappels']].forEach(function(a){var op=E('option','',a[1]);op.value=a[0];types.appendChild(op);});types.addEventListener('change',render);controls.appendChild(types);
+    var srv=E('select');srv.id='limpid-v614-service';srv.setAttribute('aria-label','Filtrer par service');[['','Toutes les prestations'],['menage','Ménage'],['vitres','Vitres'],['b2b','Locaux professionnels'],['general','Multi-prestations']].forEach(function(a){var op=E('option','',a[1]);op.value=a[0];srv.appendChild(op);});srv.addEventListener('change',render);controls.appendChild(srv);
+    var refresh=E('button','','Actualiser');refresh.type='button';refresh.id='limpid-v614-refresh';refresh.onclick=charger;controls.appendChild(refresh);body.appendChild(controls);
+    var list=E('div');list.id='limpid-v614-list';list.setAttribute('aria-live','polite');body.appendChild(list);
+    var status=E('div');status.id='limpid-v614-message';status.setAttribute('role','status');body.appendChild(status);
+    var foot=E('footer');foot.id='limpid-v614-foot';var link=E('a','','Consulter l’Inbox dans Google Sheets');link.href='https://docs.google.com/spreadsheets/d/1z8KLlpO1EQ35c6ZBFrtxcYMIO33tXcFEv715lqSmqBQ/edit#gid=61130022';link.target='_blank';link.rel='noopener noreferrer';foot.appendChild(link);foot.appendChild(E('span','','LAB V6.14 · aucune donnée de production'));body.appendChild(foot);
+    modal.appendChild(head);modal.appendChild(body);overlay.appendChild(modal);document.body.appendChild(overlay);
+    overlay.addEventListener('click',function(ev){if(ev.target===overlay)fermer();});
+    document.addEventListener('keydown',function(ev){if(!overlay.hidden&&ev.key==='Escape')fermer();});
+    launch.onclick=ouvrir;
+  }
+  function ouvrir(){previousFocus=document.activeElement;Q('limpid-v614-overlay').hidden=false;document.body.style.setProperty('--limpid-v614-scroll',document.body.style.overflow||'');document.body.style.overflow='hidden';Q('limpid-v614-search').focus();charger();}
+  function fermer(){Q('limpid-v614-overlay').hidden=true;document.body.style.overflow=document.body.style.getPropertyValue('--limpid-v614-scroll')||'';if(previousFocus&&previousFocus.focus)previousFocus.focus();}
+  function render(){
+    var q=Q('limpid-v614-search').value.trim().toUpperCase(),type=Q('limpid-v614-type').value,srv=Q('limpid-v614-service').value;
+    var list=Q('limpid-v614-list');list.replaceChildren();
+    var filtered=data.filter(function(d){return (!q||String(d.reference).toUpperCase().includes(q))&&(!type||d.type===type)&&(!srv||d.parcours===srv);});
+    filtered.forEach(function(d){var card=E('article','limpid-v614-card');
+      var left=E('div');left.appendChild(E('div','limpid-v614-ref',d.reference));left.appendChild(E('div','limpid-v614-meta',service[d.parcours]||'Parcours inconnu'+(d.photosAEnvoyer?' · Photos à transmettre':'')));
+      if(d.photosAEnvoyer)left.lastChild.textContent=(service[d.parcours]||'Autre')+' · Photos à transmettre';
+      card.appendChild(left);card.appendChild(E('span','limpid-v614-pill',d.type==='rappel'?'Rappel téléphonique':'Demande de devis'));
+      card.appendChild(E('span','limpid-v614-state',d.etat));var action=E('button','limpid-v614-go',d.type==='rappel'?'Traiter le rappel':'Reprendre dans le devis');action.type='button';action.disabled=true;action.title='Disponible après validation du raccordement CRM LAB';card.appendChild(action);list.appendChild(card);
+    });
+    if(!filtered.length)list.appendChild(E('p','limpid-v614-meta','Aucune demande ne correspond aux filtres.'));
+    Q('limpid-v614-count-0').textContent=String(data.length);
+    Q('limpid-v614-count-1').textContent=String(data.filter(function(d){return d.type==='devis';}).length);
+    Q('limpid-v614-count-2').textContent=String(data.filter(function(d){return d.type==='rappel';}).length);
+    if(loaded)msg(filtered.length+' résultat(s) sur '+data.length+(isDemo?' · Démonstration fictive hors Google':' · Google Sheets LAB vérifié'));
+  }
+  function accepter(r,demoMode){
+    fetching=false;Q('limpid-v614-refresh').disabled=false;
+    if(!r||r.ok!==true||!Array.isArray(r.dossiers)||r.ackAutorise!==false){data=[];loaded=false;render();msg('Réponse LAB non conforme. Aucune donnée affichée.');return;}
+    if(r.dossiers.some(function(d){return !d||typeof d.reference!=='string'||!/FICTIF/.test(d.reference)||!['devis','rappel'].includes(d.type)||!['menage','vitres','b2b','general'].includes(d.parcours)||d.etat!=='A_QUALIFIER_TEST';})){
+      data=[];loaded=false;render();msg('Réponse contenant une donnée non fictive ou inattendue. Affichage bloqué.');return;
+    }
+    data=r.dossiers.slice(0,50);loaded=true;isDemo=demoMode;render();
+  }
+  function charger(){
+    if(fetching)return;fetching=true;Q('limpid-v614-refresh').disabled=true;msg('Lecture de la boîte de réception LAB…');
+    if(window.google&&google.script&&google.script.run){
+      google.script.run.withSuccessHandler(function(res){accepter(res,false);}).withFailureHandler(function(){fetching=false;Q('limpid-v614-refresh').disabled=false;data=[];loaded=false;render();msg('Connexion Apps Script LAB indisponible. Aucune donnée affichée.');}).limpidInboxCopie_listerTEST(50);
+    }else{accepter({ok:true,dossiers:demo,ackAutorise:false},true);}
+  }
+  window.LimpidInboxUILAB={ouvrir:ouvrir,fermer:fermer,rafraichir:charger};
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ready);else ready();
+})();
+</script>

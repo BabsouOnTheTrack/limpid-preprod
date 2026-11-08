@@ -34,6 +34,8 @@ jobs:
         run: node --test .github/tests/crm-ack-safety.test.mjs
       - name: Validate copied Apps Script LAB-only inbox in-memory (no remote writes)
         run: node --test .github/tests/crm-copy-inbox.test.cjs
+      - name: Validate read-only Inbox panel V614 contract
+        run: node --test .github/tests/crm-copy-inbox-ui.test.mjs
       - name: Verify recap presentation only and brand readability
         run: node --test .github/tests/signature-recap-presentation.test.cjs
 
