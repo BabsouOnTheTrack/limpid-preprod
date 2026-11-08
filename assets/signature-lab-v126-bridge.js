@@ -2,7 +2,7 @@
    Public Turnstile site key. Token strictly verified server-side in the V1.24 Worker.
    Never accept real contact information or attachments in this isolated test. */
 (function(){'use strict';
-  var HOST='limpid-preprod.cabochondreams.workers.dev';
+  var HOST='limpid-signature-v126-lab-integration-limpid-preprod.cabochondreams.workers.dev';
   var API='https://limpid-intake-staging.cabochondreams.workers.dev/api/demandes';
   var SITEKEY='0x4AAAAAAF4rxBmF28G_sv1f';
   var SERVICES={menage:true,vitres:true,b2b:true,general:true};
