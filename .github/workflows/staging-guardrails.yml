@@ -28,6 +28,8 @@ jobs:
         run: python3 .github/tests/staging-d1-sql-contract.py
       - name: Test non-deployed production-intake prototype (in-memory only)
         run: node --test .github/tests/prod-receiver-draft.test.mjs
+      - name: Verify read-only CRM intake mapping with fictitious dossiers
+        run: node --test .github/tests/crm-contract-dryrun.test.mjs
 
   live-preview-readonly:
     # Cloudflare preview deploys independently of GitHub Actions: retry until the branch URL reflects this revision.
