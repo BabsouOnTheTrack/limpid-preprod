@@ -74,3 +74,22 @@ Dans le futur connecteur, **import en mémoire/affichage ne vaut jamais persista
 `.github/crm-contract/ack-safety.mjs` est une **fonction pure sans API réseau ni écriture**. Elle ne propose un futur corps `{ref,sha256}` qu'avec deux preuves **fictives concordantes** : journal d'écriture en COPIE puis relecture de la même ligne et du même SHA-256. Même dans ce cas, son résultat garde systématiquement `autorisationEnvoi:false` et `acquittementReel:false`.
 
 Le connecteur CRM réel n'étant pas identifié, ce contrôle ne saurait prouver la persistance dans le CRM V6.7.18 actif. Les tests vérifient surtout l'échec fermé : absence de relecture, référence ou empreinte contradictoire, dossier seulement affiché, écriture non confirmée, mauvais environnement, ou mauvais identifiant de ligne. **Aucune ACK réelle possible depuis ce module.**
+
+  
+## Point déterminant : un import visible n'est PAS une écriture CRM partagée (archive V6.7.16)
+
+L'analyse du fichier historique `Devis.html` (archive `LIMPID_CRM_V6716_CODES_COMPLETS_RECETTE.zip`) montre que `Coffre` utilise **`localStorage` dans le navigateur**, avec repli en mémoire lorsqu'il est indisponible (autour de la ligne 2264).
+
+- `importerDemande()` (3612–3629) écrit le registre `limpid_demandes_importees` dans ce `Coffre` ; **ce n'est pas une preuve de stockage dans Google Sheets**.
+- `demandeImportee` et le calculateur sont initialisés localement, puis les prestations sont affichées pour chiffrage. Un devis peut rester non chiffré ou non enregistré.
+- `importerServeur()` (3654–3659) tente un `PATCH` de la demande côté serveur sans contrôler le retour de l'écriture partagée. Ne pas adapter ce `PATCH` à l'ACK de la future outbox.
+- Dans `Code.gs` historique, `sauvegarderDevisCRMV54(o)` (502–525) vérifie **l'existence d'un prospect/appel dans `CRM_State`** avant d'écrire dans `Devis_CRM`. Une nouvelle demande du site ne peut donc pas être supposée directement enregistrable comme devis partagé, sans étape de qualification ou création de fiche.
+- Le tableau `Devis_CRM` contient un devis par prospect dans le modèle ancien ; créer artificiellement un prospect/site sans consentement ni stratégie de dédoublonnage introduirait des incohérences.
+
+**Architecture de référence à qualifier avant automatisation :** dossier Site → D1 dans la file `nouveau` → **boîte de réception CRM distincte, sur COPIE** → qualification (appel ou devis) → création/liaison contrôlée à la fiche CRM → persistance vérifiée par relecture → ACK idempotente. Pour les rappels, aucun devis ne doit être créé automatiquement. La proposition demeure une architecture, pas une fonction existante démontrée.
+
+**Périmètre de preuve :** archive historique V6.7.16, *pas* le projet Apps Script V6.7.18 actif ; consulter le code actif avant de décider du schéma réel. Aucun fichier CRM ni tableur réel n'a été modifié.
+
+### Résultats du jalon
+
+Sur branche isolée GitHub, le récepteur V0.2 a été durci pour refuser les devis dont les prestations n'ont pas `saisie.type`, exigé par le calculateur historique `demandesDe(d)`. Tests additionnels : import multi-prestations V2 avec `saisie.type` fidèle au code original. Simulation de l'ACK : exige deux preuves **fictives** concordantes et garde `autorisationEnvoi:false` dans tous les cas. Tous les tests passent. État **NO-GO prod** inchangé.

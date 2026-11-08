@@ -68,3 +68,12 @@
 4. Continuer à partir du code GitHub source du dernier HEAD figé dans `SOURCES/` ; ancien ZIP V1.26 et archive LAB V1.8 inclus en complément d'historique.
 5. Toujours créer une nouvelle sauvegarde de continuité avant chaque grosse opération ou transfert ; ne pas supposer que des liens sandbox d'une ancienne conversation resteront utilisables.
 6. Si archives ou données manquent, le signaler. Ne pas déduire de secrets ou de code non observé.
+
+  
+## AVENANT 08/11 — Audit approfondi du CRM historique et verrou anti-ACK
+
+Après la sauvegarde initiale V1.27, le fichier ancien `Devis.html` (CRM V6.7.16) a été inspecté en lecture seule. Découverte : le registre `limpid_demandes_importees` repose sur le `localStorage` du navigateur (pas sur Google Sheets), et l'ancien `PATCH` peut être envoyé avant toute preuve de persistance partagée. `Code.gs` refuse aussi l'enregistrement d'un devis partagé `Devis_CRM` si la fiche prospect/appel n'existe pas dans `CRM_State`. L'intégration automatisée devra donc passer par une **inbox CRM indépendante et contrôlée** plutôt que par le simple écran d'import historique.
+
+Durcissement du prototype non déployé : obligation d'un `saisie.type` reconnu dans chaque prestation de devis `LIMPID1` ; validation des devis multi-prestations. Ajout d'un simulateur purement local `.github/crm-contract/ack-safety.mjs` qui garde toujours `autorisationEnvoi:false`, même après simulation de relecture. Aucune écriture ni ACK réelle. La branche GitHub contient les modifications ; le paquet ZIP intégral daté plus tôt dans la journée reste un **point de restauration antérieur** à cet avenant. La prochaine sauvegarde ZIP devra prendre le nouvel HEAD et conserver ce paquet antérieur.
+
+Prochain blocage matériel : obtenir **le code réel actuellement déployé** du projet Apps Script `LIMPID - CRM V6`, en lecture seule / sur copie, pour certifier les fonctions et le rattachement à `CRM_State`. Ne pas installer le prototype dans le CRM réel.
