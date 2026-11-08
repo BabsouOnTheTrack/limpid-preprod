@@ -1,14 +1,11 @@
 import test, {after} from 'node:test';
 import assert from 'node:assert/strict';
-import crypto from 'node:crypto';
 import worker,{decode,active,hash} from '../prod-readiness/worker-proposal.mjs';
 
 const ORIGIN='https://limpid-nettoyage.fr';
 const TEST_SECRET='turnstile-secret-example-only-aaaaaaaaaaaaaaa';
 const CRM_SECRET='crm-secret-example-only-bbbbbbbbbbbbbbbbb';
 const oldFetch=globalThis.fetch;
-const oldCrypto=globalThis.crypto;
-globalThis.crypto=crypto.webcrypto;
 globalThis.fetch=async (url,opts)=>{
  assert.equal(url,'https://challenges.cloudflare.com/turnstile/v0/siteverify');
  const token=opts.body.get('response');
@@ -18,7 +15,7 @@ globalThis.fetch=async (url,opts)=>{
    action:token==='valid-wrong-action'?'other':'limpid_devis'
  }),{status:200,headers:{'Content-Type':'application/json'}});
 };
-after(()=>{globalThis.fetch=oldFetch;globalThis.crypto=oldCrypto;});
+after(()=>{globalThis.fetch=oldFetch;});
 
 function db(){
  const rows=new Map();
