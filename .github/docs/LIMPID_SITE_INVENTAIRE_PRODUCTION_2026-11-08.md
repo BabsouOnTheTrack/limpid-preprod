@@ -23,6 +23,19 @@
 
 **Ne pas interpréter la métrique « Traffic % » d'une capture comme un comptage de visites.** L'âge affiché est relatif à l'heure de la capture, pas une preuve de chronologie exacte.
 
+## Preuve supplémentaire — build Cloudflare actif (captures du 08/11/2026)
+
+- Page de build Cloudflare : **Build #6497772e** (identifiant affiché).
+- Référentiel affiché : `BabsouOnTheTrack/limpid-site` ; branche **`main`** ; commit abrégé **`e8b8f51`**, description « Add files via upload ».
+- Journal final : `Current Version ID: aba7a3ae-a271-40a7-b005-b62d215b6fc3`, puis `Success! Deploy command completed` et `Success! Build completed`.
+- Utilitaire : **Wrangler 4.156.0** ; configuration générée à la compilation (`wrangler.jsonc`), `name: limpid-site`, `compatibility_date: 2026-10-23`, `assets.directory: "."`, observabilité activée dans ce fichier généré.
+- La compilation crée aussi `.gitignore` et `.assetsignore` dans son environnement temporaire. Ce n'est **pas** une preuve de commit de ces fichiers dans le dépôt Git.
+- Journal assets : **187 fichiers parcourus**, puis **4 nouveaux/modifiés téléversés**, précisément `/configurer-devis-locaux-professionnels/index.html`, `/devis/index.html`, `/configurer-devis-vitres/index.html`, `/configurer-devis-menage/index.html`. Il mentionne également **106 assets déjà présents** sur Cloudflare. Ne pas assimiler ce nombre au total de fichiers Git.
+- Durées visibles : opération de déploiement de `limpid-site` terminée avec succès ; ce journal correspond à la version déjà active lors du contrôle, **pas à un déploiement nouveau réalisé pendant cet audit**.
+- Les valeurs de secrets, jetons ou API token ne sont **pas** reproduites.
+
+**Règle de sauvegarde :** la correspondance GitHub SHA / build / UUID est désormais documentée. Il manque encore une archive autonome du commit fixé, des empreintes vérifiées des fichiers servis, et une sauvegarde des réglages externes utiles à la restauration.
+
 ## Point de restauration de la source Git
 - Dépôt : [`limpid-site`](https://github.com/BabsouOnTheTrack/limpid-site)
 - `main` observé au commit **`e8b8f513a37753a371da022d781b44f06d97bec9`**, message `Add files via upload`, horodaté **2026-11-01 09:00:10 UTC**.
@@ -32,7 +45,7 @@
 - `assets/mesure.js` et `assets/campagne.js` présents. Aucun bridge V1.26 STAGING dans le dépôt principal.
 - Aucun `wrangler.jsonc` / `wrangler.toml` ni `.assetsignore` repéré dans l'arbre de ce commit.
 
-**Nuance essentielle :** le commit `main` constitue un point de retour arrière **de la source Git**, et la version Cloudflare active est désormais identifiée par son **UUID complet** `aba7a3ae-a271-40a7-b005-b62d215b6fc3`. Ils paraissent cohérents (libellé, période), mais **aucun hash des fichiers réellement servis par la version active n'a été comparé** ; l'identité exacte source Git ↔ version déployée n'est pas certifiée. Une sauvegarde de code GitHub ne suffit pas à restaurer à elle seule tous les paramètres de domaine, DNS ou données de services.
+**Traçabilité confirmée par le journal Cloudflare :** le build de la version active est lié au commit GitHub `e8b8f51`, qui correspond au début du SHA complet `e8b8f513a37753a371da022d781b44f06d97bec9`. Le build affiche la version Cloudflare complète `aba7a3ae-a271-40a7-b005-b62d215b6fc3`. **La provenance Git du déploiement est établie**, mais l'équivalence binaire entre les sources Git et tous les fichiers effectivement servis n'a pas été vérifiée par des empreintes indépendantes. Une sauvegarde GitHub ne restaure pas automatiquement paramètres de domaine, DNS ou données externes.
 
 **Alerte configuration GitHub :** la branche `main` est reportée comme **non protégée** par l'API de branches GitHub. Vérifier les règles `Rulesets` indépendantes avant d'en déduire le niveau réel de protection. Les builds Cloudflare sont actifs ; éviter toute mutation dans `limpid-site` pendant cette phase.
 
