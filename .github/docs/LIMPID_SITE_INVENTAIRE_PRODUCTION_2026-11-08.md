@@ -62,6 +62,12 @@ limpid-nettoyage.fr
 
 **Le prototype de réception ne doit PAS être déployé sur `limpid-site`**, même si le schéma LIMPID1 est identique. En effet `limpid-site` est actuellement un Worker statique et ne peut recevoir les bindings D1 et secrets requis sans changement d'architecture.
 
+## Sauvegarde du dépôt de production — confirmation du propriétaire
+
+Le **08/11/2026**, le propriétaire a confirmé : **« SAUVEGARDE OK »**, après les instructions d'archivage ZIP du dépôt `BabsouOnTheTrack/limpid-site` au commit fixé `e8b8f513a37753a371da022d781b44f06d97bec9`.
+
+**Statut : archive source déclarée conservée par le propriétaire.** L'assistant n'a ni reçu ni ouvert cette archive ZIP et **n'a donc pas vérifié** ses empreintes, sa complétude ni le lieu de stockage. Il reste à réaliser un test de réouverture/restauration hors production et à conserver séparément la configuration Cloudflare et les données des services externes. **La sauvegarde du Worker actif et de toute l'infrastructure ne doit pas encore être qualifiée de complète.**
+
 ## Séquence de sauvegarde obligatoire avant tout changement
 1. Dans Cloudflare **Deployments**, ouvrir le déploiement actif **`aba7a3ae-a271-40a7-b005-b62d215b6fc3`** et relever date UTC, configuration Git associée, fichiers et choix de rollback disponibles. L'ID complet est désormais acquis ; **ne pas cliquer sur « rollback »**.
 2. Conserver une archive ZIP autonome de `limpid-site` **au SHA `e8b8f513a37753a371da022d781b44f06d97bec9`**, indépendamment de la branche mutable `main` (GitHub → commit SHA → archive de code). Contrôler le nombre et les hashes des fichiers critiques : `index.html`, quatre configurateurs, `_redirects`, `robots.txt`, `sitemap.xml`, scripts analytics.
