@@ -39,6 +39,10 @@ async function check(){
  assert.equal(new URL(to,BASE).pathname,'/references/');
  const config=await get('/wrangler.jsonc');
  assert.notEqual(config.status,200,'configuration must not be public asset');
+ const prototype=await get('/.github/prod-readiness/worker-proposal.mjs');
+ assert.notEqual(prototype.status,200,'production intake prototype must not be public asset');
+ const privateTests=await get('/.github/tests/prod-receiver-draft.test.mjs');
+ assert.notEqual(privateTests.status,200,'private CI test must not be served');
  console.log('PREVIEW READ-ONLY SMOKE OK: four HTML routes, lab bridge, legacy 301, config hidden');
 }
 (async()=>{

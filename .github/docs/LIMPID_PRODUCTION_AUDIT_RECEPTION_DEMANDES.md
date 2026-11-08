@@ -43,3 +43,21 @@ Ces points sont des **constats de code**, pas la preuve de réception d'un e-mai
 - Durées de conservation et traitement des données personnelles (à définir).
 
 **Statut : NO-GO pour remplacer Web3Forms ou modifier `limpid-site`.** Le prototype `.github/prod-readiness/worker-proposal.mjs` reste désactivé et non déployé ; ses validations actuelles ne couvrent pas toutes les exigences métier.
+
+## Mise à jour V0.2 — Prototype corrigé, **sans migration réelle** (08/11/2026)
+
+Les trois incompatibilités de la **V0.1** consignées ci-dessus ont été prises en charge **dans le brouillon du récepteur**, pas sur le site actif :
+
+| Cas réel à préserver | État de la V0.2 |
+|---|---|
+| Devis général : téléphone vide | Accepté et testé en mémoire ; e-mail reste requis |
+| Rappel spécialisé : sans e-mail ni liste de prestations | Accepté pour ménage, vitres, B2B ; numéro de téléphone et créneau contrôlés |
+| Photos annoncées pour envoi ultérieur | `client.photos=true` accepté comme *métadonnée*, sans transfert de photo ; fichiers, images base64 et URL rejetés |
+| Rejeu identique, collision SHA, ACK | Tests de stockage et d'ACK simulés réussis |
+| CRM réel, Turnstile réel, notifications | Non connectés et non testés |
+
+La V0.2 enrichit l'outbox de `type: devis|rappel` et `photosAEnvoyer: boolean` tout en conservant `codeImport` et `photos:false` (ce dernier signifie uniquement qu'aucune pièce jointe n'est téléversée).
+
+**Points toujours bloquants :** validation du récepteur avec de vrais jetons dans un environnement de qualification isolé ; compatibilité exacte du CRM réel pour les rappels ; récupération sécurisée et suppression réglementaire ; contrôle de la livraison des notifications ; stratégie d'abandon de Web3Forms sans double envoi ; et accord spécifique avant toute action sur `limpid-site`.
+
+**Version actuellement exploitée par le public :** toujours le circuit Web3Forms du commit de `limpid-site` `e8b8f513a37753a371da022d781b44f06d97bec9`, inchangé pendant la préparation.

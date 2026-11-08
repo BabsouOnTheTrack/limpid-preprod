@@ -56,3 +56,14 @@ Le nom d'un dépôt GitHub ne garantit pas l'identité d'un Worker. Vérifier le
 
 ## Règle finale
 **Statut : NO-GO PRODUCTION jusqu'à validation des bloqueurs, des sauvegardes et autorisation explicite du propriétaire.**
+
+## Jalon V0.2 — contrat métier du récepteur (08/11/2026)
+
+Prototype dans `.github/prod-readiness/worker-proposal.mjs` uniquement. Tests unitaires en mémoire : devis général avec téléphone vide, rappel sans e-mail et sans prestation pour les trois services spécialisés, photo annoncée sans téléversement, rejet des pièces jointes, contrôle de duplication et ACK. Ces tests **ne créent pas** de Worker, D1 ni secret de production et ne touchent pas Web3Forms.
+
+À vérifier impérativement avant la bascule :
+- L'import CRM doit distinguer `type=rappel` de `type=devis`, sans exiger une prestation ou un e-mail pour le rappel.
+- Le signal `photosAEnvoyer=true` doit préserver l'intention du client, sans prétendre qu'une photo est jointe.
+- Les notifications du gérant doivent être testées sur chaque parcours et dédoublonnées ; aucune ACK ne doit intervenir avant la persistance vérifiée.
+- La configuration de prod doit rester séparée de STAGING : pas de copie du Worker STAGING ni de ses secrets.
+- Le récepteur V0.2 **n'est pas encore déployable** : la politique RGPD, le WAF/Rate Limit, les flux CRM, les images différées et les tests en environnement isolé restent ouverts.
