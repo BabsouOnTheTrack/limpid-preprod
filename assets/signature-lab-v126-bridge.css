@@ -1,0 +1,10 @@
+/* LIMPID SIGNATURE — V1.26 STAGING Turnstile modal. No effect on site layout. */
+.sig-lab-v126-mask{position:fixed;inset:0;z-index:2147483600;background:rgba(11,37,69,.7);display:grid;place-items:center;padding:18px;box-sizing:border-box}
+.sig-lab-v126-dialog{width:min(100%,430px);max-height:min(90vh,710px);overflow:auto;padding:26px;border-radius:19px;background:#fff;color:#0B2545;box-shadow:0 24px 72px rgba(0,0,0,.26);font-family:inherit;text-align:left}
+.sig-lab-v126-eyebrow{font-weight:800;letter-spacing:.11em;font-size:.72rem;color:#1A56DB;margin-bottom:8px}
+.sig-lab-v126-dialog h2{color:#0B2545;font-size:1.28rem;line-height:1.3;margin:0 0 9px}
+.sig-lab-v126-dialog p{color:#394f65;font-size:.92rem;line-height:1.55;margin:0 0 16px}
+.sig-lab-v126-turnstile{min-height:70px;overflow:visible;margin:7px 0 18px}
+.sig-lab-v126-cancel{cursor:pointer;border:1px solid #ccdbea;background:#eef6fb;color:#0B2545;border-radius:9px;padding:10px 16px;font:inherit;font-weight:700;min-height:44px}
+.sig-lab-v126-cancel:hover{border-color:#1A56DB;background:#e2f1ff}
+@media(max-width:380px){.sig-lab-v126-dialog{padding:17px}.sig-lab-v126-turnstile{transform:scale(.93);transform-origin:left top}}

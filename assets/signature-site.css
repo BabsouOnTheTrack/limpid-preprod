@@ -1214,3 +1214,49 @@ body.signature-site footer .sig-footer-dot{
   body.signature-site footer .sig-footer-line{gap:9px!important}
   body.signature-site footer .sig-footer-dot{margin-left:-7px!important}
 }
+
+
+/* SIGNATURE V1.27 — descriptif de marque lisible, navigation principale intacte. */
+@media(min-width:1600px){
+ body.signature-site .site-header .brand small.limpid-brand-descriptor{
+  display:flex!important;flex-direction:column;gap:3px!important;
+  font-size:12px!important;line-height:1.4!important;
+  font-weight:800!important;letter-spacing:.01em!important;
+  max-width:305px!important;min-width:0;
+  padding-left:12px!important;white-space:normal!important;
+ }
+ body.signature-site .site-header .brand small.limpid-brand-descriptor span{display:block}
+}
+@media(min-width:1450px) and (max-width:1599px){
+ body.signature-site .site-header .brand small.limpid-brand-descriptor{
+  display:flex!important;flex-direction:column;gap:3px!important;
+  font-size:11px!important;line-height:1.4!important;
+  font-weight:800!important;letter-spacing:0!important;
+  max-width:254px!important;min-width:0;
+  padding-left:10px!important;white-space:normal!important;
+ }
+ body.signature-site .site-header .brand img{width:102px!important}
+ body.signature-site .site-header .brand small.limpid-brand-descriptor span{display:block}
+}
+@media(min-width:1250px) and (max-width:1449px){
+ body.signature-site .site-header .brand small.limpid-brand-descriptor{
+  display:flex!important;flex-direction:column;gap:2px!important;
+  font-size:11px!important;line-height:1.35!important;
+  max-width:215px!important;min-width:0;
+  padding-left:9px!important;white-space:normal!important;
+  letter-spacing:0!important;
+ }
+ body.signature-site .site-header .brand img{width:99px!important}
+ body.signature-site .site-header .brand small.limpid-brand-descriptor span{display:block}
+}
+@media(min-width:801px) and (max-width:1249px){
+ body.signature-site .site-header .brand small.limpid-brand-descriptor{
+  display:flex!important;flex-direction:column;gap:2px!important;
+  font-size:11px!important;line-height:1.4!important;
+  max-width:262px!important;min-width:0;padding-left:10px!important;
+  white-space:normal!important;letter-spacing:0!important;
+ }
+}
+@media(min-width:561px) and (max-width:800px){
+ body.signature-site .site-header .brand small.limpid-brand-descriptor{display:none!important}
+}

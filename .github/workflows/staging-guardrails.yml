@@ -1,0 +1,105 @@
+name: Limpid Staging Guardrails
+on:
+  push:
+    branches: [limpid-signature-v126-lab-integration]
+  pull_request:
+    paths:
+      - "assets/**"
+      - "devis/**"
+      - "configurer-devis-*/**"
+      - "wrangler.jsonc"
+      - ".assetsignore"
+      - "_redirects"
+      - ".github/tests/**"
+      - ".github/workflows/staging-guardrails.yml"
+permissions:
+  contents: read
+jobs:
+  static-and-isolation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Verify staging analytics isolation and 4 intake contracts
+        run: node --test .github/tests/staging-guardrails.test.cjs
+      - name: Verify staging D1 SQL idempotence offline (no HTTP)
+        run: python3 .github/tests/staging-d1-sql-contract.py
+      - name: Test non-deployed production-intake prototype (in-memory only)
+        run: node --test .github/tests/prod-receiver-draft.test.mjs
+      - name: Verify read-only CRM intake mapping with fictitious dossiers
+        run: node --test .github/tests/crm-contract-dryrun.test.mjs
+      - name: Verify CRM ack gating on isolated synthetic proofs
+        run: node --test .github/tests/crm-ack-safety.test.mjs
+      - name: Validate copied Apps Script LAB-only inbox in-memory (no remote writes)
+        run: node --test .github/tests/crm-copy-inbox.test.cjs
+      - name: Validate read-only Inbox panel V614 contract
+        run: node --test .github/tests/crm-copy-inbox-ui.test.mjs
+      - name: Verify recap presentation only and brand readability
+        run: node --test .github/tests/signature-recap-presentation.test.cjs
+
+  live-preview-readonly:
+    # Cloudflare preview deploys independently of GitHub Actions: retry until the branch URL reflects this revision.
+    if: github.event_name == 'push'
+    needs: static-and-isolation
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Check public staging Preview with GET only (no submissions)
+        run: node .github/tests/staging-preview-smoke.cjs
+
+  mobile-preview-readonly:
+    if: github.event_name == 'push'
+    needs: live-preview-readonly
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Use preinstalled Chrome with Playwright Core
+        run: npm install --no-save --no-package-lock playwright-core@1.58.2
+      - name: Read-only mobile browser inspection on four Preview routes
+        run: node .github/tests/staging-mobile-smoke.cjs && node .github/tests/staging-mobile-finish.cjs && node .github/tests/staging-header-smoke.cjs && node .github/tests/staging-filled-recap-smoke.cjs
+      - name: Upload four mobile previews and audit summary
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: limpid-signature-v126-mobile-audit
+          path: mobile-preview-artifacts/
+          if-no-files-found: warn
+          retention-days: 7
+
+  continuity-source-snapshot:
+    # Single on-push archive on the isolated PR branch; never checks out production.
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Archive exact tracked GitHub tree and SHA
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p limpid-continuity-source
+          git archive --format=zip --output=limpid-continuity-source/LIMPID_SIGNATURE_V127_GITHUB_SOURCE_FIGEE.zip HEAD
+          printf 'repository=BabsouOnTheTrack/limpid-preprod\nbranch=limpid-signature-v126-lab-integration\nsha=%s\n' "$GITHUB_SHA" > limpid-continuity-source/REVISION_GIT.txt
+          sha256sum limpid-continuity-source/LIMPID_SIGNATURE_V127_GITHUB_SOURCE_FIGEE.zip > limpid-continuity-source/SOURCE_SHA256.txt
+          test -s limpid-continuity-source/LIMPID_SIGNATURE_V127_GITHUB_SOURCE_FIGEE.zip
+      - name: Publish private source archive for the owner
+        uses: actions/upload-artifact@v4
+        with:
+          name: LIMPID_V127_GITHUB_SOURCE_REPRISE
+          path: limpid-continuity-source/
+          if-no-files-found: error
+          retention-days: 30

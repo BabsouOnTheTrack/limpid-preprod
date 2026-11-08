@@ -13,6 +13,15 @@
 (function () {
   "use strict";
 
+  /* Preview LIMPID : ni GA4, ni conversions, ni file d'événements.
+     Restriction par NOM DE WORKER : ne touche jamais au Worker public limpid-site. */
+  if (/(?:^|-)limpid-preprod\.cabochondreams\.workers\.dev$/i.test(String(window.location.hostname || ""))) {
+    window.limpidEvenement = function () {};
+    window.limpidRejouer = function () {};
+    window.limpidConversion = function () { return false; };
+    return;
+  }
+
   var CLE = "limpid_campagne";
   var CLICS = ["gclid", "gbraid", "wbraid", "msclkid", "fbclid"];
   var UTM = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
