@@ -51,7 +51,11 @@ if(!chrome)throw Error('No preinstalled Chrome/Chromium found');
        const html=await resp.text();
        const anchor='if (E.etape === 8) E.etape = 2;';
        assert.equal(html.split(anchor).length-1,1,'General page restart guard differs');
-       const patched=html.replace(anchor,'if (E.etape === 8 && !window.__LIMPID_CI_ONLY_FINAL_RESTORE__) E.etape = 2;');
+       const second='aller(present?E.etape:2,E.serviceIndex||0);';
+       assert.equal(html.split(second).length-1,1,'General page restore guard differs');
+       const patched=html
+          .replace(anchor,'if (E.etape === 8 && !window.__LIMPID_CI_ONLY_FINAL_RESTORE__) E.etape = 2;')
+          .replace(second,'aller(window.__LIMPID_CI_ONLY_FINAL_RESTORE__ && E.etape === 8 ? 8 : (present?E.etape:2),E.serviceIndex||0);');
        edits++;
        return route.fulfill({response:resp,body:patched});
      }
