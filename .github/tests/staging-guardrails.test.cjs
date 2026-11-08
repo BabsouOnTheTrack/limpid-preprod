@@ -42,7 +42,7 @@ test('Preview branch : aucune initialisation GA ni mesure',()=>{
   run(c.ctx,'assets/mesure.js');
   run(c.ctx,'assets/campagne.js');
   assert.equal(c.window.gtag,undefined);
-  assert.equal(c.window.limpidCookies,undefined);
+  assert.equal(typeof c.window.limpidCookies,'function');
   assert.equal(c.scripts.length,0);
   assert.equal(c.listeners.DOMContentLoaded,undefined);
   assert.equal(typeof c.window.limpidEvenement,'function');

@@ -11,6 +11,19 @@
   /* Preview LIMPID : ni GA4, ni conversions, ni file d'événements.
      Restriction par NOM DE WORKER : ne touche jamais au Worker public limpid-site. */
   if (/(?:^|-)limpid-preprod\.cabochondreams\.workers\.dev$/i.test(String(window.location.hostname || ""))) {
+    /* Le lien Cookies reste accessible et informatif sur le STAGING, sans installer GA4. */
+    window.limpidCookies = function () {
+      var id = "limpid-cookies-lab-info", old = document.getElementById(id);
+      if (old) { old.remove(); return; }
+      var note = document.createElement("div");
+      note.id = id;
+      note.setAttribute("role", "status");
+      note.style.cssText = "position:fixed;bottom:18px;left:16px;right:16px;max-width:520px;margin:auto;z-index:99999;padding:16px 18px;border:1px solid #CFE3F1;border-radius:14px;background:#fff;color:#0B2545;box-shadow:0 12px 36px rgba(11,37,69,.18);font:14px/1.6 system-ui,sans-serif";
+      note.innerHTML = '<p style="margin:0 0 12px">Préproduction LIMPID : aucun cookie de mesure ni aucune conversion publicitaire ne sont activés ici.</p><button type="button" style="border:0;border-radius:10px;padding:9px 15px;color:#fff;background:#1A56DB;cursor:pointer;font:700 14px system-ui,sans-serif">Fermer</button>';
+      note.querySelector("button").addEventListener("click", function () { note.remove(); });
+      document.body.appendChild(note);
+    };
+    window.limpidConsentement = function () { return "non"; };
     return;
   }
   var ID = "G-SQSB6Y6THZ";
