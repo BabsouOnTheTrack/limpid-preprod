@@ -93,3 +93,22 @@ L'analyse du fichier historique `Devis.html` (archive `LIMPID_CRM_V6716_CODES_CO
 ### Résultats du jalon
 
 Sur branche isolée GitHub, le récepteur V0.2 a été durci pour refuser les devis dont les prestations n'ont pas `saisie.type`, exigé par le calculateur historique `demandesDe(d)`. Tests additionnels : import multi-prestations V2 avec `saisie.type` fidèle au code original. Simulation de l'ACK : exige deux preuves **fictives** concordantes et garde `autorisationEnvoi:false` dans tous les cas. Tous les tests passent. État **NO-GO prod** inchangé.
+  
+
+## Jalon V6.13 — Inbox Site COPIE, créée dans le LAB (08/11/2026)
+
+L'export complet Apps Script **LIMPID CRM V6** fourni par le propriétaire (32 fichiers utiles, `Code.js`, `Devis.html`, `Limpid_V6718_Suivi_Terrain.js`, etc.) a été audité **hors production**. Le ZIP original n'a pas été transféré dans ce dépôt GitHub ; il est conservé séparément dans la bibliothèque privée et son archive de continuité du 08/11.
+
+**Résultat réel :** le tableur LAB Google Sheets `LIMPID — LAB SITE-CRM V1.7 — TESTS`, ID `1z8KLlpO1EQ35c6ZBFrtxcYMIO33tXcFEv715lqSmqBQ`, possède désormais un nouvel onglet **`LAB_Inbox_Site_V1_TEST`** (gid `61130022`). 16 colonnes à en-têtes, lignes de données **VIDES** lors de la vérification. La création a été réalisée uniquement sur le LAB, pas sur le vrai tableur central.
+
+**Code à installer EXCLUSIVEMENT dans un nouveau projet Apps Script vierge**, et NON dans `LIMPID - CRM V6` :
+
+- [`.github/crm-contract/Limpid_V613_Inbox_Site_COPIE.gs`](../crm-contract/Limpid_V613_Inbox_Site_COPIE.gs) : module autonome, double vérification ID script non-production / mode `TEST_ISOLE` / tableur LAB / drapeau écritures test ; seuls codes `LIMPID1` V2 `test:true` avec contacts fictifs sont acceptés. Aucune API HTTP, aucun secret, aucune modification `CRM_State` ou `Devis_CRM`, **aucun ACK**.
+- [`.github/crm-contract/INBOX_COPIE_V613_INSTALLATION.md`](../crm-contract/INBOX_COPIE_V613_INSTALLATION.md) : procédure de nouveau projet vierge, propriétés, diagnostic, import de cinq exemples fictifs et relecture.
+- [`.github/tests/crm-copy-inbox.test.cjs`](../tests/crm-copy-inbox.test.cjs) : **12 tests en mémoire**, dont conditions de refus du script production, doublons et conflits de SHA, relecture, rappel, photos à transmettre plus tard, données de test uniquement.
+- CI totale au commit source `302c9655ea5ad3fe951c26b7836860d5447bc55b` : **58 tests Node réussis**, SQL D1 hors ligne PASS, tests statiques PASS.
+
+**État strict :** seulement un ONGLET LAB réel + code et tests préparés. Aucun nouveau projet Apps Script créé par l'assistant, aucun import distant exécuté, aucun dossier test inséré sur Google et aucune copie du CRM V6 n'a été publiée. Le code du vrai CRM reste inchangé. Le projet d'origine `Code.js` vise directement la base centrale ; il ne doit PAS être cloné tel quel pour un test d'écriture sans neutraliser toutes ses connexions.
+
+Livrable local et bibliothèque : `LIMPID_CRM_INBOX_SITE_V613_COPIE_ISOLEE_2026-11-08.zip` (source, 12 tests, README, instructions et manifeste SHA-256).
+**NO-GO production** conservé.

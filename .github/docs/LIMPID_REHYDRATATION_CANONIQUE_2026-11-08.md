@@ -77,3 +77,12 @@ Après la sauvegarde initiale V1.27, le fichier ancien `Devis.html` (CRM V6.7.16
 Durcissement du prototype non déployé : obligation d'un `saisie.type` reconnu dans chaque prestation de devis `LIMPID1` ; validation des devis multi-prestations. Ajout d'un simulateur purement local `.github/crm-contract/ack-safety.mjs` qui garde toujours `autorisationEnvoi:false`, même après simulation de relecture. Aucune écriture ni ACK réelle. La branche GitHub contient les modifications ; le paquet ZIP intégral daté plus tôt dans la journée reste un **point de restauration antérieur** à cet avenant. La prochaine sauvegarde ZIP devra prendre le nouvel HEAD et conserver ce paquet antérieur.
 
 Prochain blocage matériel : obtenir **le code réel actuellement déployé** du projet Apps Script `LIMPID - CRM V6`, en lecture seule / sur copie, pour certifier les fonctions et le rattachement à `CRM_State`. Ne pas installer le prototype dans le CRM réel.
+
+  
+## AVENANT 08/11 — Première Inbox Site en LAB (V6.13)
+
+L'export complet du vrai Apps Script CRM V6 est maintenant disponible en archive privée `LIMPID_CRM_V6_EXPORT.zip` (32 fichiers utiles) et a été inspecté en lecture seule. La copie de sources et les études restent distinctes du **déploiement Apps Script actif**, non certifié.
+
+**Résultat matériel** : nouvel onglet LAB `LAB_Inbox_Site_V1_TEST` gid `61130022` créé et relu dans le tableur Google Sheets LAB `1z8KLlpO1EQ35c6ZBFrtxcYMIO33tXcFEv715lqSmqBQ`, avec 16 en-têtes, zéro donnée. Un fichier GAS additionnel `.github/crm-contract/Limpid_V613_Inbox_Site_COPIE.gs`, son guide et 12 tests d'émulation ont été enregistrés sur branche préproduction. Le module refuse les vrais ID script/tableur et les dossiers non `test:true`, et ne possède aucune méthode d'ACK. La CI totalise désormais **58/58 tests Node réussis**.
+
+**À faire** : créer un **NOUVEAU Apps Script vierge** distinct, installer uniquement ce fichier et quatre propriétés TEST/ID explicites, puis y lancer cinq faux dossiers avec diagnostic. Ne jamais recopier l'intégralité du vrai projet vers une copie sans auditer les références de stockage du fichier `Code.js`, qui pointent toujours vers le vrai tableur. Le module n'a pas encore été exécuté à distance. Fichier ZIP et manifeste conservés en bibliothèque `/LIMPID_REHYDRATATION/`. **NO-GO PROD**.
