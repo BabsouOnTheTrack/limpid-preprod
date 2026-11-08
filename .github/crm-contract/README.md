@@ -68,3 +68,9 @@ Autres constats du CRM V6.7.16 :
 ### Règle d'intégration
 
 Dans le futur connecteur, **import en mémoire/affichage ne vaut jamais persistance**. Une ACK ne devra être possible qu'après écriture CRM (sur copie d'abord), relecture indépendante de la référence et de l'empreinte, contrôle d'absence de collision, puis journal d'audit. L'UI ancienne n'est pas une API de synchronisation transactionnelle. Aucune modification du vrai Apps Script ne doit être engagée tant que son code V6.7.18 n'est pas lu.
+  
+## Garde anti-acquittement prématuré — simulation de COPIE seulement
+
+`.github/crm-contract/ack-safety.mjs` est une **fonction pure sans API réseau ni écriture**. Elle ne propose un futur corps `{ref,sha256}` qu'avec deux preuves **fictives concordantes** : journal d'écriture en COPIE puis relecture de la même ligne et du même SHA-256. Même dans ce cas, son résultat garde systématiquement `autorisationEnvoi:false` et `acquittementReel:false`.
+
+Le connecteur CRM réel n'étant pas identifié, ce contrôle ne saurait prouver la persistance dans le CRM V6.7.18 actif. Les tests vérifient surtout l'échec fermé : absence de relecture, référence ou empreinte contradictoire, dossier seulement affiché, écriture non confirmée, mauvais environnement, ou mauvais identifiant de ligne. **Aucune ACK réelle possible depuis ce module.**

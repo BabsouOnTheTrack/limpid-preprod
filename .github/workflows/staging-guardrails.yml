@@ -30,6 +30,8 @@ jobs:
         run: node --test .github/tests/prod-receiver-draft.test.mjs
       - name: Verify read-only CRM intake mapping with fictitious dossiers
         run: node --test .github/tests/crm-contract-dryrun.test.mjs
+      - name: Verify CRM ack gating on isolated synthetic proofs
+        run: node --test .github/tests/crm-ack-safety.test.mjs
       - name: Verify recap presentation only and brand readability
         run: node --test .github/tests/signature-recap-presentation.test.cjs
 
