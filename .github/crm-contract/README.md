@@ -50,3 +50,21 @@ Les captures du projet **« LIMPID - CRM V6 »** montrent une arborescence Apps 
 Cette observation confirme l'existence d'un projet Apps Script **côté utilisateur**. Elle ne certifie ni l'ID du projet, ni son déploiement actif, ni son rattachement exact au tableur central V6, ni les fonctions internes (les captures n'affichent pas leur code). Il faudra consulter sur une copie, en lecture seule, les fonctions d'import `LIMPID1` de `Devis.html`, `Code.gs`, `Limpid_V592_IntegrationCRM.gs` et le registre des devis, sans modifier la version de production.
 
 Les fichiers de la branche `limpid-preprod` restent des **adaptateurs candidats**, pas des modules à installer dans Apps Script sans revue.
+
+## Vérification du code historique conservé (08/11/2026)
+
+Archive privée inspectée : `LIMPID_CRM_V6716_CODES_COMPLETS_RECETTE.zip` (CRM **V6.7.16**, état plus ancien que le CRM V6.7.18 actuel, dont le code exécuté n'est **pas** certifié).
+
+Le fichier `Devis.html`, lignes 3607–3610, contient la fonction `demandesDe(d)`. Elle ne retient que les éléments `d.demandes` dont `x.saisie.type` est défini. Pour un dossier de devis V2, le récepteur V0.2 précédent vérifiait seulement `offre` et aurait donc pu enregistrer une demande **impossible à importer dans le calculateur**. Cette faille de contrat a été corrigée **dans le prototype GitHub uniquement** : obligation de `saisie.type` compatible avec les offres réelles (`regulier→menage`, `grand→grand`, `bureaux→bureaux`, `vitres→vitres`, `textile→textile`).
+
+Autres constats du CRM V6.7.16 :
+- `importerDemande()`, lignes 3612–3629 : décode `LIMPID1`, conserve une trace dans `limpid_demandes_importees`, clôture l'état courant du devis, puis distingue rappel et devis. Le simple registre historique **signale** les doublons ; il ne prouve pas qu'un devis est définitivement enregistré.
+- `chargerServeur()`, lignes 3636–3653 : ancien contrat `GET /api/demandes?jours=60` et réponse `{demandes:[...]}`, distinct du prototype V0.2 `GET /admin/outbox` et `{enveloppes:[...]}`.
+- `importerServeur()`, lignes 3654–3659 : l'ancien écran appelle ensuite `PATCH ?ref=...` sans attendre de preuve de persistance du devis, ce qui **risquerait un acquittement prématuré**. **Ne jamais relier tel quel ce chemin au nouvel outbox.**
+- `afficherRappelImporte()`, lignes 3666–3675 : traite le rappel avec téléphone/créneau sans créer de prix.
+- `chargerPrestationImportee()`, lignes 3709–3725 : prend les prestations successives et rappelle les photos à transmettre hors formulaire.
+- Les fonctions de vitrages convertissent les faces physiques (Velux = deux faces) et refusent les calculs ambigus ; elles doivent rester inchangées.
+
+### Règle d'intégration
+
+Dans le futur connecteur, **import en mémoire/affichage ne vaut jamais persistance**. Une ACK ne devra être possible qu'après écriture CRM (sur copie d'abord), relecture indépendante de la référence et de l'empreinte, contrôle d'absence de collision, puis journal d'audit. L'UI ancienne n'est pas une API de synchronisation transactionnelle. Aucune modification du vrai Apps Script ne doit être engagée tant que son code V6.7.18 n'est pas lu.

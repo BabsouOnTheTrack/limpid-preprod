@@ -55,7 +55,7 @@ function env(database=db()){
 function code(overrides={}){
  const d={v:2,type:'devis',test:false,id:'LMP-V-20261108-FAKE001',
    parcours:'vitres',client:{nom:'Personne Exemple',email:'client@example.org',tel:'0600000000',photos:false},
-   demandes:[{offre:'vitres',lib:'Nettoyage des vitres'}],...overrides};
+   demandes:[{offre:'vitres',lib:'Nettoyage des vitres',saisie:{type:'vitres',niveau:1}}],...overrides};
  return 'LIMPID1.'+Buffer.from(JSON.stringify(d),'utf8').toString('base64');
 }
 function post(data,token='valid-token-1',origin=ORIGIN){
@@ -240,7 +240,7 @@ test('Boolean photos-to-send-later is metadata; no binary, image URL, or file up
   {id:'LMP-V-20261108-PHOTO02',client:{nom:'Personne Exemple',email:'client@example.org',tel:'',photos:{name:'x.jpg'}}},
   {id:'LMP-V-20261108-PHOTO03',images:['https://example.com/x.jpg']},
   {id:'LMP-V-20261108-PHOTO04',client:{nom:'Personne Exemple',email:'client@example.org',tel:'',photos:'data:image/jpeg;base64,...'}},
-  {id:'LMP-V-20261108-PHOTO05',demandes:[{offre:'vitres',attachments:[{filename:'x.jpg'}]}]}
+  {id:'LMP-V-20261108-PHOTO05',demandes:[{offre:'vitres',saisie:{type:'vitres'},attachments:[{filename:'x.jpg'}]}]}
  ].entries()){
    const x=code(variant),p={ref:variant.id,service:'vitres',code:x};
    const response=await json(await worker.fetch(post(p,'valid-photo-bad-'+i),e));
@@ -262,4 +262,39 @@ test('V0.2 accepted types and deferred-photo flags survive duplicate ref after A
  assert.equal(replay.statut,'deja_enregistre');
  assert.equal(e.DB.rows.size,1);
  assert.equal((await json(await worker.fetch(admin('/admin/outbox'),e))).enveloppes.length,0);
+});
+
+test('Devis LIMPID1 v2 requires a calculable saisie.type for each offer',async()=>{
+ const e=env();
+ const scenarios=[
+  {offre:'grand',lib:'Grand nettoyage'},
+  {offre:'grand',saisie:{}},
+  {offre:'vitres',saisie:{type:'grand'}},
+  {offre:'service_inconnu',saisie:{type:'service_inconnu'}}
+ ];
+ for(const [idx,item] of scenarios.entries()){
+   const c=code({demandes:[item]});
+   const r=await json(await worker.fetch(post(payload(c),'valid-invalid-'+idx),e));
+   assert.equal(r.status,422,'invalid prestation '+idx);
+   assert.equal(r.error,'PRESTATIONS_NON_IMPORTABLES');
+ }
+ assert.equal(e.DB.rows.size,0);
+});
+
+test('Authentic multi-service structure preserves full LIMPID1 for historical importer',async()=>{
+ const e=env();
+ const ref='LMP-G-20261108-MULTI01';
+ const initial=code({id:ref,parcours:'general',demandes:[
+   {offre:'grand',lib:'Grand nettoyage',saisie:{type:'grand',surface:80},
+     duree:{mode:'auto'},estimation:{minutes:245},qualification:{origine:'site'}},
+   {offre:'vitres',lib:'Vitres',saisie:{type:'vitres',elements:{faces:12}},
+     duree:{mode:'auto'},estimation:{minutes:90}}
+ ]});
+ const result=await json(await worker.fetch(post({ref,service:'general',code:initial},'valid-multi'),e));
+ assert.equal(result.status,201);assert.equal(e.DB.rows.size,1);
+ const outbox=await json(await worker.fetch(admin('/admin/outbox'),e));
+ assert.equal(outbox.enveloppes.length,1);
+ assert.equal(outbox.enveloppes[0].codeImport,initial,'full multiform dossier unchanged');
+ const decoded=decode(outbox.enveloppes[0].codeImport);
+ assert.deepEqual(decoded.demandes.map(x=>x.saisie.type),['grand','vitres']);
 });

@@ -6,7 +6,7 @@ import {normaliserEnveloppe,planifierSansEcriture} from '../crm-contract/adapter
 function fixture(overrides={}){
  const base={v:2,id:'LMP-G-20261108-CRMLAB01',parcours:'general',
    type:'devis',test:false,client:{nom:'CLIENT FICTIF',email:'qa@example.org',tel:'',photos:true,
-   commune:'Darnieulles',message:'TEST'},demandes:[{offre:'grand',lib:'Grand nettoyage'}]};
+   commune:'Darnieulles',message:'TEST'},demandes:[{offre:'grand',lib:'Grand nettoyage',saisie:{type:'grand',surface:45}}]};
  return {...base,...overrides};
 }
 async function envelope(d,more={}){
