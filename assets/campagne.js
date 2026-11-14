@@ -78,12 +78,15 @@
 
   /* ---------- 2. Événements ---------- */
 
-  /* Un visiteur venu d'une annonce peut envoyer le formulaire avant
-     d'avoir répondu au bandeau. L'événement est alors mis de côté et
-     part si la mesure est acceptée ensuite, dans la même session. */
+  /* Les événements facultatifs ne sont PAS conservés avant consentement.
+     Une file peut exister uniquement pour un visiteur ayant déjà accepté,
+     lorsque la balise GA4 n'est pas encore prête. */
   var file = [];
   try {
-    file = JSON.parse(sessionStorage.getItem("limpid_file") || "[]");
+    if (typeof window.limpidConsentement === "function" && window.limpidConsentement() === "oui") {
+      file = JSON.parse(sessionStorage.getItem("limpid_file") || "[]");
+      if (!Array.isArray(file)) file = [];
+    } else { sessionStorage.removeItem("limpid_file"); }
   } catch (e) { file = []; }
   function sauverFile() {
     try { sessionStorage.setItem("limpid_file", JSON.stringify(file.slice(-20))); } catch (e) {}
@@ -99,8 +102,8 @@
      vitres_lead, menage_lead et b2b_lead ne partent jamais, ni tout de suite,
      ni depuis la file d'attente rejouée après consentement. Les événements
      analytiques (config_*, config_test_lead...) restent envoyés partout. */
-  var DOMAINES_OFFICIELS = ["limpid-nettoyage.fr"];
-  var CONVERSIONS_METIER = ["vitres_lead", "menage_lead", "b2b_lead"];
+  var DOMAINES_OFFICIELS = ["limpid-nettoyage.fr", "www.limpid-nettoyage.fr"];
+  var CONVERSIONS_METIER = ["vitres_lead", "menage_lead", "b2b_lead", "configurateur_envoi"];
   function domaineOfficiel() {
     var h = "";
     try { h = String(window.location.hostname || "").toLowerCase(); } catch (e) {}
@@ -117,13 +120,20 @@
   var INTERDITS = CLICS.concat(UTM, ["numero", "telephone", "tel", "email", "nom", "adresse"]);
   function evenement(nom, extra) {
     if (!autorise(nom)) return;
+    /* Aucun événement GA4 ni attente de mesure avant un accord valide. */
+    if (typeof window.limpidConsentement !== "function" || window.limpidConsentement() !== "oui") return;
     var p = {};
     if (extra) for (var k in extra) { if (INTERDITS.indexOf(k) < 0) p[k] = extra[k]; }
     if (!versGA(nom, p)) { file.push([nom, p]); sauverFile(); }
   }
   window.limpidEvenement = evenement;
+  window.limpidViderEvenements = function () {
+    file = [];
+    try { sessionStorage.removeItem("limpid_file"); } catch (e) {}
+  };
 
   window.limpidRejouer = function () {
+    if (typeof window.limpidConsentement !== "function" || window.limpidConsentement() !== "oui") return;
     if (!file.length) return;
     for (var i = 0; i < file.length; i++) { if (autorise(file[i][0])) versGA(file[i][0], file[i][1]); }
     file = []; sauverFile();
@@ -133,14 +143,21 @@
      garantit qu'une conversion n'est comptée qu'après un vrai envoi,
      et une seule fois même si la page est rechargée ou partagée. */
   function marquer(tunnel) {
-    try { sessionStorage.setItem("limpid_envoi", tunnel); } catch (e) {}
+    try { sessionStorage.setItem("limpid_envoi", JSON.stringify({ tunnel: tunnel, date: Date.now() })); } catch (e) {}
   }
   window.limpidConversion = function (nom) {
-    var t;
-    try { t = sessionStorage.getItem("limpid_envoi"); } catch (e) { t = null; }
-    if (!t) return false;
+    var raw, preuve;
+    try { raw = sessionStorage.getItem("limpid_envoi"); } catch (e) { raw = null; }
+    if (!raw) return false;
+    /* Ne jamais laisser un ancien marqueur ou un autre formulaire déclencher une fausse conversion. */
+    try { preuve = JSON.parse(raw); } catch (e) { preuve = null; }
     try { sessionStorage.removeItem("limpid_envoi"); } catch (e) {}
-    evenement(nom, { tunnel: t });
+    if (!preuve || typeof preuve !== "object" || !preuve.tunnel ||
+        !Number.isFinite(preuve.date) || preuve.date > Date.now() + 60000 ||
+        Date.now() - preuve.date > 20 * 60 * 1000) return false;
+    var attendu = { menage_lead: "menage", vitres_lead: "vitres", b2b_lead: "b2b" }[nom];
+    if (!attendu || preuve.tunnel !== attendu) return false;
+    evenement(nom, { tunnel: attendu });
     return true;
   };
 

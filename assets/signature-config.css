@@ -1,8 +1,8 @@
 /* LIMPID SIGNATURE — live engine visual skin, NON-DESTRUCTIVE. All calculation and transmission scripts remain from V4 base. */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
 body.signature-config-live{--signature-ink:#0B2545;--signature-blue:#1A56DB;--signature-cyan:#4CC9F0;background:#F3F8FC!important;color:#0B2545!important;font-family:'DM Sans',system-ui,sans-serif!important;min-width:320px;overflow-x:clip}
-body.signature-config-live .signature-preview-banner{background:#E8F3FB;padding:9px 20px;text-align:center;border-bottom:1px solid #D2E6F1;display:flex;gap:15px;justify-content:center;align-items:center;flex-wrap:wrap;font:600 12px/1.5 'DM Sans',sans-serif;color:#406279}
-body.signature-config-live .signature-preview-banner strong{color:#1354A6;letter-spacing:.075em;font-size:11px}
+
+
 body.signature-config-live header.site{background:#fff!important;color:#0B2545!important;box-shadow:0 4px 20px rgba(11,37,69,.05)!important;border-bottom:1px solid #DCE8F0!important;position:relative;z-index:100}
 body.signature-config-live header.site .nav{max-width:1420px!important;min-height:78px}
 body.signature-config-live header.site .nav .logo img{height:58px!important;width:auto!important;max-width:130px;object-fit:contain}
@@ -31,7 +31,7 @@ body.signature-config-live footer.site :is(h3,p,li){color:#DCEAF3!important}
 body.signature-config-live footer.site a{color:#EAF7FF!important}
 body.signature-config-live :is(.pc-accueil,.zone-form){background-color:#F4F9FC}
 body.signature-config-live .pc-accueil h1{font-family:'Manrope',sans-serif!important}
-@media(max-width:650px){body.signature-config-live .signature-preview-banner{font-size:10px;padding:8px 13px;gap:4px}body.signature-config-live .signature-preview-banner span{font-size:10px}body.signature-config-live :is(#pc-app,#cf) :is(.pc-carte,.cf-carte){min-width:0}}
+@media(max-width:650px){body.signature-config-live :is(#pc-app,#cf) :is(.pc-carte,.cf-carte){min-width:0}}
 
 
 /* SIGNATURE V1.6 — stable selections, accessible color states and compact step controls. */
@@ -614,4 +614,94 @@ body.signature-config-live footer .sig-footer-dot{margin-left:-8px!important}
   }
   body.signature-config-live footer .sig-footer-line{gap:9px!important}
   body.signature-config-live footer .sig-footer-dot{margin-left:-7px!important}
+}
+
+/* SIGNATURE V1.27 — récapitulatif développé, sans changement du moteur métier */
+body.signature-config-live .sig-recap-detail{
+  margin:20px 0 16px;padding:clamp(15px,2.5vw,24px);
+  border:1px solid #C8E0F1;border-radius:18px;background:#F8FBFE;
+  color:#254660;line-height:1.65;overflow-wrap:anywhere;
+}
+body.signature-config-live .sig-recap-detail-title{
+  font:800 clamp(1.13rem,1.6vw,1.36rem)/1.3 "Manrope",sans-serif!important;
+  color:#0B2545!important;margin:0 0 16px!important;letter-spacing:-.025em;
+}
+body.signature-config-live .sig-recap-detail h4{
+  margin:16px 0 7px!important;color:#0B2545!important;
+  font-size:.94rem!important;font-weight:800!important;
+}
+body.signature-config-live .sig-recap-list{padding-left:22px!important;margin:4px 0 12px!important;}
+body.signature-config-live .sig-recap-list li{margin:4px 0;line-height:1.65;font-size:.9rem;color:#335670}
+body.signature-config-live .sig-recap-list strong{color:#153A5A!important}
+body.signature-config-live .sig-recap-note{color:#536E83}
+body.signature-config-live .sig-recap-duration{
+  display:flex;gap:10px 24px;align-items:center;flex-wrap:wrap;
+  background:#EEF6FB;border:1px solid #D5E8F4;border-radius:12px;padding:10px 14px;
+  font-size:.91rem;
+}
+body.signature-config-live .sig-recap-duration strong{color:#0B2545}
+body.signature-config-live .sig-recap-exclusions{
+  margin:18px 0 14px;padding:14px;border:1px solid #D1E5F0;border-radius:13px;background:#EDF6FC;
+}
+body.signature-config-live .sig-recap-exclusions h4{margin:0 0 8px!important}
+body.signature-config-live .sig-recap-tax,
+body.signature-config-live .sig-recap-price{
+  margin:15px 0 0;padding:12px 15px;border-radius:11px;
+  font-size:.89rem;line-height:1.65;
+}
+body.signature-config-live .sig-recap-tax{background:#E7F5ED;color:#245D46}
+body.signature-config-live .sig-recap-price{background:#EDF5FD;color:#254660}
+body.signature-config-live .sig-recap-disclaimer{
+  margin:10px 0 0;color:#55758A;font-size:.78rem;line-height:1.5;
+}
+@media(max-width:600px){
+  body.signature-config-live .sig-recap-detail{padding:15px}
+  body.signature-config-live .sig-recap-list{padding-left:19px!important}
+}
+
+/* Multi-devis: barre de navigation harmonisee avec l'accueil */
+@media(min-width:821px){
+  body.signature-config-live.lx4--general-devis header.site .nav{
+    width:100%;max-width:1420px!important;min-height:86px!important;
+    display:flex;align-items:center;gap:16px;padding:10px 26px
+  }
+  body.signature-config-live.lx4--general-devis header.site .nav > ul#nav-liste{
+    display:flex!important;position:static!important;visibility:visible!important;
+    transform:none!important;opacity:1!important;height:auto!important;
+    width:auto!important;margin-left:auto!important;padding:0!important;
+    flex-wrap:nowrap!important;align-items:center;justify-content:flex-end;gap:8px;
+    box-shadow:none!important;overflow:visible!important
+  }
+  body.signature-config-live.lx4--general-devis header.site #nav-liste > li{
+    display:block;flex:0 0 auto;list-style:none
+  }
+  body.signature-config-live.lx4--general-devis header.site #nav-liste > li > a:not(.cta),
+  body.signature-config-live.lx4--general-devis header.site #nav-liste > li > details.menu > summary{
+    display:inline-flex;align-items:center;justify-content:center;
+    min-height:42px;padding:11px 14px;border:1px solid transparent;
+    border-radius:12px;color:#0B2545!important;background:transparent;
+    font:750 .88rem/1.25 'DM Sans',system-ui,sans-serif!important;
+    white-space:nowrap;text-decoration:none
+  }
+  body.signature-config-live.lx4--general-devis header.site #nav-liste > li > a.sig-config-home{
+    border-color:#D4E5F0!important;background:#F3F9FE!important;color:#254F6D!important
+  }
+  body.signature-config-live.lx4--general-devis header.site #nav-liste > li > a:not(.cta):hover,
+  body.signature-config-live.lx4--general-devis header.site #nav-liste > li > details.menu > summary:hover{
+    background:#EEF6FB!important;color:#1A56DB!important
+  }
+  body.signature-config-live.lx4--general-devis header.site #nav-liste > li > a.cta{
+    display:inline-flex!important;align-items:center;justify-content:center;
+    min-height:48px;padding:12px 21px!important;border-radius:13px!important;
+    color:#fff!important;background:linear-gradient(145deg,#3375F6,#1652D5)!important;
+    border:1px solid #3677EA!important;box-shadow:0 4px 0 #0D358D,0 9px 20px rgba(26,86,219,.14)!important;
+    font:800 .88rem/1.25 'DM Sans',system-ui,sans-serif!important;white-space:nowrap
+  }
+}
+@media(min-width:821px) and (max-width:1090px){
+  body.signature-config-live.lx4--general-devis header.site .nav{gap:8px;padding-inline:14px}
+  body.signature-config-live.lx4--general-devis header.site .nav > ul#nav-liste{gap:1px}
+  body.signature-config-live.lx4--general-devis header.site #nav-liste > li > a:not(.cta),
+  body.signature-config-live.lx4--general-devis header.site #nav-liste > li > details.menu > summary{padding-inline:8px;font-size:.8rem!important}
+  body.signature-config-live.lx4--general-devis header.site #nav-liste > li > a.cta{padding-inline:12px!important;font-size:.8rem!important}
 }

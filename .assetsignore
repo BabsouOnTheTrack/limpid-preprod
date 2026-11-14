@@ -1,0 +1,6 @@
+# Ne pas publier les fichiers de configuration du deploiement comme ressources publiques
+wrangler.jsonc
+.assetsignore
+.git/
+.github/
+node_modules/
