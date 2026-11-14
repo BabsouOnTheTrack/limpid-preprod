@@ -1,0 +1,184 @@
+{
+  "etat": "preselection_non_deployee",
+  "origine": "Pexels",
+  "controle_manuel_requis": [
+    "aucun texte anglais/aucun logo visuel",
+    "adéquation du cadrage en desktop/mobile",
+    "réalité des scènes pour éviter un contenu trompeur",
+    "téléchargement et hébergement local avant production"
+  ],
+  "pages": [
+    {
+      "name": "Bureaux professionnels",
+      "slug": "nettoyage-bureaux-epinal",
+      "hero": 38767972,
+      "lead": 38767972,
+      "detail": 9462157,
+      "why": "Intervenant en tenue dans des locaux professionnels, puis détail de nettoyage des surfaces.",
+      "sources": [
+        [
+          38767972,
+          "https://www.pexels.com/photo/uniformed-worker-sweeping-office-floor-38767972/",
+          "Aji Yasa Darmawan"
+        ],
+        [
+          9462157,
+          "https://www.pexels.com/photo/woman-wearing-gloves-while-cleaning-table-9462157/",
+          "Liliana Drew"
+        ]
+      ],
+      "alt": "Agent d’entretien en tenue professionnelle nettoyant le sol de bureaux",
+      "fichier_url": "https://limpid-nettoyage.fr/nettoyage-bureaux-epinal/"
+    },
+    {
+      "name": "Cabinets médicaux",
+      "slug": "nettoyage-cabinet-medical-epinal",
+      "hero": 7789616,
+      "lead": 4098787,
+      "detail": 7876767,
+      "why": "Environnement de consultation identifiable, désinfection d’une surface et nettoyage des points de contact.",
+      "sources": [
+        [
+          7789616,
+          "https://www.pexels.com/photo/special-medical-bed-desk-and-chairs-in-medical-cabinet-7789616/",
+          "Ivan Babydov"
+        ],
+        [
+          4098787,
+          "https://www.pexels.com/photo/person-in-white-ppe-cleaning-the-table-4098787/",
+          "Matilda Wormwood"
+        ],
+        [
+          7876767,
+          "https://www.pexels.com/photo/a-person-wearing-latex-gloves-disinfecting-cabinet-handles-7876767/",
+          "Roger Brown"
+        ]
+      ],
+      "alt": "Professionnel équipé nettoyant soigneusement une surface avec du désinfectant",
+      "fichier_url": "https://limpid-nettoyage.fr/nettoyage-cabinet-medical-epinal/"
+    },
+    {
+      "name": "Ménage à domicile",
+      "slug": "menage-domicile-epinal",
+      "hero": 6196692,
+      "lead": 9462746,
+      "detail": 6196692,
+      "why": "Des intervenants en tenue et équipés, occupés à nettoyer une cuisine, plutôt qu’une personne chez elle.",
+      "sources": [
+        [
+          6196692,
+          "https://www.pexels.com/photo/people-cleaning-the-room-6196692/",
+          "Tima Miroshnichenko"
+        ],
+        [
+          9462746,
+          "https://www.pexels.com/photo/a-woman-cleaning-a-kitchen-9462746/",
+          "Liliana Drew"
+        ]
+      ],
+      "alt": "Intervenante équipée de gants nettoyant la plaque de cuisson",
+      "fichier_url": "https://limpid-nettoyage.fr/menage-domicile-epinal/"
+    },
+    {
+      "name": "Nettoyage de copropriétés",
+      "slug": "nettoyage-copropriete-vosges",
+      "hero": 37242568,
+      "lead": 37242568,
+      "detail": 5729629,
+      "why": "Travail réellement effectué dans un escalier, avec une illustration secondaire des circulations communes.",
+      "sources": [
+        [
+          37242568,
+          "https://www.pexels.com/photo/man-cleaning-stairs-in-minimalist-architectural-space-37242568/",
+          "İdil Ceren Çelikler"
+        ],
+        [
+          5729629,
+          "https://www.pexels.com/photo/staircase-with-railing-in-modern-apartment-building-5729629/",
+          "Alfin Auzikri"
+        ]
+      ],
+      "alt": "Intervenant en train de nettoyer les marches d’un escalier intérieur",
+      "fichier_url": "https://limpid-nettoyage.fr/nettoyage-copropriete-vosges/"
+    },
+    {
+      "name": "Grand ménage / fin de bail",
+      "slug": "grand-menage-fin-de-bail-epinal",
+      "hero": 6196682,
+      "lead": 9462313,
+      "detail": 6196682,
+      "why": "Équipe professionnelle en nettoyage approfondi et geste de dégraissage du four ; les vrais avant/après Limpid restent intacts.",
+      "sources": [
+        [
+          6196682,
+          "https://www.pexels.com/photo/people-cleaning-a-dining-room-6196682/",
+          "Tima Miroshnichenko"
+        ],
+        [
+          9462313,
+          "https://www.pexels.com/photo/a-woman-cleaning-the-oven-9462313/",
+          "Liliana Drew"
+        ]
+      ],
+      "alt": "Intervenants professionnels réalisant un nettoyage complet de l’intérieur d’un logement",
+      "fichier_url": "https://limpid-nettoyage.fr/grand-menage-fin-de-bail-epinal/"
+    }
+  ],
+  "sources": {
+    "38767972": {
+      "source": "https://www.pexels.com/photo/uniformed-worker-sweeping-office-floor-38767972/",
+      "auteur": "Aji Yasa Darmawan",
+      "image_distante": "https://images.pexels.com/photos/38767972/pexels-photo-38767972.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    },
+    "9462157": {
+      "source": "https://www.pexels.com/photo/woman-wearing-gloves-while-cleaning-table-9462157/",
+      "auteur": "Liliana Drew",
+      "image_distante": "https://images.pexels.com/photos/9462157/pexels-photo-9462157.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    },
+    "7789616": {
+      "source": "https://www.pexels.com/photo/special-medical-bed-desk-and-chairs-in-medical-cabinet-7789616/",
+      "auteur": "Ivan Babydov",
+      "image_distante": "https://images.pexels.com/photos/7789616/pexels-photo-7789616.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    },
+    "4098787": {
+      "source": "https://www.pexels.com/photo/person-in-white-ppe-cleaning-the-table-4098787/",
+      "auteur": "Matilda Wormwood",
+      "image_distante": "https://images.pexels.com/photos/4098787/pexels-photo-4098787.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    },
+    "7876767": {
+      "source": "https://www.pexels.com/photo/a-person-wearing-latex-gloves-disinfecting-cabinet-handles-7876767/",
+      "auteur": "Roger Brown",
+      "image_distante": "https://images.pexels.com/photos/7876767/pexels-photo-7876767.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    },
+    "6196692": {
+      "source": "https://www.pexels.com/photo/people-cleaning-the-room-6196692/",
+      "auteur": "Tima Miroshnichenko",
+      "image_distante": "https://images.pexels.com/photos/6196692/pexels-photo-6196692.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    },
+    "9462746": {
+      "source": "https://www.pexels.com/photo/a-woman-cleaning-a-kitchen-9462746/",
+      "auteur": "Liliana Drew",
+      "image_distante": "https://images.pexels.com/photos/9462746/pexels-photo-9462746.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    },
+    "37242568": {
+      "source": "https://www.pexels.com/photo/man-cleaning-stairs-in-minimalist-architectural-space-37242568/",
+      "auteur": "İdil Ceren Çelikler",
+      "image_distante": "https://images.pexels.com/photos/37242568/pexels-photo-37242568.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    },
+    "5729629": {
+      "source": "https://www.pexels.com/photo/staircase-with-railing-in-modern-apartment-building-5729629/",
+      "auteur": "Alfin Auzikri",
+      "image_distante": "https://images.pexels.com/photos/5729629/pexels-photo-5729629.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    },
+    "6196682": {
+      "source": "https://www.pexels.com/photo/people-cleaning-a-dining-room-6196682/",
+      "auteur": "Tima Miroshnichenko",
+      "image_distante": "https://images.pexels.com/photos/6196682/pexels-photo-6196682.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    },
+    "9462313": {
+      "source": "https://www.pexels.com/photo/a-woman-cleaning-the-oven-9462313/",
+      "auteur": "Liliana Drew",
+      "image_distante": "https://images.pexels.com/photos/9462313/pexels-photo-9462313.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    }
+  }
+}
